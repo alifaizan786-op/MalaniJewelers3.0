@@ -4,12 +4,6 @@
 
 ## Static Pages
 
-- [ ] Mercury
-- [x] Venus
-- [x] Earth (Orbit/Moon)
-- [x] Mars
-- [ ] Jupiter
-- [ ] Saturn
-- [ ] Uranus
-- [ ] Neptune
-- [ ] Comet Haley
+### Showrooms
+Current Link : https://malanijewelers.com/Views/Stores
+GH Pages Link : 
