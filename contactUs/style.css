@@ -26,6 +26,7 @@ body {
     margin: 0 auto;
     width: 100%;
     gap: 20px; /* Add gap between cards */
+    flex-wrap: wrap;
 }
 
 .container {
@@ -267,7 +268,14 @@ body {
     border-radius: 50px;
     border: 1px solid rgba(0, 0, 0, 0.06);
 }
-
+.black-call {
+    width: 20px;
+    height: 20px;
+}
+.black-call-web {
+    width: 30px;
+    height: 30px;
+}
 .dial {
     width: 20px;
     height: 20px;
@@ -278,16 +286,15 @@ body {
 
 /* New Figma Design Styles */
 .call-card-container {
-    flex: 1; /* Allow cards to grow and take equal space */
+    flex: 1 1 calc(33.333% - 40px); /* Allow cards to grow and shrink, with a base width of 33.333% minus the gap */
     display: flex;
-    justify-content: space-between;
+    justify-content: center; /* Center cards horizontally */
     align-items: center;
-    width: 33%;
-    /* border: 1px solid black; */
+    min-width: 280px; /* Set a minimum width for each card */
+    max-width: 100%; /* Ensure cards don't exceed the container width */
 }
 
 .call-card {
-    width: 100%; /* Make cards take full width of their container */
     /* max-width: 359px;  */
     height: 295px;
     position: relative;
