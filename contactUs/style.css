@@ -44,18 +44,22 @@ body {
     justify-content: space-evenly;
     flex-direction: column;
     max-width: 600px;
+    /* border: 1px solid black; */
 }
 
 .contact-us {
     display: flex;
     color: #d9d9d9;
     font-family: Italiana;
-    font-size: 108.15px;
+    font-size: 180px;
     justify-items: flex-end;
-    justify-content: flex-end;
+    justify-content: flex-start;
     align-items: flex-end;
-    width: 100%;
+    /* width: 100%; */
     margin-top: 50px;
+    /* border: 1px solid black; */
+    width: 500px;
+    gap: 40px;
 }
 
 .title {
@@ -401,14 +405,14 @@ body {
         display: none;
     }
 }
-@media (max-width: 1343px) {
+@media (max-width: 1388px) {
     .contact-us {
-        font-size: 80px;
+        font-size: 160px;
     }
 }
 @media (max-width: 1214px) {
     .contact-us {
-        font-size: 75px;
+        font-size: 155px;
     }
 }
 @media (max-width: 1200px) {
