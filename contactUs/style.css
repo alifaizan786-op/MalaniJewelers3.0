@@ -19,14 +19,16 @@ body {
 
 .web-card {
     display: flex;
-    justify-content: space-between;
+    justify-content: space-evenly;
     align-items: center;
-    max-width: 1040px;
+    max-width: 1440px;
     padding: 20px;
     margin: 0 auto;
     width: 100%;
-    gap: 20px;
-    flex-wrap: wrap;
+    /* gap: 20px; */
+    /* border: 1px solid black; */
+    flex-wrap: nowrap; /* Default: single line */
+    overflow-x: auto; /* Scroll if needed */
 }
 
 .container {
@@ -114,7 +116,7 @@ body {
 .input-container input,
 .input-container textarea {
     width: 100%;
-    padding: 12px 12px 12px 40px; /* Add padding-left for icon space */
+    padding: 12px 12px 12px 40px;
     border-radius: 12px;
     border: 1px solid rgba(0, 0, 0, 0.1);
     background: white;
@@ -138,7 +140,7 @@ body {
 
 /* Adjust icon position for textarea */
 .input-container textarea + .input-icon {
-    top: 16px; /* Aligns with the first line of text, adjusted for padding */
+    top: 16px;
     transform: none;
 }
 
@@ -265,12 +267,11 @@ body {
     font-family: "Anek Malayalam", sans-serif;
     font-weight: 600;
 }
-.PhNo:hover {
-    background-color: #bcbec2;
-}
+
 .phone-container:hover {
     background-color: #bcbec2;
 }
+
 .callPhone {
     display: flex;
     flex-direction: column;
@@ -316,10 +317,12 @@ body {
     width: 20px;
     height: 20px;
 }
+
 .black-call-web {
     width: 30px;
     height: 30px;
 }
+
 .dial {
     width: 20px;
     height: 20px;
@@ -330,12 +333,12 @@ body {
 
 /* New Figma Design Styles */
 .call-card-container {
-    flex: 1 1 calc(33.333% - 40px);
+    flex: 0 0 auto;
+    min-width: 280px;
+    max-width: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
-    min-width: 280px;
-    max-width: 100%;
 }
 
 .call-card {
@@ -416,6 +419,7 @@ body {
     justify-content: space-between;
     padding: 0 10px;
 }
+
 .check {
     width: 100%;
 }
@@ -435,21 +439,37 @@ body {
 }
 
 /* Responsive Design */
+
+@media (max-width: 1284px) {
+    .web-card {
+        flex-wrap: wrap;
+        overflow-x: hidden;
+        gap: 20px;
+    }
+
+    .call-card-container {
+        flex: 1 1 calc(50% - 20px); /* Two cards per row */
+    }
+}
+
 @media (max-width: 758px) {
     .web-card {
         display: none;
     }
 }
+
 @media (max-width: 1388px) {
     .contact-us {
         font-size: 160px;
     }
 }
+
 @media (max-width: 1214px) {
     .contact-us {
         font-size: 155px;
     }
 }
+
 @media (max-width: 1200px) {
     .container {
         flex-direction: column;
