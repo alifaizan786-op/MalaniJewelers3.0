@@ -19,13 +19,13 @@ body {
 
 .web-card {
     display: flex;
-    justify-content: space-between; /* Distribute space evenly */
-    align-items: center; /* Center items vertically */
+    justify-content: space-between;
+    align-items: center;
     max-width: 1040px;
     padding: 20px;
     margin: 0 auto;
     width: 100%;
-    gap: 20px; /* Add gap between cards */
+    gap: 20px;
     flex-wrap: wrap;
 }
 
@@ -35,7 +35,6 @@ body {
     padding: 20px;
     max-width: 1440px;
     margin: 0 auto;
-    /* border: 1px solid black; */
 }
 
 /* Left Section */
@@ -44,7 +43,6 @@ body {
     justify-content: space-evenly;
     flex-direction: column;
     max-width: 600px;
-    /* border: 1px solid black; */
 }
 
 .contact-us {
@@ -55,9 +53,7 @@ body {
     justify-items: flex-end;
     justify-content: flex-start;
     align-items: flex-end;
-    /* width: 100%; */
     margin-top: 50px;
-    /* border: 1px solid black; */
     width: 500px;
     gap: 40px;
 }
@@ -104,8 +100,46 @@ body {
     font-size: 16px;
 }
 
-.form-group textarea {
+/* Container for inputs with icons */
+.input-with-icon {
+    position: relative;
+}
+
+.input-container {
+    position: relative;
+    width: 100%;
+}
+
+/* Style for the input fields with icons */
+.input-container input,
+.input-container textarea {
+    width: 100%;
+    padding: 12px 12px 12px 40px; /* Add padding-left for icon space */
+    border-radius: 12px;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    background: white;
+    font-size: 16px;
+}
+
+.input-container textarea {
     height: 102.24px;
+}
+
+/* Style for the Font Awesome icons */
+.input-icon {
+    position: absolute;
+    top: 50%;
+    left: 12px;
+    transform: translateY(-50%);
+    font-size: 20px;
+    color: #333;
+    pointer-events: none;
+}
+
+/* Adjust icon position for textarea */
+.input-container textarea + .input-icon {
+    top: 16px; /* Aligns with the first line of text, adjusted for padding */
+    transform: none;
 }
 
 .form-footer {
@@ -213,7 +247,7 @@ body {
 
 /* Card Styling (Hidden by Default) */
 .card {
-    display: none; /* Hide by default */
+    display: none;
     background: #fffefa;
     box-shadow: 0px 0px 6.3px 5px rgba(0, 0, 0, 0.04);
     border-radius: 20px;
@@ -227,11 +261,16 @@ body {
 
 .call-text {
     color: black;
-    font-size: 14px;
+    font-size: 16.7px;
     font-family: "Anek Malayalam", sans-serif;
     font-weight: 600;
 }
-
+.PhNo:hover {
+    background-color: #bcbec2;
+}
+.phone-container:hover {
+    background-color: #bcbec2;
+}
 .callPhone {
     display: flex;
     flex-direction: column;
@@ -272,6 +311,7 @@ body {
     border-radius: 50px;
     border: 1px solid rgba(0, 0, 0, 0.06);
 }
+
 .black-call {
     width: 20px;
     height: 20px;
@@ -290,16 +330,15 @@ body {
 
 /* New Figma Design Styles */
 .call-card-container {
-    flex: 1 1 calc(33.333% - 40px); /* Allow cards to grow and shrink, with a base width of 33.333% minus the gap */
+    flex: 1 1 calc(33.333% - 40px);
     display: flex;
-    justify-content: center; /* Center cards horizontally */
+    justify-content: center;
     align-items: center;
-    min-width: 280px; /* Set a minimum width for each card */
-    max-width: 100%; /* Ensure cards don't exceed the container width */
+    min-width: 280px;
+    max-width: 100%;
 }
 
 .call-card {
-    /* max-width: 359px;  */
     height: 295px;
     position: relative;
     background: #fffefa;
@@ -329,12 +368,13 @@ body {
     height: 58px;
     background: #fffefa;
     box-shadow: 0px 0px 6.3px 5px rgba(0, 0, 0, 0.04);
-    border-radius: 8px;
+    border-radius: 99px;
     border: 1px solid rgba(0, 0, 0, 0.06);
     display: flex;
     justify-content: center;
     align-items: center;
     margin-bottom: 20px;
+    background-color: black;
 }
 
 .black-icon {
@@ -345,7 +385,6 @@ body {
 }
 
 .text-content {
-    /* text-align: center; */
     margin-bottom: 20px;
 }
 
@@ -380,15 +419,11 @@ body {
 .check {
     width: 100%;
 }
-/* .black-call-icon {
-    width: 30px;
-    height: 30px;
-} */
+
 .phone-number {
     color: black;
     font-size: 20px;
     font-weight: 400;
-    /* letter-spacing: 0.8px; */
     text-align: left;
 }
 
@@ -455,7 +490,7 @@ body {
     }
 
     .mobileImage-container {
-        display: block; /* Show the mobile image container */
+        display: block;
     }
 
     .mobileImage {
@@ -565,10 +600,10 @@ body {
     }
 }
 
-/* Show .card only up to 700px */
+/* Show .card only up to 758px */
 @media (max-width: 758px) {
     .card {
-        display: flex; /* Show the card */
+        display: flex;
     }
 }
 
