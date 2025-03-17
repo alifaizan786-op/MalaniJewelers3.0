@@ -1,640 +1,84 @@
-/* General Reset */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
 body {
-    font-family: "Almarai", sans-serif;
-    background: #f6f5f1;
-    color: black;
-}
-
-.testing {
-    display: flex;
-    flex-direction: column;
-    max-width: 100%;
-}
-
-.web-card {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    max-width: 1440px;
-    padding: 20px;
-    margin: 0 auto;
-    width: 100%;
-    gap: 20px;
-    /* border: 1px solid black; */
-    flex-wrap: nowrap; /* Default: single line */
-    overflow-x: auto; /* Scroll if needed */
-}
-
-.container {
-    display: flex;
-    flex-direction: row;
-    padding: 20px;
-    max-width: 1440px;
-    margin: 0 auto;
-}
-
-/* Left Section */
-.left-section {
-    display: flex;
-    justify-content: space-evenly;
-    flex-direction: column;
-    max-width: 600px;
-}
-
-.contact-us {
-    display: flex;
-    color: #d9d9d9;
-    font-family: Italiana;
-    font-size: 180px;
-    justify-items: flex-end;
-    justify-content: flex-start;
-    align-items: flex-end;
-    margin-top: 50px;
-    width: 500px;
-    gap: 40px;
-}
-
-.title {
-    font-size: 57.57px;
-    font-family: "Italiana", serif;
-    font-weight: 400;
-    text-transform: capitalize;
-    margin-bottom: 20px;
-}
-
-.description {
-    font-size: 16.76px;
-    font-weight: 300;
-    line-height: 23.3px;
-    margin-bottom: 30px;
-}
-
-.form-row {
-    display: flex;
-    gap: 20px;
-}
-
-.form-group {
-    flex: 1;
-    margin-bottom: 20px;
-}
-
-.form-group label {
-    font-size: 18px;
-    font-weight: 300;
-    display: block;
-    margin-bottom: 8px;
-}
-
-.form-group input,
-.form-group textarea {
-    width: 100%;
-    padding: 12px;
-    border-radius: 12px;
-    border: 1px solid rgba(0, 0, 0, 0.1);
-    background: white;
-    font-size: 16px;
-}
-
-/* Container for inputs with icons */
-.input-with-icon {
-    position: relative;
-}
-
-.input-container {
-    position: relative;
-    width: 100%;
-}
-
-/* Style for the input fields with icons */
-.input-container input,
-.input-container textarea {
-    width: 100%;
-    padding: 12px 12px 12px 40px;
-    border-radius: 12px;
-    border: 1px solid rgba(0, 0, 0, 0.1);
-    background: white;
-    font-size: 16px;
-}
-
-.input-container textarea {
-    height: 102.24px;
-}
-
-/* Style for the Font Awesome icons */
-.input-icon {
-    position: absolute;
-    top: 50%;
-    left: 12px;
-    transform: translateY(-50%);
-    font-size: 20px;
+    font-family: Arial, sans-serif;
     color: #333;
-    pointer-events: none;
+    background-color: #fff;
 }
 
-/* Adjust icon position for textarea */
-.input-container textarea + .input-icon {
-    top: 16px;
-    transform: none;
+/* Header */
+.section-title {
+    font-size: 2.5rem;
+    font-weight: bold;
 }
 
-.form-footer {
-    display: flex;
-    align-items: start;
-    justify-content: space-between;
-    margin-top: 20px;
-    flex-direction: column;
+.section-description {
+    font-size: 1rem;
+    color: #666;
+    max-width: 800px;
+    margin: 0 auto;
 }
 
-.checkbox {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    padding-bottom: 10px;
-}
-
-.checkbox input {
-    width: 17px;
-    height: 17px;
-    border-radius: 4px;
-    border: 1px solid rgba(0, 0, 0, 0.1);
-}
-
-.checkbox label {
-    font-size: 16.76px;
-    font-weight: 400;
-    line-height: 23.3px;
-}
-
-.send-button {
-    width: 360px;
-    height: 50px;
-    background: black;
-    color: white;
-    border-radius: 12px;
-    border: 1px solid rgba(0, 0, 0, 0.1);
-    font-size: 18px;
-    font-weight: 300;
-    cursor: pointer;
-}
-
-/* Right Section */
-.right-section {
-    flex: 1;
-    max-width: 600px;
-    position: relative;
-}
-
-.image-stack {
-    position: relative;
+/* Showroom Images */
+.showroom-img {
     width: 100%;
-    height: 800px;
+    max-width: 150px;
+    margin-bottom: 10px;
 }
 
-.image {
-    position: absolute;
-    width: 482px;
-    height: 675px;
-}
-
-.image-1 {
-    left: 0;
-    top: -30px;
-}
-
-.image-2 {
-    left: 246px;
-    top: 213px;
-}
-
-.contact-text {
-    position: absolute;
-    bottom: 0;
-    left: 10px;
-    color: white;
-    font-family: "Italiana", serif;
-}
-
-.contact {
-    font-size: 209.2px;
-    font-weight: 400;
-    color: #d9d9d9;
-    position: absolute;
-    top: -150px;
-    right: -200px;
-}
-
-.malani {
-    font-size: 118.76px;
-    font-weight: 400;
-    position: absolute;
-    bottom: -76px;
-    left: 285px;
-}
-
-.jewelry {
-    font-size: 71.74px;
-    font-weight: 400;
-    text-transform: uppercase;
-    position: absolute;
-    bottom: 18px;
-    left: 415px;
-}
-
-/* Card Styling (Hidden by Default) */
-.card {
-    display: none;
-    background: #fffefa;
-    box-shadow: 0px 0px 6.3px 5px rgba(0, 0, 0, 0.04);
-    border-radius: 20px;
-    border: 1px solid rgba(0, 0, 0, 0.06);
-    align-items: center;
-    justify-content: space-between;
-    padding: 0 10px;
-    margin: 10px 0;
-    width: 100%;
-}
-
-.call-text {
-    color: black;
-    font-size: 16.7px;
-    font-family: "Anek Malayalam", sans-serif;
-    font-weight: 600;
-}
-
-.phone-container:hover {
-    background-color: #bcbec2;
-}
-
-.callPhone {
-    display: flex;
-    flex-direction: column;
-}
-
-.call-icon {
-    width: 20px;
-    height: 20px;
-}
-
-.PhNo {
-    display: flex;
-    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.09);
-    border-radius: 8px;
-    border: 1px rgba(0, 0, 0, 0.1) solid;
-    padding: 5px;
-    gap: 10px;
-    align-items: center;
-    margin-top: 5px;
-}
-
-.call-button {
-    width: 83.62px;
-    height: 77px;
-    display: flex;
-    align-items: center;
-    justify-content: flex-end;
-}
-
-.circle {
-    width: 50%;
-    height: 50%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background: black;
-    box-shadow: 0px 0px 6.3px 5px rgba(0, 0, 0, 0.04);
-    border-radius: 50px;
-    border: 1px solid rgba(0, 0, 0, 0.06);
-}
-
-.black-call {
-    width: 20px;
-    height: 20px;
-}
-
-.black-call-web {
-    width: 30px;
-    height: 30px;
-}
-
-.dial {
-    width: 20px;
-    height: 20px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-/* New Figma Design Styles */
-.call-card-container {
-    flex: 0 0 auto;
-    min-width: 280px;
-    max-width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.call-card {
-    height: 295px;
-    position: relative;
-    background: #fffefa;
-    box-shadow: 0px 0px 6.3px 5px rgba(0, 0, 0, 0.04);
-    border-radius: 23px;
-    border: 1px solid rgba(0, 0, 0, 0.06);
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    justify-content: space-between;
+/* Showroom Info */
+.showroom-info {
+    background-color: #f9f9f9;
     padding: 20px;
+    border-radius: 8px;
 }
 
-.card-background {
+/* Map Overlay */
+.map-container {
+    position: relative;
+    width: 100%;
+    height: 350px;
+    border-radius: 8px;
+}
+
+/* Make the iframe (Google Map) responsive */
+.map-container iframe {
     width: 100%;
     height: 100%;
-    position: absolute;
-    top: 0;
-    left: 0;
-    background: #fffefa;
-    border-radius: 23px;
-    z-index: -1;
-}
-
-.icon-container {
-    width: 58px;
-    height: 58px;
-    background: #fffefa;
-    box-shadow: 0px 0px 6.3px 5px rgba(0, 0, 0, 0.04);
-    border-radius: 99px;
-    border: 1px solid rgba(0, 0, 0, 0.06);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-bottom: 20px;
-    background-color: black;
-}
-
-.black-icon {
-    width: 41.12px;
-    height: 41.12px;
-    background: black;
-    transform: rotate(-6deg);
-}
-
-.text-content {
-    margin-bottom: 20px;
-}
-
-.text-content .title {
-    color: black;
-    font-size: 24px;
-    font-weight: 600;
-    display: block;
-    font-family: "Anek Malayalam", sans-serif;
-    margin-bottom: 1px;
-}
-
-.text-content .subtitle {
-    color: #525050;
-    font-size: 20px;
-    font-weight: 400;
-    letter-spacing: 0.8px;
-}
-
-.phone-container {
-    width: 100%;
-    height: 49px;
-    background: #f6f5f1;
-    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.09);
     border-radius: 8px;
-    border: 1px solid rgba(0, 0, 0, 0.1);
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 0 10px;
 }
 
-.check {
-    width: 100%;
+/* Style the info box that overlays the map */
+.map-info {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    background: white;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    width: 300px;
+    max-width: 90%;
 }
 
-.phone-number {
-    color: black;
-    font-size: 20px;
-    font-weight: 400;
-    text-align: left;
-}
-
-.call-icon {
-    width: 26.24px;
-    height: 26.25px;
-    border: 1px solid black;
-    border-radius: 50%;
-}
-
-/* Responsive Design */
-
-@media (max-width: 1284px) {
-    .web-card {
-        flex-wrap: wrap;
-        overflow-x: hidden;
-        gap: 20px;
-    }
-
-    .call-card-container {
-        flex: 1 1 calc(50% - 20px); /* Two cards per row */
-    }
-}
-
-@media (max-width: 758px) {
-    .web-card {
-        display: none;
-    }
-}
-
-@media (max-width: 1388px) {
-    .contact-us {
-        font-size: 160px;
-    }
-}
-
-@media (max-width: 1214px) {
-    .contact-us {
-        font-size: 155px;
-    }
-}
-
-@media (max-width: 1200px) {
-    .container {
-        flex-direction: column;
-        align-items: center;
-    }
-
-    .left-section,
-    .right-section {
-        max-width: 100%;
-        padding: 0;
-    }
-
-    .image-stack {
-        height: auto;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        gap: 20px;
-    }
-
-    .image {
-        position: static;
-        width: 100%;
-        max-width: 482px;
-        height: auto;
-    }
-
-    .contact-text {
-        position: static;
-        text-align: center;
-        margin-top: 20px;
-    }
-
-    .malani,
-    .jewelry {
-        position: static;
-        text-align: center;
-    }
-
-    .mobileImage-container {
-        display: block;
-    }
-
-    .mobileImage {
-        max-width: 100%;
-        height: auto;
-    }
-
-    .contact-us {
-        display: none;
-    }
-
-    .web-image {
-        display: none;
-    }
-}
-
-@media (max-width: 1024px) {
-    .left-section {
-        max-width: 100%;
-        padding-right: 0;
-    }
-
-    .send-button {
-        width: 100%;
-    }
-
-    .image {
-        width: 80%;
-        max-width: 300%;
-        height: auto;
-    }
-
-    .form-row {
-        flex-direction: row;
-        gap: 20px;
-    }
-}
-
+/* Responsive: Move below the map on smaller screens */
 @media (max-width: 768px) {
-    .title {
-        font-size: 40px;
-    }
-
-    .contact {
-        font-size: 120px;
-    }
-
-    .malani {
-        font-size: 80px;
-    }
-
-    .jewelry {
-        font-size: 50px;
-    }
-
-    .form-row {
-        flex-direction: row;
-        gap: 20px;
-    }
-
-    .image {
-        width: 80%;
-        max-width: 300px;
-        height: auto;
-    }
-
-    .image-1 {
+    .map-info {
         position: relative;
-        left: -50px;
-        top: 15px;
-        z-index: 1;
-    }
-
-    .image-2 {
-        position: relative;
-        left: 45px;
-        top: -220px;
-    }
-
-    .contact {
-        font-size: 30px;
-        top: 360px;
-        right: 190px;
-    }
-
-    .malani {
-        font-size: 50px;
-        position: relative;
-        left: 35px;
-        top: -299.7px;
-    }
-
-    .checkbox label {
-        font-size: 14px;
-    }
-
-    .jewelry {
-        font-size: 30px;
-        position: relative;
-        top: -376px;
-        left: 67px;
-    }
-
-    .left-section {
-        max-width: 100%;
-        padding-right: 0;
+        top: auto;
+        right: auto;
+        width: 100%;
+        margin-top: 10px;
     }
 }
 
-/* Show .card only up to 758px */
-@media (max-width: 758px) {
-    .card {
-        display: flex;
-    }
+/* Gallery Images */
+.gallery-img {
+    width: 100%;
+    border-radius: 8px;
+    margin-bottom: 15px;
 }
 
-/* Hide .mobileImage-container by default */
-.mobileImage-container {
-    display: none;
-}
-
-/* Show .mobileImage-container only up to 1200px */
-@media (max-width: 1200px) {
-    .mobileImage-container {
-        display: block;
-    }
+/* Footer */
+.footer-logo {
+    width: 80px;
+    margin: 20px auto;
 }
