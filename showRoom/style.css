@@ -52,12 +52,22 @@ body {
     margin-bottom: 0px;
 }
 .shadow-box {
-    width: 200px;
-    height: 150px;
-    background: white;
-    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.1);
-    border-radius: 13px;
+    width: 300px;
+    box-shadow: 0px 0px 3px 1px rgba(0, 0, 0, 0.25);
+    border-radius: 8px;
+    
 }
+.showroom-box {
+    width: 300px;
+    padding-top: 20px;
+    padding-bottom: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 40px;
+}
+
 .state-name {
     font-size: 20px;
     line-height: 20%;
@@ -89,7 +99,15 @@ body {
     height: 520px;
     /* border-radius: 8px; */
 }
-
+.margin-right-4 {
+    margin-right: 10px;
+}
+.check-mob {
+    display: none;
+}
+.margin-left-4 {
+    margin-left: 10px;
+}
 /* Make Google Map Responsive */
 .map-container iframe {
     width: 100%;
@@ -117,11 +135,21 @@ body {
 .map-mob {
     display: none;
 }
+
 /* Responsive Fixes */
 /* @media (max-width: 1200px) {
     
 } */
+
 @media (max-width: 768px) {
+    .check-mob {
+        display: block;
+
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
     .check {
         display: none;
     }
@@ -134,16 +162,26 @@ body {
         display: block;
     }
     .shadow-box {
-        background: white;
-        box-shadow: 0px 0px 0px rgba(0, 0, 0, 0.1);
-        border-radius: 13px;
+        width: 300px;
+        box-shadow: 0px 0px 3px 1px rgba(0, 0, 0, 0.25);
+        border-radius: 8px;
     }
 
     .gallery-img {
         width: 100%;
         height: auto;
     }
+    .margin-right-4 {
+        margin-right: 10px;
+    }
+    .margin-left-4 {
+        margin-left: 10px;
+    }
 }
+.rotate {
+    transform: scaleY(-1); /* smooth rotation transition */
+}
+
 .hours-list {
     font-family: "Open Sans", sans-serif;
     font-size: 12px;
@@ -170,7 +208,7 @@ body {
 }
 
 /* “Closed” style (optional) */
-.closed {  
+.closed {
 }
 
 /* Gallery Layout */
@@ -178,7 +216,7 @@ body {
     display: grid;
     grid-template-columns: 1fr 1fr;
     grid-template-rows: auto;
-    max-width: 1400px;
+    /* max-width: 1400px; */
     margin: auto;
     align-items: stretch;
 }
