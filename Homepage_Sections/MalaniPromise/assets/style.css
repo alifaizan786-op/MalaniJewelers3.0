@@ -1,0 +1,133 @@
+@font-face {
+  font-family: 'Abhaya Libre';
+  src: url('http://malanijewelers.myshopify.com/cdn/shop/t/2/assets/AbhayaLibre-Regular.ttf')
+    format('truetype');
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Abhaya Libre';
+  src: url('http://malanijewelers.myshopify.com/cdn/shop/t/2/assets/AbhayaLibre-Medium.ttf')
+    format('truetype');
+  font-weight: 500;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Abhaya Libre';
+  src: url('http://malanijewelers.myshopify.com/cdn/shop/t/2/assets/AbhayaLibre-SemiBold.ttf')
+    format('truetype');
+  font-weight: 600;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Abhaya Libre';
+  src: url('http://malanijewelers.myshopify.com/cdn/shop/t/2/assets/AbhayaLibre-Bold.ttf')
+    format('truetype');
+  font-weight: 700;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Abhaya Libre';
+  src: url('http://malanijewelers.myshopify.com/cdn/shop/t/2/assets/AbhayaLibre-ExtraBold.ttf')
+    format('truetype');
+  font-weight: 800;
+  font-style: normal;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Abhaya Libre', sans-serif;
+}
+
+.malani_promise {
+  background-color: #212121;
+  margin: 0;
+}
+
+.malani_promise .malani_promise_header {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  gap: 2rem;
+  flex-direction: row;
+  padding: 1rem;
+}
+
+.malani_promise .malani_promise_header h2 {
+  color: #ffefe7;
+  text-align: center;
+  font-family: 'Abhaya Libre';
+  font-size: 1.45rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  letter-spacing: 0.0225rem;
+}
+
+.malani_promise .malani_promise_header hr {
+  width: 4rem;
+  border: 0.01rem solid #fab99a;
+}
+
+.malani_promise_carousel .item .promise {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  padding: 1.25rem 3rem;
+}
+
+.malani_promise_carousel .item .promise img {
+  padding: 0;
+  margin: 0;
+}
+
+.malani_promise_carousel .item .promise h3 {
+  color: #ffefe7;
+  text-align: center;
+  font-family: 'Abhaya Libre ExtraBold';
+  font-size: 1.125rem;
+  font-style: normal;
+  font-weight: 800;
+  line-height: normal;
+  letter-spacing: 0.0225rem;
+  padding: 0;
+  margin: 0;
+}
+
+.malani_promise_carousel .item .promise p {
+  color: rgba(255, 255, 255, 0.6);
+  text-align: center;
+  font-family: 'Abhaya Libre';
+  font-size: 0.975rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 1.375rem; /* 157.143% */
+  letter-spacing: 0.0175rem;
+  padding: 0;
+  margin: 0;
+}
+
+.malani_promise_carousel .item .promise a {
+  color: #ffd7c3;
+  font-family: 'Abhaya Libre';
+  font-size: 0.95rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 2rem; /* 266.667% */
+  letter-spacing: 0.015rem;
+  padding: 0;
+  margin: 0;
+  display: inline-block;
+}
+
+.malani_promise_carousel .item .promise a img {
+  padding: 0.25rem;
+  display: inline-block;
+}
