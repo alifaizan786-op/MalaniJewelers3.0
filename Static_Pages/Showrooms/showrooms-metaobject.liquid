@@ -1,0 +1,208 @@
+{% schema %}
+{
+  "name": "Showrooms Main",
+  "settings": []
+}
+{% endschema %}
+
+{% comment %}
+  {{ 'reset.css' | asset_url | stylesheet_tag }}
+{% endcomment %}
+{{ 'showrooms.css' | asset_url | stylesheet_tag }}
+
+{% liquid
+  assign HTags = metaobject.h1_h2.value
+%}
+
+<div class="visually-hidden-headings">
+  <h1>{{ HTags.H1 | escape }}</h1>
+  <h2>{{ HTags.H2 | escape }}</h2>
+  <h3>{{ HTags.H3 | escape }}</h3>
+  <h4>{{ HTags.H4 | escape }}</h4>
+  <h5>{{ HTags.H5 | escape }}</h5>
+  <h6>{{ HTags.H6 | escape }}</h6>
+</div>
+
+<section class="showrooms_header">
+  <span>Our State Of The Art</span>
+  <h1>Showrooms</h1>
+  <p>
+    Established in 1897, Malani Jewelers has earned a prestigious reputation as a premier destination for authentic 22K
+    gold and diamond Indian jewelry. With state-of-the-art showrooms across North America, including Texas, Georgia, and
+    Florida, each location is equipped with GIA-certified experts and dedicated repair centers. We are committed to
+    providing an unparalleled shopping experience, helping you find the perfect piece that reflects your unique style.
+    Our services include custom engagement ring designs, diamond consultations, jewelry engraving, professional cleaning
+    and repairs, and exclusive private bridal jewelry viewings.
+  </p>
+</section>
+
+<section class="showrooms_list">
+  {% for showroom in shop.metaobjects.showrooms.values %}
+    <script>
+      console.log({{ showroom.city.value | json }});
+      console.log({{ showroom | json }});
+    </script>
+    {% if showroom.city == metaobject.city %}
+      <div class="showroom_tile active">
+        <img
+          src="{{showroom.active_icon.value | image_url: width:10}}"
+          width="250"
+          height="125"
+        >
+        <h2>{{ showroom.city.value }}</h2>
+        <p>{{ showroom.state.value }}</p>
+      </div>
+
+    {% else %}
+      <a href="/pages/showrooms/{{ showroom.city.value }}">
+        <div class="showroom_tile">
+          <img
+            src="{{showroom.inactive_icon.value | image_url: width:10}}"
+            width="250"
+            height="125"
+          >
+          <h2>{{ showroom.city.value }}</h2>
+          <p>{{ showroom.state.value }}</p>
+        </div>
+      </a>
+    {% endif %}
+  {% endfor %}
+</section>
+
+<section class="showroom_map">
+  <iframe
+    src="{{ metaobject.map_iframe_url }}"
+    width="100%"
+    height="500"
+    allowfullscreen=""
+    frameborder="0"
+    loading="lazy"
+  >
+  </iframe>
+  <div class="map_overlay">
+    <div>
+      <h3>Malani Jewelers Inc</h3>
+      <hr>
+      <h4>{{ metaobject.city }}, {{ metaobject.state_abbreviation }}</h4>
+    </div>
+    <p class="address">
+      {{ metaobject.address }}
+    </p>
+    <div>
+      {% if metaobject.email %}
+        <p class="email">
+          <img
+            src="{{ 'mail.svg' | asset_url }}"
+            alt="Email Icon"
+            height="20px"
+            width="20px"
+            class="icon"
+          >
+          {{ metaobject.email }}
+        </p>
+      {% endif %}
+
+      {% if metaobject.phone_1 %}
+        <p class="phone">
+          <img
+            src="{{ 'phone.svg' | asset_url }}"
+            alt="Phone Icon"
+            height="20px"
+            width="20px"
+            class="icon"
+          >
+          {{ metaobject.phone_1 }}
+        </p>
+      {% endif %}
+
+      {% if metaobject.phone_2 %}
+        <p class="phone">
+          <img
+            src="{{ 'phone.svg' | asset_url }}"
+            alt="Phone Icon"
+            height="20px"
+            width="20px"
+            class="icon"
+          >
+          {{ metaobject.phone_2 }}
+        </p>
+      {% endif %}
+
+      {% if metaobject.fax %}
+        <p class="phone">
+          <img
+            src="{{ 'phone.svg' | asset_url }}"
+            alt="Fax Icon"
+            height="20px"
+            width="20px"
+            class="icon"
+          >
+          {{ metaobject.fax }}
+        </p>
+      {% endif %}
+    </div>
+
+    <div>
+      <h4>Hours of Operation</h4>
+      <div class="hours-list">
+        <div class="hours-row">
+          <div class="day">Monday</div>
+          <div class="time closed">{{ metaobject.monday }}</div>
+        </div>
+        <div class="hours-row">
+          <div class="day">Tuesday</div>
+          <div class="time">{{ metaobject.tuesday }}</div>
+        </div>
+        <div class="hours-row">
+          <div class="day">Wednesday</div>
+          <div class="time">{{ metaobject.wednesday }}</div>
+        </div>
+        <div class="hours-row">
+          <div class="day">Thursday</div>
+          <div class="time">{{ metaobject.thursday }}</div>
+        </div>
+        <div class="hours-row">
+          <div class="day">Friday</div>
+          <div class="time">{{ metaobject.friday }}</div>
+        </div>
+        <div class="hours-row">
+          <div class="day">Saturday</div>
+          <div class="time">{{ metaobject.saturday }}</div>
+        </div>
+        <div class="hours-row">
+          <div class="day">Sunday</div>
+          <div class="time">{{ metaobject.sunday }}</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% if metaobject.tour_iframe_url %}
+  <section class="showroom_virtual_tour">
+    <h2>Virtual Tour</h2>
+    <iframe
+      src="{{ metaobject.tour_iframe_url }}"
+      frameborder="0"
+      style="border: 0"
+      allowfullscreen=""
+      title=""
+    ></iframe>
+  </section>
+{% endif %}
+
+{% if metaobject.image %}
+  <section
+    class="showrooms_footer"
+    style="background-image: url('{{metaobject.image.value | image_url: width:1000,  format: 'webp'}}');"
+  >
+    <div class="overlay">
+      <img
+        src="{{ 'MJ_Logo.svg' | asset_url }}"
+        alt="Malani Jewelers Logo"
+        width="100"
+        height="100"
+      >
+    </div>
+  </section>
+{% endif %}
