@@ -1,0 +1,200 @@
+@font-face {
+  font-family: 'Abhaya Libre';
+  src: url('http://malanijewelers.myshopify.com/cdn/shop/t/2/assets/AbhayaLibre-Regular.ttf')
+    format('truetype');
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Abhaya Libre';
+  src: url('http://malanijewelers.myshopify.com/cdn/shop/t/2/assets/AbhayaLibre-Medium.ttf')
+    format('truetype');
+  font-weight: 500;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Abhaya Libre';
+  src: url('http://malanijewelers.myshopify.com/cdn/shop/t/2/assets/AbhayaLibre-SemiBold.ttf')
+    format('truetype');
+  font-weight: 600;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Abhaya Libre';
+  src: url('http://malanijewelers.myshopify.com/cdn/shop/t/2/assets/AbhayaLibre-Bold.ttf')
+    format('truetype');
+  font-weight: 700;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Abhaya Libre';
+  src: url('http://malanijewelers.myshopify.com/cdn/shop/t/2/assets/AbhayaLibre-ExtraBold.ttf')
+    format('truetype');
+  font-weight: 800;
+  font-style: normal;
+}
+
+.bg-img {
+  position: relative;
+  width: 26.875rem;
+  height: 26.875rem;
+  border-radius: 1.25rem;
+
+  background-repeat: no-repeat !important;
+  background-position: top !important;
+  background-size: cover !important;
+  overflow: hidden;
+}
+
+/* Sliding background overlay */
+.bg-overlay {
+  position: absolute;
+  bottom: -120%;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.4); /* needed for blur to work */
+  backdrop-filter: blur(0rem);
+  transition: bottom 0.6s ease, backdrop-filter 0.6s ease;
+  z-index: 1;
+  border-radius: 1.25rem;
+}
+
+.collection:hover .bg-overlay {
+  bottom: 0;
+  backdrop-filter: blur(0.5rem);
+}
+
+/* Text always on top */
+.collection-name,
+.collection-description {
+  position: absolute;
+  left: 0;
+  width: 100%;
+  color: #fff;
+  text-align: center;
+  z-index: 2;
+  box-sizing: border-box;
+  margin: 0;
+}
+
+.collection-name {
+  bottom: 0.25rem;
+  font-family: 'Abhaya Libre';
+  font-size: 3.25rem;
+  font-weight: 400;
+  letter-spacing: 0.075rem;
+  transition: transform 0.6s ease;
+  width: 100%;
+  text-align: center;
+}
+
+.collection-name span {
+  font-family: 'Alex Brush';
+}
+
+/* Description appears on hover */
+.collection-description {
+  bottom: 0.5rem;
+  font-family: 'Abhaya Libre Medium';
+  font-size: 1.35rem;
+  font-weight: 500;
+  opacity: 1;
+  transform: translateY(35rem);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+  text-align: left;
+  padding: 1rem 1.5rem;
+}
+
+.collection:hover .collection-name {
+  transform: translateY(-17.5rem);
+}
+
+.collection:hover .collection-description {
+  opacity: 1;
+  transform: translateY(0rem);
+}
+
+.collection:hover .bg-img {
+  backdrop-filter: blur(0.5rem);
+  -webkit-backdrop-filter: blur(0.5rem);
+  -moz-backdrop-filter: blur(0.5rem);
+  -o-backdrop-filter: blur(0.5rem);
+  -ms-backdrop-filter: blur(0.5rem);
+}
+
+.collection-spotlight-carousel .owl-item {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.collection-spotlight-carousel {
+  height: 600px;
+  display: flex !important;
+  justify-content: center;
+  align-items: center;
+}
+
+.collection-spotlight-carousel .owl-item.center-active {
+  transform: translateY(-3.5rem);
+  transition: transform 0.4s ease;
+  z-index: 2;
+}
+
+.collection-spotlight-carousel .owl-item.center-active .bg-img {
+  overflow: visible !important;
+}
+
+.collection-spotlight-carousel
+  .owl-item.center-active
+  .collection-name {
+  transform: translateY(4rem);
+  transition: transform 0.2s ease;
+  color: black;
+  background-color: rgba(0, 0, 0, 0);
+}
+
+.collection-spotlight-carousel .owl-item.center-active .collection {
+  transform: scale(1.05);
+  box-shadow: 0 0 40px rgba(56, 65, 73, 0.3);
+  transition: transform 0.2s ease, box-shadow 0.4s ease;
+}
+
+.collection-spotlight-carousel .owl-stage {
+  /* overflow: visible !important; */
+  padding-top: 7rem; /* or however much your item rises */
+}
+
+.collection {
+  border-radius: 1.25rem;
+  overflow: hidden;
+}
+
+.collection {
+  overflow: visible; /* make sure parent doesn’t clip */
+}
+
+.fade-left,
+.fade-right {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 800px;
+  z-index: 10;
+  pointer-events: none;
+}
+
+.fade-left {
+  left: 0;
+  background: linear-gradient(to right, white, transparent);
+}
+
+.fade-right {
+  right: 0;
+  background: linear-gradient(to left, white, transparent);
+}

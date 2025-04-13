@@ -1,0 +1,124 @@
+@font-face {
+  font-family: 'Abhaya Libre';
+  src: url('http://malanijewelers.myshopify.com/cdn/shop/t/2/assets/AbhayaLibre-Regular.ttf')
+    format('truetype');
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Abhaya Libre';
+  src: url('http://malanijewelers.myshopify.com/cdn/shop/t/2/assets/AbhayaLibre-Medium.ttf')
+    format('truetype');
+  font-weight: 500;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Abhaya Libre';
+  src: url('http://malanijewelers.myshopify.com/cdn/shop/t/2/assets/AbhayaLibre-SemiBold.ttf')
+    format('truetype');
+  font-weight: 600;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Abhaya Libre';
+  src: url('http://malanijewelers.myshopify.com/cdn/shop/t/2/assets/AbhayaLibre-Bold.ttf')
+    format('truetype');
+  font-weight: 700;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Abhaya Libre';
+  src: url('http://malanijewelers.myshopify.com/cdn/shop/t/2/assets/AbhayaLibre-ExtraBold.ttf')
+    format('truetype');
+  font-weight: 800;
+  font-style: normal;
+}
+
+.shop-by-category {
+  background: linear-gradient(180deg, #f9faf7 0%, #f8f8f8 21.63%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+  flex-direction: column;
+  padding: 1rem;
+}
+
+.shop-by-category h2 {
+  color: #000;
+  text-align: center;
+  font-family: 'Abhaya Libre';
+  font-size: 3rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  letter-spacing: 0.075rem;
+  margin: 0;
+}
+
+.toggle-container {
+  text-align: center;
+}
+
+.toggle {
+  position: relative;
+  display: flex;
+  background: #000;
+  border: 2px solid #000;
+  border-radius: 30px;
+  overflow: hidden;
+  width: 300px;
+  height: 40px;
+  cursor: pointer;
+}
+
+.option {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  z-index: 2;
+  transition: color 0.3s;
+  user-select: none;
+  position: relative;
+}
+
+.option.active {
+  color: #000;
+  font-weight: bold;
+}
+
+.slider {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 33.3333%;
+  background: #fff;
+  transition: left 0.3s ease;
+  z-index: 1;
+  border-radius: 30px;
+}
+
+.selected-output {
+  margin-top: 20px;
+  font-size: 18px;
+  color: #000;
+}
+
+.category-carousel {
+  display: none;
+  opacity: 0;
+  transform: scale(0.98);
+  transition: opacity 0.4s ease, transform 0.4s ease;
+}
+
+.category-carousel.fade-in {
+  display: block !important;
+  opacity: 1;
+  transform: scale(1);
+}

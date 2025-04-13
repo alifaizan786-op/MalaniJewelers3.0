@@ -1,0 +1,373 @@
+@font-face {
+  font-family: 'Abhaya Libre';
+  src: url('http://malanijewelers.myshopify.com/cdn/shop/t/2/assets/AbhayaLibre-Regular.ttf')
+    format('truetype');
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Abhaya Libre';
+  src: url('http://malanijewelers.myshopify.com/cdn/shop/t/2/assets/AbhayaLibre-Medium.ttf')
+    format('truetype');
+  font-weight: 500;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Abhaya Libre';
+  src: url('http://malanijewelers.myshopify.com/cdn/shop/t/2/assets/AbhayaLibre-SemiBold.ttf')
+    format('truetype');
+  font-weight: 600;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Abhaya Libre';
+  src: url('http://malanijewelers.myshopify.com/cdn/shop/t/2/assets/AbhayaLibre-Bold.ttf')
+    format('truetype');
+  font-weight: 700;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Abhaya Libre';
+  src: url('http://malanijewelers.myshopify.com/cdn/shop/t/2/assets/AbhayaLibre-ExtraBold.ttf')
+    format('truetype');
+  font-weight: 800;
+  font-style: normal;
+}
+
+.showrooms_header h1 {
+  font-size: 5rem;
+  font-variant: small-caps;
+  padding: 0;
+  margin: 0;
+  font-weight: 400;
+  font-family: 'Abhaya Libre';
+}
+
+.showrooms_header p {
+  color: #000;
+  text-align: center;
+  font-family: 'Abhaya Libre';
+  font-size: 1.25rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  width: 90%;
+  /* max-width: 75rem; */
+  height: auto;
+  flex-shrink: 0;
+  color: #000000bd;
+}
+
+.showrooms_header span {
+  font-size: 1.25rem;
+  text-transform: uppercase;
+  padding: 0;
+  margin: 0;
+  font-weight: 400;
+  color: #000000bd;
+}
+
+.showrooms_header {
+  color: #000;
+  font-family: 'Abhaya Libre';
+  font-style: normal;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin-top: 2rem;
+}
+
+.active {
+  width: 18.75rem;
+  height: 9.375rem;
+  border-radius: 0.8125rem;
+  background: #fff;
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+}
+
+.showroom_tile h2 {
+  font-family: 'Abhaya Libre';
+  font-size: 3.125rem;
+  font-style: normal;
+  font-weight: 400;
+  font-variant: small-caps;
+  border-bottom: 1px solid #00000057;
+  padding: 0;
+  text-align: center;
+}
+
+.showroom_tile p {
+  font-family: 'Abhaya Libre';
+  font-size: 1.5rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  text-transform: uppercase;
+}
+
+.showroom_tile {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 1rem;
+  margin: 1rem;
+}
+
+.showrooms_list {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-items: center;
+  margin: 2.5rem 0rem;
+  flex-wrap: wrap;
+}
+
+/* Time column (right) */
+.map_overlay .hours-list .hours-row .time {
+  text-align: right;
+}
+
+/* Day column (left) */
+.map_overlay .hours-list .hours-row .day {
+  text-align: left;
+}
+
+/* Each row is a flex container, placing day/time side-by-side */
+.map_overlay .hours-list .hours-row {
+  display: flex;
+  justify-content: space-between; /* day stays left, time stays right */
+  padding: 0px 0px 6px 0px;
+  border-bottom: 0px solid #eee; /* optional horizontal line */
+}
+
+.map_overlay .hours-list {
+  font-family: 'Open Sans', sans-serif;
+  font-size: 0.9rem;
+  color: #555;
+}
+
+.map_overlay .phone {
+  color: #505050;
+  font-family: 'Open Sans';
+  font-size: 0.875rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 0.5rem;
+  padding-bottom: 0.7rem;
+  margin: 0;
+}
+
+.map_overlay .email {
+  color: #505050;
+  font-family: 'Open Sans';
+  font-size: 0.875rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 0.5rem;
+  padding-bottom: 0.7rem;
+  margin: 0;
+}
+
+.map_overlay .address {
+  color: #505050;
+  font-family: 'Open Sans';
+  font-size: 0.875rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  text-transform: capitalize;
+  margin: 0;
+}
+
+.map_overlay h4 {
+  color: #000;
+  font-family: 'Abhaya Libre';
+  font-size: 1.1875rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  letter-spacing: 0;
+  text-transform: capitalize;
+  margin: 0;
+}
+
+.map_overlay hr {
+  width: 19rem;
+  height: 0.0625rem;
+  border: 1px solid #cfa96b;
+  margin: 0;
+}
+
+.map_overlay h3 {
+  color: #000;
+  font-family: 'Abhaya Libre';
+  font-size: 2.375rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  text-transform: capitalize;
+  margin: 0;
+}
+
+.map_overlay {
+  position: absolute;
+  top: 0px;
+  right: 52px;
+  background: rgba(255, 255, 255, 1);
+  padding: 15px;
+  height: 100%;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.showroom_map iframe {
+  width: 100%;
+  height: 525px;
+}
+
+.showroom_map {
+  position: relative;
+  width: 100%;
+  height: auto;
+  margin: 2.5rem 0;
+}
+
+.showroom_virtual_tour h2 {
+  color: #000;
+  font-family: 'Abhaya Libre';
+  font-size: 3.125rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  text-align: center;
+}
+
+.showroom_virtual_tour {
+  width: 100%;
+  height: auto;
+  margin: 2.5rem 0;
+}
+
+.showroom_virtual_tour iframe {
+  aspect-ratio: 16 / 6;
+  width: 100%;
+  height: auto;
+}
+
+.showrooms_footer .overlay {
+  background-color: rgba(0, 0, 0, 0.8); /* Black with 60% opacity */
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.showrooms_footer {
+  /* Set a specific height */
+  min-height: 500px;
+
+  /* Create the parallax scrolling effect */
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
+  padding: 2.5rem 0rem;
+}
+
+footer {
+  height: 600px;
+}
+
+@media (max-width: 768px) {
+  .map_overlay {
+    position: static;
+    width: 100%;
+    height: auto;
+    margin-top: 1rem;
+  }
+
+  .map_overlay hr {
+    width: 100%;
+  }
+
+  .showroom_map {
+    height: auto;
+    flex-direction: column;
+  }
+
+  .showrooms_header h1 {
+    font-size: 2.5rem;
+  }
+
+  .showrooms_header p {
+    font-size: 1rem;
+  }
+
+  .showroom_tile h2 {
+    font-size: 2rem;
+  }
+
+  .showroom_tile p {
+    font-size: 1rem;
+  }
+
+  .map_overlay h3 {
+    font-size: 1.5rem;
+  }
+
+  .map_overlay h4 {
+    font-size: 1rem;
+    letter-spacing: 0;
+  }
+
+  .map_overlay .address,
+  .map_overlay .phone,
+  .map_overlay .email {
+    font-size: 0.8rem;
+  }
+
+  .showroom_virtual_tour h2 {
+    font-size: 2rem;
+  }
+
+  .showroom_virtual_tour iframe {
+    aspect-ratio: 16 / 16;
+    width: 100%;
+    height: auto;
+  }
+}
+
+.visually-hidden-headings {
+  position: absolute;
+  left: -9999px;
+  top: auto;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
