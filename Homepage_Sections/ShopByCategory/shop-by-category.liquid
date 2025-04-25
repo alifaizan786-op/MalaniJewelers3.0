@@ -71,6 +71,8 @@
               <img
                 src="{{ block.settings.image | image_url }}"
                 alt="{{ block.settings.alt_text | escape }}"
+                width="300"
+                height="300"
               >
               {% if block.settings.title != blank %}
                 <h3 class="category-title">{{ block.settings.title }}</h3>
@@ -95,8 +97,8 @@
         0: { items: 1, margin: 16 },
         480: { items: 2 },
         768: { items: 3 },
-        1024: { items: 4 }
-      }
+        1024: { items: 4 },
+      },
     });
 
     $('.category-carousel').removeClass('fade-in').hide();
@@ -123,133 +125,133 @@
 </script>
 
 <style>
-    @font-face {
-      font-family: 'Abhaya Libre';
-      src: url('http://malanijewelers.myshopify.com/cdn/shop/t/2/assets/AbhayaLibre-Regular.ttf') format('truetype');
-      font-weight: 400;
-      font-style: normal;
-    }
+  @font-face {
+    font-family: 'Abhaya Libre';
+    src: url('http://malanijewelers.myshopify.com/cdn/shop/t/2/assets/AbhayaLibre-Regular.ttf') format('truetype');
+    font-weight: 400;
+    font-style: normal;
+  }
 
-    @font-face {
-      font-family: 'Abhaya Libre';
-      src: url('http://malanijewelers.myshopify.com/cdn/shop/t/2/assets/AbhayaLibre-Medium.ttf') format('truetype');
-      font-weight: 500;
-      font-style: normal;
-    }
+  @font-face {
+    font-family: 'Abhaya Libre';
+    src: url('http://malanijewelers.myshopify.com/cdn/shop/t/2/assets/AbhayaLibre-Medium.ttf') format('truetype');
+    font-weight: 500;
+    font-style: normal;
+  }
 
-    @font-face {
-      font-family: 'Abhaya Libre';
-      src: url('http://malanijewelers.myshopify.com/cdn/shop/t/2/assets/AbhayaLibre-SemiBold.ttf') format('truetype');
-      font-weight: 600;
-      font-style: normal;
-    }
+  @font-face {
+    font-family: 'Abhaya Libre';
+    src: url('http://malanijewelers.myshopify.com/cdn/shop/t/2/assets/AbhayaLibre-SemiBold.ttf') format('truetype');
+    font-weight: 600;
+    font-style: normal;
+  }
 
-    @font-face {
-      font-family: 'Abhaya Libre';
-      src: url('http://malanijewelers.myshopify.com/cdn/shop/t/2/assets/AbhayaLibre-Bold.ttf') format('truetype');
-      font-weight: 700;
-      font-style: normal;
-    }
+  @font-face {
+    font-family: 'Abhaya Libre';
+    src: url('http://malanijewelers.myshopify.com/cdn/shop/t/2/assets/AbhayaLibre-Bold.ttf') format('truetype');
+    font-weight: 700;
+    font-style: normal;
+  }
 
-    @font-face {
-      font-family: 'Abhaya Libre';
-      src: url('http://malanijewelers.myshopify.com/cdn/shop/t/2/assets/AbhayaLibre-ExtraBold.ttf') format('truetype');
-      font-weight: 800;
-      font-style: normal;
-    }
+  @font-face {
+    font-family: 'Abhaya Libre';
+    src: url('http://malanijewelers.myshopify.com/cdn/shop/t/2/assets/AbhayaLibre-ExtraBold.ttf') format('truetype');
+    font-weight: 800;
+    font-style: normal;
+  }
 
-    .shop-by-category {
-      background: linear-gradient(180deg, #f9faf7 0%, #f8f8f8 21.63%);
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      gap: 2rem;
-      flex-direction: column;
-      padding: 1rem;
-    }
+  .shop-by-category {
+    background: linear-gradient(180deg, #f9faf7 0%, #f8f8f8 21.63%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+    flex-direction: column;
+    padding: 1rem;
+  }
 
-    .shop-by-category h2 {
-      color: #000;
-      text-align: center;
-      font-family: 'Abhaya Libre';
-      font-size: 3rem;
-      font-style: normal;
-      font-weight: 400;
-      line-height: normal;
-      letter-spacing: 0.075rem;
-      margin: 0;
-    }
+  .shop-by-category h2 {
+    color: #000;
+    text-align: center;
+    font-family: 'Abhaya Libre';
+    font-size: 3rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    letter-spacing: 0.075rem;
+    margin: 0;
+  }
 
-    .toggle-container {
-      text-align: center;
-    }
+  .toggle-container {
+    text-align: center;
+  }
 
-    .toggle {
-      position: relative;
-      display: flex;
-      background: #fff;
-      border: 2px solid #fff;
-      border-radius: 30px;
-      overflow: hidden;
-      width: 300px;
-      height: 40px;
-      cursor: pointer;
-    }
+  .toggle {
+    position: relative;
+    display: flex;
+    background: #fff;
+    border: 2px solid #fff;
+    border-radius: 30px;
+    overflow: hidden;
+    width: 300px;
+    height: 40px;
+    cursor: pointer;
+  }
 
-    .option {
-      flex: 1;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: #000;
-      z-index: 2;
-      transition: color 0.3s;
-      user-select: none;
-      position: relative;
-    }
+  .option {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #000;
+    z-index: 2;
+    transition: color 0.3s;
+    user-select: none;
+    position: relative;
+  }
 
-    .option.active {
-      color: #fff;
-      font-weight: bold;
-    }
+  .option.active {
+    color: #fff;
+    font-weight: bold;
+  }
 
-    .slider {
-      position: absolute;
-      top: 0;
-      bottom: 0;
-      width: 33.3333%;
-      background: #000;
-      transition: left 0.3s ease;
-      z-index: 1;
-      border-radius: 30px;
-    }
+  .slider {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 33.3333%;
+    background: #000;
+    transition: left 0.3s ease;
+    z-index: 1;
+    border-radius: 30px;
+  }
 
-    .category-carousel {
-      display: none;
-      opacity: 0;
-      transform: scale(0.98);
-      transition: opacity 0.4s ease, transform 0.4s ease;
-    }
+  .category-carousel {
+    display: none;
+    opacity: 0;
+    transform: scale(0.98);
+    transition: opacity 0.4s ease, transform 0.4s ease;
+  }
 
-    .category-carousel.fade-in {
-      display: block !important;
-      opacity: 1;
-      transform: scale(1);
-    }
+  .category-carousel.fade-in {
+    display: block !important;
+    opacity: 1;
+    transform: scale(1);
+  }
 
-    .category-carousel h3.category-title {
-      text-align: center;
-      font-family: 'Abhaya Libre';
-      margin-top: 0.5rem;
-      font-size: 1.1rem;
-      color: #333;
-    }
+  .category-carousel h3.category-title {
+    text-align: center;
+    font-family: 'Abhaya Libre';
+    margin-top: 0.5rem;
+    font-size: 1.1rem;
+    color: #333;
+  }
 
-    .category-carousel a {
-      text-decoration: none;
-    }
+  .category-carousel a {
+    text-decoration: none;
+  }
 
-    @media (max-width: 767px) {
+  @media (max-width: 767px) {
     .shop-by-category h2 {
       font-size: 2rem;
     }
