@@ -1,0 +1,318 @@
+{% schema %}
+{
+  "name": "Promise Section",
+  "settings": [],
+  "blocks": [
+    {
+      "type": "promise",
+      "name": "Promise Block",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "icon",
+          "label": "Icon"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title",
+          "default": "Complimentary Shipping"
+        },
+        {
+          "type": "textarea",
+          "id": "text",
+          "label": "Description",
+          "default": "We offer complimentary shipping & Returns on all Malani Order*"
+        },
+        {
+          "type": "url",
+          "id": "link",
+          "label": "Learn More Link"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Promise Section",
+      "category": "Custom"
+    }
+  ]
+}
+{% endschema %}
+
+<section class="malani_promise">
+  <div class="malani_promise_header">
+    <hr>
+    <h2>The Malani Promise</h2>
+    <hr>
+  </div>
+
+  <!-- Desktop Grid -->
+  <div class="malani_promise_grid">
+    {% for block in section.blocks %}
+      <div class="promise">
+        {% if block.settings.icon %}
+          <img src="{{ block.settings.icon | image_url }}" alt="{{ block.settings.title }}" width="50" height="50">
+        {% endif %}
+        <h3>{{ block.settings.title }}</h3>
+        <p>{{ block.settings.text }}</p>
+        {% if block.settings.link %}
+          <a href="{{ block.settings.link }}">
+            <span>Learn More</span>
+            <img src="{{ 'caret.svg' | asset_url }}" width="10" height="10" class="caret-icon">
+          </a>
+        {% endif %}
+      </div>
+    {% endfor %}
+  </div>
+
+  <!-- Mobile Carousel -->
+  <div class="malani_promise_carousel owl-carousel owl-theme">
+    {% for block in section.blocks %}
+      {% assign mod_index = forloop.index0 | modulo: 2 %}
+      {% if mod_index == 0 %}
+        <div class="item">
+      {% endif %}
+
+      <div class="promise">
+        {% if block.settings.icon %}
+          <img src="{{ block.settings.icon | image_url }}" alt="{{ block.settings.title }}" width="25" height="25">
+        {% endif %}
+        <h3>{{ block.settings.title }}</h3>
+        <p>{{ block.settings.text }}</p>
+        {% if block.settings.link %}
+          <a href="{{ block.settings.link }}">
+            <span>Learn More</span>
+            <img src="{{ 'caret.svg' | asset_url }}" width="10" height="10" class="caret-icon">
+          </a>
+        {% endif %}
+      </div>
+
+      {% assign mod_index = forloop.index0 | modulo: 2 %}
+      {% if mod_index == 1 or forloop.last %}
+        </div>
+      {% endif %}
+    {% endfor %}
+  </div>
+
+  <div class="malani_promise_footer">
+    <img src="{{ 'MJ_Logo.svg' | asset_url }}" width="100" alt="Malani Logo">
+  </div>
+</section>
+
+<script defer>
+  document.addEventListener("DOMContentLoaded", function () {
+    $('.malani_promise_carousel').owlCarousel({
+      loop: true,
+      margin: 30,
+     autoplay: true,
+     autoplayTimeout: 3000,
+      smartSpeed: 600,
+      items: 1
+    });
+  });
+</script>
+
+<style>
+       @font-face {
+         font-family: "Abhaya Libre";
+         src: url("http://malanijewelers.myshopify.com/cdn/shop/t/2/assets/AbhayaLibre-Regular.ttf")
+             format("truetype");
+         font-weight: 400;
+         font-style: normal;
+     }
+
+     @font-face {
+         font-family: "Abhaya Libre";
+         src: url("http://malanijewelers.myshopify.com/cdn/shop/t/2/assets/AbhayaLibre-Medium.ttf")
+             format("truetype");
+         font-weight: 500;
+         font-style: normal;
+     }
+
+     @font-face {
+         font-family: "Abhaya Libre";
+         src: url("http://malanijewelers.myshopify.com/cdn/shop/t/2/assets/AbhayaLibre-SemiBold.ttf")
+             format("truetype");
+         font-weight: 600;
+         font-style: normal;
+     }
+
+     @font-face {
+         font-family: "Abhaya Libre";
+         src: url("http://malanijewelers.myshopify.com/cdn/shop/t/2/assets/AbhayaLibre-Bold.ttf")
+             format("truetype");
+         font-weight: 700;
+         font-style: normal;
+     }
+
+     @font-face {
+         font-family: "Abhaya Libre";
+         src: url("http://malanijewelers.myshopify.com/cdn/shop/t/2/assets/AbhayaLibre-ExtraBold.ttf")
+             format("truetype");
+         font-weight: 800;
+         font-style: normal;
+     }
+
+     body {
+         margin: 0;
+         padding: 0;
+         font-family: "Abhaya Libre", sans-serif;
+     }
+
+     .malani_promise {
+         background-color: #212121;
+         margin: 0;
+     }
+
+     .malani_promise .malani_promise_header {
+         display: flex;
+         justify-content: space-around;
+         align-items: center;
+         gap: 2rem;
+         flex-direction: row;
+         padding: 1rem;
+     }
+
+     .malani_promise .malani_promise_header h2 {
+         color: #ffefe7;
+         text-align: center;
+         font-family: "Abhaya Libre";
+         font-size: 1.45rem;
+         font-style: normal;
+         font-weight: 400;
+         line-height: normal;
+         letter-spacing: 0.0225rem;
+     }
+
+     .malani_promise .malani_promise_header hr {
+         width: 30rem;
+         border: 0.01rem solid #fab99a;
+     }
+
+     .promise {
+         display: flex;
+         flex-direction: column;
+         align-items: center;
+         justify-content: center;
+         gap: 1rem;
+         padding: 1.25rem 3rem;
+         min-height: 250px;
+     }
+
+     .promise img {
+         padding: 0;
+         margin: 0;
+         width: 50px !important;
+     }
+
+     .promise h3 {
+         color: #ffefe7;
+         text-align: center;
+         font-family: "Abhaya Libre ExtraBold";
+         font-size: 1.125rem;
+         font-style: normal;
+         font-weight: 800;
+         line-height: normal;
+         letter-spacing: 0.0225rem;
+         padding: 0;
+         margin: 0;
+     }
+
+     .promise p {
+         color: rgba(255, 255, 255, 0.6);
+         text-align: center;
+         font-family: "Abhaya Libre";
+         font-size: 0.975rem;
+         font-style: normal;
+         font-weight: 400;
+         line-height: 1.375rem; /* 157.143% */
+         letter-spacing: 0.0175rem;
+         padding: 0;
+         margin: 0;
+     }
+
+     .promise a {
+         color: #ffd7c3;
+         font-family: "Abhaya Libre";
+         font-size: 0.95rem;
+         font-style: normal;
+         font-weight: 400;
+         line-height: 2rem; /* 266.667% */
+         letter-spacing: 0.015rem;
+         padding: 0;
+         margin: 0;
+
+         display: flex;
+         justify-content: center;
+         align-items: center;
+         gap: 0.25rem;
+
+         width: 105px;
+     }
+
+     .promise a span {
+         width: 80%;
+     }
+
+     .promise a img {
+         width: 10px !important;
+     }
+
+     .malani_promise_footer {
+         display: flex;
+         justify-content: center;
+         align-items: center;
+         margin: 1rem;
+         padding: 2rem;
+         opacity: 0.4;
+     }
+
+     /* Hide carousel by default */
+     .malani_promise_carousel {
+         display: none !important;
+     }
+
+     .malani_promise_grid {
+         display: flex;
+         justify-content: space-evenly;
+         flex-wrap: wrap;
+         margin: 0 4rem;
+     }
+
+     .malani_promise_grid .promise {
+         padding: 1rem;
+         margin: 1rem;
+         width: 325px;
+     }
+
+     /* Show carousel only on screens 768px or less */
+     @media only screen and (max-width: 768px) {
+         .malani_promise .malani_promise_header hr {
+             width: 4rem;
+             border: 0.01rem solid #fab99a;
+         }
+
+         .malani_promise_carousel {
+             display: block !important;
+         }
+
+         .malani_promise_grid {
+             display: none !important;
+         }
+
+         .promise a span {
+             white-space: nowrap;
+         }
+     }
+
+  /* .owl-carousel .owl-item img {
+     width:50px !important;
+   }
+
+
+   .owl-carousel .owl-item a img {
+     width:10px !important;
+   }*/
+</style>

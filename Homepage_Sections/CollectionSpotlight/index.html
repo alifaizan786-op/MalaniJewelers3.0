@@ -15,12 +15,7 @@
         />
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-        <link
-            href="https://fonts.googleapis.com/css2?family=Alex+Brush&display=swap"
-            rel="stylesheet"
-        />
+
     </head>
     <body>
         <section class=" ">
@@ -255,6 +250,8 @@
             $carousel.owlCarousel({
                 loop: true,
                 smartSpeed: 600,
+                autoplay: true,
+                autoplayTimeout: 5000,
                 responsive: {
                     0: {
                         items: 1,

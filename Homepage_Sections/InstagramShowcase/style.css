@@ -1,0 +1,279 @@
+@font-face {
+  font-family: 'Abhaya Libre';
+  src: url('http://malanijewelers.myshopify.com/cdn/shop/t/2/assets/AbhayaLibre-Regular.ttf')
+    format('truetype');
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Abhaya Libre';
+  src: url('http://malanijewelers.myshopify.com/cdn/shop/t/2/assets/AbhayaLibre-Medium.ttf')
+    format('truetype');
+  font-weight: 500;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Abhaya Libre';
+  src: url('http://malanijewelers.myshopify.com/cdn/shop/t/2/assets/AbhayaLibre-SemiBold.ttf')
+    format('truetype');
+  font-weight: 600;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Abhaya Libre';
+  src: url('http://malanijewelers.myshopify.com/cdn/shop/t/2/assets/AbhayaLibre-Bold.ttf')
+    format('truetype');
+  font-weight: 700;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Abhaya Libre';
+  src: url('http://malanijewelers.myshopify.com/cdn/shop/t/2/assets/AbhayaLibre-ExtraBold.ttf')
+    format('truetype');
+  font-weight: 800;
+  font-style: normal;
+}
+
+
+.owl-carousel {
+  height: 100%;
+}
+
+.owl-stage-outer {
+  height: 100%;
+}
+
+.owl-item {
+  height: 250px;
+}
+.owl-stage {
+  height: 100%;
+}
+
+.custom-nav {
+  position: absolute;
+  width: 98%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  transform: translateY(-50%); /* Adjust for vertical centering */
+  pointer-events: none; /* Prevent clicks on the nav container itself */
+}
+
+.custom-next,
+.custom-prev {
+  pointer-events: auto; /* Allow clicks on buttons */
+  cursor: pointer;
+  height: 42px;
+  width: 42px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid rgba(55, 44, 66, 0.4);
+  border-radius: 50%;
+  background: #fff;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  z-index: 2; /* Ensure buttons are above content */
+}
+
+.custom-prev {
+  left: 10px; /* Align the previous button closer to the left edge */
+}
+
+.custom-next {
+  right: 10px; /* Align the next button closer to the right edge */
+}
+
+.instagram_showcase {
+  width: 100%;
+}
+
+.instagram_showcase_header {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  margin: 1rem 0rem;
+}
+
+.instagram_showcase_header h2 {
+  width: 157px;
+  font-family: 'Abhaya Libre';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 22px;
+  text-align: center;
+  letter-spacing: 0.02em;
+  color: #372c42;
+  margin: 0 1rem;
+}
+
+.instagram_showcase_header hr {
+  margin: 0;
+  width: 303px;
+  border: 1px solid #cfa96b;
+  transform: rotate(-180deg);
+}
+
+.instagram_showcase_body {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+
+.instagram_showcase_body_heading h6 {
+  font-family: 'Gotham';
+  font-style: normal;
+  font-weight: 350;
+  font-size: 14px;
+  line-height: 22px;
+  text-align: center;
+  letter-spacing: 0.02em;
+  color: #372c42;
+  margin: 0;
+}
+
+.instagram_showcase_body_heading p {
+  font-family: 'Gotham';
+  font-style: normal;
+  font-weight: 350;
+  font-size: 12px;
+  line-height: 22px;
+  text-align: center;
+  letter-spacing: 0.02em;
+  color: rgba(55, 44, 66, 0.4);
+  margin: 0;
+}
+
+.instagram_showcase_body_heading p span {
+  font-family: 'Gotham';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 22px;
+  text-align: center;
+  letter-spacing: 0.02em;
+  background: linear-gradient(
+    225deg,
+    #ffd600,
+    #ff7a00,
+    #ff0069,
+    #d300c5,
+    #7638fa
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.instagram_showcase_body_slider {
+  width: 90%;
+}
+
+.post-wrapper {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.background-image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%; /* Ensure the div fills the parent */
+  background-size: cover; /* Ensures the image covers the div */
+  background-position: center; /* Centers the image within the div */
+  background-repeat: no-repeat; /* Prevents tiling */
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.post-wrapper:hover .overlay {
+  opacity: 1;
+}
+
+.overlay p {
+  margin: 5px 0;
+  font-family: 'Gotham', sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+}
+
+.instagram_showcase_body_slider .item {
+  height: 100%;
+  padding: 0 5px;
+}
+
+.post-wrapper img {
+  height: auto;
+  max-width: 100%;
+  object-fit: cover;
+}
+
+@media screen and (max-width: 768px) {
+  .instagram_showcase_header h2 {
+    font-size: 16px;
+  }
+
+  .instagram_showcase_header hr {
+    width: 100px;
+  }
+
+  .instagram_showcase_body_heading h6 {
+    font-size: 12px;
+  }
+
+  .instagram_showcase_body_heading p {
+    font-size: 10px;
+  }
+
+  .instagram_showcase_body_slider {
+    width: 95%;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .instagram_showcase_header h2 {
+    font-size: 14px;
+  }
+
+  .instagram_showcase_header hr {
+    width: 80px;
+  }
+
+  .instagram_showcase_body_heading h6 {
+    font-size: 10px;
+  }
+
+  .instagram_showcase_body_heading p {
+    font-size: 8px;
+  }
+
+  .instagram_showcase_body_slider {
+    width: 100%;
+  }
+}
