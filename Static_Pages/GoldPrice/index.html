@@ -2,51 +2,33 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0" />
     <title>Gold Price Dashboard</title>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@0.7.0"></script>
     <style>
+      @font-face {
+        font-family: 'Abhaya Libre';
+        src: url('http://malanijewelers.myshopify.com/cdn/shop/t/2/assets/AbhayaLibre-Regular.ttf')
+          format('truetype');
+        font-weight: 400;
+        font-style: normal;
+      }
       body {
-        font-family: "Segoe UI", sans-serif;
-        margin: 0;
+        margin: 0 auto;
         padding: 0;
-        background-color: #fdfaf4;
-        color: #333;
+        width: 90%;
       }
 
-      header {
-        text-align: center;
-        padding: 2rem 1rem 1rem;
-        background-color: #cfa96b;
-        color: white;
-      }
-
-      header h1 {
-        margin: 0;
-        font-size: 2rem;
-      }
-
-      header p {
-        font-size: 1rem;
-        margin-top: 0.5rem;
-      }
-
-      .content-wrapper {
-        max-width: 1200px;
-        margin: auto;
-        padding: 2rem 1rem;
-      }
-
-      .section {
-        margin: 2rem 0;
-        line-height: 1.7;
-      }
-
-      .section h2 {
-        font-size: 1.5rem;
-        color: #a07736;
-        margin-bottom: 1rem;
+      .gold_rate_heading {
+        font-family: 'Abhaya Libre', serif;
+        font-size: 2.5rem;
+        text-align: left;
+        margin: 1rem;
+        border-bottom: #cfa96b 2px solid;
+        color: rgba(0, 0, 0, 0.8);
       }
 
       .chart-container {
@@ -58,37 +40,64 @@
         width: 100%;
       }
 
-      .live-price,
-      .live-chart,
-      .history-chart {
+      .live-price {
+        background-image: url('./assets/Malani_Gold_Rate_Banner.webp');
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+        flex-direction: row;
+        background-attachment: fixed;
+        background-position: bottom;
+        background-repeat: no-repeat;
+        background-size: cover;
+      }
+
+      .live-price .table-wrapper {
         flex: 1 1 350px;
         max-width: 600px;
-        background-color: white;
+        background-color: rgba(255, 255, 255, 0.8);
         padding: 1rem;
+        margin: 2rem;
         border: 1px solid rgba(0, 0, 0, 0.1);
         border-radius: 8px;
         box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
       }
 
-      .image-section {
+      .history-chart {
+        /* width: 80%; */
         display: flex;
-        flex-wrap: wrap;
-        justify-content: center;
-        gap: 1rem;
-        margin: 2rem 0;
+        justify-content: space-evenly;
+        align-items: center;
+        flex-direction: column;
+        margin: 0 auto;
+        padding: 2rem 0rem;
       }
 
-      .image-section img {
-        max-width: 100%;
-        height: auto;
-        border-radius: 8px;
-        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+      .history-chart .history-content {
+        max-width: 80%;
+        font-family: 'Abhaya Libre', serif;
+        line-height: 1.7;
+        color: #333;
+      }
+
+      .history-chart .history-content h2 {
+        font-size: 1.75rem;
+        margin-bottom: 1rem;
+        border-bottom: #cfa96b 1px solid;
+      }
+
+      .history-chart .history-content p {
+        font-size: 1.25rem;
+      }
+
+      .history-chart canvas {
+        max-width: 80rem;
       }
 
       table {
         width: 100%;
         border-collapse: collapse;
-        margin-bottom: 1rem;
+        margin-bottom: 0.5rem;
         font-size: 0.95rem;
         background-color: #fffdf7;
         border: 1px solid #e0cda9;
@@ -117,13 +126,57 @@
         background-color: #fff3e0;
       }
 
-      footer {
-        text-align: center;
-        padding: 2rem 1rem;
-        font-size: 0.9rem;
-        color: #888;
-        border-top: 1px solid #e0cda9;
-        background-color: #f8f3e5;
+      .faq-section {
+        width: 80%;
+        margin: 0 auto;
+      }
+
+      .faq-section h2 {
+        font-size: 1.6rem;
+        color: #b68c46;
+        margin-bottom: 30px;
+        border-bottom: 2px solid #eee;
+        padding-bottom: 6px;
+      }
+
+      .faq-section .faq-item {
+        margin-bottom: 20px;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+        overflow: hidden;
+      }
+
+      .faq-section .faq-item .faq-question {
+        background-color: #fdf9f3;
+        color: #333;
+        font-size: 1rem;
+        font-weight: bold;
+        width: 100%;
+        padding: 15px 20px;
+        text-align: left;
+        border: none;
+        cursor: pointer;
+        transition: background 0.3s;
+      }
+
+      .privacy-policy-page
+        .faq-section
+        .faq-item
+        .faq-question:hover {
+        background-color: #f4e7cf;
+      }
+
+      .faq-section .faq-item .faq-answer {
+        background-color: #fff;
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.3s ease;
+        padding: 0 20px;
+      }
+
+      .faq-section .faq-item .faq-answer p {
+        margin: 15px 0;
+        color: #555;
       }
 
       @media screen and (max-width: 768px) {
@@ -135,91 +188,102 @@
     </style>
   </head>
   <body>
-    <header>
-      <h1>Gold Price Dashboard</h1>
-      <p>
-        Real-time gold rates, carat-wise pricing, and historical trends at your
-        fingertips.
-      </p>
-    </header>
+    <h1 class="gold_rate_heading">
+      Gold Jewelry: Where Elegance Meets Smart Savings
+    </h1>
+    <div class="live-price">
+      <div class="table-wrapper"></div>
+    </div>
 
-    <div class="content-wrapper">
-      <div class="section">
+    <!-- <div class="live-chart">
+      <canvas id="myChart"></canvas>
+    </div> -->
+
+    <div class="history-chart">
+      <div class="history-content">
+        <h2>
+          10 Years of Rising Gold Value — A Smart Choice for Your
+          Future
+        </h2>
+        <canvas id="tenYearChart"></canvas>
         <p>
-          Welcome to your go-to dashboard for live and historical gold pricing.
-          Whether you're an investor, jeweler, or simply curious, this dashboard
-          provides a clean and simple interface to explore gold's ever-evolving
-          value.
+          Gold has always been more than just a symbol of luxury —
+          it’s a time-tested way to preserve and grow your wealth. At
+          Malani Jewelers, we bring you the best of both worlds:
+          exquisite gold jewelry that elevates your style while
+          safeguarding your financial future.
         </p>
-      </div>
-
-      <div class="chart-container">
-        <div class="live-price"></div>
-        <div class="live-chart">
-          <canvas id="myChart"></canvas>
-        </div>
-      </div>
-
-      <div class="chart-container">
-        <div class="history-chart">
-          <canvas id="tenYearChart"></canvas>
-        </div>
-      </div>
-
-      <div class="section">
-        <h2>Understanding Carat Pricing</h2>
         <p>
-          Gold is measured in carats (K), representing its purity. 24K is pure
-          gold, while 22K, 18K, and 14K have varying levels of alloy mixed in.
-          Jewelry often uses 22K or 18K to improve durability. Our dashboard
-          breaks down pricing by carat to give you better insight into actual
-          retail values.
+          As gold prices continue to rise over the years, every gold
+          purchase becomes a smart investment in stability and
+          security. Whether you choose a timeless piece of jewelry or
+          explore modern gold investment options, Malani ensures
+          unmatched quality, transparency, and trust.
         </p>
-      </div>
-
-      <div class="section">
-        <h2>What the Charts Tell You</h2>
         <p>
-          The live gold chart updates frequently to reflect market changes in
-          near real-time. The 10-year history chart helps identify long-term
-          trends—crucial for investors looking at gold’s performance during
-          global events like inflation, recessions, and currency fluctuations.
-        </p>
-      </div>
-
-      <div class="image-section">
-        <img
-          src="https://images.unsplash.com/photo-1600250393511-b2bfe3a56a83?auto=format&fit=crop&w=600&q=60"
-          alt="Gold bars"
-          width="300"
-        />
-        <img
-          src="https://images.unsplash.com/photo-1585298723682-7115561c689e?auto=format&fit=crop&w=600&q=60"
-          alt="Jewelry"
-          width="300"
-        />
-        <img
-          src="https://images.unsplash.com/photo-1630403900450-c1ef91ba7c6d?auto=format&fit=crop&w=600&q=60"
-          alt="Gold coin"
-          width="300"
-        />
-      </div>
-
-      <div class="section">
-        <h2>Why Gold Matters</h2>
-        <p>
-          Gold isn't just a precious metal—it's a financial safe haven. When
-          stock markets shake and inflation rises, gold often holds or increases
-          its value. This dashboard gives you clarity on how gold is performing
-          so you can make informed decisions.
+          Invest in gold today — because beauty and financial wisdom
+          should go hand in hand.
         </p>
       </div>
     </div>
 
-    <footer>
-      &copy; 2025 Gold Tracker — Built for transparency and insight. Data
-      sourced from leading financial APIs.
-    </footer>
+    <div class="faq-section goldrate-container">
+      <h2>Gold Rate FAQ</h2>
+
+      <div class="faq-item">
+        <button class="faq-question">
+          How often are the gold rates updated?
+        </button>
+        <div class="faq-answer">
+          <p>
+            Our live gold rates are updated in real-time to reflect
+            the latest market prices, ensuring you always see the most
+            current rate before making a purchase.
+          </p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question">
+          Why does the gold rate fluctuate?
+        </button>
+        <div class="faq-answer">
+          <p>
+            Gold rates change based on global market trends, currency
+            values, demand and supply, and geopolitical factors. These
+            fluctuations are natural and reflect the dynamic nature of
+            gold as a global commodity.
+          </p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question">
+          Is buying gold jewelry a good investment?
+        </button>
+        <div class="faq-answer">
+          <p>
+            Yes, gold jewelry offers both aesthetic value and
+            long-term financial security. Unlike other luxury
+            purchases, gold retains intrinsic value, making it a
+            timeless investment you can wear and pass down.
+          </p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question">
+          How is the final price of gold jewelry calculated?
+        </button>
+        <div class="faq-answer">
+          <p>
+            The final price includes the live gold rate, making
+            charges (for craftsmanship), and any applicable taxes. We
+            ensure full transparency in pricing for every purchase.
+          </p>
+        </div>
+      </div>
+    </div>
 
     <script src="./main.js"></script>
   </body>
