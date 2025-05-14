@@ -1,58 +1,88 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Gold Price Dashboard</title>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@0.7.0"></script>
-
     <style>
       body {
-        font-family: sans-serif;
+        font-family: "Segoe UI", sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #fdfaf4;
+        color: #333;
+      }
+
+      header {
         text-align: center;
-      }
-
-      .button-group {
-        margin-top: 20px;
-      }
-
-      .range-button {
-        padding: 8px 12px;
-        margin: 5px;
-        border: 1px solid #cfa96b;
-        background-color: white;
-        color: #cfa96b;
-        border-radius: 4px;
-        cursor: pointer;
-        transition: all 0.3s ease;
-      }
-
-      .range-button:hover,
-      .range-button.active {
+        padding: 2rem 1rem 1rem;
         background-color: #cfa96b;
         color: white;
       }
 
+      header h1 {
+        margin: 0;
+        font-size: 2rem;
+      }
+
+      header p {
+        font-size: 1rem;
+        margin-top: 0.5rem;
+      }
+
+      .content-wrapper {
+        max-width: 1200px;
+        margin: auto;
+        padding: 2rem 1rem;
+      }
+
+      .section {
+        margin: 2rem 0;
+        line-height: 1.7;
+      }
+
+      .section h2 {
+        font-size: 1.5rem;
+        color: #a07736;
+        margin-bottom: 1rem;
+      }
+
       .chart-container {
         display: flex;
-        flex-direction: row;
-        justify-content: space-evenly;
-        align-items: center;
+        flex-wrap: wrap;
+        justify-content: center;
+        margin-bottom: 2rem;
+        gap: 1rem;
+        width: 100%;
       }
 
-      .chart-container .live-chart,
-      .chart-container .history-chart {
-        width: 60%;
-        margin: 1rem;
+      .live-price,
+      .live-chart,
+      .history-chart {
+        flex: 1 1 350px;
+        max-width: 600px;
+        background-color: white;
         padding: 1rem;
         border: 1px solid rgba(0, 0, 0, 0.1);
         border-radius: 8px;
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
       }
 
-      .live-price {
-        margin: 1rem;
-        padding: 1rem;
-        border: 1px solid rgba(0, 0, 0, 0.1);
+      .image-section {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 1rem;
+        margin: 2rem 0;
+      }
+
+      .image-section img {
+        max-width: 100%;
+        height: auto;
         border-radius: 8px;
-        width: 30%;
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
       }
 
       table {
@@ -62,7 +92,6 @@
         font-size: 0.95rem;
         background-color: #fffdf7;
         border: 1px solid #e0cda9;
-        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
       }
 
       th {
@@ -71,18 +100,12 @@
         font-weight: 600;
         padding: 10px;
         text-align: center;
-        font-size: 1rem;
       }
 
       td {
         padding: 10px;
         border-top: 1px solid #e0cda9;
         text-align: left;
-        color: #333;
-      }
-
-      .live-price table + table {
-        margin-top: 1rem;
       }
 
       td:nth-child(2),
@@ -94,428 +117,110 @@
         background-color: #fff3e0;
       }
 
+      footer {
+        text-align: center;
+        padding: 2rem 1rem;
+        font-size: 0.9rem;
+        color: #888;
+        border-top: 1px solid #e0cda9;
+        background-color: #f8f3e5;
+      }
+
       @media screen and (max-width: 768px) {
         .chart-container {
           flex-direction: column;
           align-items: center;
         }
-
-        .chart-container .live-chart,
-        .chart-container .history-chart {
-          width: 90%;
-        }
       }
     </style>
   </head>
   <body>
-    <div class="chart-container">
-      <div class="live-price"></div>
-      <div class="live-chart">
-        <canvas id="myChart"></canvas>
+    <header>
+      <h1>Gold Price Dashboard</h1>
+      <p>
+        Real-time gold rates, carat-wise pricing, and historical trends at your
+        fingertips.
+      </p>
+    </header>
 
-        <!-- <div class="button-group">
-          <button
-            class="range-button active"
-            data-range="live">
-            Live
-          </button>
-          <button
-            class="range-button"
-            data-range="1d">
-            1D
-          </button>
-          <button
-            class="range-button"
-            data-range="1w">
-            1W
-          </button>
-          <button
-            class="range-button"
-            data-range="1m">
-            1M
-          </button>
-          <button
-            class="range-button"
-            data-range="3m">
-            3M
-          </button>
-          <button
-            class="range-button"
-            data-range="6m">
-            6M
-          </button>
-          <button
-            class="range-button"
-            data-range="ytd">
-            YTD
-          </button>
-          <button
-            class="range-button"
-            data-range="1y">
-            1Y
-          </button>
-          <button
-            class="range-button"
-            data-range="5y">
-            5Y
-          </button>
-        </div> -->
+    <div class="content-wrapper">
+      <div class="section">
+        <p>
+          Welcome to your go-to dashboard for live and historical gold pricing.
+          Whether you're an investor, jeweler, or simply curious, this dashboard
+          provides a clean and simple interface to explore gold's ever-evolving
+          value.
+        </p>
+      </div>
+
+      <div class="chart-container">
+        <div class="live-price"></div>
+        <div class="live-chart">
+          <canvas id="myChart"></canvas>
+        </div>
+      </div>
+
+      <div class="chart-container">
+        <div class="history-chart">
+          <canvas id="tenYearChart"></canvas>
+        </div>
+      </div>
+
+      <div class="section">
+        <h2>Understanding Carat Pricing</h2>
+        <p>
+          Gold is measured in carats (K), representing its purity. 24K is pure
+          gold, while 22K, 18K, and 14K have varying levels of alloy mixed in.
+          Jewelry often uses 22K or 18K to improve durability. Our dashboard
+          breaks down pricing by carat to give you better insight into actual
+          retail values.
+        </p>
+      </div>
+
+      <div class="section">
+        <h2>What the Charts Tell You</h2>
+        <p>
+          The live gold chart updates frequently to reflect market changes in
+          near real-time. The 10-year history chart helps identify long-term
+          trends—crucial for investors looking at gold’s performance during
+          global events like inflation, recessions, and currency fluctuations.
+        </p>
+      </div>
+
+      <div class="image-section">
+        <img
+          src="https://images.unsplash.com/photo-1600250393511-b2bfe3a56a83?auto=format&fit=crop&w=600&q=60"
+          alt="Gold bars"
+          width="300"
+        />
+        <img
+          src="https://images.unsplash.com/photo-1585298723682-7115561c689e?auto=format&fit=crop&w=600&q=60"
+          alt="Jewelry"
+          width="300"
+        />
+        <img
+          src="https://images.unsplash.com/photo-1630403900450-c1ef91ba7c6d?auto=format&fit=crop&w=600&q=60"
+          alt="Gold coin"
+          width="300"
+        />
+      </div>
+
+      <div class="section">
+        <h2>Why Gold Matters</h2>
+        <p>
+          Gold isn't just a precious metal—it's a financial safe haven. When
+          stock markets shake and inflation rises, gold often holds or increases
+          its value. This dashboard gives you clarity on how gold is performing
+          so you can make informed decisions.
+        </p>
       </div>
     </div>
-    <div class="chart-container">
-      <div class="history-chart">
-        <canvas id="tenYearChart"></canvas>
-      </div>
-    </div>
 
-    <script>
-      const ctx = document.getElementById('myChart').getContext('2d');
-      const barCtx = document
-        .getElementById('tenYearChart')
-        .getContext('2d');
+    <footer>
+      &copy; 2025 Gold Tracker — Built for transparency and insight. Data
+      sourced from leading financial APIs.
+    </footer>
 
-      const xValues = [
-        '04/10',
-        '04/11',
-        '04/14',
-        '04/15',
-        '04/16',
-        '04/17',
-        '04/22',
-      ];
-      const yValues = [
-        3127.785, 3235.205, 3200.95, 3219.315, 3315.075, 3298.205,
-        3397.64,
-      ];
-
-      const yearLabels = [
-        '2015',
-        '2016',
-        '2017',
-        '2018',
-        '2019',
-        '2020',
-        '2021',
-        '2022',
-        '2023',
-        '2024',
-        '2025',
-      ];
-
-      const yearPrices = [
-        1298, 1373, 1351, 1360, 1543, 2058, 1954, 2043, 2115, 2786,
-        3436,
-      ];
-
-      const myChart = new Chart(ctx, {
-        type: 'line',
-        data: {
-          labels: [...xValues],
-          datasets: [
-            {
-              fill: true,
-              lineTension: 0,
-              backgroundColor: 'rgba(207,169,107,0.2)',
-              borderColor: 'rgba(207,169,107,1)',
-              borderWidth: 2,
-              pointRadius: 2,
-              pointBackgroundColor: function (ctx) {
-                return ctx.dataIndex === yValues.length - 1
-                  ? 'rgba(255, 0, 0, 1)'
-                  : 'rgba(207,169,107,1)';
-              },
-              data: [...yValues],
-            },
-          ],
-        },
-        options: {
-          plugins: {
-            datalabels: {
-              display: false,
-            },
-          },
-          animation: false,
-          title: {
-            display: true,
-            text: 'Live Gold Price (USD/oz)',
-            fontSize: 16,
-          },
-          legend: { display: false },
-          scales: {
-            yAxes: [
-              {
-                ticks: {
-                  beginAtZero: false,
-                  suggestedMin: 3000,
-                  suggestedMax: 3500,
-                },
-              },
-            ],
-          },
-        },
-      });
-
-      new Chart(barCtx, {
-        type: 'bar',
-        data: {
-          labels: yearLabels,
-          datasets: [
-            {
-              label: 'Gold Price (USD/oz)',
-              data: yearPrices,
-              backgroundColor: 'rgba(207,169,107,0.8)',
-              borderColor: 'rgba(207,169,107,1)',
-              borderWidth: 1,
-            },
-          ],
-        },
-        options: {
-          plugins: {
-            datalabels: {
-              color: '#000',
-              anchor: 'end',
-              align: 'end',
-              font: {
-                weight: 'bold',
-              },
-              formatter: function (value) {
-                return `$${value.toFixed(2)}`;
-              },
-            },
-          },
-          title: {
-            display: true,
-            text: 'Gold Price Increase Over the Last 10 Years',
-            fontSize: 16,
-          },
-          legend: {
-            display: false,
-          },
-          scales: {
-            yAxes: [
-              {
-                ticks: {
-                  beginAtZero: false,
-                  suggestedMin: 1000,
-                  suggestedMax: 4000,
-                  callback: function (value) {
-                    return `$${value.toLocaleString(undefined, {
-                      minimumFractionDigits: 2,
-                    })}`;
-                  },
-                },
-              },
-            ],
-          },
-        },
-        plugins: [Chart.plugins.getAll().concat(ChartDataLabels)],
-      });
-
-      // Glowing effect on last point
-      let radius = 4;
-      const maxRadius = 20;
-      setInterval(() => {
-        const meta = myChart.getDatasetMeta(0);
-        const lastPoint =
-          meta.data[myChart.data.datasets[0].data.length - 1];
-        const ctx = myChart.ctx;
-
-        myChart.update();
-
-        const opacity = 1 - (radius - 4) / (maxRadius - 4);
-        ctx.save();
-        ctx.beginPath();
-        ctx.arc(
-          lastPoint._model.x,
-          lastPoint._model.y,
-          radius,
-          0,
-          2 * Math.PI
-        );
-        ctx.fillStyle = `rgba(207,169,107, ${opacity.toFixed(2)})`;
-        ctx.fill();
-        ctx.restore();
-
-        radius += 1;
-        if (radius > maxRadius) radius = 4;
-      }, 100);
-
-      // Simulate "Live" updates every 10 seconds (mock)
-      setInterval(() => {
-        const now = new Date();
-        const label = now.toLocaleDateString('en-US', {
-          month: '2-digit',
-          day: '2-digit',
-        });
-        const newValue = 3100 + Math.random() * 400;
-
-        xValues.push(label);
-        yValues.push(parseFloat(newValue.toFixed(2)));
-
-        if (xValues.length > 30) {
-          xValues.shift();
-          yValues.shift();
-        }
-
-        myChart.data.labels = [...xValues];
-        myChart.data.datasets[0].data = [...yValues];
-        myChart.update();
-      }, 1000); // 10s for demo
-
-      // Button behavior
-      const buttons = document.querySelectorAll('.range-button');
-      buttons.forEach((button) => {
-        button.addEventListener('click', () => {
-          buttons.forEach((btn) => btn.classList.remove('active'));
-          button.classList.add('active');
-
-          const range = button.getAttribute('data-range');
-          console.log('Selected Range:', range);
-
-          // TODO: Replace this with real data fetching per range
-          // Example: fetchAndUpdateChart(range);
-        });
-      });
-    </script>
-
-    <script>
-      const API_KEY = 'f7310b277b44abb93d91fc3e62481199'; // replace with your real API key
-
-      async function fetchLiveGoldData() {
-        const goldPriceByCarat = await fetch(
-          `https://api.metalpriceapi.com/v1/carat?api_key=${API_KEY}&base=USD`
-        );
-        const usdToInr = await fetch(
-          `https://api.metalpriceapi.com/v1/latest?api_key=${API_KEY}&base=USD&currencies=INR`
-        );
-
-        const goldPriceByCaratData = await goldPriceByCarat.json();
-        const usdToInrData = await usdToInr.json();
-
-        console.log(goldPriceByCaratData);
-        console.log(usdToInrData);
-
-        let goldMasterData = [
-          {
-            Karat: '24k',
-            oneGramUsd: goldPriceByCaratData.data['24k'] * 5,
-            tenGramUsd: goldPriceByCaratData.data['24k'] * 5 * 10,
-            oneTolaUsd: goldPriceByCaratData.data['24k'] * 5 * 11.66,
-            oneOunceUsd: goldPriceByCaratData.data['24k'] * 5 * 31.1,
-            oneGramInr:
-              goldPriceByCaratData.data['24k'] *
-              5 *
-              usdToInrData.rates.INR,
-            tenGramInr:
-              goldPriceByCaratData.data['24k'] *
-              5 *
-              10 *
-              usdToInrData.rates.INR,
-            oneTolaInr:
-              goldPriceByCaratData.data['24k'] *
-              5 *
-              11.66 *
-              usdToInrData.rates.INR,
-            oneOunceInr:
-              goldPriceByCaratData.data['24k'] *
-              5 *
-              31.1 *
-              usdToInrData.rates.INR,
-          },
-          {
-            Karat: '22k',
-            oneGramUsd: goldPriceByCaratData.data['22k'] * 5,
-            tenGramUsd: goldPriceByCaratData.data['22k'] * 5 * 10,
-            oneTolaUsd: goldPriceByCaratData.data['22k'] * 5 * 11.66,
-            oneOunceUsd: goldPriceByCaratData.data['22k'] * 5 * 31.1,
-            oneGramInr:
-              goldPriceByCaratData.data['22k'] *
-              5 *
-              usdToInrData.rates.INR,
-            tenGramInr:
-              goldPriceByCaratData.data['22k'] *
-              5 *
-              10 *
-              usdToInrData.rates.INR,
-            oneTolaInr:
-              goldPriceByCaratData.data['22k'] *
-              5 *
-              11.66 *
-              usdToInrData.rates.INR,
-            oneOunceInr:
-              goldPriceByCaratData.data['22k'] *
-              5 *
-              31.1 *
-              usdToInrData.rates.INR,
-          },
-          {
-            Karat: '18k',
-            oneGramUsd: goldPriceByCaratData.data['18k'] * 5,
-            tenGramUsd: goldPriceByCaratData.data['18k'] * 5 * 10,
-            oneTolaUsd: goldPriceByCaratData.data['18k'] * 5 * 11.66,
-            oneOunceUsd: goldPriceByCaratData.data['18k'] * 5 * 31.1,
-            oneGramInr:
-              goldPriceByCaratData.data['18k'] *
-              5 *
-              usdToInrData.rates.INR,
-            tenGramInr:
-              goldPriceByCaratData.data['18k'] *
-              5 *
-              10 *
-              usdToInrData.rates.INR,
-            oneTolaInr:
-              goldPriceByCaratData.data['18k'] *
-              5 *
-              11.66 *
-              usdToInrData.rates.INR,
-            oneOunceInr:
-              goldPriceByCaratData.data['18k'] *
-              5 *
-              31.1 *
-              usdToInrData.rates.INR,
-          },
-        ];
-
-        let html = '';
-
-        for (let i = 0; i < goldMasterData.length; i++) {
-          const data = goldMasterData[i];
-          html += `
-        <table>
-          <tr>
-            <th colspan="3">${data.Karat}t Gold Price</th>
-          </tr>
-          <tr>
-            <td>1 Ounce</td>
-            <td>$${data.oneOunceUsd}</td>
-            <td>₹${data.oneOunceInr}</td>
-          </tr>
-          <tr>
-            <td>10 gram</td>
-            <td>$${data.tenGramUsd}</td>
-            <td>₹${data.tenGramInr}</td>
-          </tr>
-          <tr>
-            <td>1 Tola (11.66 Grams)</td>
-              <td>$${data.oneTolaUsd}</td>
-            <td>₹${data.oneTolaInr}</td>
-          </tr>
-          <tr>
-            <td>1 gram</td>
-              <td>$${data.oneGramUsd}</td>
-            <td>₹${data.oneGramInr}</td>
-          </tr>
-        </table>
-          `;
-        }
-
-        document.querySelector('.live-price').innerHTML = html;
-
-        console.log(goldMasterData);
-      }
-
-      // Fetch live data on load
-      fetchLiveGoldData();
-    </script>
+    <script src="./main.js"></script>
   </body>
 </html>
