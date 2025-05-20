@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0" />
+    <title>About Malani Jewelers</title>
+    <style>
+      .about-page {
+        font-family: 'Abhaya Libre', sans-serif;
+        line-height: 1.7;
+        margin: 0;
+        padding: 0;
+        background-color: #fff;
+        color: #333;
+      }
+
+      .about-page .parallax-header {
+        position: relative;
+        overflow: hidden;
+        height: 350px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        text-align: center;
+        background-color: black;
+      }
+
+      .about-page .parallax-header::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        background-image: url('./assets/Privacy_Policy_Banner_1.webp');
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center bottom;
+        transform: scale(1);
+        animation: ambientZoomDrift 90s ease-in-out infinite;
+        z-index: 0;
+      }
+
+      @keyframes ambientZoomDrift {
+        0% {
+          background-position: center 55%;
+          transform: scale(1.5);
+        }
+        50% {
+          background-position: center 40%;
+          transform: scale(1);
+        }
+        100% {
+          background-position: center 55%;
+          transform: scale(1.5);
+        }
+      }
+
+      .about-page .parallax-header .overlay {
+        position: relative;
+        z-index: 1;
+      }
+
+      .about-page .parallax-header .overlay {
+        background-color: rgba(
+          0,
+          0,
+          0,
+          0.5
+        ); /* dark overlay for contrast */
+        height: 100%;
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+      }
+
+      .about-page .parallax-header h1 {
+        font-size: 2.5rem;
+        margin: 0;
+        margin: 0;
+        font-size: 2.5rem;
+        letter-spacing: 1px;
+      }
+
+      .about-page .parallax-header .last-updated {
+        margin-top: 10px;
+        font-size: 1rem;
+        color: #eee;
+      }
+
+      .about-page .about-content {
+        max-width: 70%;
+        margin: 40px auto;
+        padding: 0 20px;
+      }
+
+      .about-page .about-content h2 {
+        color: #b68c46;
+        border-bottom: 2px solid #eee;
+        padding-bottom: 6px;
+        margin-top: 40px;
+        font-size: 1.6rem;
+      }
+
+      .about-page .about-content p {
+        margin: 15px 0;
+        font-size: 1.125rem;
+      }
+
+      .about-page .about-content ul li {
+        font-size: 1.125rem;
+      }
+
+      .about-page .faq-section {
+        margin-top: 60px;
+      }
+
+      .about-page .faq-section h2 {
+        font-size: 1.6rem;
+        color: #b68c46;
+        margin-bottom: 30px;
+        border-bottom: 2px solid #eee;
+        padding-bottom: 6px;
+      }
+
+      .about-page .faq-section .faq-item {
+        margin-bottom: 20px;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+        overflow: hidden;
+      }
+
+      .about-page .faq-section .faq-item .faq-question {
+        background-color: #fdf9f3;
+        color: #333;
+        font-size: 1rem;
+        font-weight: bold;
+        width: 100%;
+        padding: 15px 20px;
+        text-align: left;
+        border: none;
+        cursor: pointer;
+        transition: background 0.3s;
+      }
+
+      .about-page .faq-section .faq-item .faq-question:hover {
+        background-color: #f4e7cf;
+      }
+
+      .about-page .faq-section .faq-item .faq-answer {
+        background-color: #fff;
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.3s ease;
+        padding: 0 20px;
+      }
+
+      .about-page .faq-section .faq-item .faq-answer p {
+        margin: 15px 0;
+        color: #555;
+      }
+
+      @media (max-width: 600px) {
+        .about-page .parallax-header .overlay h1 {
+          font-size: 2rem;
+        }
+
+        .about-content {
+          padding: 0 15px;
+        }
+      }
+
+      @media (max-width: 1000px) {
+        .about-page .faq-section h2 {
+          font-size: 1.3rem;
+        }
+
+        .about-page .faq-section .faq-item .faq-question {
+          font-size: 2rem;
+          padding: 15px 20px;
+        }
+
+        .about-page .faq-section .faq-item .faq-answer {
+          font-size: 2rem;
+          padding: 0 16px;
+        }
+
+        .about-page .faq-section .faq-item .faq-answer p {
+          font-size: 2rem;
+        }
+      }
+      .about-content .split {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        gap: 20px;
+      }
+
+      .about-content .split img {
+        flex: 1;
+        max-width: 35%;
+        margin-right: 20px;
+        border-radius: 8px;
+      }
+
+      .about-content .split div {
+        flex: 1;
+        max-width: 60%;
+      }
+
+      .about-page .faq-section .faq-item.active .faq-answer {
+        max-height: 500px;
+        padding: 15px 20px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="about-page">
+      <div class="parallax-header">
+        <div class="background"></div>
+        <div class="overlay">
+          <h1>About Malani Jewelers</h1>
+        </div>
+      </div>
+
+      <div class="about-content">
+        <p>
+          At Malani Jewelers, we believe jewelry is more than an
+          accessory — it’s an expression of identity, heritage, and
+          celebration. Since our inception, we’ve remained committed
+          to delivering an unmatched luxury shopping experience
+          through our exquisitely designed retail centers and
+          dedicated service team.
+        </p>
+
+        <div class="split">
+          <img
+            class="placeholder-img"
+            src="https://malanijewelers.com/images/malani_historyimage01.jpg"
+            alt="Store View" />
+          <div>
+            <h2>A Luxurious Shopping Experience</h2>
+            <p>
+              Each of our retail centers is thoughtfully designed with
+              elegance and comfort in mind. From the moment you step
+              into a Malani Jewelers showroom, you are greeted with
+              warmth and professionalism. Our expertly trained and
+              friendly staff are here to guide you — whether you're
+              shopping for a milestone occasion or building a timeless
+              collection — while building long-lasting relationships
+              founded on trust and personalized service.
+            </p>
+          </div>
+        </div>
+
+        <h2>
+          The Largest Selection of 22Kt Gold & Diamond Jewelry in
+          North America
+        </h2>
+        <p>
+          We are proud to offer one of the largest curated selections
+          of 22 karat gold, diamond, antique, and gemstone jewelry in
+          North America. Each piece reflects Malani’s standard of
+          excellence and timeless artistry.
+        </p>
+        <p>
+          Our diamond jewelry is handcrafted with precision,
+          showcasing the brilliance and fire of each stone. Every
+          purchase is backed by our Malani Certificate of
+          Authenticity, ensuring both quality and long-term assurance.
+          We also offer certified diamonds from leading institutions
+          such as GIA, IGI, GAL, and EGL, affirming our commitment to
+          quality and authenticity.
+        </p>
+
+        <div class="split">
+          <div>
+            <h2>Antique & Ethnic Jewelry – A Nod to Tradition</h2>
+            <p>
+              Our ethnic and antique jewelry collections pay homage to
+              timeless craftsmanship. Designed by master artisans and
+              goldsmiths from around the world, each piece in this
+              collection brings tradition to life, blending intricate
+              detail with enduring beauty.
+            </p>
+          </div>
+          <img
+            class="placeholder-img"
+            src="https://malanijewelers.com/images/malani_historyimage01.jpg"
+            alt="Jewelry Detail" />
+        </div>
+
+        <h2>Natural Gemstones with Astrological Integrity</h2>
+        <p>
+          Explore our vast array of natural birthstones and gemstones,
+          hand-selected by our experienced design and procurement
+          team. Our gemstones are untreated, non-irradiated, and
+          color-true, preserving their natural properties — ideal for
+          those who value their astrological significance.
+        </p>
+
+        <h2>Men’s Luxury Accessories & Timepieces</h2>
+        <p>
+          Malani Jewelers also offers an exclusive line of men’s
+          accessories, including bold gold chains, rings, and
+          bracelets. For those with a taste for timeless elegance, we
+          carry both unworn and pre-owned luxury watches from Rolex
+          and Cartier — each authenticated, inspected, and sold with
+          certification and warranty.
+        </p>
+
+        <h2>In-House Jewelry Manufacturing & Expert Repairs</h2>
+        <p>
+          Our in-house team of expert goldsmiths and craftsmen ensures
+          every Malani piece meets our exceptional standards. From
+          bespoke designs to professional repairs, we utilize
+          state-of-the-art tools and techniques to serve all your
+          jewelry needs with precision and care. Whether you're
+          looking to custom design, repair, or resize, you can trust
+          Malani Jewelers to deliver with unmatched expertise.
+        </p>
+
+        <h2>Sell or Trade-In with Confidence</h2>
+        <p>
+          Looking to upgrade or liquidate your gold? We offer the
+          highest trade-in value for your old gold and jewelry. Our
+          transparent and competitive pricing makes Malani Jewelers a
+          trusted destination for selling or exchanging your precious
+          items.
+        </p>
+
+        <div class="faq-section">
+          <h2>Frequently Asked Questions (FAQ)</h2>
+
+          <div class="faq-item">
+            <button class="faq-question">
+              What is the Malani Certificate of Authenticity?
+            </button>
+            <div class="faq-answer">
+              <p>
+                Every purchase from Malani Jewelers comes with a
+                Certificate of Authenticity that guarantees the
+                material quality, craftsmanship, and specifications of
+                the item purchased.
+              </p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-question">
+              Are your diamonds certified?
+            </button>
+            <div class="faq-answer">
+              <p>
+                Yes. We offer diamonds certified by top gemological
+                labs including GIA, IGI, GAL, and EGL.
+              </p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-question">
+              Do you offer jewelry repair services?
+            </button>
+            <div class="faq-answer">
+              <p>
+                Absolutely. All jewelry repairs are handled in-house
+                by our expert goldsmiths using precision tools and
+                modern techniques.
+              </p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-question">
+              Can I trade in or sell my old jewelry?
+            </button>
+            <div class="faq-answer">
+              <p>
+                Yes. We provide competitive trade-in and purchase
+                rates for gold, diamonds, and other precious items.
+              </p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-question">
+              Are your gemstones natural?
+            </button>
+            <div class="faq-answer">
+              <p>
+                Yes. Our birthstones and gemstones are natural,
+                untreated, and hand-selected to preserve their
+                astrological properties.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      document.querySelectorAll('.faq-question').forEach((btn) => {
+        btn.addEventListener('click', () => {
+          const item = btn.parentElement;
+          item.classList.toggle('active');
+        });
+      });
+    </script>
+  </body>
+</html>
