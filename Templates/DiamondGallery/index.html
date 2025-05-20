@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0" />
+    <title>Malani Diamond Gallery</title>
+    <style>
+      .event-page {
+        font-family: 'Abhaya Libre', sans-serif;
+        line-height: 1.7;
+        margin: 0;
+        padding: 0;
+        background-color: #fff;
+        color: #333;
+      }
+
+      .event-page .ambient-header {
+        position: relative;
+        overflow: hidden;
+        height: 350px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        text-align: center;
+        background-color: black;
+      }
+
+      .event-page .ambient-header::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        background-image: url('./assets/Privacy_Policy_Banner_1.webp');
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center bottom;
+        transform: scale(1);
+        animation: ambientZoomDrift 90s ease-in-out infinite;
+        z-index: 0;
+      }
+
+      @keyframes ambientZoomDrift {
+        0% {
+          background-position: center 55%;
+          transform: scale(1.5);
+        }
+        50% {
+          background-position: center 40%;
+          transform: scale(1);
+        }
+        100% {
+          background-position: center 55%;
+          transform: scale(1.5);
+        }
+      }
+
+      .event-page .ambient-header .overlay {
+        position: relative;
+        z-index: 1;
+      }
+
+      .event-page .ambient-header .overlay {
+        background-color: rgba(
+          0,
+          0,
+          0,
+          0.5
+        ); /* dark overlay for contrast */
+        height: 100%;
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+      }
+
+      .event-page .ambient-header h1 {
+        font-size: 2.5rem;
+        margin: 0;
+        margin: 0;
+        font-size: 2.5rem;
+        letter-spacing: 1px;
+      }
+    </style>
+  </head>
+  <body>
+    <section class="event-page">
+      <header class="ambient-header">
+        <div class="overlay">
+          <h1>The Malani Diamond Gallery</h1>
+        </div>
+      </header>
+    </section>
+  </body>
+</html>
