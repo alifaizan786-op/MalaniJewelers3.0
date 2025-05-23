@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0" />
+    <title></title>
+    <link
+      rel="stylesheet"
+      href="style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css" />
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
+  </head>
+  <body>
+    <section class="prev_gallery_showcase">
+      <div class="prev_gallery_showcase_header">
+        <hr />
+        <h2>Our Galleries</h2>
+        <hr />
+      </div>
+      <div class="prev_gallery_body">
+        <div class="prev_gallery_body_slider owl-carousel owl-theme">
+          <div class="prev-gallery active item">
+            <h3>Charlotte, NC 5.0</h3>
+            <span>Sept 06<sup>th</sup> - 07<sup>th</sup>, 2024 </span>
+          </div>
+          <div class="prev-gallery inactive item">
+            <h3>Charlotte, NC 1.0</h3>
+            <span>May 20<sup>th</sup> - 21<sup>st</sup>, 2022 </span>
+          </div>
+          <div class="prev-gallery inactive item">
+            <h3>Austin, TX 1.0</h3>
+            <span>Jun 24<sup>th</sup> - 25<sup>st</sup>, 2023 </span>
+          </div>
+          <div class="prev-gallery inactive item">
+            <h3>Charlotte, NC 2.0</h3>
+            <span>Feb 10<sup>th</sup> - 11<sup>th</sup>, 2022 </span>
+          </div>
+          <div class="prev-gallery inactive item">
+            <h3>Cincinnati, OH 1.0</h3>
+            <span>Mar 16<sup>th</sup> - 17<sup>th</sup>, 2022 </span>
+          </div>
+          <div class="prev-gallery inactive item">
+            <h3>Tysons, VA 1.0</h3>
+            <span>Apr 20<sup>th</sup> - 21<sup>st</sup>, 2022 </span>
+          </div>
+          <div class="prev-gallery inactive item">
+            <h3>Chicago, IL 1.0</h3>
+            <span>June 15<sup>th</sup> - 16<sup>th</sup>, 2022 </span>
+          </div>
+          <div class="prev-gallery inactive item">
+            <h3>San Jose, CA 1.0</h3>
+            <span>July 20<sup>th</sup> - 21<sup>st</sup>, 2022 </span>
+          </div>
+          <div class="prev-gallery inactive item">
+            <h3>Charlotte, NC 3.0</h3>
+            <span>Sept 21<sup>th</sup> - 22<sup>st</sup>, 2024 </span>
+          </div>
+          <div class="prev-gallery inactive item">
+            <h3>Charlotte, NC 4.0</h3>
+            <span>Apr 19<sup>th</sup> - 20<sup>th</sup>, 2024 </span>
+          </div>
+        </div>
+      </div>
+      <div></div>
+    </section>
+  </body>
+  <script>
+    $(function () {
+      // Initialize Owl Carousel
+      var owl = $('.owl-carousel');
+      owl.owlCarousel({
+        items: 3,
+        margin: 10,
+        loop: true,
+        autoplay: true,
+        dots: false,
+        nav: false,
+        responsive: {
+          0: { items: 1 },
+          480: { items: 2 },
+          768: { items: 3 },
+          1024: { items: 5, stagepadding: 0 },
+        },
+      });
+    });
+  </script>
+</html>
