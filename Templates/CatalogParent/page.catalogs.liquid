@@ -1,0 +1,347 @@
+{% style %}
+  h1 span {
+    color: #000;
+    font-family: 'Abhaya Libre';
+    font-size: 2.1875rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    text-transform: uppercase;
+    margin: 0;
+    padding: 0;
+  }
+
+  h1 {
+    color: #000;
+    font-family: 'Abhaya Libre';
+    font-size: 4.375rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    text-transform: small-caps;
+    font-variant: small-caps;
+    text-align: center;
+    margin: 0;
+    padding: 0;
+  }
+
+  hr {
+    border: 0.015rem solid rgba(207, 169, 107, 0.5);
+    width: 75%;
+    margin: 0 auto;
+    padding: 0;
+  }
+
+  .catalogs p {
+    color: #737373;
+    font-family: 'Abhaya Libre Medium';
+    font-size: 1.1875rem;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    width: 100%;
+    text-align: center;
+
+    padding: 0;
+    margin: 0;
+  }
+
+  .catalog-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    padding: 2rem 0rem;
+    position: relative; /* important for ::after positioning */
+  }
+
+  .catalog-container::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 50%;
+    width: 1px; /* thickness of the line */
+    background-color: rgba(207, 169, 107, 0.5); /* same gold-ish color */
+    transform: translateX(-50%); /* perfectly center the line */
+  }
+
+  .catalog-container .left,
+  .catalog-container .right {
+    width: 30%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    margin: 0;
+    padding: 0;
+  }
+
+  .catalog-container .right h2,
+  .catalog-container .left h2 {
+    color: #000;
+    font-family: 'Abhaya Libre Medium';
+    font-size: 2.75rem;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+
+    margin: 0;
+    padding: 0;
+
+    width: 100%;
+    text-align: left;
+  }
+
+  .catalog-container .right p,
+  .catalog-container .left p {
+    color: #000;
+    font-family: 'Abhaya Libre';
+    font-size: 1.25rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+
+    margin: 0;
+    padding: 0;
+
+    width: 100%;
+    text-align: left;
+  }
+
+  .catalog-container .right a button,
+  .catalog-container .left a button {
+    border-radius: 3.125rem;
+    background: rgba(207, 169, 107, 0.2);
+    text-transform: uppercase;
+    cursor: pointer;
+    text-decoration: none;
+    border: none;
+    padding: 0.5rem;
+    width: 10rem;
+  }
+
+  .img-wrapper {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+  }
+
+  .img-wrapper::after {
+    content: '';
+    position: absolute;
+    bottom: -10%; /* adjust as needed */
+    left: 20%; /* adjust as needed */
+    width: 60%;
+    height: 65%;
+    background: rgba(207, 169, 107, 0.17);
+    z-index: -1; /* behind the image */
+  }
+
+  .img-wrapper img {
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+  }
+
+  /* Base styles already defined above stay as-is */
+
+  /* Responsive Styles */
+  @media (max-width: 1024px) {
+    .catalog-container {
+      flex-direction: column;
+      align-items: center;
+      padding: 2rem 1rem;
+    }
+
+    .catalog-container::after {
+      display: none; /* hide center line on stacked view */
+    }
+
+    .catalog-container .left,
+    .catalog-container .right {
+      width: 90%;
+      text-align: center;
+      align-items: center;
+    }
+
+    .catalog-container .right h2,
+    .catalog-container .left h2 {
+      text-align: center;
+      font-size: 2rem;
+
+      margin-top: 2.5rem;
+    }
+
+    .catalog-container .right p,
+    .catalog-container .left p {
+      text-align: center;
+      font-size: 1.1rem;
+    }
+
+    .img-wrapper::after {
+      left: 3%;
+      width: 95%;
+      height: 60%;
+    }
+
+    .catalog-container:nth-of-type(even) {
+      flex-direction: column-reverse;
+    }
+  }
+
+  @media (max-width: 600px) {
+    h1 {
+      font-size: 2.5rem;
+    }
+
+    h1 span {
+      font-size: 1.5rem;
+    }
+
+    .catalogs p {
+      font-size: 1rem;
+    }
+
+    .catalog-container .right h2,
+    .catalog-container .left h2 {
+      font-size: 1.75rem;
+      margin-top: 2.5rem;
+    }
+
+    .catalog-container .right p,
+    .catalog-container .left p {
+      font-size: 1rem;
+    }
+
+    .catalog-container .right a button,
+    .catalog-container .left a button {
+      width: 250px;
+      font-size: 1rem;
+    }
+
+    .catalog-container:nth-of-type(even) {
+      flex-direction: column-reverse;
+    }
+  }
+
+  span#breadcrumb {
+    margin: auto 15rem;
+  }
+{% endstyle %}
+<section class="catalogs">
+  <span id="breadcrumb"> <a href="/">Home</a> / <a href="/pages/catalog">Catalogs & Look Books</a> </span>
+  <h1>
+    <span>Malani Jewelers</span><br>
+    Exclusive Catalogs & Look Books
+  </h1>
+  <hr>
+
+  {% assign catalogs = shop.metaobjects.catalog.values | sort: 'sort_order' | reverse %}
+
+  {% for catalog in catalogs %}
+    <p>{{ catalog.launch_date | date: "%B '%Y" }}</p>
+
+    {% capture row_type %}{% cycle 'image-left', 'image-right' %}{% endcapture %}
+    <div class="catalog-container">
+      {% if row_type == 'image-left' %}
+        <div class="left">
+          <div class="img-wrapper">
+            <img
+              src="{{ catalog.desktop_image | image_url: width: 243 }}"
+              alt="{{ catalog.title }}"
+              height="350px"
+              width="243px"
+            >
+          </div>
+        </div>
+
+        <div class="right">
+          <h2>{{ catalog.title }}</h2>
+          <p>{{ catalog.long_description }}</p>
+          <a
+            href="/pages/catalog/{{ catalog.url }}"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <button>View Catalog</button>
+          </a>
+        </div>
+      {% else %}
+        <div class="left">
+          <h2>{{ catalog.title }}</h2>
+          <p>{{ catalog.long_description }}</p>
+          <a
+            href="/pages/catalog/{{ catalog.url }}"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <button>View Catalog</button>
+          </a>
+        </div>
+        <div class="right">
+          <div class="img-wrapper">
+            <img
+              src="{{ catalog.desktop_image | image_url: width: 243 }}"
+              alt="{{ catalog.title }}"
+              height="350px"
+              width="243px"
+            >
+          </div>
+        </div>
+      {% endif %}
+    </div>
+  {% endfor %}
+</section>
+
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "CollectionPage",
+        "@id": "https://{{ request.host }}/pages/catalog",
+        "url": "https://{{ request.host }}/pages/catalog",
+        "name": "Catalogs & Look Books - Malani Jewelers",
+        "description": "Explore exclusive catalogs and look books from Malani Jewelers, showcasing seasonal jewelry collections and trends.",
+        "breadcrumb": {
+          "@id": "https://{{ request.host }}/pages/catalog#breadcrumb"
+        }
+      },
+      {
+        "@type": "BreadcrumbList",
+        "@id": "https://{{ request.host }}/pages/catalog#breadcrumb",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Home",
+            "item": "https://{{ request.host }}"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "Catalogs & Look Books",
+            "item": "https://{{ request.host }}/pages/catalog"
+          }
+        ]
+      },
+      {
+        "@type": "Organization",
+        "@id": "https://{{ request.host }}/#organization",
+        "name": "Malani Jewelers",
+        "url": "https://{{ request.host }}",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://malanijewelers.myshopify.com/cdn/shop/files/Malani_Jewelers_Logo_Flat.webp"
+        },
+        "sameAs": [
+          "https://www.facebook.com/Malanijewelers",
+          "https://www.instagram.com/malani_jewelers/",
+          "https://www.pinterest.com/malani_jewelers"
+        ]
+      }
+    ]
+  }
+</script>

@@ -1,0 +1,216 @@
+{% schema %}
+{
+  "name": "Catalog Main",
+  "settings": []
+}
+{% endschema %}
+
+{% style %}
+  section.catalog-page {
+    margin: auto 15rem;
+    font-family: 'Abhaya Libre', sans-serif;
+    letter-spacing: 2px;
+    line-height: 1.7;
+    color: #333;
+    position: relative;
+
+  }
+
+  .catalog-page::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: -245px;
+    width: 46%;
+    aspect-ratio: 900 / 1300;
+    background-image: url("{{ metaobject.desktop_image | image_url: width: 1200 }}");
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: top right;
+    opacity: 0.1;
+    filter: blur(4px);
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .catalog-page .catalog-heading {
+    font-family: 'Abhaya Libre', sans-serif;
+    border-bottom: 1px solid #CFA96B;
+    font-size: 3rem;
+    position: relative;
+    z-index: 1;
+  }
+
+  .catalog-page .catalog-short-desc,
+  .catalog-page .catalog-long-desc {
+    font-size: 1rem;
+    position: relative;
+    z-index: 1;
+  }
+
+  .catalog-page .catalog-iframe {
+    position: relative;
+    z-index: 1;
+  }
+
+  .catalog-page .catalog-page-header{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    justify-content: space-between;
+    color: rgba(0, 0, 0, 0.8);
+  }
+
+  .catalog-page .catalog-page-header span a{
+    color:rgba(0,0,0,0.5)
+  }
+
+  /* Responsive Tweaks */
+  @media (max-width: 1200px) {
+    section.catalog-page {
+      margin: auto 5rem;
+    }
+
+    .catalog-page::before {
+      right: -100px;
+      width: 60%;
+    }
+  }
+
+  @media (max-width: 768px) {
+    section.catalog-page {
+      margin: auto 2rem;
+    }
+
+    .catalog-page::before {
+      display: none; /* Hide blurred image for mobile performance */
+    }
+
+    .catalog-page .catalog-heading {
+      font-size: 2rem;
+    }
+
+    .catalog-page .catalog-short-desc,
+    .catalog-page .catalog-long-desc {
+      font-size: 0.95rem;
+    }
+  }
+{% endstyle %}
+
+<section class="catalog-page">
+  <div class="catalog-page-header">
+    <span id="breadcrumb">
+      <a href="/">Home</a> / <a href="/pages/catalog">Catalogs & Look Books</a> /
+      <a href="/pages/catalog/{{ metaobject.url }}">{{ metaobject.title }}</a>
+    </span>
+    <span>
+      {{ metaobject.launch_date }}
+    </span>
+  </div>
+  <h1 class="catalog-heading">{{ metaobject.h1 }}</h1>
+
+  {% if metaobject.short_description %}
+    <p class="catalog-short-desc">{{ metaobject.short_description }}</p>
+  {% endif %}
+
+  {% if metaobject.iframe_link %}
+    <div class="catalog-iframe">
+      <iframe src="{{ metaobject.iframe_link }}" width="100%" height="600" frameborder="0" allowfullscreen></iframe>
+    </div>
+  {% endif %}
+
+  <h2 class="catalog-heading">{{ metaobject.h2 }}</h2>
+
+  {% if metaobject.long_description %}
+    <div class="catalog-long-desc">
+      {{ metaobject.long_description }}
+    </div>
+  {% endif %}
+
+  {% if metaobject.h3 %}
+    <h3 class="visually-hidden">{{ metaobject.h3 }}</h3>
+  {% endif %}
+
+  {% if metaobject.h4 %}
+    <h4 class="visually-hidden">{{ metaobject.h4 }}</h4>
+  {% endif %}
+
+  {% if metaobject.h5 %}
+    <h5 class="visually-hidden">{{ metaobject.h5 }}</h5>
+  {% endif %}
+
+  {% if metaobject.h6 %}
+    <h6 class="visually-hidden">{{ metaobject.h6 }}</h6>
+  {% endif %}
+</section>
+
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "WebPage",
+        "@id": "https://{{ request.host }}/pages/catalog/{{ metaobject.url }}",
+        "url": "https://{{ request.host }}/pages/catalog/{{ metaobject.url }}",
+        "name": {{ metaobject.meta_title | json }},
+        "description": {{ metaobject.meta_description | json }},
+        "datePublished": "{{ metaobject.launch_date | date: '%Y-%m-%d' }}",
+        "dateModified": "{{ metaobject.updated_at | date: '%Y-%m-%d' }}",
+        "breadcrumb": {
+          "@id": "https://{{ request.host }}/pages/catalog/#breadcrumb"
+        }
+      },
+      {
+        "@type": "BreadcrumbList",
+        "@id": "https://{{ request.host }}/pages/catalog/#breadcrumb",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Home",
+            "item": "https://{{ request.host }}"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "Catalogs & Look Books",
+            "item": "https://{{ request.host }}/pages/catalog"
+          },
+          {
+            "@type": "ListItem",
+            "position": 3,
+            "name": {{ metaobject.title | json }},
+            "item": "https://{{ request.host }}/pages/catalog/{{ metaobject.url }}"
+          }
+        ]
+      },
+      {
+        "@type": "OfferCatalog",
+        "@id": "https://{{ request.host }}/pages/catalog/{{ metaobject.url }}",
+        "name": {{ metaobject.title | json }},
+        "url": "https://{{ request.host }}/pages/catalog/{{ metaobject.url }}",
+        "image": "{{ metaobject.desktop_image | image_url: width: 1200 }}",
+        "category": "Jewelry",
+        "provider": {
+          "@type": "Organization",
+          "name": "Malani Jewelers"
+        }
+      },
+      {
+        "@type": "Organization",
+        "@id": "https://{{ request.host }}/#organization",
+        "name": "Malani Jewelers",
+        "url": "https://{{ request.host }}",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://malanijewelers.myshopify.com/cdn/shop/files/Malani_Jewelers_Logo_Flat.webp"
+        },
+        "sameAs": [
+          "https://www.facebook.com/Malanijewelers",
+          "https://www.instagram.com/malani_jewelers/",
+          "https://www.pinterest.com/malani_jewelers"
+        ]
+      }
+    ]
+  }
+</script>

@@ -188,3 +188,84 @@ hr {
 .img-wrapper img {
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
 }
+
+/* Base styles already defined above stay as-is */
+
+/* Responsive Styles */
+@media (max-width: 1024px) {
+  .catalog-container {
+    flex-direction: column;
+    align-items: center;
+    padding: 2rem 1rem;
+  }
+
+  .catalog-container::after {
+    display: none; /* hide center line on stacked view */
+  }
+
+  .catalog-container .left,
+  .catalog-container .right {
+    width: 90%;
+    text-align: center;
+    align-items: center;
+  }
+
+  .catalog-container .right h2,
+  .catalog-container .left h2 {
+    text-align: center;
+    font-size: 2rem;
+
+    margin-top: 2.5rem;
+  }
+
+  .catalog-container .right p,
+  .catalog-container .left p {
+    text-align: center;
+    font-size: 1.1rem;
+  }
+
+  .img-wrapper::after {
+    left: 3%;
+    width: 95%;
+    height: 60%;
+  }
+
+  .catalog-container:nth-of-type(even) {
+    flex-direction: column-reverse;
+  }
+}
+
+@media (max-width: 600px) {
+  h1 {
+    font-size: 2.5rem;
+  }
+
+  h1 span {
+    font-size: 1.5rem;
+  }
+
+  .catalogs p {
+    font-size: 1rem;
+  }
+
+  .catalog-container .right h2,
+  .catalog-container .left h2 {
+    font-size: 1.75rem;
+    margin-top: 2.5rem;
+  }
+
+  .catalog-container .right p,
+  .catalog-container .left p {
+    font-size: 1rem;
+  }
+
+  .catalog-container .right a button,
+  .catalog-container .left a button {
+    width: 250px;
+    font-size: 1rem;
+  }
+
+  .catalog-container:nth-of-type(even) {
+    flex-direction: column-reverse;
+  }
+}
