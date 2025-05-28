@@ -1,0 +1,516 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0" />
+    <title>Find Your Ring Size | Malani Jewelers</title>
+    <style>
+      :root {
+        --accent: #cfa96b;
+        --bg: #fff;
+        --text: #333;
+        --border: #e0e0e0;
+      }
+
+      @font-face {
+        font-family: 'Abhaya Libre';
+        src: url('http://malanijewelers.myshopify.com/cdn/shop/t/2/assets/AbhayaLibre-Regular.ttf')
+          format('truetype');
+        font-weight: 400;
+        font-style: normal;
+      }
+
+      body {
+        margin: 0;
+        font-family: 'Abhaya Libre', serif;
+        line-height: 1.7;
+        letter-spacing: 1px;
+        background-color: var(--bg);
+        color: var(--text);
+        line-height: 1.6;
+        padding: 1rem;
+      }
+
+      header {
+        text-align: center;
+        padding: 2rem 1rem 1rem;
+      }
+
+      header h1 {
+        font-size: 2.5rem;
+        color: var(--accent);
+        margin-bottom: 0.5rem;
+      }
+
+      .tab-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .tabs {
+        display: flex;
+        justify-content: center;
+        gap: 1rem;
+        margin: 1rem 0;
+        flex-wrap: wrap;
+      }
+
+      .tab {
+        cursor: pointer;
+        padding: 0.75rem 1.25rem;
+        border: 2px solid var(--accent);
+        background: none;
+        color: var(--accent);
+        font-weight: bold;
+        border-radius: 25px;
+        transition: 0.3s;
+      }
+
+      .tab.active,
+      .tab:hover {
+        background-color: var(--accent);
+        color: white;
+      }
+
+      .tab-content {
+        display: none;
+        max-width: 600px;
+        border-top: 1px solid var(--border);
+        padding-top: 1rem;
+        animation: fadeIn 0.4s ease-in;
+      }
+
+      .tab-content.active {
+        display: block;
+      }
+
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+          transform: translateY(10px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      .table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 1rem;
+      }
+
+      .table th,
+      .table td {
+        border: 1px solid var(--border);
+        padding: 0.5rem;
+        text-align: center;
+      }
+
+      .toggle-section {
+        margin-top: 2rem;
+        max-width: 600px;
+        margin-inline: auto;
+      }
+
+      .toggle-header {
+        background-color: var(--accent);
+        color: white;
+        padding: 0.75rem 1rem;
+        cursor: pointer;
+        font-weight: bold;
+        border-radius: 5px;
+      }
+
+      .toggle-body {
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.4s ease;
+        background: #fdf6ed;
+        padding: 0 1rem;
+      }
+
+      .toggle-body.open {
+        padding: 1rem;
+        max-height: 500px;
+      }
+
+      footer {
+        text-align: center;
+        margin: 2rem 0 1rem;
+        font-size: 0.95rem;
+      }
+
+      .faq-section {
+        width: 80%;
+        margin: 0 auto;
+      }
+
+      .faq-section h2 {
+        font-size: 1.6rem;
+        color: #b68c46;
+        margin-bottom: 30px;
+        border-bottom: 2px solid #eee;
+        padding-bottom: 6px;
+      }
+
+      .faq-section .faq-item {
+        margin-bottom: 20px;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+        overflow: hidden;
+      }
+
+      .faq-section .faq-item .faq-question {
+        background-color: #fdf9f3;
+        color: #333;
+        font-size: 1rem;
+        font-weight: bold;
+        width: 100%;
+        padding: 15px 20px;
+        text-align: left;
+        border: none;
+        cursor: pointer;
+        transition: background 0.3s;
+      }
+
+      .faq-section .faq-item .faq-question:hover {
+        background-color: #f4e7cf;
+      }
+
+      .faq-section .faq-item .faq-answer {
+        background-color: #fff;
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.3s ease;
+        padding: 0 20px;
+      }
+
+      .faq-section .faq-item .faq-answer p {
+        margin: 15px 0;
+        color: #555;
+      }
+
+      @media (max-width: 600px) {
+        .tab {
+          padding: 0.5rem 1rem;
+          font-size: 0.9rem;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <h1>Find Your Ring Size at Home</h1>
+      <p>
+        Shopping online should feel just as magical. Here's how to get
+        your perfect fit the Malani way.
+      </p>
+    </header>
+
+    <section class="tab-container">
+      <div class="tabs">
+        <button
+          class="tab active"
+          data-tab="method1">
+          Use a Ring You Own
+        </button>
+        <button
+          class="tab"
+          data-tab="method2">
+          String or Paper Method
+        </button>
+      </div>
+
+      <div
+        id="method1"
+        class="tab-content active">
+        <p>
+          If you already have a ring that fits the intended finger:
+        </p>
+        <ol>
+          <li>Place the ring on a ruler or printable chart.</li>
+          <li>Measure the inner diameter in millimeters.</li>
+          <li>Match the diameter to your US ring size.</li>
+        </ol>
+        <table class="table">
+          <thead>
+            <tr>
+              <th>Inner Diameter (mm)</th>
+              <th>US Ring Size</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>14.8</td>
+              <td>4</td>
+            </tr>
+            <tr>
+              <td>15.6</td>
+              <td>5</td>
+            </tr>
+            <tr>
+              <td>16.5</td>
+              <td>6</td>
+            </tr>
+            <tr>
+              <td>17.3</td>
+              <td>7</td>
+            </tr>
+            <tr>
+              <td>18.1</td>
+              <td>8</td>
+            </tr>
+            <tr>
+              <td>19.0</td>
+              <td>9</td>
+            </tr>
+            <tr>
+              <td>19.8</td>
+              <td>10</td>
+            </tr>
+            <tr>
+              <td>20.6</td>
+              <td>11</td>
+            </tr>
+            <tr>
+              <td>21.4</td>
+              <td>12</td>
+            </tr>
+            <tr>
+              <td>22.2</td>
+              <td>13</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div
+        id="method2"
+        class="tab-content">
+        <p>
+          No ring? No worries. Use this method to measure your finger
+          directly:
+        </p>
+        <ol>
+          <li>
+            Wrap paper or string around the base of your finger.
+          </li>
+          <li>Mark where it overlaps.</li>
+          <li>Measure the length in millimeters.</li>
+          <li>Use the chart below to find your size.</li>
+        </ol>
+        <table class="table">
+          <thead>
+            <tr>
+              <th>Finger Circumference (mm)</th>
+              <th>US Ring Size</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>46.8</td>
+              <td>4</td>
+            </tr>
+            <tr>
+              <td>49.3</td>
+              <td>5</td>
+            </tr>
+            <tr>
+              <td>51.9</td>
+              <td>6</td>
+            </tr>
+            <tr>
+              <td>54.4</td>
+              <td>7</td>
+            </tr>
+            <tr>
+              <td>57.0</td>
+              <td>8</td>
+            </tr>
+            <tr>
+              <td>59.5</td>
+              <td>9</td>
+            </tr>
+            <tr>
+              <td>62.1</td>
+              <td>10</td>
+            </tr>
+            <tr>
+              <td>64.6</td>
+              <td>11</td>
+            </tr>
+            <tr>
+              <td>67.2</td>
+              <td>12</td>
+            </tr>
+            <tr>
+              <td>69.7</td>
+              <td>13</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="toggle-section">
+      <div class="toggle-header">
+        💡 Malani Tips for Measuring Like a Pro
+      </div>
+      <div class="toggle-body">
+        <ul>
+          <li>Measure in the evening for best accuracy.</li>
+          <li>Wider bands may require half a size up.</li>
+          <li>Double-check to confirm accuracy.</li>
+          <li>When in doubt, go slightly bigger.</li>
+        </ul>
+      </div>
+    </section>
+
+    <div class="faq-section goldrate-container">
+      <h2>FAQ</h2>
+
+      <div class="faq-item">
+        <button class="faq-question">
+          Does Malani Jewelers offer ring resizing services?
+        </button>
+        <div class="faq-answer">
+          <p>
+            Yes, Malani Jewelers offers in-house
+            <strong>ring resizing services</strong> performed by
+            expert goldsmiths using precision tools to ensure the
+            perfect fit for your finger and your jewelry.
+          </p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question">
+          Can I use any string to measure my ring size at home?
+        </button>
+        <div class="faq-answer">
+          <p>
+            Not quite. We recommend using a
+            <strong>non-stretchy string or a strip of paper</strong>
+            to ensure accurate measurement. Elastic or stretchy
+            materials can distort the result and lead to a misfit.
+          </p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question">
+          What’s the best time of day to measure my ring size?
+        </button>
+        <div class="faq-answer">
+          <p>
+            The <strong>evening</strong> is ideal. Fingers naturally
+            swell throughout the day, so measuring at night gives the
+            most accurate sizing for comfort and wearability.
+          </p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question">
+          How accurate is the at-home ring sizing method?
+        </button>
+        <div class="faq-answer">
+          <p>
+            Our <strong>at-home guide is highly accurate</strong> when
+            followed correctly. For best results, measure twice and
+            compare against our printable size chart or call us if you
+            need help—we’re happy to assist, no purchase required.
+          </p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question">
+          Should I size up for wider rings?
+        </button>
+        <div class="faq-answer">
+          <p>
+            Yes, wider bands tend to fit more snugly. If you’re
+            choosing a thick band, consider going
+            <strong>half a size up</strong> for a more comfortable
+            fit.
+          </p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question">
+          What if I’m unsure about my size after measuring?
+        </button>
+        <div class="faq-answer">
+          <p>
+            When in doubt, <strong>size up slightly</strong>—it’s
+            easier to adjust a ring that’s a bit loose than one that’s
+            too tight. You can also reach out to our team for a second
+            opinion anytime.
+          </p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question">
+          Does Malani Jewelers help with ring sizing even if I haven’t
+          made a purchase yet?
+        </button>
+        <div class="faq-answer">
+          <p>
+            Absolutely. Whether you’re a customer or just browsing,
+            our jewelry experts are here to help you find the perfect
+            fit—with
+            <strong>no pressure and no purchase necessary</strong>.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <footer>
+      💍 Need a second opinion? We’re happy to help—call, chat, or
+      email us for guidance.
+    </footer>
+
+    <script>
+      const tabs = document.querySelectorAll('.tab');
+      const contents = document.querySelectorAll('.tab-content');
+
+      tabs.forEach((tab) => {
+        tab.addEventListener('click', () => {
+          tabs.forEach((t) => t.classList.remove('active'));
+          contents.forEach((c) => c.classList.remove('active'));
+          tab.classList.add('active');
+          document
+            .getElementById(tab.dataset.tab)
+            .classList.add('active');
+        });
+      });
+
+      document
+        .querySelector('.toggle-header')
+        .addEventListener('click', () => {
+          document
+            .querySelector('.toggle-body')
+            .classList.toggle('open');
+        });
+
+      const faqButtons = document.querySelectorAll('.faq-question');
+      faqButtons.forEach((button) => {
+        button.addEventListener('click', () => {
+          const answer = button.nextElementSibling;
+          button.classList.toggle('active');
+          answer.style.maxHeight = answer.style.maxHeight
+            ? null
+            : answer.scrollHeight + 'px';
+        });
+      });
+    </script>
+  </body>
+</html>

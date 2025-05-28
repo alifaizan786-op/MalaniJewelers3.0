@@ -1,0 +1,674 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0" />
+    <title>Ring Size Converter | Malani Jewelers</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Abhaya+Libre&display=swap"
+      rel="stylesheet" />
+    <style>
+      body {
+        margin: 0;
+        font-family: 'Abhaya Libre', serif;
+        background-color: #fff;
+        color: #333;
+        padding: 1rem;
+        line-height: 1.7;
+        letter-spacing: 1px;
+      }
+
+      select {
+        appearance: none;
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        background-color: #fdf6ed;
+        border: 1px solid #cfa96b;
+        padding: 0.75rem 1rem;
+        font-family: 'Abhaya Libre', serif;
+        font-size: 1rem;
+        border-radius: 8px;
+        width: 100%;
+        color: #333;
+        background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 140 140' xmlns='http://www.w3.org/2000/svg'%3E%3Cpolyline points='20,50 70,100 120,50' stroke='%23cfa96b' stroke-width='20' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+        background-repeat: no-repeat;
+        background-position: right 1rem center;
+        background-size: 1rem;
+        cursor: pointer;
+        transition: border 0.3s ease, box-shadow 0.3s ease;
+      }
+
+      select:focus {
+        outline: none;
+        border-color: #b68c46;
+        box-shadow: 0 0 0 3px rgba(207, 169, 107, 0.3);
+      }
+
+      label {
+        font-weight: bold;
+        margin-bottom: 0.25rem;
+        display: inline-block;
+        font-size: 0.9rem;
+        color: #b68c46;
+      }
+
+      header {
+        text-align: center;
+        padding: 2rem 1rem;
+      }
+
+      header h1 {
+        font-size: 2.5rem;
+        color: #cfa96b;
+        margin-bottom: 0.5rem;
+      }
+
+      .section {
+        max-width: 900px;
+        margin: 0 auto;
+        padding: 1rem;
+      }
+
+      h2 {
+        color: #b68c46;
+        margin-top: 2rem;
+      }
+
+      .size-converter {
+        font-size: 0.75rem;
+      }
+
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 1rem;
+      }
+
+      .converter > div {
+        display: flex;
+        flex-direction: column;
+        gap: 0.25rem;
+      }
+
+      th,
+      td {
+        border: 1px solid #ddd;
+        padding: 0.75rem;
+        text-align: center;
+      }
+
+      .tip-box {
+        background-color: #fdf6ed;
+        padding: 1rem;
+        border-left: 5px solid #cfa96b;
+        margin-top: 1.5rem;
+      }
+
+      .callout {
+        margin-top: 2rem;
+        text-align: center;
+        font-size: 1.1rem;
+        font-weight: 600;
+        color: #555;
+      }
+
+      .cta {
+        background: #cfa96b;
+        color: white;
+        display: inline-block;
+        padding: 1rem 2rem;
+        border-radius: 30px;
+        margin-top: 2rem;
+        text-decoration: none;
+        transition: 0.3s ease;
+      }
+
+      .cta:hover {
+        background: #b68c46;
+      }
+
+      .faq-section {
+        margin-top: 3rem;
+        max-width: 900px;
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      .faq-section h2 {
+        font-size: 1.6rem;
+        color: #b68c46;
+        margin-bottom: 30px;
+        border-bottom: 2px solid #eee;
+        padding-bottom: 6px;
+      }
+
+      .faq-item {
+        border: 1px solid #ddd;
+        border-radius: 5px;
+        margin-bottom: 1rem;
+        overflow: hidden;
+      }
+
+      .faq-question {
+        background-color: #fdf9f3;
+        color: #333;
+        font-size: 1rem;
+        font-weight: bold;
+        width: 100%;
+        padding: 15px 20px;
+        text-align: left;
+        border: none;
+        cursor: pointer;
+      }
+
+      .faq-answer {
+        background-color: #fff;
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.3s ease;
+        padding: 0 20px;
+      }
+
+      .faq-answer p {
+        margin: 15px 0;
+        color: #555;
+      }
+
+      footer {
+        text-align: center;
+        font-size: 0.9rem;
+        color: #777;
+        margin-top: 3rem;
+      }
+
+      tr.highlight {
+        background-color: #fcf2da;
+        font-weight: bold;
+      }
+
+      .size-converter.converter {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 1rem;
+        margin-bottom: 2rem;
+      }
+
+      /* Small screens: 1 x 6 */
+      .size-converter.converter > div {
+        flex: 1 1 100%;
+      }
+
+      /* Medium screens: 2 x 3 */
+      @media (min-width: 600px) {
+        .size-converter.converter > div {
+          flex: 1 1 calc(50% - 0.5rem);
+        }
+      }
+
+      /* Large screens: 3 x 2 */
+      @media (min-width: 1000px) {
+        .size-converter.converter > div {
+          flex: 1 1 calc(33.333% - 0.67rem);
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <h1>💍 Ring Size Converter</h1>
+      <p>Global Sizing, Malani Precision</p>
+    </header>
+
+    <section class="section">
+      <p>
+        At Malani Jewelers, we believe that a ring isn’t just a piece
+        of jewelry—it’s a promise, a celebration, a lifelong memory.
+        Whether for yourself or someone dear, the perfect moment
+        deserves the perfect fit.
+      </p>
+      <p>
+        But we get it—ring sizes can be confusing. Different
+        countries, systems, and numbers. That’s why we’ve created this
+        easy-to-use Ring Size Converter—to make your journey seamless,
+        no matter where you are.
+      </p>
+
+      <h2>One World, Many Sizes</h2>
+      <p>
+        Here’s a quick breakdown of how different regions measure
+        rings:
+      </p>
+      <table>
+        <thead>
+          <tr>
+            <th>Region</th>
+            <th>System Type</th>
+            <th>Measurement Method</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>United States (US)</td>
+            <td>Numeric (6, 7, 8)</td>
+            <td>Inner circumference (inches/mm)</td>
+          </tr>
+          <tr>
+            <td>United Kingdom (UK)</td>
+            <td>Alphabetic (L, M, N)</td>
+            <td>Circumference in millimeters</td>
+          </tr>
+          <tr>
+            <td>Europe (EU)</td>
+            <td>Numeric (52, 54, 56)</td>
+            <td>Circumference in millimeters</td>
+          </tr>
+          <tr>
+            <td>India (IN)</td>
+            <td>Numeric (11, 13, 15)</td>
+            <td>UK model adapted to local standards</td>
+          </tr>
+          <tr>
+            <td>Japan</td>
+            <td>Numeric (10, 12, 14)</td>
+            <td>Internal circumference, unique scale</td>
+          </tr>
+          <tr>
+            <td>Australia</td>
+            <td>Alphabetic</td>
+            <td>Similar to UK with slight differences</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <!-- Insert the following block just before the "Quick Ring Size Conversion Chart" heading -->
+
+      <h2>Interactive Ring Size Converter</h2>
+      <div
+        class="size-converter converter"
+        style="">
+        <div>
+          <label for="us">US Size</label>
+          <select
+            id="us"
+            onchange="updateRow(this, 'US')">
+            <option value="">Select US Size</option>
+          </select>
+        </div>
+        <div>
+          <label for="uk">UK Size</label>
+          <select
+            id="uk"
+            onchange="updateRow(this, 'UK')">
+            <option value="">Select UK Size</option>
+          </select>
+        </div>
+        <div>
+          <label for="eu">EU Size (mm)</label>
+          <select
+            id="eu"
+            onchange="updateRow(this, 'EU')">
+            <option value="">Select EU Size</option>
+          </select>
+        </div>
+        <div>
+          <label for="india">India Size</label>
+          <select
+            id="india"
+            onchange="updateRow(this, 'India')">
+            <option value="">Select India Size</option>
+          </select>
+        </div>
+        <div>
+          <label for="japan">Japan Size</label>
+          <select
+            id="japan"
+            onchange="updateRow(this, 'Japan')">
+            <option value="">Select Japan Size</option>
+          </select>
+        </div>
+        <div>
+          <label for="diameter">Inside Diameter (mm)</label>
+          <select
+            id="diameter"
+            onchange="updateRow(this, 'Diameter')">
+            <option value="">Select Diameter</option>
+          </select>
+        </div>
+      </div>
+
+      <h2>Quick Ring Size Conversion Chart</h2>
+      <table id="conversion-chart">
+        <thead>
+          <tr>
+            <th>US</th>
+            <th>UK</th>
+            <th>EU (mm)</th>
+            <th>India</th>
+            <th>Japan</th>
+            <th>Inside Diameter (mm)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>4</td>
+            <td>H</td>
+            <td>47</td>
+            <td>7</td>
+            <td>7</td>
+            <td>14.8</td>
+          </tr>
+          <tr>
+            <td>5</td>
+            <td>J½</td>
+            <td>49</td>
+            <td>9</td>
+            <td>9</td>
+            <td>15.6</td>
+          </tr>
+          <tr>
+            <td>6</td>
+            <td>L½</td>
+            <td>52</td>
+            <td>12</td>
+            <td>11</td>
+            <td>16.5</td>
+          </tr>
+          <tr>
+            <td>7</td>
+            <td>N½</td>
+            <td>54</td>
+            <td>14</td>
+            <td>14</td>
+            <td>17.3</td>
+          </tr>
+          <tr>
+            <td>8</td>
+            <td>P½</td>
+            <td>57</td>
+            <td>16</td>
+            <td>16</td>
+            <td>18.1</td>
+          </tr>
+          <tr>
+            <td>9</td>
+            <td>R½</td>
+            <td>59</td>
+            <td>18</td>
+            <td>18</td>
+            <td>19.0</td>
+          </tr>
+          <tr>
+            <td>10</td>
+            <td>T½</td>
+            <td>62</td>
+            <td>20</td>
+            <td>20</td>
+            <td>19.8</td>
+          </tr>
+          <tr>
+            <td>11</td>
+            <td>V½</td>
+            <td>64</td>
+            <td>22</td>
+            <td>22</td>
+            <td>20.6</td>
+          </tr>
+          <tr>
+            <td>12</td>
+            <td>Y</td>
+            <td>67</td>
+            <td>24</td>
+            <td>24</td>
+            <td>21.4</td>
+          </tr>
+          <tr>
+            <td>13</td>
+            <td>Z½</td>
+            <td>70</td>
+            <td>27</td>
+            <td>27</td>
+            <td>22.2</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="tip-box">
+        ✨ Tip: Choosing a wider band? Opt for half a size larger to
+        ensure comfort.<br />
+        ✨ In between sizes? Always go one size up—it’s easier to
+        resize a slightly looser ring than one that’s too tight.
+      </div>
+
+      <div class="callout">
+        💡 Need a hand? Whether you’re planning a proposal or treating
+        yourself, our team is happy to help—no purchase required.
+      </div>
+
+      <div style="text-align: center">
+        <a
+          href="#"
+          class="cta"
+          >Explore Our Rings</a
+        >
+      </div>
+    </section>
+
+    <section class="faq-section">
+      <h2>Frequently Asked Questions</h2>
+
+      <div class="faq-item">
+        <button class="faq-question">
+          Can I convert ring sizes between countries using this chart?
+        </button>
+        <div class="faq-answer">
+          <p>
+            Yes, the chart provided allows you to cross-reference ring
+            sizes between major international standards including US,
+            UK, EU, India, and Japan.
+          </p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question">
+          Is the measurement method the same across all countries?
+        </button>
+        <div class="faq-answer">
+          <p>
+            No. While many systems use internal diameter or
+            circumference in mm, others (like the UK and Australia)
+            use alphabetical labels. Our chart aligns these formats.
+          </p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question">
+          What if my size falls between two numbers?
+        </button>
+        <div class="faq-answer">
+          <p>
+            We recommend choosing the larger size. It’s easier and
+            more comfortable to resize or adjust a ring that’s
+            slightly loose than one that’s too tight.
+          </p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question">
+          Do wider bands affect sizing?
+        </button>
+        <div class="faq-answer">
+          <p>
+            Yes. Wider rings tend to fit more snugly. If you're
+            choosing a wider band, go half a size up for better
+            comfort.
+          </p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question">
+          Can I get help from Malani Jewelers before purchasing?
+        </button>
+        <div class="faq-answer">
+          <p>
+            Absolutely! Our jewelry consultants are happy to help with
+            sizing guidance at any time—even if you're just exploring
+            your options.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      &copy; Malani Jewelers | The perfect fit, anywhere in the world.
+    </footer>
+
+    <script>
+      document.querySelectorAll('.faq-question').forEach((button) => {
+        button.addEventListener('click', () => {
+          const answer = button.nextElementSibling;
+          answer.style.maxHeight = answer.style.maxHeight
+            ? null
+            : answer.scrollHeight + 'px';
+        });
+      });
+
+      const sizeData = [
+        {
+          US: '4',
+          UK: 'H',
+          EU: '47',
+          India: '7',
+          Japan: '7',
+          Diameter: '14.8',
+        },
+        {
+          US: '5',
+          UK: 'J½',
+          EU: '49',
+          India: '9',
+          Japan: '9',
+          Diameter: '15.6',
+        },
+        {
+          US: '6',
+          UK: 'L½',
+          EU: '52',
+          India: '12',
+          Japan: '11',
+          Diameter: '16.5',
+        },
+        {
+          US: '7',
+          UK: 'N½',
+          EU: '54',
+          India: '14',
+          Japan: '14',
+          Diameter: '17.3',
+        },
+        {
+          US: '8',
+          UK: 'P½',
+          EU: '57',
+          India: '16',
+          Japan: '16',
+          Diameter: '18.1',
+        },
+        {
+          US: '9',
+          UK: 'R½',
+          EU: '59',
+          India: '18',
+          Japan: '18',
+          Diameter: '19.0',
+        },
+        {
+          US: '10',
+          UK: 'T½',
+          EU: '62',
+          India: '20',
+          Japan: '20',
+          Diameter: '19.8',
+        },
+        {
+          US: '11',
+          UK: 'V½',
+          EU: '64',
+          India: '22',
+          Japan: '22',
+          Diameter: '20.6',
+        },
+        {
+          US: '12',
+          UK: 'Y',
+          EU: '67',
+          India: '24',
+          Japan: '24',
+          Diameter: '21.4',
+        },
+        {
+          US: '13',
+          UK: 'Z½',
+          EU: '70',
+          India: '27',
+          Japan: '27',
+          Diameter: '22.2',
+        },
+      ];
+
+      function populateDropdowns() {
+        const dropdowns = [
+          'us',
+          'uk',
+          'eu',
+          'india',
+          'japan',
+          'diameter',
+        ];
+        const keys = ['US', 'UK', 'EU', 'India', 'Japan', 'Diameter'];
+
+        dropdowns.forEach((id, i) => {
+          const select = document.getElementById(id);
+          const key = keys[i];
+          const seen = new Set();
+          sizeData.forEach((item) => {
+            if (!seen.has(item[key])) {
+              seen.add(item[key]);
+              const opt = document.createElement('option');
+              opt.value = item[key];
+              opt.textContent = item[key];
+              select.appendChild(opt);
+            }
+          });
+        });
+      }
+
+      function updateRow(select, type) {
+        const value = select.value;
+        const rows = document.querySelectorAll(
+          '#conversion-chart tbody tr'
+        );
+        rows.forEach((tr) => tr.classList.remove('highlight'));
+        if (!value) return;
+        sizeData.forEach((row, i) => {
+          if (row[type] === value) {
+            rows[i].classList.add('highlight');
+            document.getElementById('us').value = row.US;
+            document.getElementById('uk').value = row.UK;
+            document.getElementById('eu').value = row.EU;
+            document.getElementById('india').value = row.India;
+            document.getElementById('japan').value = row.Japan;
+            document.getElementById('diameter').value = row.Diameter;
+          }
+        });
+      }
+
+      populateDropdowns();
+    </script>
+  </body>
+</html>
