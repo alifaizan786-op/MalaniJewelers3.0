@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .tab-wrap {
+        border-radius: 6px;
+        max-width: 100%;
+        display: flex;
+        flex-wrap: wrap;
+        position: relative;
+        list-style: none;
+        margin: 40px 0;
+        overflow: hidden;
+      }
+
+      .tab {
+        display: none;
+      }
+
+      .tab + .tab-label {
+        cursor: pointer;
+        display: block;
+        color: #333;
+        flex-grow: 3;
+        text-align: center;
+        user-select: none;
+        transition: 0.3s background-color ease, 0.3s box-shadow ease;
+        box-sizing: border-box;
+        display: flex !important;
+        justify-content: center;
+        align-items: center;
+        padding: 10px 0;
+      }
+
+      .tab-label img {
+        margin: 5px;
+      }
+
+      .tab-label p {
+        margin: 5px;
+        letter-spacing: 0;
+        text-transform: none;
+      }
+
+      /* Highlight the active tab label */
+      .tab:checked + .tab-label {
+        background-color: #fff;
+        box-shadow: 0 -1px 0 #fff inset;
+        cursor: default;
+        border-bottom: 1px solid black;
+      }
+
+      /* Container for sliding content */
+      .tab-contents {
+        display: flex;
+        width: 400%; /* 4 tabs = 4x */
+        transition: transform 0.6s ease-in-out;
+        will-change: transform;
+      }
+
+      /* Each individual content panel */
+      .tab__content {
+        width: 100%;
+        flex-shrink: 0;
+        padding: 10px;
+        box-sizing: border-box;
+        background-color: transparent;
+      }
+
+      .tab__content p {
+        font-size: 0.95rem;
+        margin: 6px 0;
+        font-weight: 100;
+      }
+
+      /* Optional: Container to center and size */
+      .container {
+        margin: 0 auto;
+        display: block;
+        max-width: 800px;
+      }
+
+      .container > *:not(.tab-wrap) {
+        padding: 0 80px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="tab-wrap">
+      <input
+        type="radio"
+        id="tab1"
+        name="tabGroup1"
+        class="tab tab-first"
+        checked="" />
+      <label
+        for="tab1"
+        class="tab-label">
+        <img
+          src="https://malanijewelers.myshopify.com/cdn/shop/t/2/assets/JewelryIcon.svg"
+          width="25"
+          title="Jewelry Info" />
+      </label>
+
+      <input
+        type="radio"
+        id="tab2"
+        name="tabGroup1"
+        class="tab tab-middle" />
+      <label
+        for="tab2"
+        class="tab-label">
+        <img
+          src="https://malanijewelers.myshopify.com/cdn/shop/t/2/assets/GoldIcon.svg"
+          width="25"
+          title="Gold Info" />
+      </label>
+
+      <input
+        type="radio"
+        id="tab3"
+        name="tabGroup1"
+        class="tab tab-middle" />
+      <label
+        for="tab3"
+        class="tab-label">
+        <img
+          src="https://malanijewelers.myshopify.com/cdn/shop/t/2/assets/DiamondIcon.svg"
+          width="25"
+          title="Diamond &amp; Gemstones" />
+      </label>
+
+      <input
+        type="radio"
+        id="tab4"
+        name="tabGroup1"
+        class="tab tab-last" />
+      <label
+        for="tab4"
+        class="tab-label">
+        <img
+          src="https://malanijewelers.myshopify.com/cdn/shop/t/2/assets/RulerIcon.svg"
+          width="25"
+          title="Dimensions" />
+      </label>
+
+      <div class="tab-contents">
+        <div class="tab__content">
+          <p>Jewelry Type: Diamonds</p>
+
+          <p>Jewelry For: Women</p>
+
+          <p>Category: WOMEN / Necklaces / Necklace Sets</p>
+
+          <p>Number Of Pieces: 3</p>
+
+          <p>DC: 12BLJ24</p>
+        </div>
+
+        <div class="tab__content">
+          <p>Color: Yellow</p>
+
+          <p>Finish: Yellow</p>
+
+          <p>Karat: 18KT</p>
+
+          <p>Weight: 67.0 Grams TW</p>
+        </div>
+
+        <div class="tab__content">
+          <p>Diamond Total Weight: 12.99 Ct</p>
+
+          <p>Diamond Type: White Diamonds</p>
+
+          <p>Diamond Color: G-H</p>
+
+          <p>Diamond Clarity: VS</p>
+
+          <p>Diamond Total Pieces: 719 Pieces</p>
+        </div>
+
+        <div class="tab__content">
+          <p>Length: 16.0 Inches</p>
+
+          <p>Width: 1.75 Inches</p>
+
+          <p>Earrings Length: 1.83 Inches</p>
+
+          <p>Earrings Width: 0.88 Inches</p>
+
+          <p>Earring Post Type: Screw Back</p>
+        </div>
+      </div>
+    </div>
+    <script>
+      const tabs = document.querySelectorAll('.tab');
+      const tabContents = document.querySelector('.tab-contents');
+      const wrapper = document.querySelector('.tab-wrap');
+
+      let index = 0;
+      let intervalId;
+
+      function showSlide(i) {
+        tabContents.style.transform = `translateX(-${i * 100}%)`;
+        tabs.forEach((tab, j) => {
+          tab.checked = j === i;
+        });
+      }
+
+      function startRotation() {
+        intervalId = setInterval(() => {
+          index = (index + 1) % tabs.length;
+          showSlide(index);
+        }, 2500);
+      }
+
+      function stopRotation() {
+        clearInterval(intervalId);
+      }
+
+      // Start and manage tab switching
+      startRotation();
+
+      // Pause/resume on hover
+      wrapper.addEventListener('mouseenter', stopRotation);
+      wrapper.addEventListener('mouseleave', startRotation);
+
+      // Handle manual tab click
+      tabs.forEach((tab, i) => {
+        tab.addEventListener('change', () => {
+          index = i;
+          showSlide(index);
+        });
+      });
+
+      // Initial setup
+      showSlide(index);
+    </script>
+  </body>
+</html>
