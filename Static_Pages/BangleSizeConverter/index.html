@@ -1,0 +1,758 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0" />
+    <title>Bangle Size Converter | Malani Jewelers</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Abhaya+Libre&display=swap"
+      rel="stylesheet" />
+    <style>
+      body {
+        margin: 0;
+        font-family: 'Abhaya Libre', serif;
+        background-color: #fff;
+        color: #333;
+        padding: 1rem;
+        line-height: 1.7;
+        letter-spacing: 1px;
+      }
+
+      select {
+        appearance: none;
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        background-color: #fdf6ed;
+        border: 1px solid #cfa96b;
+        padding: 0.75rem 1rem;
+        font-family: 'Abhaya Libre', serif;
+        font-size: 1rem;
+        border-radius: 8px;
+        width: 100%;
+        color: #333;
+        background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 140 140' xmlns='http://www.w3.org/2000/svg'%3E%3Cpolyline points='20,50 70,100 120,50' stroke='%23cfa96b' stroke-width='20' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+        background-repeat: no-repeat;
+        background-position: right 1rem center;
+        background-size: 1rem;
+        cursor: pointer;
+        transition: border 0.3s ease, box-shadow 0.3s ease;
+      }
+
+      select:focus {
+        outline: none;
+        border-color: #b68c46;
+        box-shadow: 0 0 0 3px rgba(207, 169, 107, 0.3);
+      }
+
+      label {
+        font-weight: bold;
+        margin-bottom: 0.25rem;
+        display: inline-block;
+        font-size: 0.9rem;
+        color: #b68c46;
+      }
+
+      header {
+        text-align: center;
+        padding: 2rem 1rem;
+      }
+
+      header h1 {
+        font-size: 2.5rem;
+        color: #cfa96b;
+        margin-bottom: 0.5rem;
+      }
+
+      .section {
+        max-width: 900px;
+        margin: 0 auto;
+        padding: 1rem;
+      }
+
+      h2 {
+        color: #b68c46;
+        margin-top: 2rem;
+      }
+
+      .size-converter {
+        font-size: 0.75rem;
+      }
+
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 1rem;
+      }
+
+      .converter > div {
+        display: flex;
+        flex-direction: column;
+        gap: 0.25rem;
+      }
+
+      th,
+      td {
+        border: 1px solid #ddd;
+        padding: 0.75rem;
+        text-align: center;
+      }
+
+      .tip-box {
+        background-color: #fdf6ed;
+        padding: 1rem;
+        border-left: 5px solid #cfa96b;
+        margin-top: 1.5rem;
+      }
+
+      .callout {
+        margin-top: 2rem;
+        text-align: center;
+        font-size: 1.1rem;
+        font-weight: 400;
+        color: #555;
+      }
+
+      .cta {
+        background: #cfa96b;
+        color: white;
+        display: inline-block;
+        padding: 1rem 2rem;
+        border-radius: 30px;
+        margin-top: 2rem;
+        text-decoration: none;
+        transition: 0.3s ease;
+      }
+
+      .cta:hover {
+        background: #b68c46;
+      }
+
+      .faq-section {
+        margin-top: 3rem;
+        max-width: 900px;
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      .faq-section h2 {
+        font-size: 1.6rem;
+        color: #b68c46;
+        margin-bottom: 30px;
+        border-bottom: 2px solid #eee;
+        padding-bottom: 6px;
+      }
+
+      .faq-item {
+        border: 1px solid #ddd;
+        border-radius: 5px;
+        margin-bottom: 1rem;
+        overflow: hidden;
+      }
+
+      .faq-question {
+        background-color: #fdf9f3;
+        color: #333;
+        font-size: 1rem;
+        font-weight: bold;
+        width: 100%;
+        padding: 15px 20px;
+        text-align: left;
+        border: none;
+        cursor: pointer;
+      }
+
+      .faq-answer {
+        background-color: #fff;
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.3s ease;
+        padding: 0 20px;
+      }
+
+      .faq-answer p {
+        margin: 15px 0;
+        color: #555;
+      }
+
+      footer {
+        text-align: center;
+        font-size: 0.9rem;
+        color: #777;
+        margin-top: 3rem;
+      }
+
+      tr.highlight {
+        background-color: #fcf2da;
+        font-weight: bold;
+      }
+
+      .size-converter.converter {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 1rem;
+        margin-bottom: 2rem;
+      }
+
+      /* Small screens: 1 x 6 */
+      .size-converter.converter > div {
+        flex: 1 1 100%;
+      }
+
+      /* Medium screens: 2 x 3 */
+      @media (min-width: 600px) {
+        .size-converter.converter > div {
+          flex: 1 1 calc(50% - 0.5rem);
+        }
+      }
+
+      /* Large screens: 3 x 2 */
+      @media (min-width: 1000px) {
+        .size-converter.converter > div {
+          flex: 1 1 calc(33.333% - 0.67rem);
+        }
+      }
+
+      .tip-box ul li {
+        list-style: '✨';
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <h1>Bangle Size Converter</h1>
+      <p>Your Perfect Fit, Delivered.</p>
+    </header>
+
+    <section class="section">
+      <p>
+        We understand—shopping for bangles without trying them on can
+        feel a little daunting. That’s why we’re here to make it
+        easier.
+      </p>
+      <p>
+        Whether you’re purchasing a timeless gold set, a sparkling
+        diamond bangle, or a trendy bracelet for everyday wear,
+        finding the right size is essential to comfort and confidence.
+        Our easy-to-follow sizing guide will help you find your
+        perfect fit from the comfort of your home.
+      </p>
+      <p>
+        Need a little extra guidance? We’re happy to assist you over a
+        quick call, whether you’re ready to buy or just exploring
+        options. At Malani Jewelers, we’re here for you—every step of
+        the way.
+      </p>
+      <hr />
+
+      <h2>How to Measure Your Bangle Size at Home</h2>
+      <p>
+        If you already own a bangle that fits well, measuring it is
+        the fastest way to determine your size:
+      </p>
+      <ul>
+        <li>
+          <strong>Step 1:</strong> Lay the bangle flat on a surface.
+        </li>
+        <li>
+          <strong>Step 2:</strong> Use a ruler to measure the inner
+          diameter from edge to edge.
+        </li>
+        <li>
+          <strong>Step 3:</strong> Match that measurement to our chart
+          below to find your bangle size.
+        </li>
+      </ul>
+
+      <!-- Insert the following block just before the "Quick Ring Size Conversion Chart" heading -->
+
+      <h2>Interactive Bangle Size Converter</h2>
+      <div
+        class="size-converter converter"
+        style="">
+        <div>
+          <label for="bangleSize">Bangle Size</label>
+          <select
+            id="bangleSize"
+            onchange="updateRow(this, 'bangleSize')">
+            <option value="">Select Bangle Size</option>
+          </select>
+        </div>
+        <div>
+          <label for="diameter">Diameter (Inches)</label>
+          <select
+            id="diameter"
+            onchange="updateRow(this, 'diameter')">
+            <option value="">Select Diameter</option>
+          </select>
+        </div>
+        <div>
+          <label for="circumference">Circumference (Inches)</label>
+          <select
+            id="circumference"
+            onchange="updateRow(this, 'circumference')">
+            <option value="">Select Circumference</option>
+          </select>
+        </div>
+      </div>
+
+      <h2>Quick Ring Size Conversion Chart</h2>
+      <table id="conversion-chart">
+        <thead>
+          <tr>
+            <th>Bangle Size</th>
+            <th>Diameter (Inches)</th>
+            <th>Circumference (Inches)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>2.0</td>
+            <td>2.00</td>
+            <td>6.28</td>
+          </tr>
+          <tr>
+            <td>2.1</td>
+            <td>2.06</td>
+            <td>6.47</td>
+          </tr>
+          <tr>
+            <td>2.2</td>
+            <td>2.13</td>
+            <td>6.69</td>
+          </tr>
+          <tr>
+            <td>2.3</td>
+            <td>2.19</td>
+            <td>6.88</td>
+          </tr>
+          <tr>
+            <td>2.4</td>
+            <td>2.25</td>
+            <td>7.07</td>
+          </tr>
+          <tr>
+            <td>2.5</td>
+            <td>2.31</td>
+            <td>7.26</td>
+          </tr>
+          <tr>
+            <td>2.6</td>
+            <td>2.37</td>
+            <td>7.45</td>
+          </tr>
+          <tr>
+            <td>2.7</td>
+            <td>2.44</td>
+            <td>7.67</td>
+          </tr>
+          <tr>
+            <td>2.8</td>
+            <td>2.50</td>
+            <td>7.85</td>
+          </tr>
+          <tr>
+            <td>2.9</td>
+            <td>2.56</td>
+            <td>8.04</td>
+          </tr>
+          <tr>
+            <td>2.10</td>
+            <td>2.63</td>
+            <td>8.26</td>
+          </tr>
+          <tr>
+            <td>2.11</td>
+            <td>2.69</td>
+            <td>8.45</td>
+          </tr>
+          <tr>
+            <td>2.12</td>
+            <td>2.75</td>
+            <td>8.64</td>
+          </tr>
+          <tr>
+            <td>2.13</td>
+            <td>2.81</td>
+            <td>8.83</td>
+          </tr>
+          <tr>
+            <td>2.14</td>
+            <td>2.87</td>
+            <td>9.02</td>
+          </tr>
+          <tr>
+            <td>2.15</td>
+            <td>2.94</td>
+            <td>9.24</td>
+          </tr>
+          <tr>
+            <td>3.0</td>
+            <td>3.00</td>
+            <td>9.42</td>
+          </tr>
+          <tr>
+            <td>3.1</td>
+            <td>3.06</td>
+            <td>9.61</td>
+          </tr>
+          <tr>
+            <td>3.2</td>
+            <td>3.13</td>
+            <td>9.83</td>
+          </tr>
+          <tr>
+            <td>3.3</td>
+            <td>3.19</td>
+            <td>10.02</td>
+          </tr>
+          <tr>
+            <td>3.4</td>
+            <td>3.25</td>
+            <td>10.21</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h2>No Bangle? No Problem. Use This Method instead</h2>
+      <p>
+        Follow these simple steps to measure your hand and determine
+        your bangle size:
+      </p>
+      <ul>
+        <li>
+          <strong>Step 1: Form the Bangle Shape</strong>
+        </li>
+        <p>
+          Bring your thumb and pinky finger together as if you're
+          slipping on a bangle. This creates the widest part of your
+          hand that a bangle must pass through.
+        </p>
+        <li>
+          <strong>Step 2: Measure Your Hand</strong>
+        </li>
+        <p>
+          Wrap a flexible measuring tape (or a strip of paper or
+          string) around this widest part. If using paper or string,
+          mark the overlap, then measure that length with a ruler.
+          That’s your hand’s circumference.
+        </p>
+        <li>
+          <strong>Step 3: Find Your Size</strong>
+        </li>
+        <p>
+          Use your hand circumference to find the closest match in our
+          chart. Choose the next size up in diameter to ensure a
+          smooth fit.
+        </p>
+      </ul>
+
+      <hr />
+
+      <div class="tip-box">
+        <h3>Malani Tips for Bangle & Bracelet Shopping</h3>
+        <ul>
+          <li>
+            <strong> Size Up Slightly:</strong> Bangles that are ½ to
+            ¾ inches larger than your wrist circumference offer a
+            comfortable, slip-on experience.
+          </li>
+          <li>
+            <strong> Use Fabric for Ease:</strong> Silk or crepe
+            fabric can help slide your bangles over your hand
+            effortlessly.
+          </li>
+          <li>
+            <strong> Opt for Adjustable Styles:</strong> If you're
+            unsure about size, especially when shopping online, go for
+            openable or adjustable bangles—they’re stylish and
+            user-friendly.
+          </li>
+          <li>
+            <strong> For Daily Diamonds:</strong> Choose diamond
+            bangles with secure, low-profile settings and high-grade
+            stones for regular wear.
+          </li>
+          <li>
+            <strong> Store with Care:</strong> Keep your bangles in
+            structured, padded boxes to preserve their shape and
+            shine.
+          </li>
+        </ul>
+      </div>
+
+      <div class="callout">
+        💡 Still unsure? Give us a call. Whether you're just browsing
+        or about to make your decision, we’re always happy to guide
+        you through sizing, styling, and everything in between. <br />
+        <strong>
+          Because at Malani, the experience should feel as beautiful
+          as the jewelry.</strong
+        >
+      </div>
+
+      <div style="text-align: center">
+        <a
+          href="#"
+          class="cta"
+          >Explore Our Bangles % Bracelets</a
+        >
+      </div>
+    </section>
+
+    <section class="faq-section">
+      <h2>Frequently Asked Questions</h2>
+
+      <div class="faq-item">
+        <button class="faq-question">
+          How do I know my correct bangle size?
+        </button>
+        <div class="faq-answer">
+          <p>
+            The easiest way to find your bangle size is to measure the
+            diameter of a bangle that fits you well or use a measuring
+            tape to determine the circumference of your hand. Then
+            match that measurement with our Bangle Size Chart or use
+            our interactive converter above.
+          </p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question">
+          What is the difference between bangle size and diameter?
+        </button>
+        <div class="faq-answer">
+          <p>
+            Bangle size is a standardized label (e.g., 2.4, 2.6) used
+            in South Asian jewelry sizing, while diameter refers to
+            the inner measurement of the bangle in inches. The
+            diameter helps ensure a snug yet comfortable fit over the
+            widest part of your hand.
+          </p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question">
+          Can I convert my wrist circumference to bangle size?
+        </button>
+        <div class="faq-answer">
+          <p>
+            Yes! Measure around your knuckles with your thumb tucked
+            in—this is typically the widest part of your hand. Use the
+            circumference value to find your closest bangle size using
+            our chart or dropdown converter.
+          </p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question">
+          What if my bangle size falls between two sizes?
+        </button>
+        <div class="faq-answer">
+          <p>
+            If your measurement falls between two bangle sizes, we
+            recommend choosing the larger size. A slightly looser
+            bangle will be easier to slide over your hand and more
+            comfortable for daily wear.
+          </p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question">
+          Do bangles come in adjustable sizes?
+        </button>
+        <div class="faq-answer">
+          <p>
+            Yes, many modern bangles come in openable or adjustable
+            styles, especially in gold and diamond designs. These are
+            ideal if you're unsure of your size or purchasing as a
+            gift.
+          </p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question">
+          Can I get help with bangle sizing before placing my order?
+        </button>
+        <div class="faq-answer">
+          <p>
+            Absolutely! Our experts at Malani Jewelers are happy to
+            guide you over a quick call or video chat. We’re here to
+            make sure you choose the perfect size and style with
+            confidence.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      &copy; Malani Jewelers | The perfect fit, anywhere in the world.
+    </footer>
+
+    <script>
+      document.querySelectorAll('.faq-question').forEach((button) => {
+        button.addEventListener('click', () => {
+          const answer = button.nextElementSibling;
+          answer.style.maxHeight = answer.style.maxHeight
+            ? null
+            : answer.scrollHeight + 'px';
+        });
+      });
+
+      const sizeData = [
+        {
+          bangleSize: '2.0',
+          diameter: '2.00',
+          circumference: '6.28',
+        },
+        {
+          bangleSize: '2.1',
+          diameter: '2.06',
+          circumference: '6.47',
+        },
+        {
+          bangleSize: '2.2',
+          diameter: '2.13',
+          circumference: '6.69',
+        },
+        {
+          bangleSize: '2.3',
+          diameter: '2.19',
+          circumference: '6.88',
+        },
+        {
+          bangleSize: '2.4',
+          diameter: '2.25',
+          circumference: '7.07',
+        },
+        {
+          bangleSize: '2.5',
+          diameter: '2.31',
+          circumference: '7.26',
+        },
+        {
+          bangleSize: '2.6',
+          diameter: '2.37',
+          circumference: '7.45',
+        },
+        {
+          bangleSize: '2.7',
+          diameter: '2.44',
+          circumference: '7.67',
+        },
+        {
+          bangleSize: '2.8',
+          diameter: '2.50',
+          circumference: '7.85',
+        },
+        {
+          bangleSize: '2.9',
+          diameter: '2.56',
+          circumference: '8.04',
+        },
+        {
+          bangleSize: '2.10',
+          diameter: '2.63',
+          circumference: '8.26',
+        },
+        {
+          bangleSize: '2.11',
+          diameter: '2.69',
+          circumference: '8.45',
+        },
+        {
+          bangleSize: '2.12',
+          diameter: '2.75',
+          circumference: '8.64',
+        },
+        {
+          bangleSize: '2.13',
+          diameter: '2.81',
+          circumference: '8.83',
+        },
+        {
+          bangleSize: '2.14',
+          diameter: '2.87',
+          circumference: '9.02',
+        },
+        {
+          bangleSize: '2.15',
+          diameter: '2.94',
+          circumference: '9.24',
+        },
+        {
+          bangleSize: '3.0',
+          diameter: '3.00',
+          circumference: '9.42',
+        },
+        {
+          bangleSize: '3.1',
+          diameter: '3.06',
+          circumference: '9.61',
+        },
+        {
+          bangleSize: '3.2',
+          diameter: '3.13',
+          circumference: '9.83',
+        },
+        {
+          bangleSize: '3.3',
+          diameter: '3.19',
+          circumference: '10.02',
+        },
+        {
+          bangleSize: '3.4',
+          diameter: '3.25',
+          circumference: '10.21',
+        },
+      ];
+
+      function populateDropdowns() {
+        const dropdowns = ['bangleSize', 'diameter', 'circumference'];
+        const keys = ['bangleSize', 'diameter', 'circumference'];
+
+        dropdowns.forEach((id, i) => {
+          const select = document.getElementById(id);
+          const key = keys[i];
+          const seen = new Set();
+          sizeData.forEach((item) => {
+            if (!seen.has(item[key])) {
+              seen.add(item[key]);
+              const opt = document.createElement('option');
+              opt.value = item[key];
+              opt.textContent = item[key];
+              select.appendChild(opt);
+            }
+          });
+        });
+      }
+
+      function updateRow(select, type) {
+        const value = select.value;
+        const rows = document.querySelectorAll(
+          '#conversion-chart tbody tr'
+        );
+        rows.forEach((tr) => tr.classList.remove('highlight'));
+        if (!value) return;
+        sizeData.forEach((row, i) => {
+          if (row[type] === value) {
+            rows[i].classList.add('highlight');
+            document.getElementById('bangleSize').value =
+              row.bangleSize;
+            document.getElementById('diameter').value = row.diameter;
+            document.getElementById('circumference').value =
+              row.circumference;
+          }
+        });
+      }
+
+      populateDropdowns();
+    </script>
+  </body>
+</html>
