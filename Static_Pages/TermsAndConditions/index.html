@@ -148,12 +148,29 @@
       }
     </style>
   </head>
-  <body class="terms-and-conditions">
+  <section class="terms-and-conditions">
     <div class="parallax-header">
       <div class="overlay">
         <h1>Terms & Conditions</h1>
         <div class="last-updated">Last Updated: May 2025</div>
       </div>
+    </div>
+
+    <div
+      class="visually-hidden"
+      style="
+        position: absolute !important;
+        height: 1px;
+        width: 1px;
+        overflow: hidden;
+        clip: rect(1px, 1px, 1px, 1px);
+        white-space: nowrap;
+      ">
+      <h1>Terms & Conditions – Malani Jewelers Policies</h1>
+      <h2>Understanding Our Terms of Service</h2>
+      <h3>Purchase & Payment Policies</h3>
+      <h4>Return & Exchange Guidelines</h4>
+      <h5>Warranties & Liabilities</h5>
     </div>
 
     <div class="terms-container">
@@ -351,7 +368,7 @@
         </div>
       </div>
     </div>
-  </body>
+  </section>
   <script>
     const questions = document.querySelectorAll('.faq-question');
     questions.forEach((btn) => {
@@ -366,5 +383,79 @@
           : answer.scrollHeight + 'px';
       });
     });
+  </script>
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "WebPage",
+          "@id": "https://malanijewelers.com/pages/terms-and-conditions",
+          "url": "https://malanijewelers.com/pages/terms-and-conditions",
+          "name": "Terms & Conditions – Our Policies & Guidelines | Malani Jewelers",
+          "description": "Read the Terms & Conditions of Malani Jewelers to understand our policies on purchases, returns, warranties, and customer responsibilities.",
+          "inLanguage": "en-US",
+          "isPartOf": {
+            "@type": "WebSite",
+            "@id": "https://www.malanijewelers.com"
+          },
+          "publisher": {
+            "@id": "https://www.malanijewelers.com/#organization"
+          }
+        },
+        {
+          "@type": "Organization",
+          "@id": "https://www.malanijewelers.com/#organization",
+          "name": "Malani Jewelers",
+          "url": "https://www.malanijewelers.com",
+          "logo": {
+            "@type": "ImageObject",
+            "url": "https://malanijewelers.myshopify.com/cdn/shop/files/Malani_Jewelers_Logo_Flat.webp"
+          },
+          "sameAs": [
+            "https://www.facebook.com/Malanijewelers",
+            "https://www.instagram.com/malani_jewelers/",
+            "https://www.pinterest.com/malani_jewelers"
+          ]
+        },
+        {
+          "@type": "FAQPage",
+          "mainEntity": [
+            {
+              "@type": "Question",
+              "name": "Can I return an item that has been worn or altered?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "No, all returns must be unworn and in original condition. Altered or sized jewelry is final sale and not eligible for return."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "How long does it take to receive a refund?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Refunds are processed within 3–5 business days of receiving the returned item and completing the inspection."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Do online prices match in-store pricing?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Not always. Online pricing may differ from in-store offers and may not be honored at retail locations."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "What if my item is out of stock?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "If an item is unavailable, we will notify you immediately and issue a full refund or offer a suitable alternative."
+              }
+            }
+          ]
+        }
+      ]
+    }
   </script>
 </html>
