@@ -10,7 +10,7 @@
       href="https://fonts.googleapis.com/css2?family=Abhaya+Libre&display=swap"
       rel="stylesheet" />
     <style>
-      body {
+      .bangle-size-container {
         margin: 0;
         font-family: 'Abhaya Libre', serif;
         background-color: #fff;
@@ -18,9 +18,10 @@
         padding: 1rem;
         line-height: 1.7;
         letter-spacing: 1px;
+        font-size: 1rem;
       }
 
-      select {
+      .bangle-size-container .section .size-converter select {
         appearance: none;
         -webkit-appearance: none;
         -moz-appearance: none;
@@ -40,13 +41,13 @@
         transition: border 0.3s ease, box-shadow 0.3s ease;
       }
 
-      select:focus {
+      .bangle-size-container .section .size-converter select:focus {
         outline: none;
         border-color: #b68c46;
         box-shadow: 0 0 0 3px rgba(207, 169, 107, 0.3);
       }
 
-      label {
+      .bangle-size-container .section .size-converter label {
         font-weight: bold;
         margin-bottom: 0.25rem;
         display: inline-block;
@@ -54,24 +55,24 @@
         color: #b68c46;
       }
 
-      header {
+      .bangle-size-container .header {
         text-align: center;
         padding: 2rem 1rem;
       }
 
-      header h1 {
+      .bangle-size-container .header h1 {
         font-size: 2.5rem;
         color: #cfa96b;
         margin-bottom: 0.5rem;
       }
 
-      .section {
+      .bangle-size-container .section {
         max-width: 900px;
         margin: 0 auto;
         padding: 1rem;
       }
 
-      h2 {
+      .bangle-size-container .section h2 {
         color: #b68c46;
         margin-top: 2rem;
       }
@@ -80,7 +81,7 @@
         font-size: 0.75rem;
       }
 
-      table {
+      .bangle-size-container .section table {
         width: 100%;
         border-collapse: collapse;
         margin-top: 1rem;
@@ -92,8 +93,8 @@
         gap: 0.25rem;
       }
 
-      th,
-      td {
+      .bangle-size-container .section th,
+      .bangle-size-container .section td {
         border: 1px solid #ddd;
         padding: 0.75rem;
         text-align: center;
@@ -176,14 +177,14 @@
         color: #555;
       }
 
-      footer {
+      .bangle-size-container .footer {
         text-align: center;
         font-size: 0.9rem;
         color: #777;
         margin-top: 3rem;
       }
 
-      tr.highlight {
+      .bangle-size-container .section tr.highlight td {
         background-color: #fcf2da;
         font-weight: bold;
       }
@@ -219,13 +220,13 @@
       }
     </style>
   </head>
-  <body>
-    <header>
+  <section class="bangle-size-container">
+    <div class="header">
       <h1>Bangle Size Converter</h1>
       <p>Your Perfect Fit, Delivered.</p>
-    </header>
+    </div>
 
-    <section class="section">
+    <div class="section">
       <p>
         We understand—shopping for bangles without trying them on can
         feel a little daunting. That’s why we’re here to make it
@@ -265,12 +266,8 @@
         </li>
       </ul>
 
-      <!-- Insert the following block just before the "Quick Ring Size Conversion Chart" heading -->
-
       <h2>Interactive Bangle Size Converter</h2>
-      <div
-        class="size-converter converter"
-        style="">
+      <div class="size-converter converter">
         <div>
           <label for="bangleSize">Bangle Size</label>
           <select
@@ -499,7 +496,7 @@
           >Explore Our Bangles % Bracelets</a
         >
       </div>
-    </section>
+    </div>
 
     <section class="faq-section">
       <h2>Frequently Asked Questions</h2>
@@ -591,9 +588,9 @@
       </div>
     </section>
 
-    <footer>
+    <div class="footer">
       &copy; Malani Jewelers | The perfect fit, anywhere in the world.
-    </footer>
+    </div>
 
     <script>
       document.querySelectorAll('.faq-question').forEach((button) => {
@@ -754,5 +751,95 @@
 
       populateDropdowns();
     </script>
-  </body>
+  </section>
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "WebPage",
+          "@id": "https://malanijewelers.com/pages/bangle-size-converter",
+          "url": "https://malanijewelers.com/pages/bangle-size-converter",
+          "name": "Bangle Size Converter – Find Your Perfect Fit | Malani Jewelers",
+          "description": "Use our Bangle Size Converter to find the ideal fit. Quick and easy sizing guide to ensure comfort and elegance with every Malani Jewelers bangle.",
+          "inLanguage": "en-US",
+          "isPartOf": {
+            "@type": "WebSite",
+            "@id": "https://www.malanijewelers.com"
+          },
+          "publisher": {
+            "@id": "https://www.malanijewelers.com/#organization"
+          }
+        },
+        {
+          "@type": "Organization",
+          "@id": "https://www.malanijewelers.com/#organization",
+          "name": "Malani Jewelers",
+          "url": "https://www.malanijewelers.com",
+          "logo": {
+            "@type": "ImageObject",
+            "url": "https://malanijewelers.myshopify.com/cdn/shop/files/Malani_Jewelers_Logo_Flat.webp"
+          },
+          "sameAs": [
+            "https://www.facebook.com/Malanijewelers",
+            "https://www.instagram.com/malani_jewelers/",
+            "https://www.pinterest.com/malani_jewelers"
+          ]
+        },
+        {
+          "@type": "FAQPage",
+          "mainEntity": [
+            {
+              "@type": "Question",
+              "name": "How do I know my correct bangle size?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "The easiest way to find your bangle size is to measure the diameter of a bangle that fits you well or use a measuring tape to determine the circumference of your hand. Then match that measurement with our Bangle Size Chart or use our interactive converter above."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "What is the difference between bangle size and diameter?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Bangle size is a standardized label used in South Asian jewelry sizing, while diameter refers to the inner measurement of the bangle in inches."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Can I convert my wrist circumference to bangle size?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Yes. Measure around your knuckles with your thumb tucked in, and use the circumference value to find your closest bangle size using our chart or dropdown converter."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "What if my bangle size falls between two sizes?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "If your measurement falls between two bangle sizes, choose the larger size. A slightly looser bangle will be easier to slide over your hand and more comfortable for daily wear."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Do bangles come in adjustable sizes?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Yes, many modern bangles come in openable or adjustable styles, ideal if you're unsure of your size or purchasing as a gift."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Can I get help with bangle sizing before placing my order?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Absolutely! Our experts at Malani Jewelers are happy to assist you over a quick call or video chat to ensure you choose the perfect size and style."
+              }
+            }
+          ]
+        }
+      ]
+    }
+  </script>
 </html>
