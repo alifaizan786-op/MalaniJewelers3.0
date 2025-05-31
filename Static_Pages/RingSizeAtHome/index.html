@@ -6,41 +6,47 @@
       name="viewport"
       content="width=device-width, initial-scale=1.0" />
     <title>Find Your Ring Size | Malani Jewelers</title>
+    <link
+      rel="stylesheet"
+      href="https://malanijewelers.myshopify.com/cdn/shop/t/2/assets/fonts.css?v=39467741624602468861745603739" />
     <style>
-      :root {
-        --accent: #cfa96b;
-        --bg: #fff;
-        --text: #333;
-        --border: #e0e0e0;
-      }
-
-      @font-face {
-        font-family: 'Abhaya Libre';
-        src: url('http://malanijewelers.myshopify.com/cdn/shop/t/2/assets/AbhayaLibre-Regular.ttf')
-          format('truetype');
-        font-weight: 400;
-        font-style: normal;
-      }
-
-      body {
+      .ring-size-at-home-converter {
         margin: 0;
         font-family: 'Abhaya Libre', serif;
         line-height: 1.7;
         letter-spacing: 1px;
-        background-color: var(--bg);
-        color: var(--text);
+        background-color: #fff;
+        color: #333;
         line-height: 1.6;
         padding: 1rem;
       }
 
-      header {
+      .cta {
+        background: white;
+        color: #cfa96b;
+        border: 1px solid #cfa96b;
+        display: inline-block;
+        padding: 1rem 2rem;
+        border-radius: 30px;
+        margin-top: 2rem;
+        text-decoration: none;
+        transition: 0.3s ease;
+      }
+
+      .cta:hover {
+        background: #cfa96b;
+        color: white;
+        border: 1px solid white;
+      }
+
+      .ring-size-at-home-converter .header {
         text-align: center;
         padding: 2rem 1rem 1rem;
       }
 
-      header h1 {
+      .ring-size-at-home-converter .header h1 {
         font-size: 2.5rem;
-        color: var(--accent);
+        color: #cfa96b;
         margin-bottom: 0.5rem;
       }
 
@@ -58,27 +64,27 @@
         flex-wrap: wrap;
       }
 
-      .tab {
+      .tabButton {
         cursor: pointer;
         padding: 0.75rem 1.25rem;
-        border: 2px solid var(--accent);
+        border: 2px solid #cfa96b;
         background: none;
-        color: var(--accent);
+        color: #cfa96b;
         font-weight: bold;
         border-radius: 25px;
         transition: 0.3s;
       }
 
-      .tab.active,
-      .tab:hover {
-        background-color: var(--accent);
+      .tabButton.active,
+      .tabButton:hover {
+        background-color: #cfa96b;
         color: white;
       }
 
       .tab-content {
         display: none;
         max-width: 600px;
-        border-top: 1px solid var(--border);
+        border-top: 1px solid #e0e0e0;
         padding-top: 1rem;
         animation: fadeIn 0.4s ease-in;
       }
@@ -98,27 +104,27 @@
         }
       }
 
-      .table {
+      .ring-size-at-home-converter .tab-container .table {
         width: 100%;
         border-collapse: collapse;
         margin-top: 1rem;
       }
 
-      .table th,
-      .table td {
-        border: 1px solid var(--border);
+      .ring-size-at-home-converter .tab-container .table th,
+      .ring-size-at-home-converter .tab-container .table td {
+        border: 1px solid #e0e0e0;
         padding: 0.5rem;
         text-align: center;
       }
 
-      .toggle-section {
+      .ring-size-at-home-converter .toggle-section {
         margin-top: 2rem;
         max-width: 600px;
         margin-inline: auto;
       }
 
-      .toggle-header {
-        background-color: var(--accent);
+      .ring-size-at-home-converter .toggle-section .toggle-header {
+        background-color: #cfa96b;
         color: white;
         padding: 0.75rem 1rem;
         cursor: pointer;
@@ -126,7 +132,7 @@
         border-radius: 5px;
       }
 
-      .toggle-body {
+      .ring-size-at-home-converter .toggle-section .toggle-body {
         max-height: 0;
         overflow: hidden;
         transition: max-height 0.4s ease;
@@ -134,12 +140,12 @@
         padding: 0 1rem;
       }
 
-      .toggle-body.open {
+      .ring-size-at-home-converter .toggle-section .toggle-body.open {
         padding: 1rem;
         max-height: 500px;
       }
 
-      footer {
+      .ring-size-at-home-converter .footer {
         text-align: center;
         margin: 2rem 0 1rem;
         font-size: 0.95rem;
@@ -203,24 +209,40 @@
       }
     </style>
   </head>
-  <body>
-    <header>
+  <section class="ring-size-at-home-converter">
+    <div class="header">
       <h1>Find Your Ring Size at Home</h1>
       <p>
         Shopping online should feel just as magical. Here's how to get
         your perfect fit the Malani way.
       </p>
-    </header>
-
-    <section class="tab-container">
+    </div>
+    <div
+      class="visually-hidden"
+      style="
+        position: absolute !important;
+        height: 1px;
+        width: 1px;
+        overflow: hidden;
+        clip: rect(1px, 1px, 1px, 1px);
+        white-space: nowrap;
+      ">
+      <h1>How to Measure Your Ring Size at Home</h1>
+      <h2>Easy Methods to Find Your Ring Size</h2>
+      <h3>Tools You Can Use for Measuring Rings</h3>
+      <h4>Printable Ring Size Chart & Step-by-Step Guide</h4>
+      <h5>Tips to Ensure an Accurate Measurement</h5>
+      <h6>Why Accurate Ring Sizing Matters for Comfort & Style</h6>
+    </div>
+    <div class="tab-container">
       <div class="tabs">
         <button
-          class="tab active"
+          class="tabButton active"
           data-tab="method1">
           Use a Ring You Own
         </button>
         <button
-          class="tab"
+          class="tabButton"
           data-tab="method2">
           String or Paper Method
         </button>
@@ -355,13 +377,13 @@
           </tbody>
         </table>
       </div>
-    </section>
+    </div>
 
-    <section class="toggle-section">
+    <div class="toggle-section">
       <div class="toggle-header">
         💡 Malani Tips for Measuring Like a Pro
       </div>
-      <div class="toggle-body">
+      <div class="toggle-body open">
         <ul>
           <li>Measure in the evening for best accuracy.</li>
           <li>Wider bands may require half a size up.</li>
@@ -369,9 +391,27 @@
           <li>When in doubt, go slightly bigger.</li>
         </ul>
       </div>
-    </section>
+    </div>
 
-    <div class="faq-section goldrate-container">
+    <div style="text-align: center">
+      <a
+        href="#"
+        class="cta"
+        >Explore Men's Rings</a
+      >
+      <a
+        href="#"
+        class="cta"
+        >Explore Women's Rings</a
+      >
+      <a
+        href="#"
+        class="cta"
+        >Explore Kid's Rings</a
+      >
+    </div>
+
+    <div class="faq-section">
       <h2>FAQ</h2>
 
       <div class="faq-item">
@@ -473,13 +513,13 @@
       </div>
     </div>
 
-    <footer>
+    <div class="footer">
       💍 Need a second opinion? We’re happy to help—call, chat, or
       email us for guidance.
-    </footer>
+    </div>
 
     <script>
-      const tabs = document.querySelectorAll('.tab');
+      const tabs = document.querySelectorAll('.tabButton');
       const contents = document.querySelectorAll('.tab-content');
 
       tabs.forEach((tab) => {
@@ -512,5 +552,103 @@
         });
       });
     </script>
-  </body>
+  </section>
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "WebPage",
+          "@id": "https://malanijewelers.com/pages/measure-ring-size-at-home",
+          "url": "https://malanijewelers.com/pages/measure-ring-size-at-home",
+          "name": "Measure Ring Size at Home Accurately | Malani Jewelers",
+          "description": "Learn how to measure your ring size at home with our simple guide. Achieve a perfect fit with Malani Jewelers' accurate sizing tips and charts.",
+          "inLanguage": "en-US",
+          "isPartOf": {
+            "@type": "WebSite",
+            "@id": "https://www.malanijewelers.com"
+          },
+          "publisher": {
+            "@id": "https://www.malanijewelers.com/#organization"
+          }
+        },
+        {
+          "@type": "Organization",
+          "@id": "https://www.malanijewelers.com/#organization",
+          "name": "Malani Jewelers",
+          "url": "https://www.malanijewelers.com",
+          "logo": {
+            "@type": "ImageObject",
+            "url": "https://malanijewelers.myshopify.com/cdn/shop/files/Malani_Jewelers_Logo_Flat.webp"
+          },
+          "sameAs": [
+            "https://www.facebook.com/Malanijewelers",
+            "https://www.instagram.com/malani_jewelers/",
+            "https://www.pinterest.com/malani_jewelers"
+          ]
+        },
+        {
+          "@type": "FAQPage",
+          "mainEntity": [
+            {
+              "@type": "Question",
+              "name": "Does Malani Jewelers offer ring resizing services?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Yes, Malani Jewelers offers in-house ring resizing services performed by expert goldsmiths using precision tools to ensure the perfect fit for your finger and your jewelry."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Can I use any string to measure my ring size at home?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Not quite. We recommend using a non-stretchy string or a strip of paper to ensure accurate measurement. Elastic or stretchy materials can distort the result and lead to a misfit."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "What’s the best time of day to measure my ring size?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "The evening is ideal. Fingers naturally swell throughout the day, so measuring at night gives the most accurate sizing for comfort and wearability."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "How accurate is the at-home ring sizing method?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Our at-home guide is highly accurate when followed correctly. For best results, measure twice and compare against our printable size chart or call us if you need help—we’re happy to assist, no purchase required."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Should I size up for wider rings?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Yes, wider bands tend to fit more snugly. If you’re choosing a thick band, consider going half a size up for a more comfortable fit."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "What if I’m unsure about my size after measuring?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "When in doubt, size up slightly—it’s easier to adjust a ring that’s a bit loose than one that’s too tight. You can also reach out to our team for a second opinion anytime."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Does Malani Jewelers help with ring sizing even if I haven’t made a purchase yet?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Absolutely. Whether you’re a customer or just browsing, our jewelry experts are here to help you find the perfect fit—with no pressure and no purchase necessary."
+              }
+            }
+          ]
+        }
+      ]
+    }
+  </script>
 </html>
