@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
+    <title>Document</title>
+    <style>
+      .sellingPoints {
+        font-family: 'Abhaya Libre';
+        font-size: 1rem;
+        font-weight: 400;
+        letter-spacing: 0.075rem;
+        padding: 2rem 0rem;
+      }
+      .item {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+      }
+    </style>
+  </head>
+  <body>
+    <section class="sellingPoints owl-carousel owl-theme">
+      <div class="item">
+        <img
+          src="./assets/24-7Support.svg"
+          width="100"
+          height="100"
+          alt=""
+          srcset="" />
+        <h3>27/7 Support</h3>
+      </div>
+      <div class="item">
+        <img
+          src="./assets/Affirm.svg"
+          width="100"
+          height="100"
+          alt=""
+          srcset="" />
+        <h3>Easy Installments</h3>
+      </div>
+      <div class="item">
+        <img
+          src="./assets/CertOfAuth.svg"
+          width="100"
+          height="100"
+          alt=""
+          srcset="" />
+        <h3>Certificate Of Authenticity</h3>
+      </div>
+      <div class="item">
+        <img
+          src="./assets/Exchange.svg"
+          width="100"
+          height="100"
+          alt=""
+          srcset="" />
+        <h3>Hassle Free Exchange</h3>
+      </div>
+      <div class="item">
+        <img
+          src="./assets/MoneyBack.svg"
+          width="100"
+          height="100"
+          alt=""
+          srcset="" />
+        <h3>15 Day Money Back Garauntee*</h3>
+      </div>
+      <div class="item">
+        <img
+          src="./assets/FreeShipping.svg"
+          width="100"
+          height="100"
+          alt=""
+          srcset="" />
+        <h3>Free Shipping</h3>
+      </div>
+      <div class="item">
+        <img
+          src="./assets/SecurePayment.svg"
+          width="100"
+          height="100"
+          alt=""
+          srcset="" />
+        <h3>Secure Payment Gateway</h3>
+      </div>
+    </section>
+    <script>
+      $(document).ready(function () {
+        $('.owl-carousel').owlCarousel({
+          loop: true,
+          margin: 30,
+          autoplay: true,
+          autoplayTimeout: 3000,
+          smartSpeed: 600,
+          nav: false,
+          dots: false,
+          responsive: {
+            0: {
+              items: 2,
+            },
+            600: {
+              items: 3,
+            },
+            1000: {
+              items: 4,
+            },
+          },
+        });
+      });
+    </script>
+  </body>
+</html>
