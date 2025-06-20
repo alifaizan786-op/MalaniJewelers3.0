@@ -7,35 +7,56 @@ document.addEventListener('DOMContentLoaded', async () => {
   const config = await ipcRenderer.invoke('get-store-codes');
 
   storeIds.forEach((storeId) => {
-    const input = document.querySelector(`#${storeId} input`);
-    const label = document.querySelector(`#${storeId} label`);
+    const storeNum = storeId.split('-')[1];
+    const storeCodeInput = document.querySelector(
+      `#storeCode-${storeNum}`
+    );
+    const storeCodeLabel = document.querySelector(
+      `#label-storeCode-${storeNum}`
+    );
+    const locationIdInput = document.querySelector(
+      `#shopifyLocationId-${storeNum}`
+    );
+    const locationIdLabel = document.querySelector(
+      `#label-shopifyLocationId-${storeNum}`
+    );
 
-    const code = config[storeId];
+    const configEntry = config[storeId];
 
-    if (code) {
+    if (configEntry) {
       const heading = document.createElement('h2');
-      heading.textContent = code;
-      input.replaceWith(heading);
-      label.remove();
+      heading.textContent = `${configEntry.storeCode} (Location: ${configEntry.shopifyLocationId})`;
+      storeCodeInput.replaceWith(heading);
+      storeCodeLabel.remove();
+      locationIdInput.remove();
+      locationIdLabel.remove();
     } else {
       const saveBtn = document.createElement('button');
-      saveBtn.textContent = 'Save Store Code';
-      input.after(saveBtn);
+      saveBtn.textContent = 'Save Store Config';
+      locationIdInput.after(saveBtn);
 
       saveBtn.addEventListener('click', async () => {
-        const codeValue = input.value.trim();
-        if (!codeValue) return;
+        const storeCode = storeCodeInput.value.trim();
+        const locationId = locationIdInput.value.trim();
+
+        if (!storeCode || !locationId) {
+          alert('Both Store Code & Shopify Location ID required');
+          return;
+        }
 
         await ipcRenderer.invoke(
           'save-store-code',
           storeId,
-          codeValue
+          storeCode,
+          locationId
         );
 
         const heading = document.createElement('h2');
-        heading.textContent = codeValue;
-        input.replaceWith(heading);
-        label.remove();
+        heading.textContent = `${storeCode} (Location: ${locationId})`;
+        storeCodeInput.replaceWith(heading);
+        storeCodeLabel.remove();
+        locationIdInput.remove();
+        locationIdLabel.remove();
         saveBtn.remove();
       });
     }
@@ -58,22 +79,28 @@ document.addEventListener('DOMContentLoaded', async () => {
     );
     const statusBox = document.getElementById(`status-${storeNum}`);
 
-    runBtn?.addEventListener('click', (e) => {
+    runBtn?.addEventListener('click', async (e) => {
       e.preventDefault();
       e.stopPropagation();
       const backDays = parseInt(backDateInput?.value || '0');
       const interval = parseInt(intervalInput?.value || '0') * 1000;
 
-      const storeCode = document.querySelector(
-        `#${storeId} h2`
-      )?.textContent;
+      // Now read from config
+      const configEntry = config[storeId];
+      if (!configEntry) {
+        alert(
+          'Store config missing — please save store code and location ID first.'
+        );
+        return;
+      }
 
-      if (!storeCode) return alert('Store code is missing.');
+      const storeCode = configEntry.storeCode;
+      const shopifyLocationId = configEntry.shopifyLocationId;
 
-      // Save state
       storeState[storeId] = {
         firstRun: true,
         storeCode,
+        shopifyLocationId,
         backDays,
         interval,
       };
@@ -82,7 +109,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         `Starting sync with interval ${interval / 1000}s`,
         logBox,
         storeCode
-      ); // ✅ storeCode passed
+      );
 
       syncNow(storeId);
       if (interval) {
@@ -91,27 +118,60 @@ document.addEventListener('DOMContentLoaded', async () => {
     });
 
     function syncNow(storeId) {
-      const { storeCode, firstRun, backDays } = storeState[storeId];
+      const state = storeState[storeId];
+      const { storeCode, shopifyLocationId, backDays, firstRun } =
+        state;
 
-      // Simulate reading DBF
       statusBox.textContent = 'Status: Reading DBF';
       log(`Reading DBF`, logBox, storeCode);
-      
-      ipcRenderer.invoke('read-sarecord', storeCode, backDays).then(
-        (result) => {
-         
-        }
-      );
 
+      // Determine what date range to use
+      const actualBackDate = firstRun ? backDays : 0;
 
+      ipcRenderer
+        .invoke('read-sarecord', storeCode, actualBackDate)
+        .then(async (result) => {
+          if (!result || result.length === 0) {
+            log(`No records found`, logBox, storeCode);
+            return;
+          }
 
+          result.forEach((record) => {
+            const resultSku = record?.SKU_NO?.trim();
+            if (resultSku) {
+              log(`${resultSku} was sold`, logBox, storeCode);
+            }
+          });
+
+          statusBox.textContent = `Checking on shopify to find SKU's`;
+
+          log(`Checking on shopify to find SKU's`, logBox, storeCode);
+
+          ipcRenderer
+            .invoke(
+              'sync-shopify-batch',
+              storeCode,
+              shopifyLocationId,
+              result
+            )
+            .then((successCount) => {
+              log(
+                `✅ Synced ${successCount} SKUs`,
+                logBox,
+                storeCode
+              );
+              storeState[storeId].firstRun = false;
+            });
+
+          // After first run completed, disable backDate for next interval runs
+          storeState[storeId].firstRun = false;
+        });
     }
 
     function log(text, logBox, storeCode = 'unknown') {
       const fullLine = `${now()} | ${text}`;
       logBox.innerHTML += fullLine + '<br />';
       logBox.scrollTop = logBox.scrollHeight;
-
       if (storeCode && storeCode !== 'unknown') {
         ipcRenderer.invoke('write-log', storeCode, text);
       } else {

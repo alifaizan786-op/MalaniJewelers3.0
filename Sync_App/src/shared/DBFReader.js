@@ -11,56 +11,50 @@ async function readSARECORD(storeCode, daysBack = 0) {
   try {
     const buffer = fs.readFileSync(filePath);
     const records = parseDBF(buffer);
-
     console.log(
       `✅ Read ${storeCode} DBF:`,
       records.length,
       'records'
     );
 
+    // Common SKU filter function
+    const excludeDummySkus = (rec) => {
+      const sku = rec?.SKU_NO?.toString().trim();
+      return !(sku && sku.endsWith('00001'));
+    };
+
+    let filteredRecords = [];
 
     if (daysBack > 0) {
       const fromDate = new Date();
       fromDate.setDate(fromDate.getDate() - daysBack);
 
-      const filtered = records.filter((rec) => {
-        const date = new Date(rec.DATE);
-        return date >= fromDate;
-      });
+      filteredRecords = records
+        .filter((rec) => {
+          const date = new Date(rec.DATE);
+          return date >= fromDate;
+        })
+        .filter(excludeDummySkus);
 
       console.log(
         `Filtered ${storeCode} DBF:`,
-        filtered.length,
+        filteredRecords.length,
         'records'
       );
-
-      // return filtered;
     } else {
-      const today = new Date();
+      const today = new Date().toISOString().split('T')[0];
+      filteredRecords = records
+        .filter((rec) => rec.DATE === today)
+        .filter(excludeDummySkus);
 
-      const todayString = today.toISOString().split('T')[0];
-      const todayRecords = records.filter((rec) => {
-        return rec.DATE === todayString;
-      });
       console.log(
         `Filtered ${storeCode} DBF for today:`,
-        todayRecords.length,
+        filteredRecords.length,
         'records'
       );
     }
 
-    // if (!daysBack) return records;
-
-    // // Filter by backDate
-    // const fromDate = new Date();
-    // fromDate.setDate(fromDate.getDate() - daysBack);
-
-    // const filtered = records.filter((rec) => {
-    //   const date = new Date(rec.DATE);
-    //   return date >= fromDate;
-    // });
-
-    // return filtered;
+    return filteredRecords;
   } catch (err) {
     console.error(`❌ Failed to read ${storeCode} DBF:`, err);
     throw err;

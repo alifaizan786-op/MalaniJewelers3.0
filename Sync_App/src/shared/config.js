@@ -1,7 +1,12 @@
 const fs = require('fs');
 const path = require('path');
 
-const configPath = path.join(__dirname, '..', '..', 'store-config.json');
+const configPath = path.join(
+  __dirname,
+  '..',
+  '..',
+  'store-config.json'
+);
 
 function loadStoreCodes() {
   if (fs.existsSync(configPath)) {
@@ -10,9 +15,9 @@ function loadStoreCodes() {
   return {};
 }
 
-function saveStoreCode(storeId, storeCode) {
+function saveStoreCode(storeId, storeCode, shopifyLocationId) {
   const config = loadStoreCodes();
-  config[storeId] = storeCode;
+  config[storeId] = { storeCode, shopifyLocationId };
   fs.writeFileSync(configPath, JSON.stringify(config, null, 2));
 }
 

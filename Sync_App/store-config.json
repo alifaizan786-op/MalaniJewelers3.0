@@ -1,5 +1,14 @@
 {
-  "store-1": "ATL",
-  "store-2": "AI",
-  "store-3": "AS"
+  "store-1": {
+    "storeCode": "ATL",
+    "shopifyLocationId": "105327395099"
+  },
+  "store-2": {
+    "storeCode": "AI",
+    "shopifyLocationId": "105327395099"
+  },
+  "store-3": {
+    "storeCode": "AS",
+    "shopifyLocationId": "105327395099"
+  }
 }
