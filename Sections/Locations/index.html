@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      html {
+        height: 100%;
+        width: 100%;
+      }
+
+      body {
+        width: 100%;
+        min-height: 100%;
+        line-height: 1;
+        font-family: sans-serif;
+      }
+
+      h1,
+      h2,
+      h3,
+      h4,
+      h5,
+      h6 {
+        font-size: 100%;
+      }
+
+      input,
+      select,
+      option,
+      optgroup,
+      textarea,
+      button,
+      pre,
+      code {
+        font-size: 100%;
+        font-family: inherit;
+      }
+
+      ol,
+      ul {
+        list-style: none;
+      }
+
+      a {
+        text-decoration: none;
+        color: #fff;
+      }
+
+      .showrooms_header h1 {
+        font-size: 3rem;
+        font-variant: small-caps;
+        padding: 0;
+        margin: 0;
+        font-weight: 400;
+        font-family: 'Abhaya Libre';
+      }
+
+      .showrooms_header span {
+        font-size: 0.75rem;
+        text-transform: uppercase;
+        padding: 0;
+        margin: 0;
+        font-weight: 400;
+        color: #000000bd;
+      }
+
+      .showrooms_header {
+        color: #000;
+        font-family: 'Abhaya Libre';
+        font-style: normal;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        flex-direction: column;
+        gap: 0.5rem;
+        margin-top: 2rem;
+      }
+
+      .showroom_tile.active {
+        width: 18.75rem;
+        height: 9.375rem;
+
+        background: #fff;
+        box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+      }
+
+      .showroom_tile h2 {
+        font-family: 'Abhaya Libre';
+        font-size: 3.125rem;
+        font-style: normal;
+        font-weight: 400;
+        font-variant: small-caps;
+        border-bottom: 1px solid #00000057;
+        padding: 0;
+        text-align: center;
+      }
+
+      .showroom_tile p {
+        font-family: 'Abhaya Libre';
+        font-size: 1.5rem;
+        font-style: normal;
+        font-weight: 400;
+        line-height: normal;
+        text-transform: uppercase;
+      }
+
+      .showroom_tile {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        padding: 1rem;
+        border-radius: 0.8125rem;
+        margin: 1rem;
+      }
+
+      .showrooms_list {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-evenly;
+        align-items: center;
+        margin: 2.5rem 0rem;
+        flex-wrap: wrap;
+      }
+
+      .showroom_tile {
+        transition: transform 1s ease, box-shadow 1s ease;
+        opacity: 0.6;
+        transform: scale(1);
+      }
+
+      .showroom_tile.active {
+        transform: scale(1.15);
+        box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.3);
+        opacity: 1;
+        z-index: 1;
+      }
+
+      /* Mobile (screens smaller than 768px) */
+      @media (max-width: 767px) {
+        .showroom_tile.active {
+          width: 90%;
+          height: auto; /* Optional: auto-adjust height for smaller screens */
+        }
+
+        .showroom_tile.active {
+          box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.3);
+          opacity: 1;
+          z-index: 1;
+          transform: none; /* 👈 This removes the scale */
+        }
+      }
+
+      .showroom_tile img {
+        transition: opacity 1s ease;
+        opacity: 1;
+      }
+
+      .showroom_tile img.fade-out {
+        opacity: 0;
+      }
+    </style>
+    <!-- Owl Carousel CSS -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css" />
+  </head>
+  <body>
+    <section class="showrooms_header">
+      <span>Our State Of The Art</span>
+      <h1>Showrooms</h1>
+    </section>
+    <section class="showrooms_list">
+      <div class="showroom_tile active">
+        <img
+          src="./assets/icons/Atlanta_Gerogia_Active.svg"
+          alt=""
+          srcset="" />
+        <h2>Atlanta</h2>
+        <p>Georgia</p>
+      </div>
+      <div class="showroom_tile">
+        <img
+          src="./assets/icons/Tampa_Florida.svg"
+          alt=""
+          srcset="" />
+        <h2>Tampa</h2>
+        <p>Florida</p>
+      </div>
+      <div class="showroom_tile">
+        <img
+          src="./assets/icons/Dallas_Texas.svg"
+          alt=""
+          srcset="" />
+        <h2>Dallas</h2>
+        <p>Texas</p>
+      </div>
+    </section>
+  </body>
+  <script>
+    const tiles = document.querySelectorAll('.showroom_tile');
+    let currentIndex = 0;
+
+    function cycleActiveTile() {
+      tiles.forEach((tile, index) => {
+        const img = tile.querySelector('img');
+        const src = img.getAttribute('src');
+
+        tile.classList.remove('active');
+
+        // Revert image to non-active
+        if (src.includes('_Active')) {
+          const newSrc = src.replace('_Active', '');
+          fadeImageChange(img, newSrc);
+        }
+      });
+
+      const activeTile = tiles[currentIndex];
+      const img = activeTile.querySelector('img');
+      const src = img.getAttribute('src');
+
+      activeTile.classList.add('active');
+
+      if (!src.includes('_Active')) {
+        const parts = src.split('.');
+        const newSrc =
+          parts.slice(0, -1).join('.').replace(/(.+)$/, '$1_Active') +
+          '.' +
+          parts.pop();
+        fadeImageChange(img, newSrc);
+      }
+
+      currentIndex = (currentIndex + 1) % tiles.length;
+    }
+
+    function fadeImageChange(img, newSrc) {
+      img.classList.add('fade-out');
+      setTimeout(() => {
+        img.setAttribute('src', newSrc);
+        img.classList.remove('fade-out');
+      }, 500); // half of transition time for smooth fade-out before switch
+    }
+
+    cycleActiveTile();
+    setInterval(cycleActiveTile, 3000);
+
+    function isMobile() {
+      return window.innerWidth <= 768;
+    }
+
+    $(document).ready(function () {
+      if (isMobile()) {
+        $('.showrooms_list').addClass('owl-carousel');
+        $('.owl-carousel').owlCarousel({
+          items: 1,
+          loop: true,
+          margin: 10,
+          nav: false,
+          dots: false,
+          autoplay: true,
+          autoplayTimeout: 3000,
+          autoplayHoverPause: true,
+        });
+      }
+    });
+  </script>
+</html>

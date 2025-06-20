@@ -1,0 +1,338 @@
+{% schema %}
+{
+  "name": "Shop By Category",
+  "settings": [],
+  "blocks": [
+    {
+      "type": "category",
+      "name": "Category",
+      "settings": [
+        {
+          "type": "select",
+          "id": "group",
+          "label": "Group",
+          "options": [
+            { "value": "women", "label": "Women" },
+            { "value": "men", "label": "Men" },
+            { "value": "kids", "label": "Kids" }
+          ],
+          "default": "women"
+        },
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Category Image"
+        },
+        {
+          "type": "text",
+          "id": "alt_text",
+          "label": "Image Alt Text"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Category Title"
+        },
+        {
+          "type": "url",
+          "id": "link",
+          "label": "Link (optional)"
+        },
+        {
+          "type": "text",
+          "id": "starting_price",
+          "label": "Starting Price (e.g., $595)",
+          "default": "595"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Shop By Category",
+      "category": "Custom"
+    }
+  ]
+}
+{% endschema %}
+
+<section class="shop-by-category">
+  <h2>Shop By Category</h2>
+  <div class="toggle-container">
+    <div class="toggle" id="categoryToggle">
+      <div class="option" data-category="men">Men</div>
+      <div class="option active" data-category="women">Women</div>
+      <div class="option" data-category="kids">Kids</div>
+      <div class="slider" style="left: 33.3333%"></div>
+    </div>
+  </div>
+
+  {% assign groups = 'women,men,kids' | split: ',' %}
+  {% for group in groups %}
+    <div class="owl-carousel category-carousel" id="{{ group }}">
+      {% for block in section.blocks %}
+        {% if block.settings.group == group %}
+          <div>
+            {% assign collection = collections[block.settings.collection] %}
+            {% if collection %}
+              <a href="{{ block.settings.link }}" class="category-card">
+                <div class="category-card-image-wrapper">
+                  {{
+                    block.settings.image
+                    | image_url: width: 250, format: 'webp'
+                    | image_tag: height: 250, width: 250, loading: 'lazy', alt: block.settings.alt_text
+                    | escape
+                  }}
+                  <div class=" category-card-overlay">
+                    <div class="category-card-overlay-text">
+                      <div class="category-card-title">
+                        <h3>
+                          {{ block.settings.title -}}
+                        </h3>
+                      </div>
+                      {% if block.settings.starting_price != blank %}
+                        <div class="category-card-starting-price">
+                          <small>Starting at {{ block.settings.starting_price }}</small>
+                        </div>
+                      {% endif %}
+                    </div>
+                  </div>
+                </div>
+              </a>
+            {% endif %}
+          </div>
+        {% endif %}
+      {% endfor %}
+    </div>
+  {% endfor %}
+</section>
+
+<script>
+  $(document).ready(function () {
+    const $shopByCategory = $('.shop-by-category');
+
+    // Initialize only carousels inside "shop-by-category"
+    $shopByCategory.find('.owl-carousel').owlCarousel({
+      loop: true,
+      margin: 30,
+      autoplay: true,
+      autoplayTimeout: 3000,
+      smartSpeed: 600,
+      responsive: {
+        0: { items: 1, margin: 16 },
+        480: { items: 2 },
+        768: { items: 3 },
+        1024: { items: 4 },
+      },
+    });
+
+    //Go through each carousel on the page
+    $('.owl-carousel').each(function () {
+      //Find each set of dots in this carousel
+      $(this)
+        .find('.owl-dot')
+        .each(function (index) {
+          //Add one to index so it starts from 1
+          $(this).attr('aria-label', `Slide Number ${index + 1}`);
+        });
+    });
+
+    // Hide all category carousels initially
+    $shopByCategory.find('.category-carousel').removeClass('fade-in').hide();
+
+    // Show default (women)
+    const $default = $shopByCategory.find('#women');
+    $default.show();
+    setTimeout(() => $default.addClass('fade-in'), 10);
+
+    // Toggle logic
+    const options = $shopByCategory.find('.option');
+    const slider = $shopByCategory.find('.slider')[0];
+    const numOptions = 3;
+
+    function activateOption(index) {
+      options.removeClass('active');
+      const option = options.eq(index);
+      option.addClass('active');
+
+      slider.style.left = `${index * 33.3333}%`;
+
+      const selectedCategory = option.data('category');
+      $shopByCategory.find('.category-carousel').removeClass('fade-in').hide();
+      const $selected = $shopByCategory.find(`#${selectedCategory}`);
+      $selected.show();
+      setTimeout(() => $selected.addClass('fade-in'), 10);
+    }
+
+    options.each(function (index) {
+      $(this).on('click', function () {
+        activateOption(index);
+      });
+    });
+
+    // Force initial activation
+    activateOption(1);
+  });
+</script>
+
+<style>
+  .shop-by-category {
+    background: linear-gradient(180deg, #f9faf7 0%, #f8f8f8 21.63%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+    flex-direction: column;
+    padding: 1rem;
+  }
+
+  .shop-by-category h2 {
+    color: #000;
+    text-align: center;
+    font-family: 'Abhaya Libre';
+    font-size: 3rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    letter-spacing: 0.075rem;
+    margin: 0;
+  }
+
+  .shop-by-category .toggle-container {
+    text-align: center;
+  }
+
+  .shop-by-category .toggle-container .toggle {
+    position: relative;
+    display: flex;
+    background: #fff;
+    border: 2px solid #fff;
+    border-radius: 30px;
+    overflow: hidden;
+    width: 300px;
+    height: 40px;
+    cursor: pointer;
+  }
+
+  .shop-by-category .toggle-container .option {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #000;
+    z-index: 2;
+    transition: color 0.3s;
+    user-select: none;
+    position: relative;
+  }
+
+  .shop-by-category .toggle-container .option.active {
+    color: #fff;
+    font-weight: bold;
+  }
+
+  .shop-by-category .toggle-container .slider {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 33.3333%;
+    background: #000;
+    transition: left 0.3s ease;
+    z-index: 1;
+    border-radius: 30px;
+  }
+
+  .category-carousel {
+    display: none;
+    opacity: 0;
+    transform: scale(0.98);
+    transition: opacity 0.4s ease, transform 0.4s ease;
+  }
+
+  .category-carousel.fade-in {
+    display: block !important;
+    opacity: 1;
+    transform: scale(1);
+  }
+
+  .category-carousel h3.category-title {
+    text-align: center;
+    font-family: 'Abhaya Libre';
+    margin-top: 0.5rem;
+    font-size: 1.1rem;
+    color: #333;
+  }
+
+  .category-carousel a {
+    text-decoration: none;
+  }
+
+  @media (max-width: 767px) {
+    .shop-by-category h2 {
+      font-size: 2rem;
+    }
+  }
+
+  .category-card {
+    position: relative;
+    display: block;
+    text-decoration: none;
+    color: inherit;
+    width: fit-content;
+  }
+
+  .category-card .category-card-image-wrapper {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .category-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  .category-card .category-card-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 40%;
+    background: linear-gradient(to top, rgba(255, 255, 255, 0.9), transparent);
+    display: flex;
+    align-items: flex-end;
+    padding: 0.5rem;
+    box-sizing: border-box;
+    z-index: 2;
+  }
+
+  .category-card .category-card-overlay-text {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+    align-items: center;
+    padding: 0.5rem;
+  }
+
+  .category-card .category-card-overlay-text .title {
+    font-family: 'Abhaya Libre', serif;
+    font-size: 1rem;
+    font-weight: 600;
+    color: #000;
+  }
+
+  .category-card .category-card-overlay-text .price {
+    font-size: 0.9rem;
+    color: #333;
+  }
+
+  .category-card .category-card-overlay .category-card-overlay-text .category-card-title {
+    font-size: 1rem;
+    margin: 0;
+  }
+  .category-card .category-card-overlay .category-card-overlay-text .category-card-starting-price {
+    font-size: 1rem;
+  }
+</style>
