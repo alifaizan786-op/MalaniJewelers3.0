@@ -1,0 +1,520 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0" />
+    <title>Shipping Information - Malani Jewelers</title>
+    <style>
+      .shipping-page {
+        font-family: 'Abhaya Libre', sans-serif;
+        line-height: 1.7;
+        margin: 0;
+        padding: 0;
+        background-color: #fff;
+        color: #333;
+      }
+
+      .shipping-page .parallax-header {
+        position: relative;
+        overflow: hidden;
+        height: 350px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        text-align: center;
+        background-color: black;
+      }
+
+      .shipping-page .parallax-header::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        background-image: url('https://cdn.shopify.com/s/files/1/0930/1200/1051/files/Privacy_Policy_Banner.webp');
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center bottom;
+        transform: scale(1);
+        animation: ambientZoomDrift 90s ease-in-out infinite;
+        z-index: 0;
+      }
+
+      @keyframes ambientZoomDrift {
+        0% {
+          background-position: center 55%;
+          transform: scale(1.5);
+        }
+        50% {
+          background-position: center 40%;
+          transform: scale(1);
+        }
+        100% {
+          background-position: center 55%;
+          transform: scale(1.5);
+        }
+      }
+
+      .shipping-page .parallax-header .overlay {
+        position: relative;
+        z-index: 1;
+      }
+
+      .shipping-page .parallax-header .overlay {
+        background-color: rgba(
+          0,
+          0,
+          0,
+          0.5
+        ); /* dark overlay for contrast */
+        height: 100%;
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+      }
+
+      .shipping-page .parallax-header h1 {
+        font-size: 2.5rem;
+        margin: 0;
+        margin: 0;
+        font-size: 2.5rem;
+        letter-spacing: 1px;
+      }
+
+      .shipping-page .parallax-header .last-updated {
+        margin-top: 10px;
+        font-size: 1rem;
+        color: #eee;
+      }
+
+      .shipping-page .shipping-content {
+        max-width: 70%;
+        margin: 40px auto;
+        padding: 0 20px;
+      }
+
+      .shipping-page .shipping-content h2 {
+        color: #b68c46;
+        border-bottom: 2px solid #eee;
+        padding-bottom: 6px;
+        margin-top: 40px;
+        font-size: 1.6rem;
+      }
+
+      .shipping-page .shipping-content p {
+        margin: 15px 0;
+        font-size: 1.125rem;
+      }
+
+      .shipping-page .shipping-content ul li {
+        font-size: 1.125rem;
+      }
+
+      .shipping-page .shipping-content a {
+        color: #b68c46;
+        text-decoration: none;
+        font-weight: bold;
+      }
+
+      .shipping-page .shipping-content a:hover {
+        color: #8b6635;
+        text-decoration: underline;
+      }
+
+      .shipping-page .faq-section {
+        margin-top: 60px;
+      }
+
+      .shipping-page .faq-section h2 {
+        font-size: 1.6rem;
+        color: #b68c46;
+        margin-bottom: 30px;
+        border-bottom: 2px solid #eee;
+        padding-bottom: 6px;
+      }
+
+      .shipping-page .faq-section .faq-item {
+        margin-bottom: 20px;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+        overflow: hidden;
+      }
+
+      .shipping-page .faq-section .faq-item .faq-question {
+        background-color: #fdf9f3;
+        color: #333;
+        font-size: 1rem;
+        font-weight: bold;
+        width: 100%;
+        padding: 15px 20px;
+        text-align: left;
+        border: none;
+        cursor: pointer;
+        transition: background 0.3s;
+      }
+
+      .shipping-page .faq-section .faq-item .faq-question:hover {
+        background-color: #f4e7cf;
+      }
+
+      .shipping-page .faq-section .faq-item .faq-answer {
+        background-color: #fff;
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.3s ease;
+        padding: 0 20px;
+      }
+
+      .shipping-page .faq-section .faq-item .faq-answer p {
+        margin: 15px 0;
+        color: #555;
+      }
+
+      .highlight-box {
+        background-color: #fdf9f3;
+        border-left: 4px solid #b68c46;
+        padding: 20px;
+        margin: 25px 0;
+        border-radius: 0 5px 5px 0;
+      }
+
+      .highlight-box p {
+        margin: 10px 0;
+        color: #333;
+      }
+
+      @media (max-width: 600px) {
+        .shipping-page .parallax-header .overlay h1 {
+          font-size: 2rem;
+        }
+
+        .shipping-content {
+          padding: 0 15px;
+        }
+      }
+
+      @media (max-width: 1000px) {
+        .shipping-page .faq-section h2 {
+          font-size: 1.3rem;
+        }
+
+        .shipping-page .faq-section .faq-item .faq-question {
+          font-size: 2rem;
+          padding: 15px 20px;
+        }
+
+        .shipping-page .faq-section .faq-item .faq-answer {
+          font-size: 2rem;
+          padding: 0 16px;
+        }
+
+        .shipping-page .faq-section .faq-item .faq-answer p {
+          font-size: 2rem;
+        }
+      }
+      .shipping-content .split {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        gap: 20px;
+      }
+
+      .shipping-content .split img {
+        flex: 1;
+        max-width: 35%;
+        margin-right: 20px;
+        box-shadow: 0px 0px 2px 2px rgba(0, 0, 0, 0.2);
+      }
+
+      .shipping-content .split div {
+        flex: 1;
+        max-width: 60%;
+      }
+
+      .shipping-page .faq-section .faq-item.active .faq-answer {
+        max-height: 500px;
+        padding: 15px 20px;
+      }
+    </style>
+  </head>
+  <section>
+    <div class="shipping-page">
+      <div class="parallax-header">
+        <div class="background"></div>
+        <div class="overlay">
+          <h1>Shipping Information</h1>
+        </div>
+      </div>
+
+      <div class="shipping-content">
+        <p>
+          At Malani Jewelers, we are committed to ensuring your
+          precious jewelry arrives safely and securely. Please review
+          our shipping policies and procedures below to ensure a
+          smooth delivery experience.
+        </p>
+
+        <h2>Shipping Policy & Product Availability</h2>
+        <p>
+          All orders placed on this site are subject to product
+          availability and will be shipped according to
+          MalaniJewelers.com's shipping policies. We take great care
+          in processing each order to ensure the highest standards of
+          quality and security.
+        </p>
+
+        <h2>Missing or Damaged Items</h2>
+        <div class="highlight-box">
+          <p>
+            <strong>Important:</strong> In the rare event that your
+            order never arrives, notification of missing or damaged
+            items must be received within 3 days from receipt of the
+            shipment. MalaniJewelers.com reserves the right to request
+            additional information to verify the shipping of high
+            value orders.
+          </p>
+        </div>
+
+        <h2>Shipping Address Requirements</h2>
+        <p>
+          MalaniJewelers.com only ships to billing addresses for
+          security purposes. If you need an item shipped to a
+          different address, please contact us at
+          <a href="mailto:info@malanijewelers.com"
+            >info@malanijewelers.com</a
+          >. Our customer service team will work with you to
+          accommodate your shipping needs while maintaining security
+          protocols.
+        </p>
+
+        <h2>Customer Service & Support</h2>
+        <p>
+          If you are purchasing an item after our business hours, you
+          can send us an email at
+          <a href="mailto:info@malanijewelers.com"
+            >info@malanijewelers.com</a
+          >
+          and one of our customer service representatives will give
+          you a call as soon as possible.
+        </p>
+
+        <h2>Credit Card Authorization</h2>
+        <p>
+          To make your checkout process faster, please download our
+          <a
+            href="https://malanijewelers.com/CustDocs/MalaniCreditCardAuthorizationForm.pdf"
+            target="_blank"
+            >credit card authorization form</a
+          >, fill out all the information, and send it to us through
+          fax or as a scanned image.
+        </p>
+        <div class="highlight-box">
+          <p>
+            <strong>Please Note:</strong> If a customer has not filled
+            out the credit card authorization form, Malanijewelers.com
+            has the right to withhold the order until its completion.
+          </p>
+        </div>
+
+        <div class="faq-section">
+          <h2>Shipping FAQ</h2>
+
+          <div class="faq-item">
+            <button class="faq-question">
+              Do you ship to addresses other than the billing address?
+            </button>
+            <div class="faq-answer">
+              <p>
+                For security reasons, we typically only ship to
+                billing addresses. However, if you need delivery to a
+                different address, please contact us at
+                info@malanijewelers.com and we'll work with you to
+                find a solution.
+              </p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-question">
+              What should I do if my order is damaged or missing?
+            </button>
+            <div class="faq-answer">
+              <p>
+                You must notify us within 3 days of receiving your
+                shipment if there are any issues with missing or
+                damaged items. Contact us immediately at
+                info@malanijewelers.com.
+              </p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-question">
+              Is the credit card authorization form required?
+            </button>
+            <div class="faq-answer">
+              <p>
+                While not always required, completing the credit card
+                authorization form speeds up your checkout process.
+                For certain orders, we may hold shipment until this
+                form is completed.
+              </p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-question">
+              How can I contact customer service?
+            </button>
+            <div class="faq-answer">
+              <p>
+                You can reach our customer service team by emailing
+                info@malanijewelers.com. If you contact us after
+                business hours, one of our representatives will call
+                you back as soon as possible.
+              </p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-question">
+              What happens if my order is subject to additional
+              verification?
+            </button>
+            <div class="faq-answer">
+              <p>
+                For high-value orders, we reserve the right to request
+                additional information to verify shipping details.
+                This is done to ensure the security of your valuable
+                jewelry purchase.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      document.querySelectorAll('.faq-question').forEach((btn) => {
+        btn.addEventListener('click', () => {
+          const item = btn.parentElement;
+          item.classList.toggle('active');
+        });
+      });
+    </script>
+  </section>
+
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Do you ship to addresses other than the billing address?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "For security reasons, we typically only ship to billing addresses. However, if you need delivery to a different address, please contact us at info@malanijewelers.com and we'll work with you to find a solution."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What should I do if my order is damaged or missing?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "You must notify us within 3 days of receiving your shipment if there are any issues with missing or damaged items. Contact us immediately at info@malanijewelers.com."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Is the credit card authorization form required?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "While not always required, completing the credit card authorization form speeds up your checkout process. For certain orders, we may hold shipment until this form is completed."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How can I contact customer service?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "You can reach our customer service team by emailing info@malanijewelers.com. If you contact us after business hours, one of our representatives will call you back as soon as possible."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What happens if my order is subject to additional verification?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "For high-value orders, we reserve the right to request additional information to verify shipping details. This is done to ensure the security of your valuable jewelry purchase."
+          }
+        }
+      ]
+    }
+  </script>
+
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "WebPage",
+          "@id": "https://malanijewelers.com/pages/shipping-information",
+          "url": "https://malanijewelers.com/pages/shipping-information",
+          "name": "Shipping Information - Malani Jewelers",
+          "description": "Learn about Malani Jewelers shipping policies, delivery requirements, and customer service procedures for your jewelry orders.",
+          "inLanguage": "en-US",
+          "isPartOf": {
+            "@type": "WebSite",
+            "@id": "https://www.malanijewelers.com"
+          },
+          "breadcrumb": {
+            "@id": "https://malanijewelers.com/pages/shipping-information#breadcrumb"
+          },
+          "publisher": {
+            "@id": "https://www.malanijewelers.com/#organization"
+          }
+        },
+        {
+          "@type": "BreadcrumbList",
+          "@id": "https://malanijewelers.com/pages/shipping-information#breadcrumb",
+          "itemListElement": [
+            {
+              "@type": "ListItem",
+              "position": 1,
+              "name": "Home",
+              "item": "https://www.malanijewelers.com"
+            },
+            {
+              "@type": "ListItem",
+              "position": 2,
+              "name": "Shipping Information",
+              "item": "https://malanijewelers.com/pages/shipping-information"
+            }
+          ]
+        },
+        {
+          "@type": "Organization",
+          "@id": "https://www.malanijewelers.com/#organization",
+          "name": "Malani Jewelers",
+          "url": "https://www.malanijewelers.com",
+          "logo": {
+            "@type": "ImageObject",
+            "url": "https://malanijewelers.myshopify.com/cdn/shop/files/Malani_Jewelers_Logo_Flat.webp"
+          },
+          "sameAs": [
+            "https://www.facebook.com/Malanijewelers",
+            "https://www.instagram.com/malani_jewelers/",
+            "https://www.pinterest.com/malani_jewelers"
+          ]
+        }
+      ]
+    }
+  </script>
+</html>

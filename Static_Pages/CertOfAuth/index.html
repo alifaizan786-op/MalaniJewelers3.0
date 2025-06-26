@@ -1,0 +1,1115 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0" />
+    <title>
+      The Malani Certificate Of Authenticity | Malani Jewelers
+    </title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Abhaya+Libre&display=swap"
+      rel="stylesheet" />
+    <style>
+      .certificate-page {
+        font-family: 'Abhaya Libre', serif;
+        line-height: 1.7;
+        margin: 0;
+        padding: 0;
+        background-color: #fff;
+        color: #333;
+      }
+
+      .certificate-page .parallax-header {
+        position: relative;
+        overflow: hidden;
+        height: 350px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        text-align: center;
+        background-color: black;
+      }
+
+      .certificate-page .parallax-header::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        background-image: url('https://cdn.shopify.com/s/files/1/0930/1200/1051/files/certificate_authenticity_banner.webp');
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center bottom;
+        transform: scale(1);
+        animation: ambientZoomDrift 90s ease-in-out infinite;
+        z-index: 0;
+      }
+
+      @keyframes ambientZoomDrift {
+        0% {
+          background-position: center 60%;
+          transform: scale(1.5);
+        }
+        50% {
+          background-position: center 45%;
+          transform: scale(1);
+        }
+        100% {
+          background-position: center 60%;
+          transform: scale(1.5);
+        }
+      }
+
+      .certificate-page .parallax-header .overlay {
+        position: relative;
+        z-index: 1;
+        background-color: rgba(0, 0, 0, 0.5);
+        height: 100%;
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+      }
+
+      .certificate-page .parallax-header h1 {
+        font-size: 2.5rem;
+        margin: 0;
+        letter-spacing: 1px;
+      }
+
+      .certificate-page .parallax-header .subtitle {
+        margin-top: 10px;
+        font-size: 1.1rem;
+        color: #eee;
+        font-weight: 300;
+      }
+
+      .certificate-page .content-container {
+        max-width: 900px;
+        margin: 40px auto;
+        padding: 0 20px;
+      }
+
+      .certificate-page .content-container h2 {
+        color: #b68c46;
+        border-bottom: 2px solid #eee;
+        padding-bottom: 6px;
+        margin-top: 40px;
+        font-size: 1.6rem;
+      }
+
+      .certificate-page .content-container h3 {
+        color: #b68c46;
+        margin-top: 30px;
+        font-size: 1.3rem;
+      }
+
+      .certificate-page .content-container p {
+        margin: 15px 0;
+        font-size: 1.125rem;
+      }
+
+      .certificate-page .content-container ul li {
+        font-size: 1.125rem;
+        margin-bottom: 10px;
+      }
+
+      .certificate-page .content-container a {
+        color: #b68c46;
+        text-decoration: none;
+        font-weight: bold;
+      }
+
+      .certificate-page .content-container a:hover {
+        color: #8b6635;
+        text-decoration: underline;
+      }
+
+      .highlight-box {
+        background-color: #fdf9f3;
+        border-left: 4px solid #b68c46;
+        padding: 20px;
+        margin: 25px 0;
+        border-radius: 0 5px 5px 0;
+      }
+
+      .highlight-box h3 {
+        color: #b68c46;
+        margin-top: 0;
+        margin-bottom: 15px;
+        font-size: 1.3rem;
+      }
+
+      .highlight-box p {
+        margin: 10px 0;
+        color: #333;
+      }
+
+      .certificate-preview {
+        background: linear-gradient(135deg, #fdf9f3 0%, #f8f0e5 100%);
+        border: 2px solid #cfa96b;
+        border-radius: 10px;
+        padding: 30px;
+        margin: 30px 0;
+        text-align: center;
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+      }
+
+      .certificate-preview h3 {
+        color: #b68c46;
+        font-size: 1.8rem;
+        margin-bottom: 15px;
+        text-decoration: underline;
+        text-underline-offset: 5px;
+      }
+
+      .certificate-preview .certificate-icon {
+        font-size: 3rem;
+        color: #cfa96b;
+        margin-bottom: 15px;
+        display: block;
+      }
+
+      .benefits-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 25px;
+        margin: 30px 0;
+      }
+
+      .benefit-card {
+        background-color: #fff;
+        padding: 25px;
+        border-radius: 8px;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        border-top: 4px solid #b68c46;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+      }
+
+      .benefit-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+      }
+
+      .benefit-card h4 {
+        color: #b68c46;
+        margin-top: 0;
+        margin-bottom: 15px;
+        font-size: 1.2rem;
+      }
+
+      .benefit-card .icon {
+        font-size: 2.5rem;
+        color: #cfa96b;
+        margin-bottom: 15px;
+        display: block;
+      }
+
+      .warranty-section {
+        background-color: #fdf6ed;
+        padding: 30px;
+        margin: 30px 0;
+        border-radius: 8px;
+        border: 1px solid #e8d5b7;
+      }
+
+      .warranty-section h3 {
+        color: #b68c46;
+        margin-top: 0;
+        margin-bottom: 20px;
+        font-size: 1.4rem;
+      }
+
+      .policy-highlight {
+        background-color: #fff;
+        border: 2px solid #cfa96b;
+        border-radius: 8px;
+        padding: 25px;
+        margin: 20px 0;
+      }
+
+      .policy-highlight h4 {
+        color: #b68c46;
+        margin-top: 0;
+        margin-bottom: 15px;
+        font-size: 1.3rem;
+      }
+
+      .upgrade-policy {
+        background: linear-gradient(135deg, #f8f0e5 0%, #fdf9f3 100%);
+        border: 2px solid #b68c46;
+        border-radius: 10px;
+        padding: 25px;
+        margin: 25px 0;
+      }
+
+      .upgrade-policy h3 {
+        color: #b68c46;
+        margin-top: 0;
+        margin-bottom: 20px;
+        font-size: 1.5rem;
+        text-align: center;
+      }
+
+      .upgrade-requirements {
+        background-color: #fff;
+        padding: 20px;
+        border-radius: 5px;
+        margin-top: 15px;
+      }
+
+      .upgrade-requirements ul {
+        margin: 0;
+        padding-left: 20px;
+      }
+
+      .upgrade-requirements li {
+        margin-bottom: 8px;
+        color: #555;
+      }
+
+      .care-instructions {
+        background-color: #f9f9f9;
+        border-left: 5px solid #cfa96b;
+        padding: 20px;
+        margin: 25px 0;
+        border-radius: 0 5px 5px 0;
+      }
+
+      .care-instructions h4 {
+        color: #b68c46;
+        margin-top: 0;
+        margin-bottom: 15px;
+      }
+
+      .faq-section {
+        margin-top: 60px;
+      }
+
+      .faq-section h2 {
+        font-size: 1.6rem;
+        color: #b68c46;
+        margin-bottom: 30px;
+        border-bottom: 2px solid #eee;
+        padding-bottom: 6px;
+      }
+
+      .faq-item {
+        margin-bottom: 20px;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+        overflow: hidden;
+      }
+
+      .faq-question {
+        background-color: #fdf9f3;
+        color: #333;
+        font-size: 1rem;
+        font-weight: bold;
+        width: 100%;
+        padding: 15px 20px;
+        text-align: left;
+        border: none;
+        cursor: pointer;
+        transition: background 0.3s;
+      }
+
+      .faq-question:hover {
+        background-color: #f4e7cf;
+      }
+
+      .faq-answer {
+        background-color: #fff;
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.3s ease;
+        padding: 0 20px;
+      }
+
+      .faq-answer p {
+        margin: 15px 0;
+        color: #555;
+      }
+
+      .faq-answer ul {
+        margin: 15px 0;
+        padding-left: 20px;
+      }
+
+      .faq-answer li {
+        margin-bottom: 8px;
+        color: #555;
+      }
+
+      .cta-section {
+        text-align: center;
+        margin: 50px 0;
+        padding: 40px;
+        background-color: #fdf9f3;
+        border-radius: 8px;
+      }
+
+      .cta-section h3 {
+        color: #b68c46;
+        margin-bottom: 15px;
+        font-size: 1.5rem;
+      }
+
+      .cta {
+        background: #cfa96b;
+        color: white;
+        display: inline-block;
+        padding: 1rem 2rem;
+        border-radius: 30px;
+        margin: 0.5rem;
+        text-decoration: none;
+        transition: 0.3s ease;
+        font-weight: 600;
+      }
+
+      .cta:hover {
+        background: #b68c46;
+        transform: translateY(-2px);
+      }
+
+      .cta.secondary {
+        background: transparent;
+        color: #b68c46;
+        border: 2px solid #b68c46;
+      }
+
+      .cta.secondary:hover {
+        background: #b68c46;
+        color: white;
+      }
+
+      .disclaimer {
+        font-size: 0.95rem;
+        color: #666;
+        font-style: italic;
+        margin-top: 15px;
+        padding: 15px;
+        background-color: #f9f9f9;
+        border-radius: 5px;
+      }
+
+      @media (max-width: 600px) {
+        .certificate-page .parallax-header h1 {
+          font-size: 2rem;
+        }
+
+        .content-container {
+          padding: 0 15px;
+        }
+
+        .benefits-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .certificate-preview,
+        .warranty-section,
+        .upgrade-policy {
+          padding: 20px;
+        }
+      }
+
+      .visually-hidden {
+        position: absolute !important;
+        height: 1px;
+        width: 1px;
+        overflow: hidden;
+        clip: rect(1px, 1px, 1px, 1px);
+        white-space: nowrap;
+      }
+
+      .malani-difference {
+        font-style: italic;
+        font-weight: bold;
+        color: #b68c46;
+      }
+    </style>
+  </head>
+  <body>
+    <section class="certificate-page">
+      <div class="parallax-header">
+        <div class="overlay">
+          <h1>The Malani Certificate Of Authenticity</h1>
+          <div class="subtitle">
+            Your Guarantee of Excellence and Peace of Mind
+          </div>
+        </div>
+      </div>
+
+      <div class="visually-hidden">
+        <h1>
+          Malani Certificate Of Authenticity - Jewelry Guarantee
+        </h1>
+        <h2>Gold and Diamond Jewelry Warranty and Authenticity</h2>
+        <h3>Lifetime Diamond Upgrade and Trade-in Policy</h3>
+        <h4>Jewelry Care Instructions and Maintenance Guidelines</h4>
+        <h5>
+          Manufacturing Defect Coverage and Gemstone Replacement
+        </h5>
+        <h6>Customer Benefits and Service Policies</h6>
+      </div>
+
+      <div class="content-container">
+        <p>
+          At Malani Jewelers, we take immense pride in offering you
+          not just jewelry, but an experience of unparalleled quality
+          and assurance. With every purchase, you receive our
+          <strong>Certificate of Authenticity</strong>, a testament to
+          our commitment to excellence and your peace of mind.
+        </p>
+
+        <div class="certificate-preview">
+          <span class="certificate-icon">🏆</span>
+          <h3>What is the Certificate of Authenticity?</h3>
+          <p>
+            Our Certificate of Authenticity is more than just a piece
+            of paper — it's a <strong>binding document</strong> that
+            assures you of the precise specifications of your
+            purchase. It serves as a legal guarantee under US law that
+            everything detailed on your invoice is exactly what you've
+            received.
+          </p>
+        </div>
+
+        <h2>How Does it Work?</h2>
+        <p>
+          Embedded within this certificate are comprehensive details
+          outlining our Gold, Diamond & Gemstone Jewelry Guarantee,
+          Warranty Policies, Care Instructions, and even our exclusive
+          <strong>Lifetime Diamond Upgrade/Trade-in Policy</strong>.
+          It acts as a personalized guide, tailored to your specific
+          purchase with your unique invoice and client numbers.
+        </p>
+
+        <div class="benefits-grid">
+          <div class="benefit-card">
+            <span class="icon">💎</span>
+            <h4>Quality Guarantee</h4>
+            <p>
+              Legal assurance that your jewelry meets exact
+              specifications as described in your purchase invoice.
+            </p>
+          </div>
+
+          <div class="benefit-card">
+            <span class="icon">🛡️</span>
+            <h4>Warranty Protection</h4>
+            <p>
+              Comprehensive coverage for manufacturing defects and
+              gemstone loss protection up to 0.1ct for diamonds.
+            </p>
+          </div>
+
+          <div class="benefit-card">
+            <span class="icon">📋</span>
+            <h4>Care Instructions</h4>
+            <p>
+              Detailed guidelines to preserve your jewelry's beauty
+              and integrity for generations to come.
+            </p>
+          </div>
+
+          <div class="benefit-card">
+            <span class="icon">🔄</span>
+            <h4>Upgrade Policy</h4>
+            <p>
+              Exclusive Lifetime Diamond Upgrade/Trade-in Policy for
+              continuous jewelry collection enhancement.
+            </p>
+          </div>
+        </div>
+
+        <div class="highlight-box">
+          <h3>Why Choose Malani Jewelers?</h3>
+          <p>
+            Our Certificate of Authenticity isn't just a formality —
+            it's a symbol of our unwavering commitment to
+            transparency, quality, and customer satisfaction. With
+            each purchase, you're not just acquiring exquisite
+            jewelry; you're joining a legacy of trust and excellence
+            upheld by Malani Jewelers for generations.
+          </p>
+          <p class="malani-difference">
+            Experience the Malani difference — where authenticity
+            meets excellence.
+          </p>
+        </div>
+
+        <h2>Contents Of The Malani Certificate Of Authenticity</h2>
+
+        <div class="warranty-section">
+          <h3>🏅 Gold Jewelry Guarantee</h3>
+          <p>
+            Congratulations! You have purchased an exclusive piece of
+            jewelry, which is
+            <strong>22K/18K Gold guaranteed</strong> (or as described
+            in your Sales Receipt) by Malani Jewelers, Inc, the
+            standard bearers of purity and exemplary craftsmanship.
+          </p>
+        </div>
+
+        <div class="policy-highlight">
+          <h4>
+            Malani's Limited Lifetime Guarantee & Complimentary
+            Service Policy
+          </h4>
+          <p>
+            Any gold and diamond jewelry purchased from Malani
+            Jewelers will be
+            <strong>cleaned and polished free of charge</strong>, if
+            the ownership of the jewelry belongs to the original
+            purchaser.
+          </p>
+
+          <ul>
+            <li>
+              <strong>Quarterly Inspections:</strong> Malani Diamonds
+              must be brought to our showroom for professional
+              cleaning and inspection once every quarter
+            </li>
+            <li>
+              <strong>Diamond Certificate Validation:</strong> Your
+              Diamond Certificate will be validated by a Malani
+              Jewelers Manager/Sales associate
+            </li>
+            <li>
+              <strong>Free Replacement:</strong> If your Malani
+              Diamond is lost from its original mounting, return the
+              mounting with this certificate for a free replacement
+              (up to 0.1 Ct)
+            </li>
+            <li>
+              <strong>Coverage Limitations:</strong> Warranty extends
+              only to your Malani Diamond purchase and doesn't cover
+              tampering or unprofessional repairs
+            </li>
+          </ul>
+
+          <div class="disclaimer">
+            <strong>Important:</strong> This warranty does not cover
+            loss or damage from anything other than normal wear and
+            tear. Your personal insurance company should be
+            responsible for replacement of diamonds 0.10 ct and up.
+            This warranty only covers certain manufacturing defects.
+          </div>
+        </div>
+
+        <div class="warranty-section">
+          <h3>Gold And Gemstone Jewelry Warranty</h3>
+          <p>
+            <strong>22K Gold</strong> is one of the softest, precious
+            metals on Earth and should be treated with extreme care.
+            All clasps, earring backs and findings have
+            <strong>ninety (90) days of limited warranty</strong>.
+          </p>
+
+          <ul>
+            <li>
+              Merchandise, once repaired, may not look as it
+              originally appeared
+            </li>
+            <li>
+              Any gemstones lost from the original mount will be
+              replaced at no charge if no sign of tampering is
+              observed
+            </li>
+            <li>
+              Replacement depends upon gemstone availability and your
+              willingness to accept our choice of substitute
+            </li>
+            <li>
+              Beyond 90-Days, customer will be responsible for any
+              out-of-pocket charges Malani, Inc. incurs
+            </li>
+          </ul>
+
+          <div class="disclaimer">
+            <strong>Note:</strong> Restringing of beads is not part of
+            this warranty. Please note that the color of the replaced
+            stone may vary depending on availability of stone, due to
+            specific cut and/or size, additional charges might apply.
+          </div>
+        </div>
+
+        <div class="care-instructions">
+          <h4>🌟 How To Take Care of Your Jewelry</h4>
+          <p>
+            Special care should be given to all Gemstone & Diamond
+            Jewelry:
+          </p>
+          <ul>
+            <li>
+              <strong>Avoid:</strong> Heat, strong cleaning solutions,
+              ultra-sonic cleaning, and rough mishandling
+            </li>
+            <li>
+              <strong>Chemical Protection:</strong> Perfume, hair
+              spray, cologne, make-up or other chemicals could damage
+              the micro-porosity of gold
+            </li>
+            <li>
+              <strong>Chlorine Warning:</strong> Do not let diamonds
+              and gems contact chlorine or bleach as it can pit or
+              discolor the mounting
+            </li>
+            <li>
+              <strong>Activity Restrictions:</strong> Do not wear
+              jewelry during household or manual labor
+            </li>
+            <li>
+              <strong>Impact Protection:</strong> Although durable, a
+              hard blow along the grain can chip diamonds and gems
+            </li>
+            <li>
+              <strong>Storage:</strong> Do not store diamonds and
+              gemstones together as they can scratch each other
+            </li>
+            <li>
+              <strong>Moisture Protection:</strong> Metal corrosion
+              may occur if exposed to moist or wet conditions
+            </li>
+          </ul>
+          <p>
+            For more specific instructions on how to take care of your
+            jewelry, please visit our website at
+            <a href="https://www.malanijewelers.com"
+              >Malanijewelers.com</a
+            >
+          </p>
+        </div>
+
+        <div class="upgrade-policy">
+          <h3>💎 Lifetime Diamond Upgrade/Trade-in Policy</h3>
+          <p>
+            <strong
+              >Only Diamond to Diamond jewelry trades qualify for
+              upgrades.</strong
+            >
+            Up to 100% of the original purchase price will be applied
+            towards a new diamond jewelry purchase.
+          </p>
+
+          <div class="upgrade-requirements">
+            <h4>Requirements & Conditions:</h4>
+            <ul>
+              <li>
+                Diamond should be in original condition free of any
+                chips or damage
+              </li>
+              <li>
+                Must be accompanied with original receipt and
+                certificate or appraisal
+              </li>
+              <li>
+                <strong
+                  >The purchase price of the upgrade must be at least
+                  twice the price of your original diamond
+                  jewelry</strong
+                >
+              </li>
+              <li>
+                Upgrades are not qualified on pieces priced on
+                "specials," "online deals," "deal of the day," or more
+                than 50% discounted price
+              </li>
+            </ul>
+          </div>
+
+          <div class="disclaimer">
+            <strong>Disclaimer:</strong> This warranty is extended
+            only to the original consumer purchaser of the jewelry,
+            and may be enforced only by that purchaser. Please note
+            that the color of the replaced stone may vary. Depending
+            on the availability of stone, due to a specific cut and/or
+            size, additional charges might apply.
+          </div>
+        </div>
+
+        <div class="faq-section">
+          <h2>Frequently Asked Questions</h2>
+
+          <div class="faq-item">
+            <button class="faq-question">
+              What is the Malani Certificate of Authenticity?
+            </button>
+            <div class="faq-answer">
+              <p>
+                The Malani Certificate of Authenticity is more than
+                just a receipt - it's a document guaranteeing the
+                exact specifications of your jewelry purchase. It
+                ensures everything on your invoice matches what you
+                received. We ensure our clients get peace of mind with
+                every purchase from Malani Jewelers.
+              </p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-question">
+              What benefits does the Certificate offer?
+            </button>
+            <div class="faq-answer">
+              <p>The Certificate provides several key benefits:</p>
+              <ul>
+                <li>
+                  <strong>Guarantee:</strong> It guarantees the
+                  quality of your gold, diamonds, and gemstones are of
+                  the highest quality
+                </li>
+                <li>
+                  <strong>Warranty:</strong> It details warranty
+                  coverage for manufacturing defects and lost
+                  gemstones (up to 0.1ct for diamonds)
+                </li>
+                <li>
+                  <strong>Care Instructions:</strong> It provides
+                  guidelines to maintain your jewelry's beauty for
+                  generations
+                </li>
+                <li>
+                  <strong>Upgrade/Trade-in Policy:</strong> It
+                  outlines the Lifetime Diamond Upgrade/Trade-in
+                  policy
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-question">
+              What does the Lifetime Diamond Upgrade/Trade-in Policy
+              entail?
+            </button>
+            <div class="faq-answer">
+              <p>
+                This policy allows you to trade-in your existing
+                Malani diamond jewelry for a new piece. Here are the
+                key points:
+              </p>
+              <ul>
+                <li>Only diamond-for-diamond trades qualify</li>
+                <li>
+                  Up to 100% of the original purchase price is applied
+                  toward the new purchase
+                </li>
+                <li>
+                  The new diamond must be at least double the price of
+                  the original one
+                </li>
+                <li>
+                  Discounted items (specials, online deals) are not
+                  eligible
+                </li>
+                <li>Original receipt and certificate are required</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-question">
+              How long is the warranty coverage for my jewelry?
+            </button>
+            <div class="faq-answer">
+              <p>
+                Our warranty coverage varies by component: All clasps,
+                earring backs and findings have 90 days of limited
+                warranty. For Malani diamonds, we offer lifetime
+                coverage for manufacturing defects and free
+                replacement for lost diamonds up to 0.1ct when the
+                original mounting is returned with the certificate.
+              </p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-question">
+              What maintenance services are included with my purchase?
+            </button>
+            <div class="faq-answer">
+              <p>
+                All gold and diamond jewelry purchased from Malani
+                Jewelers will be cleaned and polished free of charge
+                for the original purchaser. Malani Diamonds should be
+                brought to our showroom for professional cleaning and
+                inspection once every quarter, where your Diamond
+                Certificate will be validated.
+              </p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-question">
+              Are there any restrictions on the warranty coverage?
+            </button>
+            <div class="faq-answer">
+              <p>
+                Yes, there are several important restrictions: The
+                warranty does not cover jewelry that has been tampered
+                with or damaged due to DIY or unprofessional repairs.
+                It only covers normal wear and tear, not loss or
+                damage from other causes. Your personal insurance
+                should cover replacement of diamonds 0.10ct and up.
+              </p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-question">
+              How should I care for my jewelry to maintain the
+              warranty?
+            </button>
+            <div class="faq-answer">
+              <p>
+                Proper care is essential: Avoid heat, strong cleaning
+                solutions, and rough handling. Keep jewelry away from
+                perfume, chemicals, chlorine, and bleach. Don't wear
+                during manual labor or store pieces together where
+                they can scratch each other. Visit our website for
+                complete care instructions.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="cta-section">
+          <h3>Experience the Malani Difference</h3>
+          <p>
+            Every piece comes with our comprehensive Certificate of
+            Authenticity and lifetime commitment to your satisfaction.
+          </p>
+          <a
+            href="#"
+            class="cta"
+            >Shop Certified Jewelry</a
+          >
+          <a
+            href="#"
+            class="cta secondary"
+            >Learn About Our Services</a
+          >
+        </div>
+      </div>
+    </section>
+
+    <script>
+      // FAQ Accordion Functionality
+      document.querySelectorAll('.faq-question').forEach((button) => {
+        button.addEventListener('click', () => {
+          const answer = button.nextElementSibling;
+
+          // Close all other FAQ answers
+          document
+            .querySelectorAll('.faq-answer')
+            .forEach((otherAnswer) => {
+              if (otherAnswer !== answer) {
+                otherAnswer.style.maxHeight = null;
+              }
+            });
+
+          // Toggle current FAQ answer
+          answer.style.maxHeight = answer.style.maxHeight
+            ? null
+            : answer.scrollHeight + 'px';
+        });
+      });
+
+      // Smooth scroll for CTA links
+      document.querySelectorAll('.cta').forEach((link) => {
+        link.addEventListener('click', (e) => {
+          // Only prevent default if it's a hash link
+          if (link.getAttribute('href').startsWith('#')) {
+            e.preventDefault();
+            const targetId = link.getAttribute('href').substring(1);
+            const targetElement = document.getElementById(targetId);
+
+            if (targetElement) {
+              targetElement.scrollIntoView({
+                behavior: 'smooth',
+                block: 'start',
+              });
+            }
+          }
+        });
+      });
+
+      // Add loading animation for benefit cards
+      const observerOptions = {
+        threshold: 0.1,
+        rootMargin: '0px 0px -50px 0px',
+      };
+
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.style.opacity = '1';
+            entry.target.style.transform = 'translateY(0)';
+          }
+        });
+      }, observerOptions);
+
+      // Observe benefit cards for animation
+      document.querySelectorAll('.benefit-card').forEach((card) => {
+        card.style.opacity = '0';
+        card.style.transform = 'translateY(20px)';
+        card.style.transition =
+          'opacity 0.6s ease, transform 0.6s ease';
+        observer.observe(card);
+      });
+
+      // Add focus management for accessibility
+      document.addEventListener('DOMContentLoaded', () => {
+        // Ensure FAQ buttons are properly focusable
+        document
+          .querySelectorAll('.faq-question')
+          .forEach((button) => {
+            if (!button.hasAttribute('tabindex')) {
+              button.setAttribute('tabindex', '0');
+            }
+          });
+
+        // Add aria-expanded attributes for screen readers
+        document
+          .querySelectorAll('.faq-question')
+          .forEach((button) => {
+            button.setAttribute('aria-expanded', 'false');
+            button.addEventListener('click', () => {
+              const isExpanded =
+                button.nextElementSibling.style.maxHeight;
+              button.setAttribute(
+                'aria-expanded',
+                isExpanded ? 'false' : 'true'
+              );
+            });
+          });
+      });
+    </script>
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@graph": [
+          {
+            "@type": "WebPage",
+            "@id": "https://malanijewelers.com/pages/certificate-of-authenticity",
+            "url": "https://malanijewelers.com/pages/certificate-of-authenticity",
+            "name": "The Malani Certificate Of Authenticity – Jewelry Guarantee | Malani Jewelers",
+            "description": "Learn about The Malani Certificate Of Authenticity - your guarantee of quality, warranty coverage, care instructions, and lifetime diamond upgrade policy.",
+            "inLanguage": "en-US",
+            "isPartOf": {
+              "@type": "WebSite",
+              "@id": "https://www.malanijewelers.com"
+            },
+            "breadcrumb": {
+              "@id": "https://malanijewelers.com/pages/certificate-of-authenticity#breadcrumb"
+            },
+            "publisher": {
+              "@id": "https://www.malanijewelers.com/#organization"
+            }
+          },
+          {
+            "@type": "BreadcrumbList",
+            "@id": "https://malanijewelers.com/pages/certificate-of-authenticity#breadcrumb",
+            "itemListElement": [
+              {
+                "@type": "ListItem",
+                "position": 1,
+                "name": "Home",
+                "item": "https://www.malanijewelers.com"
+              },
+              {
+                "@type": "ListItem",
+                "position": 2,
+                "name": "Certificate of Authenticity",
+                "item": "https://malanijewelers.com/pages/certificate-of-authenticity"
+              }
+            ]
+          },
+          {
+            "@type": "Organization",
+            "@id": "https://www.malanijewelers.com/#organization",
+            "name": "Malani Jewelers",
+            "url": "https://www.malanijewelers.com",
+            "logo": {
+              "@type": "ImageObject",
+              "url": "https://malanijewelers.myshopify.com/cdn/shop/files/Malani_Jewelers_Logo_Flat.webp"
+            },
+            "sameAs": [
+              "https://www.facebook.com/Malanijewelers",
+              "https://www.instagram.com/malani_jewelers/",
+              "https://www.pinterest.com/malani_jewelers"
+            ]
+          },
+          {
+            "@type": "FAQPage",
+            "mainEntity": [
+              {
+                "@type": "Question",
+                "name": "What is the Malani Certificate of Authenticity?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "The Malani Certificate of Authenticity is more than just a receipt - it's a document guaranteeing the exact specifications of your jewelry purchase. It ensures everything on your invoice matches what you received."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "What benefits does the Certificate offer?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "The Certificate provides quality guarantee for gold, diamonds, and gemstones, warranty coverage for manufacturing defects and lost gemstones up to 0.1ct for diamonds, care instructions, and outlines the Lifetime Diamond Upgrade/Trade-in policy."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "What does the Lifetime Diamond Upgrade/Trade-in Policy entail?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Only diamond-for-diamond trades qualify. Up to 100% of the original purchase price is applied toward the new purchase. The new diamond must be at least double the price of the original one. Discounted items are not eligible. Original receipt and certificate are required."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "How long is the warranty coverage for my jewelry?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Clasps, earring backs and findings have 90 days of limited warranty. For Malani diamonds, we offer lifetime coverage for manufacturing defects and free replacement for lost diamonds up to 0.1ct when the original mounting is returned with the certificate."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "What maintenance services are included with my purchase?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "All gold and diamond jewelry purchased from Malani Jewelers will be cleaned and polished free of charge for the original purchaser. Malani Diamonds should be brought to our showroom for professional cleaning and inspection once every quarter."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "Are there any restrictions on the warranty coverage?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "The warranty does not cover jewelry that has been tampered with or damaged due to DIY or unprofessional repairs. It only covers normal wear and tear, not loss or damage from other causes. Your personal insurance should cover replacement of diamonds 0.10ct and up."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "How should I care for my jewelry to maintain the warranty?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Avoid heat, strong cleaning solutions, and rough handling. Keep jewelry away from perfume, chemicals, chlorine, and bleach. Don't wear during manual labor or store pieces together where they can scratch each other."
+                }
+              }
+            ]
+          }
+        ]
+      }
+    </script>
+  </body>
+</html>

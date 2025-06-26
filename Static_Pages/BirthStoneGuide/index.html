@@ -1,0 +1,1720 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0" />
+    <title>Birthstone Guide | Malani Jewelers</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Abhaya+Libre&display=swap"
+      rel="stylesheet" />
+    <style>
+      .birthstone-guide-page {
+        font-family: 'Abhaya Libre', serif;
+        line-height: 1.7;
+        margin: 0;
+        padding: 0;
+        background-color: #fff;
+        color: #333;
+      }
+
+      .birthstone-guide-page .parallax-header {
+        position: relative;
+        overflow: hidden;
+        height: 350px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        text-align: center;
+        background-color: black;
+      }
+
+      .birthstone-guide-page .parallax-header::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        background-image: url('https://cdn.shopify.com/s/files/1/0930/1200/1051/files/birthstone_guide_banner.webp');
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center bottom;
+        transform: scale(1);
+        animation: ambientZoomDrift 90s ease-in-out infinite;
+        z-index: 0;
+      }
+
+      @keyframes ambientZoomDrift {
+        0% {
+          background-position: center 70%;
+          transform: scale(1.5);
+        }
+        50% {
+          background-position: center 50%;
+          transform: scale(1);
+        }
+        100% {
+          background-position: center 70%;
+          transform: scale(1.5);
+        }
+      }
+
+      .birthstone-guide-page .parallax-header .overlay {
+        position: relative;
+        z-index: 1;
+        background-color: rgba(0, 0, 0, 0.5);
+        height: 100%;
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+      }
+
+      .birthstone-guide-page .parallax-header h1 {
+        font-size: 2.5rem;
+        margin: 0;
+        letter-spacing: 1px;
+      }
+
+      .birthstone-guide-page .parallax-header .subtitle {
+        margin-top: 10px;
+        font-size: 1.1rem;
+        color: #eee;
+        font-weight: 300;
+      }
+
+      .birthstone-guide-page .content-container {
+        max-width: 1000px;
+        margin: 40px auto;
+        padding: 0 20px;
+      }
+
+      .birthstone-guide-page .content-container h2 {
+        color: #b68c46;
+        border-bottom: 2px solid #eee;
+        padding-bottom: 6px;
+        margin-top: 40px;
+        font-size: 1.6rem;
+      }
+
+      .birthstone-guide-page .content-container h3 {
+        color: #b68c46;
+        margin-top: 25px;
+        font-size: 1.3rem;
+      }
+
+      .birthstone-guide-page .content-container h4 {
+        color: #b68c46;
+        margin-top: 20px;
+        font-size: 1.2rem;
+      }
+
+      .birthstone-guide-page .content-container p {
+        margin: 15px 0;
+        font-size: 1.125rem;
+      }
+
+      .introduction-section {
+        margin-bottom: 40px;
+      }
+
+      .history-highlight {
+        background: linear-gradient(135deg, #fdf9f3 0%, #f8f0e5 100%);
+        border: 2px solid #cfa96b;
+        border-radius: 10px;
+        padding: 25px;
+        margin: 25px 0;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+      }
+
+      .history-highlight h3 {
+        color: #b68c46;
+        font-size: 1.4rem;
+        margin-top: 0;
+        margin-bottom: 15px;
+      }
+
+      .month-selector {
+        background-color: #fdf6ed;
+        padding: 30px;
+        margin: 30px 0;
+        border-radius: 10px;
+        text-align: center;
+      }
+
+      .month-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+        gap: 15px;
+        margin-top: 20px;
+      }
+
+      .month-btn {
+        background: white;
+        border: 2px solid #cfa96b;
+        color: #b68c46;
+        padding: 12px 20px;
+        border-radius: 25px;
+        cursor: pointer;
+        font-family: 'Abhaya Libre', serif;
+        font-size: 1rem;
+        font-weight: 600;
+        transition: all 0.3s ease;
+      }
+
+      .month-btn:hover {
+        background: #f4e7cf;
+        transform: translateY(-2px);
+      }
+
+      .month-btn.active {
+        background: #cfa96b;
+        color: white;
+        box-shadow: 0 4px 12px rgba(207, 169, 107, 0.3);
+      }
+
+      .birthstone-sections {
+        margin: 40px 0;
+      }
+
+      .birthstone-section {
+        display: none;
+        background: white;
+        border: 1px solid #e8d5b7;
+        border-radius: 10px;
+        padding: 30px;
+        margin: 20px 0;
+        box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+        animation: fadeInUp 0.5s ease forwards;
+      }
+
+      .birthstone-section.active {
+        display: block;
+      }
+
+      @keyframes fadeInUp {
+        from {
+          opacity: 0;
+          transform: translateY(20px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      .birthstone-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 25px;
+        padding-bottom: 20px;
+        border-bottom: 2px solid #f0f0f0;
+      }
+
+      .month-info h2 {
+        color: #b68c46;
+        font-size: 2rem;
+        margin: 0 0 5px 0;
+        border: none;
+        padding: 0;
+      }
+
+      .month-info h3 {
+        color: #cfa96b;
+        font-size: 1.5rem;
+        margin: 0;
+        font-style: italic;
+      }
+
+      .stone-visual {
+        font-size: 4rem;
+        opacity: 0.8;
+      }
+
+      .birthstone-content {
+        display: grid;
+        gap: 25px;
+      }
+
+      .stone-description {
+        background-color: #fdf9f3;
+        padding: 20px;
+        border-radius: 8px;
+        border-left: 4px solid #cfa96b;
+      }
+
+      .meaning-section {
+        background-color: #f8f0e5;
+        padding: 20px;
+        border-radius: 8px;
+        border-left: 4px solid #b68c46;
+      }
+
+      .meaning-section h4 {
+        color: #b68c46;
+        margin-top: 0;
+        margin-bottom: 15px;
+        font-size: 1.3rem;
+      }
+
+      .birthstone-quick-reference {
+        background-color: #fdf6ed;
+        padding: 30px;
+        margin: 40px 0;
+        border-radius: 10px;
+      }
+
+      .reference-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 15px;
+        margin-top: 20px;
+      }
+
+      .reference-item {
+        background: white;
+        padding: 15px;
+        border-radius: 8px;
+        text-align: center;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+      }
+
+      .reference-item:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+      }
+
+      .ref-month {
+        font-size: 1.1rem;
+        font-weight: bold;
+        color: #b68c46;
+        margin-bottom: 5px;
+      }
+
+      .ref-stone {
+        font-size: 1.2rem;
+        color: #333;
+        margin-bottom: 5px;
+        font-weight: 600;
+      }
+
+      .ref-meaning {
+        font-size: 0.9rem;
+        color: #666;
+        font-style: italic;
+      }
+
+      .faq-section {
+        margin-top: 60px;
+      }
+
+      .faq-section h2 {
+        font-size: 1.6rem;
+        color: #b68c46;
+        margin-bottom: 30px;
+        border-bottom: 2px solid #eee;
+        padding-bottom: 6px;
+      }
+
+      .faq-item {
+        margin-bottom: 20px;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+        overflow: hidden;
+      }
+
+      .faq-question {
+        background-color: #fdf9f3;
+        color: #333;
+        font-size: 1rem;
+        font-weight: bold;
+        width: 100%;
+        padding: 15px 20px;
+        text-align: left;
+        border: none;
+        cursor: pointer;
+        transition: background 0.3s;
+        font-family: 'Abhaya Libre', serif;
+      }
+
+      .faq-question:hover {
+        background-color: #f4e7cf;
+      }
+
+      .faq-answer {
+        background-color: #fff;
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.3s ease;
+        padding: 0 20px;
+      }
+
+      .faq-answer p {
+        margin: 15px 0;
+        color: #555;
+      }
+
+      .cta-section {
+        text-align: center;
+        margin: 50px 0;
+        padding: 40px;
+        background-color: #fdf9f3;
+        border-radius: 8px;
+      }
+
+      .cta-section h3 {
+        color: #b68c46;
+        margin-bottom: 15px;
+        font-size: 1.5rem;
+      }
+
+      .cta {
+        background: #cfa96b;
+        color: white;
+        display: inline-block;
+        padding: 1rem 2rem;
+        border-radius: 30px;
+        margin: 0.5rem;
+        text-decoration: none;
+        transition: 0.3s ease;
+        font-weight: 600;
+        font-family: 'Abhaya Libre', serif;
+      }
+
+      .cta:hover {
+        background: #b68c46;
+        transform: translateY(-2px);
+      }
+
+      .cta.secondary {
+        background: transparent;
+        color: #b68c46;
+        border: 2px solid #b68c46;
+      }
+
+      .cta.secondary:hover {
+        background: #b68c46;
+        color: white;
+      }
+
+      /* Mobile Responsiveness */
+      @media (max-width: 768px) {
+        .birthstone-guide-page .parallax-header h1 {
+          font-size: 2rem;
+        }
+
+        .content-container {
+          padding: 0 15px;
+        }
+
+        .month-grid {
+          grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+          gap: 10px;
+        }
+
+        .month-btn {
+          padding: 10px 15px;
+          font-size: 0.9rem;
+        }
+
+        .birthstone-header {
+          flex-direction: column;
+          text-align: center;
+          gap: 15px;
+        }
+
+        .month-info h2 {
+          font-size: 1.8rem;
+        }
+
+        .month-info h3 {
+          font-size: 1.3rem;
+        }
+
+        .stone-visual {
+          font-size: 3rem;
+        }
+
+        .reference-grid {
+          grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        }
+
+        .birthstone-content {
+          gap: 15px;
+        }
+
+        .stone-description,
+        .meaning-section {
+          padding: 15px;
+        }
+      }
+
+      @media (max-width: 480px) {
+        .month-grid {
+          grid-template-columns: repeat(2, 1fr);
+        }
+
+        .birthstone-section {
+          padding: 20px;
+        }
+
+        .history-highlight {
+          padding: 20px;
+        }
+
+        .month-selector {
+          padding: 20px;
+        }
+
+        .reference-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      .visually-hidden {
+        position: absolute !important;
+        height: 1px;
+        width: 1px;
+        overflow: hidden;
+        clip: rect(1px, 1px, 1px, 1px);
+        white-space: nowrap;
+      }
+
+      /* Accessibility improvements */
+      .month-btn:focus {
+        outline: 2px solid #b68c46;
+        outline-offset: 2px;
+      }
+
+      .faq-question:focus {
+        outline: 2px solid #b68c46;
+        outline-offset: 2px;
+      }
+
+      /* Print styles */
+      @media print {
+        .parallax-header,
+        .month-selector,
+        .cta-section {
+          display: none;
+        }
+
+        .birthstone-section {
+          display: block !important;
+          page-break-inside: avoid;
+          margin-bottom: 30px;
+          box-shadow: none;
+          border: 1px solid #ddd;
+        }
+
+        .faq-answer {
+          max-height: none !important;
+          display: block;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <section class="birthstone-guide-page">
+      <div class="parallax-header">
+        <div class="overlay">
+          <h1>Birthstone Guide</h1>
+          <div class="subtitle">Discover Your Perfect Gemstone</div>
+        </div>
+      </div>
+
+      <div class="visually-hidden">
+        <h1>
+          Complete Birthstone Guide - Monthly Gemstones and Meanings
+        </h1>
+        <h2>January to December Birthstone Information</h2>
+        <h3>Birthstone History and Traditions</h3>
+        <h4>Gemstone Properties and Symbolism</h4>
+        <h5>Birthstone Jewelry Selection Guide</h5>
+        <h6>Monthly Birthstone Meanings and Benefits</h6>
+      </div>
+
+      <div class="content-container">
+        <div class="introduction-section">
+          <p>
+            <strong
+              >Birthstone jewelry has been a popular concept for
+              centuries</strong
+            >, and can be found in Western and Eastern traditions.
+            Worldwide, this concept has been the same with a gemstone
+            representing the month in which a person was born.
+            However, the gemstones corresponding to the months have
+            changed over time.
+          </p>
+
+          <p>
+            The origin of the tradition is generally traced back to
+            the 12 gems set into the breastplate of a Jewish priest as
+            outlined in the Bible. Over time, the concept of having a
+            gemstone that symbolizes various qualities to represent a
+            month became popular.
+          </p>
+
+          <div class="history-highlight">
+            <h3>📿 The Evolution of Birthstones</h3>
+            <p>
+              There were no strict rules and many just focused on the
+              color of the stone rather than the exact variety. For
+              example, both garnet and ruby were used interchangeably
+              as the birthstone for January due to having the same
+              color, while even today tanzanite, turquoise, lapis
+              lazuli and blue topaz can all be used as the birthstone
+              for December as they are all blue stones.
+            </p>
+            <p>
+              <strong
+                >Due to this general confusion, in 1912, the American
+                National Association of Jewelers formally agreed on
+                one standard list of birthstones.</strong
+              >
+            </p>
+          </div>
+        </div>
+
+        <div class="month-selector">
+          <h2>Select Your Birth Month</h2>
+          <div class="month-grid">
+            <button
+              class="month-btn active"
+              data-month="january">
+              January
+            </button>
+            <button
+              class="month-btn"
+              data-month="february">
+              February
+            </button>
+            <button
+              class="month-btn"
+              data-month="march">
+              March
+            </button>
+            <button
+              class="month-btn"
+              data-month="april">
+              April
+            </button>
+            <button
+              class="month-btn"
+              data-month="may">
+              May
+            </button>
+            <button
+              class="month-btn"
+              data-month="june">
+              June
+            </button>
+            <button
+              class="month-btn"
+              data-month="july">
+              July
+            </button>
+            <button
+              class="month-btn"
+              data-month="august">
+              August
+            </button>
+            <button
+              class="month-btn"
+              data-month="september">
+              September
+            </button>
+            <button
+              class="month-btn"
+              data-month="october">
+              October
+            </button>
+            <button
+              class="month-btn"
+              data-month="november">
+              November
+            </button>
+            <button
+              class="month-btn"
+              data-month="december">
+              December
+            </button>
+          </div>
+        </div>
+
+        <div class="birthstone-sections">
+          <!-- January - Garnet -->
+          <div
+            class="birthstone-section active"
+            id="january">
+            <div class="birthstone-header">
+              <div class="month-info">
+                <h2>January</h2>
+                <h3>Garnet</h3>
+              </div>
+              <div class="stone-visual">
+                <img
+                  src="./assets/Garnet.jpg"
+                  width="50"
+                  height="50" />
+              </div>
+            </div>
+
+            <div class="birthstone-content">
+              <div class="stone-description">
+                <p>
+                  Although garnets come in many colors, they are
+                  well-known for being a beautiful shade of red. It is
+                  one of the oldest gemstones and has been used in
+                  jewelry for thousands of years. While garnet and
+                  ruby are very similar and can sometimes be confused,
+                  a garnet is much more affordable and has a more
+                  distinct reddish hue.
+                </p>
+              </div>
+
+              <div class="meaning-section">
+                <h4>January Birthstone Meaning</h4>
+                <p>
+                  Garnets have always been viewed as symbolizing
+                  <strong>devotion and loyalty</strong> to friends,
+                  family and to oneself. Many believe that garnet
+                  brings good fortune when it comes to various
+                  ventures such as business. These stones are also
+                  prized for their protective and therapeutic healing
+                  powers. For those January born who love to travel,
+                  garnets are thought to keep travelers safe making
+                  this is a perfect gemstone for you!
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <!-- February - Amethyst -->
+          <div
+            class="birthstone-section"
+            id="february">
+            <div class="birthstone-header">
+              <div class="month-info">
+                <h2>February</h2>
+                <h3>Amethyst</h3>
+              </div>
+              <div class="stone-visual">
+                <img
+                  src="./assets/Amethyst.jpg"
+                  width="50"
+                  height="50" />
+              </div>
+            </div>
+
+            <div class="birthstone-content">
+              <div class="stone-description">
+                <p>
+                  Amethysts are one of the most popular gemstones out
+                  there, and easily the most famous purple rock. Made
+                  of quartz, what makes the amethyst so special is its
+                  distinct color. In the old days, amethysts were
+                  ranked equal with diamonds and sapphires and worn
+                  specifically by royalty. However, after large
+                  deposits of amethyst were found in Brazil, the stone
+                  became much more affordable and accessible to all.
+                </p>
+              </div>
+
+              <div class="meaning-section">
+                <h4>February Birthstone Meaning</h4>
+                <p>
+                  Amethyst is a stone steeped in history and lore,
+                  with many myths existing to explain its origin.
+                  Amethysts are believed to inspire
+                  <strong
+                    >creativity and awaken dulled imagination</strong
+                  >. It is said to help in clearing your thoughts and
+                  gaining wisdom. In other words, amethyst is a stone
+                  for the mind. Many believe that amethysts help in
+                  controlling addictions, especially to alcoholism
+                  making it a stone that symbolizes moderation and
+                  calmness.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <!-- March - Aquamarine -->
+          <div
+            class="birthstone-section"
+            id="march">
+            <div class="birthstone-header">
+              <div class="month-info">
+                <h2>March</h2>
+                <h3>Aquamarine</h3>
+              </div>
+              <div class="stone-visual">
+                <img
+                  src="./assets/Aquamarine.jpg"
+                  width="50"
+                  height="50" />
+              </div>
+            </div>
+
+            <div class="birthstone-content">
+              <div class="stone-description">
+                <p>
+                  For March babies, the gemstone of choice is the
+                  aquamarine. This member of the beryl family (it is
+                  closely related to the emerald) is well-known for
+                  its refreshing and distinct blue color. Aquamarine
+                  is formed deep within the earth through powerful and
+                  intense geological processes. Its name comes from a
+                  Latin phrase meaning "water of the sea" obviously
+                  referring to its blue-green color. It is an
+                  affordable gemstone and very popular in jewelry.
+                </p>
+              </div>
+
+              <div class="meaning-section">
+                <h4>March Birthstone Meaning</h4>
+                <p>
+                  Aquamarine is associated with water because of its
+                  beautiful blue hues. As a result, the stone used to
+                  be worn as a
+                  <strong>protective talisman</strong> especially for
+                  those who traveled by sea. Aquamarine is also
+                  believed to relieve stress for the wearer and has a
+                  calming effect. It is also a symbol for a happy and
+                  committed married life and promotes faithfulness,
+                  courage and friendship.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <!-- April - Diamond -->
+          <div
+            class="birthstone-section"
+            id="april">
+            <div class="birthstone-header">
+              <div class="month-info">
+                <h2>April</h2>
+                <h3>Diamond</h3>
+              </div>
+              <div class="stone-visual">
+                <img
+                  src="./assets/Diamond.jpg"
+                  width="50"
+                  height="50" />
+              </div>
+            </div>
+
+            <div class="birthstone-content">
+              <div class="stone-description">
+                <p>
+                  Those born in April can claim diamonds, the most
+                  popular and highly coveted gemstone, as their
+                  birthstone! Diamonds are the hardest known natural
+                  substance with a Mohs ranking of 10. They are
+                  extremely durable, have excellent brilliance and are
+                  a simple, timeless and elegant stone. Although we
+                  generally only think of colorless diamonds, they can
+                  be found in a range of colors.
+                </p>
+              </div>
+
+              <div class="meaning-section">
+                <h4>April Birthstone Meaning</h4>
+                <p>
+                  Due to their excellent durability, diamonds are the
+                  perfect symbol for
+                  <strong>commitment and longevity</strong>. This is
+                  among the reasons why they are the number one choice
+                  for engagement rings. Diamonds also symbolize purity
+                  and strength.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <!-- May - Emerald -->
+          <div
+            class="birthstone-section"
+            id="may">
+            <div class="birthstone-header">
+              <div class="month-info">
+                <h2>May</h2>
+                <h3>Emerald</h3>
+              </div>
+              <div class="stone-visual">
+                <img
+                  src="./assets/Emerald.jpg"
+                  width="50"
+                  height="50" />
+              </div>
+            </div>
+
+            <div class="birthstone-content">
+              <div class="stone-description">
+                <p>
+                  Known for its distinct green hue, the emerald is a
+                  member of the beryl family. Emeralds are known for
+                  being classy and prestigious, and have always been
+                  connected with royalty. It is one of the oldest and
+                  most popular gemstones and has been used for
+                  centuries in jewelry. It even has its own cut named
+                  after it.
+                </p>
+              </div>
+
+              <div class="meaning-section">
+                <h4>May Birthstone Meaning</h4>
+                <p>
+                  Emeralds are thought preserve
+                  <strong>love and passion in relationships</strong>
+                  and is also seen as a symbol of hope, success in
+                  love and domestic happiness. In many cultures,
+                  emeralds have been used as talismans to protect
+                  against evil. Because of its refreshing natural
+                  color, the emerald is also associated with the
+                  season of spring and the green of nature. It has
+                  always been believed to have powers of tranquillity,
+                  peace, renewal and growth.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <!-- June - Pearl -->
+          <div
+            class="birthstone-section"
+            id="june">
+            <div class="birthstone-header">
+              <div class="month-info">
+                <h2>June</h2>
+                <h3>Pearl</h3>
+              </div>
+              <div class="stone-visual">⚪</div>
+            </div>
+
+            <div class="birthstone-content">
+              <div class="stone-description">
+                <p>
+                  This gorgeous stone is often called the organic
+                  gemstone. It is formed when an irritant such as sand
+                  is lodged inside an oyster. Pearls are very delicate
+                  stones, and have a hardness ranking of about 2.5 to
+                  4.5 on the Mohs scale. This makes them susceptible
+                  to damage and need to be well looked after.
+                </p>
+                <p>
+                  Pearls are known for being classy, elegant and
+                  stylish. While some may think that pearls are dated,
+                  this is simply not true. Pearls always cycle into
+                  fashion every couple of years and you can find
+                  amazing trendy and chic pearl pieces that are
+                  perfect for daily wear.
+                </p>
+              </div>
+
+              <div class="meaning-section">
+                <h4>June Birthstone Meaning</h4>
+                <p>
+                  Pearls symbolize <strong>wisdom</strong> and are
+                  also believed to bring wealth and luck to the
+                  wearer. It depicts success, happiness and love.
+                  Pearls are very popular gemstones for wedding day
+                  jewelry, as they symbolize purity, innocence and
+                  elegance.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <!-- July - Ruby -->
+          <div
+            class="birthstone-section"
+            id="july">
+            <div class="birthstone-header">
+              <div class="month-info">
+                <h2>July</h2>
+                <h3>Ruby</h3>
+              </div>
+              <div class="stone-visual">
+                <img
+                  src="./assets/Ruby.jpg"
+                  width="50"
+                  height="50" />
+              </div>
+            </div>
+
+            <div class="birthstone-content">
+              <div class="stone-description">
+                <p>
+                  The ruby is a sought after and expensive gemstone.
+                  Rubies are made of corundum and are essentially a
+                  red sapphire, known for their striking reddish hue.
+                  This is a rare gemstone and it is difficult to find
+                  large natural rubies as they are formed in small
+                  sizes. Due to their durability and hardness, it is a
+                  gemstone that is perfect for daily wear.
+                </p>
+              </div>
+
+              <div class="meaning-section">
+                <h4>July Birthstone Meaning</h4>
+                <p>
+                  Because of its red color, rubies have been
+                  associated with
+                  <strong>love, romance and passion</strong> through
+                  the ages. It is believed to be a stone that can open
+                  the heart and foster love and passion. As a gift, it
+                  is the perfect symbol for love and friendship.
+                </p>
+                <p>
+                  As if this wasn't enough reason to covet the stone,
+                  rubies are also seen as a talisman against ill
+                  health and bad fortune.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <!-- August - Peridot -->
+          <div
+            class="birthstone-section"
+            id="august">
+            <div class="birthstone-header">
+              <div class="month-info">
+                <h2>August</h2>
+                <h3>Peridot</h3>
+              </div>
+              <div class="stone-visual">
+                <img
+                  src="./assets/Peridot.jpg"
+                  width="50"
+                  height="50" />
+              </div>
+            </div>
+
+            <div class="birthstone-content">
+              <div class="stone-description">
+                <p>
+                  Although peridot isn't a very popular or well-known
+                  gemstone, it has been around for centuries. Its
+                  bright light green color is very distinct and it
+                  stands out beautifully when worn. Peridot has been
+                  nicknamed the evening emerald, because of its color.
+                </p>
+              </div>
+
+              <div class="meaning-section">
+                <h4>August Birthstone Meaning</h4>
+                <p>
+                  Peridot symbolizes
+                  <strong>strength and courage</strong>. It is
+                  believed to have protective powers and to help its
+                  wearer overcome depression, anger, jealousy and
+                  anxiety. Many people wear peridot as it is thought
+                  to strengthen life and to attract wealth and growth.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <!-- September - Sapphire -->
+          <div
+            class="birthstone-section"
+            id="september">
+            <div class="birthstone-header">
+              <div class="month-info">
+                <h2>September</h2>
+                <h3>Sapphire</h3>
+              </div>
+              <div class="stone-visual">
+                <img
+                  src="./assets/Sapphire.jpg"
+                  width="50"
+                  height="50" />
+              </div>
+            </div>
+
+            <div class="birthstone-content">
+              <div class="stone-description">
+                <p>
+                  When you hear the word sapphire, chances are what
+                  comes to mind is the deep blue color the stone is
+                  famous for. However sapphires come in a range of
+                  colors, with pink becoming an increasingly popular
+                  sapphire variety. Because sapphires are a very
+                  durable stone (9 on the Mohs scale) they are ideal
+                  for wearing daily and require minimal maintenance.
+                  Sapphires have long been connected with royalty and
+                  are a classic and elegant gemstone.
+                </p>
+              </div>
+
+              <div class="meaning-section">
+                <h4>September Birthstone Meaning</h4>
+                <p>
+                  A sapphire symbolizes
+                  <strong>faithfulness and promise</strong>. For many
+                  people, it is a symbol of wisdom and is believed to
+                  help with communication and inspiration. Sapphires
+                  promote peace, contentment and calmness.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <!-- October - Opal -->
+          <div
+            class="birthstone-section"
+            id="october">
+            <div class="birthstone-header">
+              <div class="month-info">
+                <h2>October</h2>
+                <h3>Opal</h3>
+              </div>
+              <div class="stone-visual">
+                <img
+                  src="./assets/Opal.jpg"
+                  width="50"
+                  height="50" />
+              </div>
+            </div>
+
+            <div class="birthstone-content">
+              <div class="stone-description">
+                <p>
+                  October babies are lucky to have the opal as their
+                  birthstone. The reason is that every opal is
+                  different from the other in some way because of
+                  their patterns and flashes of color. Because opals
+                  are delicate gemstones with a 5.5 to 6.5 ranking,
+                  they will need to be well taken care of. There are
+                  many opal varieties out there, from dark to light
+                  and subdued to fiery.
+                </p>
+              </div>
+
+              <div class="meaning-section">
+                <h4>October Birthstone Meaning</h4>
+                <p>
+                  Opals are seen as stones closely connected to
+                  emotions. They symbolize
+                  <strong>love, loyalty and hope</strong>. Opals are
+                  also though to foster creativity, passion,
+                  spontaneity and imagination. It is an artistic stone
+                  full of character.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <!-- November - Citrine -->
+          <div
+            class="birthstone-section"
+            id="november">
+            <div class="birthstone-header">
+              <div class="month-info">
+                <h2>November</h2>
+                <h3>Citrine</h3>
+              </div>
+              <div class="stone-visual">
+                <img
+                  src="./assets/Citrine.jpg"
+                  width="50"
+                  height="50" />
+              </div>
+            </div>
+
+            <div class="birthstone-content">
+              <div class="stone-description">
+                <p>
+                  The word citrine comes from the French word for
+                  lemon, and it is easy to see why this stone has been
+                  so called. It's famed for its soft golden-yellow
+                  tones but can also be found in a variety of other
+                  colors. Citrine is a member of the quartz family
+                  (along with amethyst) and is quite a rare stone.
+                </p>
+              </div>
+
+              <div class="meaning-section">
+                <h4>November Birthstone Meaning</h4>
+                <p>
+                  Yellow has always been a color associated with
+                  positivity and optimism. It is no wonder then that
+                  citrine is seen as a symbol of these concepts,
+                  including
+                  <strong>happiness, vitality and generosity</strong>.
+                  For those prone to impatience and restlessness,
+                  citrine is believed to bring balance and harmony.
+                </p>
+                <p>
+                  Citrine is also seen as a stone that attracts wealth
+                  and fortune. This is why you may come across citrine
+                  placed in a business location, with the aim of
+                  bringing in wealth and maintaining it.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <!-- December - Turquoise -->
+          <div
+            class="birthstone-section"
+            id="december">
+            <div class="birthstone-header">
+              <div class="month-info">
+                <h2>December</h2>
+                <h3>Turquoise</h3>
+              </div>
+              <div class="stone-visual">
+                <img
+                  src="./assets/Turquoise.jpg"
+                  width="50"
+                  height="50" />
+              </div>
+            </div>
+
+            <div class="birthstone-content">
+              <div class="stone-description">
+                <p>
+                  Turquoise is one of the earliest stones to have been
+                  mined, with a history that dates back over 3000
+                  years! It is an opaque gemstone with an intriguing
+                  color. It is the only gemstone that has a color
+                  named after it. This color occurs due to the
+                  presence of copper and occasional traces of iron
+                  (which cause the greenish tint) that are present
+                  during its formation. While bluish-green stones are
+                  valued, it is the sky blue variety that is highly
+                  coveted.
+                </p>
+              </div>
+
+              <div class="meaning-section">
+                <h4>December Birthstone Meaning</h4>
+                <p>
+                  Turquoise has a relaxing and soothing color, and for
+                  centuries has been believed to be an
+                  <strong>indicator of health</strong> of the wearer.
+                </p>
+                <p>
+                  In recent years, turquoise has been seen as a symbol
+                  of love and considered a pledge of affection when
+                  received as a gift. If the loved one was unfaithful,
+                  it was believed the suitor would know because of the
+                  change in the color of turquoise! While a appealing
+                  notion, it's best not to rely on your turquoise to
+                  gauge the faithfulness of your loved one.
+                </p>
+                <p>
+                  For many, turquoise is seen as a stone that brings
+                  in love, success and wealth.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="birthstone-quick-reference">
+          <h2>Quick Birthstone Reference</h2>
+          <div class="reference-grid">
+            <div class="reference-item">
+              <div class="ref-month">January</div>
+              <div class="ref-stone">Garnet</div>
+              <div class="ref-meaning">Devotion & Loyalty</div>
+            </div>
+            <div class="reference-item">
+              <div class="ref-month">February</div>
+              <div class="ref-stone">Amethyst</div>
+              <div class="ref-meaning">Creativity & Wisdom</div>
+            </div>
+            <div class="reference-item">
+              <div class="ref-month">March</div>
+              <div class="ref-stone">Aquamarine</div>
+              <div class="ref-meaning">Calm & Protection</div>
+            </div>
+            <div class="reference-item">
+              <div class="ref-month">April</div>
+              <div class="ref-stone">Diamond</div>
+              <div class="ref-meaning">Strength & Purity</div>
+            </div>
+            <div class="reference-item">
+              <div class="ref-month">May</div>
+              <div class="ref-stone">Emerald</div>
+              <div class="ref-meaning">Love & Growth</div>
+            </div>
+            <div class="reference-item">
+              <div class="ref-month">June</div>
+              <div class="ref-stone">Pearl</div>
+              <div class="ref-meaning">Wisdom & Elegance</div>
+            </div>
+            <div class="reference-item">
+              <div class="ref-month">July</div>
+              <div class="ref-stone">Ruby</div>
+              <div class="ref-meaning">Passion & Love</div>
+            </div>
+            <div class="reference-item">
+              <div class="ref-month">August</div>
+              <div class="ref-stone">Peridot</div>
+              <div class="ref-meaning">Strength & Courage</div>
+            </div>
+            <div class="reference-item">
+              <div class="ref-month">September</div>
+              <div class="ref-stone">Sapphire</div>
+              <div class="ref-meaning">Faithfulness & Peace</div>
+            </div>
+            <div class="reference-item">
+              <div class="ref-month">October</div>
+              <div class="ref-stone">Opal</div>
+              <div class="ref-meaning">Hope & Creativity</div>
+            </div>
+            <div class="reference-item">
+              <div class="ref-month">November</div>
+              <div class="ref-stone">Citrine</div>
+              <div class="ref-meaning">Joy & Prosperity</div>
+            </div>
+            <div class="reference-item">
+              <div class="ref-month">December</div>
+              <div class="ref-stone">Turquoise</div>
+              <div class="ref-meaning">Health & Success</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="faq-section">
+          <h2>Frequently Asked Questions</h2>
+
+          <div class="faq-item">
+            <button class="faq-question">
+              What is the history behind birthstones?
+            </button>
+            <div class="faq-answer">
+              <p>
+                The tradition of birthstones is generally traced back
+                to the 12 gems set into the breastplate of a Jewish
+                priest as outlined in the Bible. In 1912, the American
+                National Association of Jewelers formally agreed on
+                one standard list of birthstones to reduce confusion.
+              </p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-question">
+              Can I wear a birthstone that's not for my birth month?
+            </button>
+            <div class="faq-answer">
+              <p>
+                Absolutely! While birthstones are traditionally
+                associated with birth months, there's no rule against
+                wearing any gemstone you love. Many people choose
+                gemstones based on their personal preferences, color
+                preferences, or the meanings they resonate with.
+              </p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-question">
+              Are there alternative birthstones for each month?
+            </button>
+            <div class="faq-answer">
+              <p>
+                Yes, some months have alternative birthstones. For
+                example, December can be represented by turquoise,
+                tanzanite, lapis lazuli, or blue topaz. Historically,
+                people focused more on the color of the stone rather
+                than the exact variety.
+              </p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-question">
+              Do birthstones have healing properties?
+            </button>
+            <div class="faq-answer">
+              <p>
+                While many cultures and traditions attribute healing
+                and protective properties to gemstones, these beliefs
+                are based on folklore and personal faith rather than
+                scientific evidence. The beauty and symbolism of
+                birthstones can certainly have positive emotional and
+                psychological effects.
+              </p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-question">
+              How should I care for my birthstone jewelry?
+            </button>
+            <div class="faq-answer">
+              <p>
+                Care depends on the specific gemstone's hardness and
+                properties. Harder stones like diamonds and sapphires
+                require minimal care, while softer stones like pearls
+                and opals need gentle handling and proper storage.
+                Always clean with appropriate methods and store
+                separately to prevent scratching.
+              </p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-question">
+              What makes a good birthstone gift?
+            </button>
+            <div class="faq-answer">
+              <p>
+                Birthstone jewelry makes meaningful, personalized
+                gifts because they're uniquely connected to the
+                recipient. Consider the person's style preferences,
+                the occasion, and the symbolic meaning of their
+                birthstone when selecting a piece.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="cta-section">
+          <h3>Find Your Perfect Birthstone</h3>
+          <p>
+            Explore our exquisite collection of birthstone jewelry,
+            crafted with the finest gemstones and exceptional
+            artistry.
+          </p>
+          <a
+            href="#"
+            class="cta"
+            >Shop Birthstone Jewelry</a
+          >
+          <a
+            href="#"
+            class="cta secondary"
+            >Custom Birthstone Design</a
+          >
+        </div>
+      </div>
+    </section>
+
+    <script>
+      // Month selector functionality
+      document.addEventListener('DOMContentLoaded', () => {
+        const monthButtons = document.querySelectorAll('.month-btn');
+        const birthstoneSections = document.querySelectorAll(
+          '.birthstone-section'
+        );
+
+        // Handle month button clicks
+        monthButtons.forEach((button) => {
+          button.addEventListener('click', () => {
+            const selectedMonth = button.getAttribute('data-month');
+
+            // Remove active class from all buttons and sections
+            monthButtons.forEach((btn) =>
+              btn.classList.remove('active')
+            );
+            birthstoneSections.forEach((section) =>
+              section.classList.remove('active')
+            );
+
+            // Add active class to clicked button and corresponding section
+            button.classList.add('active');
+            document
+              .getElementById(selectedMonth)
+              .classList.add('active');
+
+            // Smooth scroll to birthstone section
+            document.getElementById(selectedMonth).scrollIntoView({
+              behavior: 'smooth',
+              block: 'start',
+            });
+
+            // Track interaction
+            trackBirthstoneInteraction(
+              'month_selected',
+              selectedMonth
+            );
+          });
+        });
+
+        // Keyboard navigation for month buttons
+        monthButtons.forEach((button) => {
+          button.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter' || e.key === ' ') {
+              e.preventDefault();
+              button.click();
+            }
+          });
+        });
+      });
+
+      // FAQ Accordion Functionality
+      document.querySelectorAll('.faq-question').forEach((button) => {
+        button.addEventListener('click', () => {
+          const answer = button.nextElementSibling;
+
+          // Close all other FAQ answers
+          document
+            .querySelectorAll('.faq-answer')
+            .forEach((otherAnswer) => {
+              if (otherAnswer !== answer) {
+                otherAnswer.style.maxHeight = null;
+              }
+            });
+
+          // Toggle current FAQ answer
+          answer.style.maxHeight = answer.style.maxHeight
+            ? null
+            : answer.scrollHeight + 'px';
+        });
+      });
+
+      // Add ARIA attributes for accessibility
+      document.querySelectorAll('.faq-question').forEach((button) => {
+        button.setAttribute('aria-expanded', 'false');
+        button.addEventListener('click', () => {
+          const isExpanded =
+            button.nextElementSibling.style.maxHeight;
+          button.setAttribute(
+            'aria-expanded',
+            isExpanded ? 'false' : 'true'
+          );
+        });
+      });
+
+      // Quick reference item interactions
+      document
+        .querySelectorAll('.reference-item')
+        .forEach((item, index) => {
+          item.addEventListener('click', () => {
+            const monthNames = [
+              'january',
+              'february',
+              'march',
+              'april',
+              'may',
+              'june',
+              'july',
+              'august',
+              'september',
+              'october',
+              'november',
+              'december',
+            ];
+            const selectedMonth = monthNames[index];
+
+            // Update month selector
+            document
+              .querySelectorAll('.month-btn')
+              .forEach((btn) => btn.classList.remove('active'));
+            document
+              .querySelector(`[data-month="${selectedMonth}"]`)
+              .classList.add('active');
+
+            // Show corresponding section
+            document
+              .querySelectorAll('.birthstone-section')
+              .forEach((section) =>
+                section.classList.remove('active')
+              );
+            document
+              .getElementById(selectedMonth)
+              .classList.add('active');
+
+            // Scroll to section
+            document.getElementById(selectedMonth).scrollIntoView({
+              behavior: 'smooth',
+              block: 'start',
+            });
+
+            trackBirthstoneInteraction(
+              'reference_click',
+              selectedMonth
+            );
+          });
+        });
+
+      // Intersection Observer for animations
+      const observerOptions = {
+        threshold: 0.1,
+        rootMargin: '0px 0px -50px 0px',
+      };
+
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.style.opacity = '1';
+            entry.target.style.transform = 'translateY(0)';
+          }
+        });
+      }, observerOptions);
+
+      // Observe reference items for animation
+      document
+        .querySelectorAll('.reference-item')
+        .forEach((item, index) => {
+          item.style.opacity = '0';
+          item.style.transform = 'translateY(20px)';
+          item.style.transition = `opacity 0.6s ease ${
+            index * 0.05
+          }s, transform 0.6s ease ${index * 0.05}s`;
+          observer.observe(item);
+        });
+
+      // Add loading animation for birthstone sections
+      document
+        .querySelectorAll('.birthstone-section')
+        .forEach((section) => {
+          section.addEventListener('transitionend', () => {
+            if (section.classList.contains('active')) {
+              section.style.animation = 'fadeInUp 0.5s ease forwards';
+            }
+          });
+        });
+
+      // Lazy load birthstone images (if added later)
+      function setupLazyLoading() {
+        const imageObserver = new IntersectionObserver(
+          (entries, observer) => {
+            entries.forEach((entry) => {
+              if (entry.isIntersecting) {
+                const img = entry.target;
+                img.src = img.dataset.src;
+                img.classList.remove('lazy');
+                imageObserver.unobserve(img);
+              }
+            });
+          }
+        );
+
+        document.querySelectorAll('img[data-src]').forEach((img) => {
+          imageObserver.observe(img);
+        });
+      }
+
+      // Add URL hash handling for direct links to months
+      function handleUrlHash() {
+        const hash = window.location.hash.substring(1);
+        if (hash) {
+          const monthButton = document.querySelector(
+            `[data-month="${hash}"]`
+          );
+          if (monthButton) {
+            monthButton.click();
+          }
+        }
+      }
+
+      // Handle hash changes
+      window.addEventListener('hashchange', handleUrlHash);
+
+      // Handle initial page load
+      handleUrlHash();
+    </script>
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@graph": [
+          {
+            "@type": "WebPage",
+            "@id": "https://malanijewelers.com/pages/birthstone-guide",
+            "url": "https://malanijewelers.com/pages/birthstone-guide",
+            "name": "Complete Birthstone Guide – Monthly Gemstones & Meanings | Malani Jewelers",
+            "description": "Discover your birthstone with our comprehensive guide. Learn about each month's gemstone, their meanings, properties, and find the perfect birthstone jewelry.",
+            "inLanguage": "en-US",
+            "isPartOf": {
+              "@type": "WebSite",
+              "@id": "https://www.malanijewelers.com"
+            },
+            "breadcrumb": {
+              "@id": "https://malanijewelers.com/pages/birthstone-guide#breadcrumb"
+            },
+            "publisher": {
+              "@id": "https://www.malanijewelers.com/#organization"
+            }
+          },
+          {
+            "@type": "BreadcrumbList",
+            "@id": "https://malanijewelers.com/pages/birthstone-guide#breadcrumb",
+            "itemListElement": [
+              {
+                "@type": "ListItem",
+                "position": 1,
+                "name": "Home",
+                "item": "https://www.malanijewelers.com"
+              },
+              {
+                "@type": "ListItem",
+                "position": 2,
+                "name": "Birthstone Guide",
+                "item": "https://malanijewelers.com/pages/birthstone-guide"
+              }
+            ]
+          },
+          {
+            "@type": "Organization",
+            "@id": "https://www.malanijewelers.com/#organization",
+            "name": "Malani Jewelers",
+            "url": "https://www.malanijewelers.com",
+            "logo": {
+              "@type": "ImageObject",
+              "url": "https://malanijewelers.myshopify.com/cdn/shop/files/Malani_Jewelers_Logo_Flat.webp"
+            },
+            "sameAs": [
+              "https://www.facebook.com/Malanijewelers",
+              "https://www.instagram.com/malani_jewelers/",
+              "https://www.pinterest.com/malani_jewelers"
+            ]
+          },
+          {
+            "@type": "FAQPage",
+            "mainEntity": [
+              {
+                "@type": "Question",
+                "name": "What is the history behind birthstones?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Yes, some months have alternative birthstones. For example, December can be represented by turquoise, tanzanite, lapis lazuli, or blue topaz. Historically, people focused more on the color of the stone rather than the exact variety."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "Do birthstones have healing properties?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "While many cultures attribute healing properties to gemstones, these beliefs are based on folklore and tradition rather than scientific evidence. The beauty and symbolism of birthstones can have positive emotional effects."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "How should I care for my birthstone jewelry?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Care depends on the gemstone's hardness and properties. Harder stones like diamonds require minimal care, while softer stones like pearls need gentle handling. Always clean appropriately and store separately."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "What makes a good birthstone gift?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Birthstone jewelry makes meaningful, personalized gifts because they're uniquely connected to the recipient. Consider the person's style, the occasion, and the symbolic meaning of their birthstone."
+                }
+              }
+            ]
+          }
+        ]
+      }
+    </script>
+  </body>
+</html>

@@ -4,21 +4,30 @@ const axios = require('axios');
 const shop = process.env.Shopify_Shop_Name;
 const accessToken = process.env.Shopify_Admin_Api_Access_Token;
 const fs = require('fs');
+const { log } = require('console');
 
 const createProductMutation = `
-    mutation CreateProduct($input: ProductInput!) {
-      productCreate(input: $input) {
-        product {
-          id
-          handle
-        }
-        userErrors {
-          field
-          message
+mutation CreateProduct($input: ProductInput!) {
+  productCreate(input: $input) {
+    product {
+      id
+      handle
+      variants(first: 100) {
+        edges {
+          node {
+            id
+            sku
+          }
         }
       }
     }
-  `;
+    userErrors {
+      field
+      message
+    }
+  }
+}
+`;
 
 const productCreateMediaMutation = `
   mutation createMedia($media: [CreateMediaInput!]!, $productId: ID!) {
@@ -72,7 +81,7 @@ const connection = {
   },
 };
 
-const getData = async (ClassCode) => {
+const getDataByMultiStyleCode = async (multiStyleCode) => {
   const db = await sql.connect(connection);
   const query = `
 SELECT
@@ -90,7 +99,7 @@ SELECT
                 '"', ''
             ),
             '-', 
-            Styles.SKUCode
+            '${multiStyleCode}'
         )
     ) AS Handle,
 
@@ -230,10 +239,10 @@ END AS 'Chain included in the price (product.metafields.sku.chain_included_in_th
         Styles.StockQty = 1 AND 
         Styles.Hidden = 0 AND 
         Styles.Purchasable = 1 AND 
-        Styles.AttribField141 IS NULL AND 
-        Styles.MultiSkuCode IS NULL AND 
         Styles.isDeleted IS NULL AND
-        ClassCodes.ClassCode = '${ClassCode}'
+        (Styles.AttribField141 = '${multiStyleCode}'
+        OR
+        Styles.MultiSkuCode = '${multiStyleCode}')
 
   `;
   const result = await db.request().query(query);
@@ -244,7 +253,7 @@ const getImageData = async (StyleCode) => {
   const db = await sql.connect(connection);
   const query = `
     Select * from dbo.SKUImageMapping
-Where StyleCode = '${StyleCode}'
+    Where StyleCode = '${StyleCode}'
 
   `;
   const result = await db.request().query(query);
@@ -270,82 +279,118 @@ const graphQL = async (query, variables) => {
   }
 };
 
-const uploadProductWithMetafields = async (product) => {
+const uploadGroupedProduct = async (variants) => {
+  const baseProduct = variants[0];
+
   const input = {
-    title: product.Title,
-    bodyHtml: product['Body (HTML)'],
-    vendor: product.Vendor,
-    handle: product.Handle,
+    title: baseProduct.Title,
+    bodyHtml: baseProduct['Body (HTML)'],
+    vendor: baseProduct.Vendor,
+    handle: baseProduct.Handle,
     published: true,
-    productType: product.Type || 'Jewelry',
+    productType: baseProduct.Type || 'Jewelry',
     productCategory: {
-      productTaxonomyNodeId: 'gid://shopify/ProductTaxonomyNode/340',
+      productTaxonomyNodeId: 'gid://shopify/ProductTaxonomyNode/972',
     },
+    options: ['Available Options'],
+    variants: variants.map((v) => {
+      const price =
+        parseFloat(v['Variant Price'])?.toFixed(2) || '0.00';
+      const size = v['Ring Size (product.metafields.sku.ring_size)']
+        ? `${v['Ring Size (product.metafields.sku.ring_size)']}`
+        : v['Bangle Size (product.metafields.sku.bangle_size)']
+        ? `${v['Bangle Size (product.metafields.sku.bangle_size)']}`
+        : v[
+            'Diamond Total Weight (product.metafields.sku.diamond_total_weight)'
+          ]
+        ? `${parseFloat(
+            v[
+              'Diamond Total Weight (product.metafields.sku.diamond_total_weight)'
+            ]
+          ).toFixed(2)} ct`
+        : v['Length (product.metafields.sku.length)']
+        ? `${v['Length (product.metafields.sku.length)']} inches`
+        : v['Gross Weight (product.metafields.sku.grossWeight)']
+        ? `${parseFloat(
+            v['Gross Weight (product.metafields.sku.grossWeight)']
+          ).toFixed(2)} g`
+        : 'N/A';
 
-    //332 - Apparel & Accessories > Jewelry > Anklets
-    //333 - Apparel & Accessories > Jewelry > Body Jewelry
-    //334 - Apparel & Accessories > Jewelry > Bracelets
-    //335 - Apparel & Accessories > Jewelry > Brooches & Lapel Pins
-    //336 - Apparel & Accessories > Jewelry > Charms & Pendants
-    //337 - Apparel & Accessories > Jewelry > Earrings
-    //338 - Apparel & Accessories > Jewelry > Jewelry Sets
-    //339 - Apparel & Accessories > Jewelry > Necklaces
-    //340 - Apparel & Accessories > Jewelry > Rings
-    //341 - Apparel & Accessories > Jewelry > Watch Accessories
-    //345 - Apparel & Accessories > Jewelry > Watches
-    //972 - Business & Industrial > Finance & Insurance > Bullion
-
-    variants: [
-      {
-        sku: product['Variant SKU'],
-        price: product['Variant Price']?.toString() || '0',
+      return {
+        sku: v['Variant SKU'],
+        price,
         compareAtPrice:
-          product['Variant Compare At Price']?.toString() || null,
+          v['Variant Compare At Price']?.toString() || null,
         inventoryManagement: 'SHOPIFY',
         inventoryPolicy: 'DENY',
         taxable: true,
         requiresShipping: true,
-        weight: Number(product['Variant Grams']) || 0,
+        weight: Number(v['Variant Grams']) || 0,
         weightUnit: 'GRAMS',
-      },
-    ],
+        options: [`${v['Variant SKU']} | $${price} | ${size}`],
+      };
+    }),
   };
 
   const productCreateRes = await graphQL(createProductMutation, {
     input,
   });
+  console.dir(productCreateRes, { depth: null });
 
   const productId =
     productCreateRes?.data?.productCreate?.product?.id;
-  const userErrors =
-    productCreateRes?.data?.productCreate?.userErrors;
+  const variantEdges =
+    productCreateRes?.data?.productCreate?.product?.variants?.edges ||
+    [];
+
+  const variantIdMap = variantEdges.map(({ node }) => ({
+    id: node.id,
+    sku: node.sku,
+  }));
 
   if (!productId) {
     logError(
-      `Failed to create product for SKU ${
-        product['Variant SKU']
-      }. Errors: ${JSON.stringify(userErrors)}`
+      `Failed to create product for handle ${baseProduct.Handle}`
     );
     return;
-  } else {
-    logError(
-      `Successfully created a product for ${product['Variant SKU']}. with the productId: ${productId}`
-    );
   }
 
-  const imageData = await getImageData(product.Code);
+  // Upload product-level metafields (only once, from base)
+  await uploadProductMetafields(productId, baseProduct);
+
+  // Pull image data once
+  const imageData = await getImageData(baseProduct.Code);
   const imageArr = imageData.map(
     (img) =>
       `https://www.malanijewelers.com/TransactionImages/Styles/large/${img.LargeImg}`
   );
 
-  // Attach images
+  // Upload single image once
   await attachImagesToProduct(
     productId,
     imageArr,
-    product['Variant SKU']
+    baseProduct['Variant SKU']
   );
 
+  for (let i = 0; i < variants.length; i++) {
+    const originalVariant = variants[i];
+    const matchingShopifyVariant = variantIdMap.find(
+      (v) => v.sku === originalVariant['Variant SKU']
+    );
+
+    if (!matchingShopifyVariant) {
+      logError(
+        `❌ No Shopify variant found for SKU ${originalVariant['Variant SKU']}`
+      );
+      continue;
+    }
+
+    originalVariant.id = matchingShopifyVariant.id;
+    await uploadVariantMetafields(productId, i, originalVariant);
+  }
+};
+
+const uploadProductMetafields = async (productId, product) => {
   // Prepare metafields
   const metafields = [
     {
@@ -1138,18 +1183,6 @@ const uploadProductWithMetafields = async (product) => {
       const userErrors =
         metafieldRes?.data?.metafieldsSet?.userErrors || [];
 
-      console.dir(userErrors, { depth: null });
-
-      for (let i = 0; i < userErrors.length; i++) {
-        const element = userErrors[i];
-
-        if (element.field) {
-          console.dir(chunk[parseInt(element.field[1])], {
-            depth: null,
-          });
-        }
-      }
-
       if (userErrors.length === 0) {
         success = true;
         logError(
@@ -1206,12 +1239,121 @@ const uploadProductWithMetafields = async (product) => {
   }
 };
 
+const uploadVariantMetafields = async (productId, index, variant) => {
+  const fields = [
+    'bangle_size',
+    'ring_size',
+    'length',
+    'gross_weight',
+    'entry_date',
+    'upload_date',
+    'tag_price',
+  ];
+
+  const metafields = [
+    {
+      ownerId: variant.id,
+      namespace: 'variant',
+      key: 'bangle_size',
+      type: 'single_line_text_field',
+      value:
+        variant[
+          'Bangle Size (product.metafields.sku.bangle_size)'
+        ]?.toString() || '',
+    },
+    {
+      ownerId: variant.id,
+      namespace: 'variant',
+      key: 'ring_size',
+      type: 'single_line_text_field',
+      value:
+        variant[
+          'Ring Size (product.metafields.sku.ring_size)'
+        ]?.toString() || '',
+    },
+    {
+      ownerId: variant.id,
+      namespace: 'variant',
+      key: 'length',
+      type: 'number_decimal',
+      value:
+        variant[
+          'Length (product.metafields.sku.length)'
+        ]?.toString() || '',
+    },
+    {
+      ownerId: variant.id,
+      namespace: 'variant',
+      key: 'diamond_total_weight',
+      type: 'number_decimal',
+      value:
+        variant[
+          'Diamond Total Weight (product.metafields.sku.diamond_total_weight)'
+        ]?.toString() || '',
+    },
+    {
+      ownerId: variant.id,
+      namespace: 'variant',
+      key: 'gross_weight',
+      type: 'number_decimal',
+      value: variant['Variant Grams']?.toString() || '',
+    },
+    {
+      ownerId: variant.id,
+      namespace: 'variant',
+      key: 'entry_date',
+      type: 'date',
+      value:
+        variant['Entry Date (product.metafields.sku.entryDate)'] ||
+        '',
+    },
+    {
+      ownerId: variant.id,
+      namespace: 'variant',
+      key: 'upload_date',
+      type: 'date',
+      value:
+        variant['Upload Date (product.metafields.sku.upload_date)'] ||
+        '',
+    },
+    {
+      ownerId: variant.id,
+      namespace: 'variant',
+      key: 'tag_price',
+      type: 'money',
+      value: JSON.stringify({
+        amount:
+          variant[
+            'Tag Price (product.metafields.sku.tag_price)'
+          ]?.toFixed(2) || '0.00',
+        currency_code: 'USD',
+      }),
+    },
+  ].filter((m) => m.value);
+
+  const chunks = [metafields]; // can add chunking if >25 later
+  for (const chunk of chunks) {
+    const res = await graphQL(metafieldMutation, {
+      metafields: chunk,
+    });
+    const errors = res?.data?.metafieldsSet?.userErrors;
+    console.dir(res, { depth: null });
+
+    if (errors?.length)
+      logError(
+        `Variant metafield errors [${
+          variant['Variant SKU']
+        }]: ${JSON.stringify(errors)}`
+      );
+  }
+};
 const attachImagesToProduct = async (productId, imageUrls, sku) => {
   if (!imageUrls?.length) return;
 
   const media = imageUrls.map((src) => ({
     originalSource: src,
     mediaContentType: 'IMAGE',
+    alt: sku, // still useful
   }));
 
   const result = await graphQL(productCreateMediaMutation, {
@@ -1231,31 +1373,26 @@ const attachImagesToProduct = async (productId, imageUrls, sku) => {
 };
 
 (async () => {
-  const classCodes = ['481']; // add as many as you want here
+  const multiStyleCodes = [
+    '500-00627-MIS-W-W',
+    '500-00628-MIS-W-W',
+    '500-00626-MIS-W-W',
+  ]; // sequential input, one at a time
 
-  for (const classCode of classCodes) {
-    logError(
-      `\n=== 📦 Starting upload for ClassCode: ${classCode} ===`
-    );
+  for (const code of multiStyleCodes) {
+    logError(`Processing MultiStyleCode: ${code}`);
+    const variants = await getDataByMultiStyleCode(code);
 
-    const result = await getData(classCode);
-
-    for (const product of result) {
-      try {
-        await uploadProductWithMetafields(product);
-      } catch (err) {
-        logError(
-          `❌ Exception while processing SKU ${product['Variant SKU']} (ClassCode ${classCode}): ${err.message}`
-        );
-      }
+    if (!variants.length) {
+      logError(`No records found for MultiStyleCode: ${code}`);
+      continue;
     }
 
-    logError(
-      `✅ Finished ClassCode ${classCode} — Processed ${result.length} products\n`
-    );
+    await uploadGroupedProduct(variants);
+    logError(`Finished MultiStyleCode: ${code}`);
   }
 
-  console.log('🎉 All ClassCodes finished.');
+  console.log('🎉 Multi-variant upload complete');
 })();
 
 function toProperCase(str) {

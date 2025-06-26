@@ -1,0 +1,618 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0" />
+    <title>Clean and Conflict Free Jewelry | Malani Jewelers</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Abhaya+Libre&display=swap"
+      rel="stylesheet" />
+    <style>
+      .clean-conflict-free-page {
+        font-family: 'Abhaya Libre', serif;
+        line-height: 1.7;
+        margin: 0;
+        padding: 0;
+        background-color: #fff;
+        color: #333;
+      }
+
+      .clean-conflict-free-page .parallax-header {
+        position: relative;
+        overflow: hidden;
+        height: 350px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        text-align: center;
+        background-color: black;
+      }
+
+      .clean-conflict-free-page .parallax-header::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        background-image: url('https://cdn.shopify.com/s/files/1/0930/1200/1051/files/ethical_sourcing_banner.webp');
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center bottom;
+        transform: scale(1);
+        animation: ambientZoomDrift 90s ease-in-out infinite;
+        z-index: 0;
+      }
+
+      @keyframes ambientZoomDrift {
+        0% {
+          background-position: center 55%;
+          transform: scale(1.5);
+        }
+        50% {
+          background-position: center 40%;
+          transform: scale(1);
+        }
+        100% {
+          background-position: center 55%;
+          transform: scale(1.5);
+        }
+      }
+
+      .clean-conflict-free-page .parallax-header .overlay {
+        position: relative;
+        z-index: 1;
+        background-color: rgba(0, 0, 0, 0.5);
+        height: 100%;
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+      }
+
+      .clean-conflict-free-page .parallax-header h1 {
+        font-size: 2.5rem;
+        margin: 0;
+        letter-spacing: 1px;
+      }
+
+      .clean-conflict-free-page .parallax-header .subtitle {
+        margin-top: 10px;
+        font-size: 1.1rem;
+        color: #eee;
+        font-weight: 300;
+      }
+
+      .clean-conflict-free-page .content-container {
+        max-width: 900px;
+        margin: 40px auto;
+        padding: 0 20px;
+      }
+
+      .clean-conflict-free-page .content-container h2 {
+        color: #b68c46;
+        border-bottom: 2px solid #eee;
+        padding-bottom: 6px;
+        margin-top: 40px;
+        font-size: 1.6rem;
+      }
+
+      .clean-conflict-free-page .content-container p {
+        margin: 15px 0;
+        font-size: 1.125rem;
+      }
+
+      .clean-conflict-free-page .content-container ul li {
+        font-size: 1.125rem;
+        margin-bottom: 10px;
+      }
+
+      .clean-conflict-free-page .content-container ol li {
+        font-size: 1.125rem;
+        margin-bottom: 10px;
+      }
+
+      .highlight-box {
+        background-color: #fdf9f3;
+        border-left: 4px solid #b68c46;
+        padding: 20px;
+        margin: 25px 0;
+        border-radius: 0 5px 5px 0;
+      }
+
+      .highlight-box h3 {
+        color: #b68c46;
+        margin-top: 0;
+        margin-bottom: 15px;
+        font-size: 1.3rem;
+      }
+
+      .highlight-box p {
+        margin: 10px 0;
+        color: #333;
+      }
+
+      .policy-section {
+        background-color: #fdf6ed;
+        padding: 30px;
+        margin: 30px 0;
+        border-radius: 8px;
+        border: 1px solid #e8d5b7;
+      }
+
+      .policy-section h3 {
+        color: #b68c46;
+        margin-top: 0;
+        margin-bottom: 20px;
+        font-size: 1.4rem;
+        text-decoration: underline;
+        text-underline-offset: 4px;
+      }
+
+      .commitment-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 25px;
+        margin: 30px 0;
+      }
+
+      .commitment-card {
+        background-color: #fff;
+        padding: 25px;
+        border-radius: 8px;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        border-top: 4px solid #b68c46;
+      }
+
+      .commitment-card h4 {
+        color: #b68c46;
+        margin-top: 0;
+        margin-bottom: 15px;
+        font-size: 1.2rem;
+      }
+
+      .commitment-card .icon {
+        font-size: 2rem;
+        color: #cfa96b;
+        margin-bottom: 15px;
+        display: block;
+      }
+
+      .faq-section {
+        margin-top: 60px;
+      }
+
+      .faq-section h2 {
+        font-size: 1.6rem;
+        color: #b68c46;
+        margin-bottom: 30px;
+        border-bottom: 2px solid #eee;
+        padding-bottom: 6px;
+      }
+
+      .faq-item {
+        margin-bottom: 20px;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+        overflow: hidden;
+      }
+
+      .faq-question {
+        background-color: #fdf9f3;
+        color: #333;
+        font-size: 1rem;
+        font-weight: bold;
+        width: 100%;
+        padding: 15px 20px;
+        text-align: left;
+        border: none;
+        cursor: pointer;
+        transition: background 0.3s;
+      }
+
+      .faq-question:hover {
+        background-color: #f4e7cf;
+      }
+
+      .faq-answer {
+        background-color: #fff;
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.3s ease;
+        padding: 0 20px;
+      }
+
+      .faq-answer p {
+        margin: 15px 0;
+        color: #555;
+      }
+
+      .cta-section {
+        text-align: center;
+        margin: 50px 0;
+        padding: 40px;
+        background-color: #fdf9f3;
+        border-radius: 8px;
+      }
+
+      .cta-section h3 {
+        color: #b68c46;
+        margin-bottom: 15px;
+        font-size: 1.5rem;
+      }
+
+      .cta {
+        background: #cfa96b;
+        color: white;
+        display: inline-block;
+        padding: 1rem 2rem;
+        border-radius: 30px;
+        margin-top: 1rem;
+        text-decoration: none;
+        transition: 0.3s ease;
+        font-weight: 600;
+      }
+
+      .cta:hover {
+        background: #b68c46;
+        transform: translateY(-2px);
+      }
+
+      @media (max-width: 600px) {
+        .clean-conflict-free-page .parallax-header h1 {
+          font-size: 2rem;
+        }
+
+        .content-container {
+          padding: 0 15px;
+        }
+
+        .commitment-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .policy-section {
+          padding: 20px;
+        }
+      }
+
+      .visually-hidden {
+        position: absolute !important;
+        height: 1px;
+        width: 1px;
+        overflow: hidden;
+        clip: rect(1px, 1px, 1px, 1px);
+        white-space: nowrap;
+      }
+    </style>
+  </head>
+  <body>
+    <section class="clean-conflict-free-page">
+      <div class="parallax-header">
+        <div class="overlay">
+          <h1>Clean and Conflict Free</h1>
+          <div class="subtitle">Ethical Sourcing. Sustainable Excellence. Trusted Jewelry.</div>
+        </div>
+      </div>
+
+      <div class="visually-hidden">
+        <h1>Clean and Conflict Free Jewelry at Malani Jewelers</h1>
+        <h2>Ethical Sourcing and Environmental Responsibility</h2>
+        <h3>Kimberley Process Certification and Conflict-Free Diamonds</h3>
+        <h4>Gold Sourcing Policy and Environmental Standards</h4>
+        <h5>Synthetic Diamond Detection and Disclosure</h5>
+        <h6>Health and Safety Commitments in Jewelry Manufacturing</h6>
+      </div>
+
+      <div class="content-container">
+        <p>
+          At Malani Jewelers, we believe that true beauty comes not just from exquisite craftsmanship, but from the integrity of our sourcing practices. We are committed to ensuring that every piece of jewelry we offer is ethically sourced, environmentally responsible, and free from conflict.
+        </p>
+
+        <p>
+          Our comprehensive approach to clean and conflict-free jewelry encompasses environmental management, responsible gold sourcing, synthetic diamond detection, and rigorous health and safety standards. This commitment reflects our core values and our responsibility to our customers, communities, and the planet.
+        </p>
+
+        <div class="highlight-box">
+          <h3>🌍 Our Environmental Promise</h3>
+          <p>
+            <strong>Malani, Inc. is committed to effective environmental management as one of our most important corporate priorities.</strong> We focus on compliance with environmental laws, systematic impact assessment, employee awareness, and continuous improvement through auditing and accountability.
+          </p>
+        </div>
+
+        <div class="commitment-grid">
+          <div class="commitment-card">
+            <span class="icon">⚖️</span>
+            <h4>Legal Compliance</h4>
+            <p>Full compliance with all applicable environmental laws and regulations in every jurisdiction where we operate.</p>
+          </div>
+
+          <div class="commitment-card">
+            <span class="icon">📊</span>
+            <h4>Impact Assessment</h4>
+            <p>Systematic measurement and assessment of our environmental impact with regular reviews to mitigate or eliminate negative effects.</p>
+          </div>
+
+          <div class="commitment-card">
+            <span class="icon">🎓</span>
+            <h4>Employee Training</h4>
+            <p>Comprehensive environmental awareness programs, detailed policies, and recognition of excellence in environmental stewardship.</p>
+          </div>
+
+          <div class="commitment-card">
+            <span class="icon">🔍</span>
+            <h4>Performance Monitoring</h4>
+            <p>Regular environmental auditing with employee accountability and transparent reporting to senior management.</p>
+          </div>
+        </div>
+
+        <div class="policy-section">
+          <h3>Gold Sourcing Policy</h3>
+          <p>
+            Malani, Inc. is deeply concerned about the environmental and social impacts of irresponsible mining practices. We ensure that all our gold suppliers comply with internationally recognized gold sourcing guidelines.
+          </p>
+          <p>
+            <strong>We are committed to sourcing gold, precious metals, and jewelry under the highest Social, Human Rights, and Environmental standards</strong>, including compliance with Dodd-Frank regulations and Signet's Responsible Sourcing Standards Protocol (SRSP).
+          </p>
+        </div>
+
+        <h2>Synthetic Diamond Detection and Disclosure</h2>
+        <p>
+          Malani, Inc. is committed to the fight against undisclosed synthetic diamonds. Our comprehensive detection and disclosure methodology includes:
+        </p>
+
+        <ol>
+          <li><strong>Advanced Detection Systems:</strong> Access to the most effective synthetic diamond detection technology</li>
+          <li><strong>Trusted Supplier Network:</strong> Purchasing exclusively from verified and trusted suppliers</li>
+          <li><strong>Incident Reporting:</strong> Immediate reporting of any undisclosed synthetics to suppliers and relevant parties</li>
+          <li><strong>Documentation and Tracking:</strong> Recording contamination incidents and implementing corrective measures</li>
+          <li><strong>Risk Classification:</strong> Categorizing contamination points into High, Medium, and Low risk levels</li>
+          <li><strong>Policy Implementation:</strong> Establishing clear procedures and testing mechanisms throughout our organization</li>
+          <li><strong>Supply Chain Assurance:</strong> Obtaining compliance declarations from our entire supply chain</li>
+        </ol>
+
+        <div class="policy-section">
+          <h3>Disclosure of Treated Diamonds, Synthetics and Simulants</h3>
+          <p>We adhere to the following essential principles in all transactions involving treated diamonds, synthetics, and simulants:</p>
+          
+          <ul>
+            <li><strong>Full Disclosure:</strong> Complete and total release of all available information about a diamond and all material steps it has undergone prior to sale</li>
+            <li><strong>No Misrepresentation:</strong> Prohibition of terminology misuse or attempts to disguise products in selling, advertising, and distribution</li>
+            <li><strong>Clear Terminology:</strong> The word 'diamond' is not used inappropriately in connection with treated diamonds, simulants, or synthetic diamonds</li>
+            <li><strong>Industry Compliance:</strong> Full compliance with De Beers' Marketing and Advertising Protocol (MAP) throughout our supply chain</li>
+          </ul>
+        </div>
+
+        <h2>Kimberley Process and System of Warranties</h2>
+        <p>
+          Malani, Inc. is fully committed to complying with all requirements specified in the <strong>Kimberley Process Certification Scheme</strong> and the <strong>World Diamond Council's (WDC) System of Warranties Declaration</strong>.
+        </p>
+
+        <div class="highlight-box">
+          <h3>💎 Conflict-Free Guarantee</h3>
+          <p>
+            We have adopted the definition of 'Conflict Gemstone Diamonds' as agreed by the Kimberley Process. We receive declarations from all manufacturing sites and suppliers to ensure these requirements are upheld throughout our entire supply chain.
+          </p>
+        </div>
+
+        <h2>Health and Safety Standards</h2>
+        <p>
+          Malani, Inc. recognizes the need to develop a sustainable, value-creating business and maintains strict health and safety standards:
+        </p>
+
+        <ul>
+          <li><strong>Risk Identification:</strong> Systematic review of operations to identify and eliminate health and safety risks</li>
+          <li><strong>Best Practice Standards:</strong> Implementation of standards required by prevailing laws and industry best practices</li>
+          <li><strong>Clear Work Practices:</strong> Formulation of clearly described work practices and emergency drills</li>
+          <li><strong>Comprehensive Training:</strong> All staff trained to adhere to safety work practices and procedures</li>
+          <li><strong>Health Monitoring:</strong> Periodic medical checks for staff exposed to hazardous processes</li>
+          <li><strong>Substance-Free Workplace:</strong> Zero tolerance for drug, alcohol, or illegal substance abuse</li>
+          <li><strong>Safe Construction:</strong> All workplaces constructed to meet or exceed local safety regulations</li>
+        </ul>
+
+        <div class="faq-section">
+          <h2>Frequently Asked Questions</h2>
+
+          <div class="faq-item">
+            <button class="faq-question">
+              How does Malani Jewelers ensure diamonds are conflict-free?
+            </button>
+            <div class="faq-answer">
+              <p>
+                We comply with the Kimberley Process Certification Scheme and World Diamond Council's System of Warranties. Every diamond we sell comes with documentation proving it is conflict-free, and we receive compliance declarations from all our suppliers and manufacturing partners.
+              </p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-question">
+              What is your policy on synthetic diamonds?
+            </button>
+            <div class="faq-answer">
+              <p>
+                We are committed to fighting undisclosed synthetic diamonds through advanced detection systems, trusted supplier networks, and comprehensive disclosure policies. All synthetic diamonds are clearly labeled and disclosed to customers with full transparency.
+              </p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-question">
+              How do you ensure ethical gold sourcing?
+            </button>
+            <div class="faq-answer">
+              <p>
+                Our gold sourcing policy requires all suppliers to comply with internationally recognized guidelines, including Dodd-Frank regulations and Signet's Responsible Sourcing Standards Protocol. We verify that our gold is sourced under the highest social, human rights, and environmental standards.
+              </p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-question">
+              What environmental standards does Malani Jewelers follow?
+            </button>
+            <div class="faq-answer">
+              <p>
+                We follow comprehensive environmental management practices including compliance with all environmental laws, systematic impact assessment, employee training, and regular auditing. Our operations are designed to minimize environmental impact while maintaining the highest quality standards.
+              </p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-question">
+              How can customers verify the authenticity and ethics of their jewelry?
+            </button>
+            <div class="faq-answer">
+              <p>
+                Every purchase comes with our Malani Certificate of Authenticity, which includes information about sourcing, materials, and compliance with ethical standards. We also provide all necessary documentation for diamond certification and conflict-free verification.
+              </p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-question">
+              What happens if synthetic diamonds are discovered in your inventory?
+            </button>
+            <div class="faq-answer">
+              <p>
+                We have strict protocols for handling any discovered synthetic diamonds, including immediate reporting to suppliers, documentation of incidents, implementation of corrective measures, and risk classification to prevent future occurrences. Customer trust and transparency are our top priorities.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="cta-section">
+          <h3>Shop with Confidence</h3>
+          <p>Every piece of Malani jewelry comes with our commitment to ethical sourcing, environmental responsibility, and conflict-free practices.</p>
+          <a href="#" class="cta">Explore Our Certified Collection</a>
+        </div>
+      </div>
+    </section>
+
+    <script>
+      document.querySelectorAll('.faq-question').forEach((button) => {
+        button.addEventListener('click', () => {
+          const answer = button.nextElementSibling;
+          answer.style.maxHeight = answer.style.maxHeight
+            ? null
+            : answer.scrollHeight + 'px';
+        });
+      });
+    </script>
+
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@graph": [
+          {
+            "@type": "WebPage",
+            "@id": "https://malanijewelers.com/pages/clean-conflict-free",
+            "url": "https://malanijewelers.com/pages/clean-conflict-free",
+            "name": "Clean and Conflict Free Jewelry – Ethical Sourcing | Malani Jewelers",
+            "description": "Learn about Malani Jewelers' commitment to clean and conflict-free jewelry through ethical sourcing, environmental responsibility, and Kimberley Process certification.",
+            "inLanguage": "en-US",
+            "isPartOf": {
+              "@type": "WebSite",
+              "@id": "https://www.malanijewelers.com"
+            },
+            "breadcrumb": {
+              "@id": "https://malanijewelers.com/pages/clean-conflict-free#breadcrumb"
+            },
+            "publisher": {
+              "@id": "https://www.malanijewelers.com/#organization"
+            }
+          },
+          {
+            "@type": "BreadcrumbList",
+            "@id": "https://malanijewelers.com/pages/clean-conflict-free#breadcrumb",
+            "itemListElement": [
+              {
+                "@type": "ListItem",
+                "position": 1,
+                "name": "Home",
+                "item": "https://www.malanijewelers.com"
+              },
+              {
+                "@type": "ListItem",
+                "position": 2,
+                "name": "Clean and Conflict Free",
+                "item": "https://malanijewelers.com/pages/clean-conflict-free"
+              }
+            ]
+          },
+          {
+            "@type": "Organization",
+            "@id": "https://www.malanijewelers.com/#organization",
+            "name": "Malani Jewelers",
+            "url": "https://www.malanijewelers.com",
+            "logo": {
+              "@type": "ImageObject",
+              "url": "https://malanijewelers.myshopify.com/cdn/shop/files/Malani_Jewelers_Logo_Flat.webp"
+            },
+            "sameAs": [
+              "https://www.facebook.com/Malanijewelers",
+              "https://www.instagram.com/malani_jewelers/",
+              "https://www.pinterest.com/malani_jewelers"
+            ]
+          },
+          {
+            "@type": "FAQPage",
+            "mainEntity": [
+              {
+                "@type": "Question",
+                "name": "How does Malani Jewelers ensure diamonds are conflict-free?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "We comply with the Kimberley Process Certification Scheme and World Diamond Council's System of Warranties. Every diamond we sell comes with documentation proving it is conflict-free, and we receive compliance declarations from all our suppliers and manufacturing partners."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "What is your policy on synthetic diamonds?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "We are committed to fighting undisclosed synthetic diamonds through advanced detection systems, trusted supplier networks, and comprehensive disclosure policies. All synthetic diamonds are clearly labeled and disclosed to customers with full transparency."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "How do you ensure ethical gold sourcing?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Our gold sourcing policy requires all suppliers to comply with internationally recognized guidelines, including Dodd-Frank regulations and Signet's Responsible Sourcing Standards Protocol. We verify that our gold is sourced under the highest social, human rights, and environmental standards."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "What environmental standards does Malani Jewelers follow?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "We follow comprehensive environmental management practices including compliance with all environmental laws, systematic impact assessment, employee training, and regular auditing. Our operations are designed to minimize environmental impact while maintaining the highest quality standards."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "How can customers verify the authenticity and ethics of their jewelry?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Every purchase comes with our Malani Certificate of Authenticity, which includes information about sourcing, materials, and compliance with ethical standards. We also provide all necessary documentation for diamond certification and conflict-free verification."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "What happens if synthetic diamonds are discovered in your inventory?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "We have strict protocols for handling any discovered synthetic diamonds, including immediate reporting to suppliers, documentation of incidents, implementation of corrective measures, and risk classification to prevent future occurrences. Customer trust and transparency are our top priorities."
+                }
+              }
+            ]
+          }
+        ]
+      }
+    </script>
+  </body>
+</html>
