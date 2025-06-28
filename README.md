@@ -98,13 +98,14 @@ Bangle Size Converter
 Diamond Gallery
 Ring Size Converter
 TV Commercials
+Birth Stone Guide
+CertOfAuth
+Clean & Conflict Free
+Corporate Responsibility
+Shipping Policy
 
 Pending
-Shipping Information
-Certificate Of Authenticity
 Malani History
-Corporate Responsibility
-Clean and Conflict Free
 Special Offers
 Client Testimonials
 Custom Jewelry Services
@@ -115,15 +116,9 @@ Diamond Jewelry
 Engagement Buying Guide
 Watch Buying Guide
 Pearl Jewelry Guide
-Birthstone Guide
 Gold Jewelry
 
 
 
 VIA Claude
 
-Birth Stone Guide
-CertOfAuth
-Clean & Conflict Free
-Corporate Responsibility
-Shipping Policy

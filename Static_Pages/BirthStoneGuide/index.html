@@ -660,7 +660,8 @@
               </div>
               <div class="stone-visual">
                 <img
-                  src="./assets/Garnet.jpg"
+                  loading="lazy"
+                  src="https://cdn.shopify.com/s/files/1/0930/1200/1051/files/Garnet.webp"
                   width="50"
                   height="50" />
               </div>
@@ -707,7 +708,8 @@
               </div>
               <div class="stone-visual">
                 <img
-                  src="./assets/Amethyst.jpg"
+                  loading="lazy"
+                  src="https://cdn.shopify.com/s/files/1/0930/1200/1051/files/Amethyst.webp"
                   width="50"
                   height="50" />
               </div>
@@ -757,7 +759,8 @@
               </div>
               <div class="stone-visual">
                 <img
-                  src="./assets/Aquamarine.jpg"
+                  loading="lazy"
+                  src="https://cdn.shopify.com/s/files/1/0930/1200/1051/files/Aquamarine.webp"
                   width="50"
                   height="50" />
               </div>
@@ -806,7 +809,8 @@
               </div>
               <div class="stone-visual">
                 <img
-                  src="./assets/Diamond.jpg"
+                  loading="lazy"
+                  src="https://cdn.shopify.com/s/files/1/0930/1200/1051/files/Diamond.webp"
                   width="50"
                   height="50" />
               </div>
@@ -851,7 +855,8 @@
               </div>
               <div class="stone-visual">
                 <img
-                  src="./assets/Emerald.jpg"
+                  loading="lazy"
+                  src="https://cdn.shopify.com/s/files/1/0930/1200/1051/files/Emerald.webp"
                   width="50"
                   height="50" />
               </div>
@@ -897,7 +902,13 @@
                 <h2>June</h2>
                 <h3>Pearl</h3>
               </div>
-              <div class="stone-visual">⚪</div>
+              <div class="stone-visual">
+                <img
+                  loading="lazy"
+                  src="https://cdn.shopify.com/s/files/1/0930/1200/1051/files/Pearl.webp"
+                  width="50"
+                  height="50" />
+              </div>
             </div>
 
             <div class="birthstone-content">
@@ -945,7 +956,8 @@
               </div>
               <div class="stone-visual">
                 <img
-                  src="./assets/Ruby.jpg"
+                  loading="lazy"
+                  src="https://cdn.shopify.com/s/files/1/0930/1200/1051/files/Ruby.webp"
                   width="50"
                   height="50" />
               </div>
@@ -994,7 +1006,8 @@
               </div>
               <div class="stone-visual">
                 <img
-                  src="./assets/Peridot.jpg"
+                  loading="lazy"
+                  src="https://cdn.shopify.com/s/files/1/0930/1200/1051/files/Peridot.webp"
                   width="50"
                   height="50" />
               </div>
@@ -1036,7 +1049,8 @@
               </div>
               <div class="stone-visual">
                 <img
-                  src="./assets/Sapphire.jpg"
+                  loading="lazy"
+                  src="https://cdn.shopify.com/s/files/1/0930/1200/1051/files/Sapphire.webp"
                   width="50"
                   height="50" />
               </div>
@@ -1081,7 +1095,8 @@
               </div>
               <div class="stone-visual">
                 <img
-                  src="./assets/Opal.jpg"
+                  loading="lazy"
+                  src="https://cdn.shopify.com/s/files/1/0930/1200/1051/files/Opal.webp"
                   width="50"
                   height="50" />
               </div>
@@ -1126,7 +1141,8 @@
               </div>
               <div class="stone-visual">
                 <img
-                  src="./assets/Citrine.jpg"
+                  loading="lazy"
+                  src="https://cdn.shopify.com/s/files/1/0930/1200/1051/files/Citrine.webp"
                   width="50"
                   height="50" />
               </div>
@@ -1176,7 +1192,8 @@
               </div>
               <div class="stone-visual">
                 <img
-                  src="./assets/Turquoise.jpg"
+                  loading="lazy"
+                  src="https://cdn.shopify.com/s/files/1/0930/1200/1051/files/Turquoise.webp"
                   width="50"
                   height="50" />
               </div>
@@ -1432,18 +1449,6 @@
             document
               .getElementById(selectedMonth)
               .classList.add('active');
-
-            // Smooth scroll to birthstone section
-            document.getElementById(selectedMonth).scrollIntoView({
-              behavior: 'smooth',
-              block: 'start',
-            });
-
-            // Track interaction
-            trackBirthstoneInteraction(
-              'month_selected',
-              selectedMonth
-            );
           });
         });
 
@@ -1536,11 +1541,6 @@
               behavior: 'smooth',
               block: 'start',
             });
-
-            trackBirthstoneInteraction(
-              'reference_click',
-              selectedMonth
-            );
           });
         });
 
@@ -1581,45 +1581,6 @@
             }
           });
         });
-
-      // Lazy load birthstone images (if added later)
-      function setupLazyLoading() {
-        const imageObserver = new IntersectionObserver(
-          (entries, observer) => {
-            entries.forEach((entry) => {
-              if (entry.isIntersecting) {
-                const img = entry.target;
-                img.src = img.dataset.src;
-                img.classList.remove('lazy');
-                imageObserver.unobserve(img);
-              }
-            });
-          }
-        );
-
-        document.querySelectorAll('img[data-src]').forEach((img) => {
-          imageObserver.observe(img);
-        });
-      }
-
-      // Add URL hash handling for direct links to months
-      function handleUrlHash() {
-        const hash = window.location.hash.substring(1);
-        if (hash) {
-          const monthButton = document.querySelector(
-            `[data-month="${hash}"]`
-          );
-          if (monthButton) {
-            monthButton.click();
-          }
-        }
-      }
-
-      // Handle hash changes
-      window.addEventListener('hashchange', handleUrlHash);
-
-      // Handle initial page load
-      handleUrlHash();
     </script>
     <script type="application/ld+json">
       {
