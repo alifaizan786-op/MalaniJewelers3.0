@@ -1,0 +1,1107 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <style>
+      .diamond-jewelry-page {
+        font-family: 'Abhaya Libre', serif;
+        line-height: 1.7;
+        margin: 0;
+        padding: 0;
+        background-color: #fff;
+        color: #333;
+      }
+
+      .diamond-jewelry-page .content-container {
+        max-width: 1000px;
+        margin: 40px auto;
+        padding: 0 20px;
+      }
+
+      .diamond-jewelry-page .content-container h2 {
+        color: #b68c46;
+        border-bottom: 2px solid #eee;
+        padding-bottom: 6px;
+        margin-top: 40px;
+        font-size: 1.6rem;
+      }
+
+      .diamond-jewelry-page .content-container h3 {
+        color: #b68c46;
+        margin-top: 25px;
+        font-size: 1.4rem;
+      }
+
+      .diamond-jewelry-page .content-container h4 {
+        color: #cfa96b;
+        margin-top: 20px;
+        font-size: 1.2rem;
+      }
+
+      .diamond-jewelry-page .content-container h5 {
+        color: #b68c46;
+        margin-top: 20px;
+        font-size: 1.1rem;
+      }
+
+      .diamond-jewelry-page .content-container p {
+        margin: 15px 0;
+        font-size: 1.125rem;
+      }
+
+      .introduction-section {
+        background: linear-gradient(135deg, #fdf9f3 0%, #f8f0e5 100%);
+        border: 2px solid #cfa96b;
+        border-radius: 12px;
+        padding: 30px;
+        margin: 30px 0;
+        text-align: center;
+      }
+
+      .introduction-section h2 {
+        color: #b68c46;
+        font-size: 1.8rem;
+        margin-bottom: 20px;
+        margin-top: 0;
+        border: none;
+        padding: 0;
+      }
+
+      .four-cs-navigation {
+        background-color: #fdf6ed;
+        padding: 30px;
+        margin: 40px 0;
+        border-radius: 12px;
+        text-align: center;
+      }
+
+      .four-cs-navigation h2 {
+        color: #b68c46;
+        margin-bottom: 25px;
+        margin-top: 0;
+        border: none;
+        padding: 0;
+      }
+
+      .cs-tabs {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 15px;
+        margin-top: 20px;
+      }
+
+      .cs-tab {
+        background: white;
+        border: 2px solid #cfa96b;
+        border-radius: 12px;
+        padding: 20px 15px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        text-align: center;
+        font-family: 'Abhaya Libre', serif;
+      }
+
+      .cs-tab:hover {
+        background: #f4e7cf;
+        transform: translateY(-3px);
+        box-shadow: 0 4px 12px rgba(207, 169, 107, 0.3);
+      }
+
+      .cs-tab.active {
+        background: #cfa96b;
+        color: white;
+        transform: translateY(-3px);
+        box-shadow: 0 4px 12px rgba(207, 169, 107, 0.4);
+      }
+
+      .tab-icon {
+        font-size: 2rem;
+        display: block;
+        margin-bottom: 8px;
+      }
+
+      .tab-title {
+        font-size: 1.2rem;
+        font-weight: bold;
+        display: block;
+        margin-bottom: 4px;
+      }
+
+      .tab-subtitle {
+        font-size: 0.9rem;
+        opacity: 0.8;
+        display: block;
+      }
+
+      .diamond-section {
+        display: none;
+        background: white;
+        border: 1px solid #e8d5b7;
+        border-radius: 12px;
+        padding: 30px;
+        margin: 30px 0;
+        box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+        animation: fadeInUp 0.5s ease forwards;
+      }
+
+      .diamond-section.active {
+        display: block;
+      }
+
+      @keyframes fadeInUp {
+        from {
+          opacity: 0;
+          transform: translateY(20px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      .section-header {
+        display: flex;
+        align-items: center;
+        margin-bottom: 25px;
+        padding-bottom: 15px;
+        border-bottom: 2px solid #f0f0f0;
+      }
+
+      .section-icon {
+        font-size: 3rem;
+        margin-right: 20px;
+        color: #cfa96b;
+      }
+
+      .section-title h3 {
+        margin: 0;
+        color: #b68c46;
+        font-size: 1.8rem;
+      }
+
+      .section-title h4 {
+        margin: 5px 0 0 0;
+        color: #666;
+        font-size: 1.1rem;
+        font-weight: normal;
+        font-style: italic;
+      }
+
+      .content-grid {
+        display: grid;
+        grid-template-columns: 2fr 1fr;
+        gap: 30px;
+        align-items: start;
+      }
+
+      .content-text {
+        padding-right: 20px;
+      }
+
+      .lead-text {
+        font-size: 1.2rem;
+        color: #333;
+        font-weight: 500;
+        margin-bottom: 20px;
+        line-height: 1.6;
+      }
+
+      .key-points {
+        background-color: #fdf9f3;
+        padding: 20px;
+        border-radius: 8px;
+        border-left: 4px solid #cfa96b;
+        margin-top: 20px;
+      }
+
+      .key-points h5 {
+        color: #b68c46;
+        margin-top: 0;
+        margin-bottom: 15px;
+      }
+
+      .key-points ul {
+        margin: 0;
+        padding-left: 20px;
+      }
+
+      .key-points li {
+        margin-bottom: 8px;
+        font-size: 1rem;
+      }
+
+      .visual-placeholder {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .diamond-visual {
+        background: linear-gradient(135deg, #f8f0e5 0%, #fdf9f3 100%);
+        border: 2px solid #cfa96b;
+        border-radius: 12px;
+        padding: 30px;
+        text-align: center;
+        width: 100%;
+        min-height: 200px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .diamond-icon {
+        font-size: 4rem;
+        color: #cfa96b;
+        margin-bottom: 15px;
+        animation: sparkle 2s ease-in-out infinite;
+      }
+
+      @keyframes sparkle {
+        0%,
+        100% {
+          transform: scale(1);
+          opacity: 1;
+        }
+        50% {
+          transform: scale(1.1);
+          opacity: 0.8;
+        }
+      }
+
+      .visual-label {
+        font-size: 1.2rem;
+        font-weight: bold;
+        color: #b68c46;
+        margin-bottom: 8px;
+      }
+
+      .visual-description {
+        font-size: 0.9rem;
+        color: #666;
+        text-align: center;
+      }
+
+      .clarity-scale {
+        background-color: #f9f9f9;
+        padding: 20px;
+        border-radius: 8px;
+        margin-top: 20px;
+      }
+
+      .clarity-scale h5 {
+        color: #b68c46;
+        margin-top: 0;
+        margin-bottom: 15px;
+      }
+
+      .grade-item {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 8px 0;
+        border-bottom: 1px solid #eee;
+      }
+
+      .grade-item:last-child {
+        border-bottom: none;
+      }
+
+      .grade {
+        font-weight: bold;
+        color: #b68c46;
+        min-width: 80px;
+      }
+
+      .description {
+        color: #666;
+        font-size: 0.95rem;
+      }
+
+      .carat-conversion {
+        background-color: #f9f9f9;
+        padding: 20px;
+        border-radius: 8px;
+        margin-top: 20px;
+      }
+
+      .carat-conversion h5 {
+        color: #b68c46;
+        margin-top: 0;
+        margin-bottom: 15px;
+      }
+
+      .conversion-grid {
+        display: grid;
+        gap: 10px;
+      }
+
+      .conversion-item {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        gap: 10px;
+        padding: 10px;
+        background: white;
+        border-radius: 5px;
+        text-align: center;
+      }
+
+      .weight {
+        font-weight: bold;
+        color: #b68c46;
+      }
+
+      .points {
+        color: #666;
+      }
+
+      .grams {
+        color: #666;
+        font-size: 0.9rem;
+      }
+
+      .color-scale {
+        background-color: #f9f9f9;
+        padding: 20px;
+        border-radius: 8px;
+        margin-top: 20px;
+      }
+
+      .color-scale h5 {
+        color: #b68c46;
+        margin-top: 0;
+        margin-bottom: 15px;
+      }
+
+      .color-range {
+        display: grid;
+        gap: 10px;
+      }
+
+      .color-group {
+        display: grid;
+        grid-template-columns: 80px 1fr 2fr;
+        gap: 15px;
+        align-items: center;
+        padding: 12px;
+        border-radius: 5px;
+      }
+
+      .color-group.exceptional {
+        background: linear-gradient(135deg, #e8f5e8 0%, #f0f8f0 100%);
+        border-left: 4px solid #28a745;
+      }
+
+      .color-group.excellent {
+        background: linear-gradient(135deg, #fff3cd 0%, #fef8e1 100%);
+        border-left: 4px solid #ffc107;
+      }
+
+      .color-group.good {
+        background: linear-gradient(135deg, #f8d7da 0%, #fce4e6 100%);
+        border-left: 4px solid #dc3545;
+      }
+
+      .grades {
+        font-weight: bold;
+        color: #333;
+        font-size: 1.1rem;
+      }
+
+      .category {
+        font-weight: 600;
+        color: #555;
+      }
+
+      .fluorescence-section {
+        background-color: #fdf6ed;
+        padding: 30px;
+        margin: 40px 0;
+        border-radius: 12px;
+        border-left: 4px solid #cfa96b;
+      }
+
+      .fluorescence-section h2 {
+        color: #b68c46;
+        margin-top: 0;
+        margin-bottom: 20px;
+        border: none;
+        padding: 0;
+      }
+
+      .fluorescence-levels {
+        margin-top: 20px;
+      }
+
+      .fluorescence-levels h4 {
+        color: #b68c46;
+        margin-bottom: 15px;
+      }
+
+      .level-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+        gap: 15px;
+      }
+
+      .level-item {
+        background: white;
+        padding: 15px;
+        border-radius: 8px;
+        text-align: center;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+      }
+
+      .level {
+        display: block;
+        font-weight: bold;
+        color: #b68c46;
+        margin-bottom: 5px;
+      }
+
+      .percentage {
+        font-size: 0.9rem;
+        color: #666;
+      }
+
+      .selection-guide {
+        background: linear-gradient(135deg, #f8f0e5 0%, #fdf9f3 100%);
+        border: 2px solid #b68c46;
+        border-radius: 12px;
+        padding: 30px;
+        margin: 40px 0;
+      }
+
+      .selection-guide h2 {
+        color: #b68c46;
+        margin-top: 0;
+        margin-bottom: 25px;
+        text-align: center;
+        border: none;
+        padding: 0;
+      }
+
+      .guide-cards {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+        gap: 20px;
+      }
+
+      .guide-card {
+        background: white;
+        padding: 20px;
+        border-radius: 8px;
+        text-align: center;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+      }
+
+      .guide-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+      }
+
+      .card-icon {
+        font-size: 2.5rem;
+        color: #cfa96b;
+        margin-bottom: 10px;
+      }
+
+      .guide-card h4 {
+        color: #b68c46;
+        margin: 0 0 10px 0;
+        font-size: 1.1rem;
+      }
+
+      .guide-card p {
+        margin: 0;
+        font-size: 0.95rem;
+        color: #666;
+      }
+
+      /* Mobile Responsiveness */
+      @media (max-width: 768px) {
+        .diamond-jewelry-page .parallax-header h1 {
+          font-size: 2rem;
+        }
+
+        .content-container {
+          padding: 0 15px;
+        }
+
+        .cs-tabs {
+          grid-template-columns: repeat(2, 1fr);
+          gap: 10px;
+        }
+
+        .content-grid {
+          grid-template-columns: 1fr;
+          gap: 20px;
+        }
+
+        .content-text {
+          padding-right: 0;
+        }
+
+        .section-header {
+          flex-direction: column;
+          text-align: center;
+          gap: 10px;
+        }
+
+        .section-icon {
+          margin-right: 0;
+          margin-bottom: 10px;
+        }
+
+        .conversion-item {
+          grid-template-columns: 1fr;
+          gap: 5px;
+        }
+
+        .color-group {
+          grid-template-columns: 1fr;
+          text-align: center;
+          gap: 8px;
+        }
+
+        .guide-cards {
+          grid-template-columns: 1fr;
+        }
+
+        .level-grid {
+          grid-template-columns: repeat(2, 1fr);
+        }
+      }
+
+      @media (max-width: 480px) {
+        .cs-tabs {
+          grid-template-columns: 1fr;
+        }
+
+        .diamond-section,
+        .selection-guide,
+        .fluorescence-section {
+          padding: 20px;
+        }
+
+        .introduction-section {
+          padding: 20px;
+        }
+
+        .four-cs-navigation {
+          padding: 20px;
+        }
+
+        .tab-icon {
+          font-size: 1.5rem;
+        }
+
+        .tab-title {
+          font-size: 1rem;
+        }
+
+        .tab-subtitle {
+          font-size: 0.8rem;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <section class="diamond-jewelry-page">
+      <div class="content-container">
+        <div class="introduction-section">
+          <div class="intro-content">
+            <h2>The Art and Science of Diamond Excellence</h2>
+            <p>
+              At Malani Jewelers, we believe that understanding
+              diamonds enhances your appreciation of their timeless
+              beauty. Every diamond tells a unique story through its
+              characteristics, and knowing the 4 C's—Cut, Clarity,
+              Carat, and Color—empowers you to make an informed choice
+              that will bring joy for generations.
+            </p>
+            <p>
+              Our expert gemologists carefully evaluate each diamond
+              using internationally recognized standards to ensure you
+              receive only the finest quality stones in our exquisite
+              jewelry collection.
+            </p>
+          </div>
+        </div>
+
+        <!-- 4 C's Navigation -->
+        <div class="four-cs-navigation">
+          <h2>Explore the 4 C's of Diamonds</h2>
+          <div class="cs-tabs">
+            <button
+              class="cs-tab active"
+              data-tab="cut">
+              <span class="tab-icon">✨</span>
+              <span class="tab-title">Cut</span>
+              <span class="tab-subtitle">Brilliance & Fire</span>
+            </button>
+            <button
+              class="cs-tab"
+              data-tab="clarity">
+              <span class="tab-icon">🔍</span>
+              <span class="tab-title">Clarity</span>
+              <span class="tab-subtitle">Internal Purity</span>
+            </button>
+            <button
+              class="cs-tab"
+              data-tab="carat">
+              <span class="tab-icon">⚖️</span>
+              <span class="tab-title">Carat</span>
+              <span class="tab-subtitle">Size & Weight</span>
+            </button>
+            <button
+              class="cs-tab"
+              data-tab="color">
+              <span class="tab-icon">🌈</span>
+              <span class="tab-title">Color</span>
+              <span class="tab-subtitle">Rarity & Grade</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Cut Section -->
+        <div
+          class="diamond-section active"
+          id="cut">
+          <div class="section-header">
+            <div class="section-icon">✨</div>
+            <div class="section-title">
+              <h3>Diamond Cut</h3>
+              <h4>The Foundation of Brilliance</h4>
+            </div>
+          </div>
+
+          <div class="section-content">
+            <div class="content-grid">
+              <div class="content-text">
+                <p class="lead-text">
+                  The beauty of a diamond's sparkle is the result of
+                  how well it has been cut. The aspects of cut that
+                  contribute most to a diamond's beauty are
+                  <strong>proportion, symmetry and polish</strong>.
+                </p>
+
+                <p>
+                  Although nature determines the characteristics of a
+                  piece of diamond rough, the hands of the master
+                  cutter release its fire and brilliance. When a
+                  diamond is cut to exacting proportions—neither too
+                  deep nor too shallow—light will reflect inside the
+                  stone from one mirror-like facet to another and
+                  reappear to the eye in a flash of spectral colors.
+                </p>
+
+                <div class="key-points">
+                  <h5>Cut Quality Factors:</h5>
+                  <ul>
+                    <li>
+                      <strong>Proportion:</strong> The relationship
+                      between size, angles, and ratios
+                    </li>
+                    <li>
+                      <strong>Symmetry:</strong> How precisely the
+                      facets align and intersect
+                    </li>
+                    <li>
+                      <strong>Polish:</strong> The smoothness and
+                      luster of the diamond's surface
+                    </li>
+                  </ul>
+                </div>
+              </div>
+
+              <div class="visual-placeholder">
+                <div class="diamond-visual cut-visual">
+                  <div class="diamond-icon">💎</div>
+                  <div class="visual-label">Perfect Cut Diamond</div>
+                  <div class="visual-description">
+                    Light reflects beautifully through precisely cut
+                    facets
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Clarity Section -->
+        <div
+          class="diamond-section"
+          id="clarity">
+          <div class="section-header">
+            <div class="section-icon">🔍</div>
+            <div class="section-title">
+              <h3>Diamond Clarity</h3>
+              <h4>The Measure of Perfection</h4>
+            </div>
+          </div>
+
+          <div class="section-content">
+            <div class="content-grid">
+              <div class="content-text">
+                <p class="lead-text">
+                  Almost all diamonds have slight internal and surface
+                  characteristics, most of them too small to be seen
+                  by the unaided eye. When viewed using a
+                  magnification of 10X, they can take various forms
+                  such as tiny crystals, clouds or feathers.
+                </p>
+
+                <p>
+                  To determine a diamond's clarity grade, a gemologist
+                  will consider its size, location, quantity and
+                  nature. Diamonds possessing no such characteristics
+                  are categorized as <strong>Flawless (FL)</strong> or
+                  <strong>Internally Flawless (IF)</strong>. In
+                  general, the greater the imperfections are in number
+                  and size, the lower the clarity grade.
+                </p>
+
+                <div class="clarity-scale">
+                  <h5>Clarity Grading Scale:</h5>
+                  <div class="grade-item">
+                    <span class="grade">FL - IF</span>
+                    <span class="description"
+                      >Flawless to Internally Flawless</span
+                    >
+                  </div>
+                  <div class="grade-item">
+                    <span class="grade">VVS1 - VVS2</span>
+                    <span class="description"
+                      >Very, Very Slightly Included</span
+                    >
+                  </div>
+                  <div class="grade-item">
+                    <span class="grade">VS1 - VS2</span>
+                    <span class="description"
+                      >Very Slightly Included</span
+                    >
+                  </div>
+                  <div class="grade-item">
+                    <span class="grade">SI1 - SI2</span>
+                    <span class="description">Slightly Included</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="visual-placeholder">
+                <div class="diamond-visual clarity-visual">
+                  <div class="diamond-icon">🔍</div>
+                  <div class="visual-label">10X Magnification</div>
+                  <div class="visual-description">
+                    Professional clarity grading under precise
+                    conditions
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Carat Section -->
+        <div
+          class="diamond-section"
+          id="carat">
+          <div class="section-header">
+            <div class="section-icon">⚖️</div>
+            <div class="section-title">
+              <h3>Diamond Carat Weight</h3>
+              <h4>Size and Rarity Combined</h4>
+            </div>
+          </div>
+
+          <div class="section-content">
+            <div class="content-grid">
+              <div class="content-text">
+                <p class="lead-text">
+                  A diamond's size is measured by weight, expressed in
+                  carats divided into points.
+                  <strong
+                    >A carat equals 100 points or 1/5 of a
+                    gram</strong
+                  >. Diamonds of higher carat weight are generally
+                  more valuable because they are found less frequently
+                  in nature.
+                </p>
+
+                <p>
+                  But diamonds of equal carat weight may vary greatly
+                  in value because they differ in the quality of their
+                  cut, color and clarity. Therefore weight alone is a
+                  poor guide for evaluating a diamond, since it is a
+                  complex combination of factors that determines a
+                  diamond's beauty and quality.
+                </p>
+
+                <div class="carat-conversion">
+                  <h5>Carat Weight Reference:</h5>
+                  <div class="conversion-grid">
+                    <div class="conversion-item">
+                      <span class="weight">1 Carat</span>
+                      <span class="points">= 100 Points</span>
+                      <span class="grams">= 0.2 Grams</span>
+                    </div>
+                    <div class="conversion-item">
+                      <span class="weight">0.5 Carat</span>
+                      <span class="points">= 50 Points</span>
+                      <span class="grams">= 0.1 Grams</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="visual-placeholder">
+                <div class="diamond-visual carat-visual">
+                  <div class="diamond-icon">⚖️</div>
+                  <div class="visual-label">Precision Weighing</div>
+                  <div class="visual-description">
+                    Accurate measurement to 1/1000th of a carat
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Color Section -->
+        <div
+          class="diamond-section"
+          id="color">
+          <div class="section-header">
+            <div class="section-icon">🌈</div>
+            <div class="section-title">
+              <h3>Diamond Color</h3>
+              <h4>The Absence of Color is Perfection</h4>
+            </div>
+          </div>
+
+          <div class="section-content">
+            <div class="content-grid">
+              <div class="content-text">
+                <p class="lead-text">
+                  Though diamonds are transparent, almost all diamonds
+                  display some slight hint of color. A diamond's color
+                  is assessed against a scale from
+                  <strong>D through Z</strong>—based on a standardized
+                  color grading system that has been internationally
+                  accepted since the 1950s.
+                </p>
+
+                <p>
+                  Diamonds from the top three grades
+                  <strong>(D, E, and F)</strong> are deemed colorless;
+                  they are the rarest and the most valuable.
+                </p>
+
+                <div class="color-scale">
+                  <h5>Color Grading Scale:</h5>
+                  <div class="color-range">
+                    <div class="color-group exceptional">
+                      <span class="grades">D - F</span>
+                      <span class="category">Colorless</span>
+                      <span class="description"
+                        >Exceptional white, rarest grade</span
+                      >
+                    </div>
+                    <div class="color-group excellent">
+                      <span class="grades">G - J</span>
+                      <span class="category">Near Colorless</span>
+                      <span class="description"
+                        >Excellent value, minimal color</span
+                      >
+                    </div>
+                    <div class="color-group good">
+                      <span class="grades">K - M</span>
+                      <span class="category">Faint</span>
+                      <span class="description"
+                        >Good value with slight warmth</span
+                      >
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="visual-placeholder">
+                <div class="diamond-visual color-visual">
+                  <div class="diamond-icon">🌈</div>
+                  <div class="visual-label">Color Grading</div>
+                  <div class="visual-description">
+                    Professional assessment under controlled lighting
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Fluorescence Section -->
+        <div class="fluorescence-section">
+          <h2>Diamond Fluorescence</h2>
+          <div class="fluorescence-content">
+            <div class="fluorescence-text">
+              <p>
+                In gemology, <strong>fluorescence</strong> refers to
+                the property some diamonds have of glowing when
+                exposed to ultraviolet light. When such diamonds are
+                observed under incandescent or natural light, they can
+                often have a milky appearance—even when they have good
+                clarity.
+              </p>
+
+              <div class="fluorescence-levels">
+                <h4>Fluorescence Intensity Levels:</h4>
+                <div class="level-grid">
+                  <div class="level-item">
+                    <span class="level">None</span>
+                    <span class="percentage">65-70%</span>
+                  </div>
+                  <div class="level-item">
+                    <span class="level">Faint</span>
+                    <span class="percentage">15-20%</span>
+                  </div>
+                  <div class="level-item">
+                    <span class="level">Medium</span>
+                    <span class="percentage">6-8%</span>
+                  </div>
+                  <div class="level-item">
+                    <span class="level">Strong</span>
+                    <span class="percentage">3-5%</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Diamond Selection Guide -->
+        <div class="selection-guide">
+          <h2>Your Diamond Selection Guide</h2>
+          <div class="guide-content">
+            <div class="guide-cards">
+              <div class="guide-card">
+                <div class="card-icon">💡</div>
+                <h4>Expert Tip</h4>
+                <p>
+                  Focus on cut quality first—it has the greatest
+                  impact on a diamond's beauty and brilliance.
+                </p>
+              </div>
+
+              <div class="guide-card">
+                <div class="card-icon">💎</div>
+                <h4>Best Value</h4>
+                <p>
+                  Consider G-H color with VS2-SI1 clarity for the
+                  optimal balance of beauty and value.
+                </p>
+              </div>
+
+              <div class="guide-card">
+                <div class="card-icon">👁️</div>
+                <h4>Eye Clean</h4>
+                <p>
+                  Choose diamonds where inclusions are not visible to
+                  the naked eye for maximum beauty.
+                </p>
+              </div>
+
+              <div class="guide-card">
+                <div class="card-icon">📊</div>
+                <h4>Certification</h4>
+                <p>
+                  Always select certified diamonds from reputable labs
+                  like GIA, AGS, or GCAL.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <script>
+      // Diamond Education Page JavaScript
+      document.addEventListener('DOMContentLoaded', () => {
+        // 4 C's Tab Navigation
+        const csTabs = document.querySelectorAll('.cs-tab');
+        const diamondSections = document.querySelectorAll(
+          '.diamond-section'
+        );
+
+        // Handle tab clicks
+        csTabs.forEach((tab) => {
+          tab.addEventListener('click', () => {
+            const targetTab = tab.getAttribute('data-tab');
+
+            // Remove active class from all tabs and sections
+            csTabs.forEach((t) => t.classList.remove('active'));
+            diamondSections.forEach((section) =>
+              section.classList.remove('active')
+            );
+
+            // Add active class to clicked tab and corresponding section
+            tab.classList.add('active');
+            document
+              .getElementById(targetTab)
+              .classList.add('active');
+          });
+        });
+
+        // Intersection Observer for animations
+        const observerOptions = {
+          threshold: 0.1,
+          rootMargin: '0px 0px -50px 0px',
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.style.opacity = '1';
+              entry.target.style.transform = 'translateY(0)';
+            }
+          });
+        }, observerOptions);
+
+        // Observe guide cards for animation
+        document
+          .querySelectorAll('.guide-card')
+          .forEach((card, index) => {
+            card.style.opacity = '0';
+            card.style.transform = 'translateY(20px)';
+            card.style.transition = `opacity 0.6s ease ${
+              index * 0.1
+            }s, transform 0.6s ease ${index * 0.1}s`;
+            observer.observe(card);
+          });
+
+        // Observe fluorescence level items
+        document
+          .querySelectorAll('.level-item')
+          .forEach((item, index) => {
+            item.style.opacity = '0';
+            item.style.transform = 'translateY(15px)';
+            item.style.transition = `opacity 0.5s ease ${
+              index * 0.1
+            }s, transform 0.5s ease ${index * 0.1}s`;
+            observer.observe(item);
+          });
+
+        // Diamond visual sparkle enhancement
+        document.querySelectorAll('.diamond-icon').forEach((icon) => {
+          icon.addEventListener('mouseenter', () => {
+            icon.style.animation = 'sparkle 0.5s ease-in-out';
+          });
+
+          icon.addEventListener('animationend', () => {
+            icon.style.animation = 'sparkle 2s ease-in-out infinite';
+          });
+        });
+      });
+    </script>
+  </body>
+</html>
