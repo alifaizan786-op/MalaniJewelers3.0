@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Your Shipping Status Has Been Updated</title>
+    <style>
+      @media only screen and (max-width: 600px) {
+        table {
+          width: 100% !important;
+        }
+        h1 {
+          font-size: 2rem !important;
+        }
+        h2,
+        h3,
+        p,
+        td {
+          font-size: 1rem !important;
+        }
+        img {
+          max-width: 100% !important;
+          height: auto !important;
+        }
+        .btn {
+          display: block !important;
+          margin: 1rem auto !important;
+          width: 90% !important;
+          text-align: center !important;
+        }
+      }
+    </style>
+  </head>
+  <body
+    style="
+      margin: 0;
+      padding: 0;
+      font-family: 'Abhaya Libre', serif;
+      background-color: #f5f5f5;
+      color: #333;
+    ">
+    <section style="padding: 2rem 0">
+      <table
+        style="
+          width: 90%;
+          max-width: 600px;
+          margin: 0 auto;
+          background: #fff;
+          border-radius: 15px 15px 0 0;
+          box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+        ">
+        <tr align="center">
+          <td style="padding: 2rem">
+            <img
+              src="https://cdn.shopify.com/s/files/1/0930/1200/1051/files/Logo_Email.svg?v=1750363896"
+              alt="{{ shop.name }} Logo"
+              style="width: 100%; max-width: 700px; height: auto" />
+          </td>
+        </tr>
+        <tr align="center">
+          <td style="padding: 1rem 0">
+            <!-- SVG ICON - Shipping Update -->
+            <svg
+              width="150"
+              height="150"
+              viewBox="0 0 200 200">
+              <style>
+                .truck-body {
+                  stroke: #212121;
+                  fill: #fff;
+                  stroke-width: 4;
+                }
+                .truck-accent {
+                  stroke: #cfa96b;
+                  fill: #cfa96b;
+                  stroke-width: 2;
+                }
+                .wheel {
+                  stroke: #212121;
+                  fill: #333;
+                  stroke-width: 3;
+                }
+                .update-circle {
+                  stroke: #28a745;
+                  fill: #28a745;
+                  stroke-width: 3;
+                }
+                .check {
+                  stroke: #fff;
+                  stroke-width: 4;
+                  stroke-linecap: round;
+                  fill: none;
+                }
+                .pulse {
+                  stroke: #cfa96b;
+                  fill: none;
+                  stroke-width: 2;
+                  opacity: 0.6;
+                }
+              </style>
+              <!-- Truck cabin -->
+              <rect x="50" y="85" width="35" height="45" class="truck-body"/>
+              <!-- Truck cargo area -->
+              <rect x="85" y="95" width="50" height="35" class="truck-body"/>
+              <!-- Truck details -->
+              <rect x="54" y="90" width="27" height="12" class="truck-accent"/>
+              <rect x="89" y="100" width="42" height="6" class="truck-accent"/>
+              <!-- Wheels -->
+              <circle cx="67" cy="145" r="12" class="wheel"/>
+              <circle cx="118" cy="145" r="12" class="wheel"/>
+              <!-- Update indicator -->
+              <circle cx="150" cy="70" r="18" class="update-circle"/>
+              <polyline points="142,70 148,76 158,66" class="check"/>
+              <!-- Pulse rings around update -->
+              <circle cx="150" cy="70" r="25" class="pulse" stroke-dasharray="3,3">
+                <animate attributeName="r" values="25;35;25" dur="2s" repeatCount="indefinite"/>
+                <animate attributeName="opacity" values="0.6;0.1;0.6" dur="2s" repeatCount="indefinite"/>
+              </circle>
+            </svg>
+          </td>
+        </tr>
+      </table>
+
+      <table
+        style="
+          width: 90%;
+          max-width: 600px;
+          margin: 0 auto;
+          background: #fff;
+        ">
+        <tr align="center">
+          <td style="padding: 1rem">
+            <h1 style="color: #cfa96b; font-size: 2.5rem; margin: 0">
+              Shipping Status Updated
+            </h1>
+            <p style="font-size: 1.25rem; margin: 0.5rem 0">
+              We have new information about your shipment
+            </p>
+            <p style="font-size: 1.1rem; margin: 0.5rem 2rem; color: #666;">
+              The following items have been updated with new shipping information.
+            </p>
+          </td>
+        </tr>
+      </table>
+
+      <!-- Order Details -->
+      <table
+        style="
+          width: 90%;
+          max-width: 600px;
+          margin: 0 auto;
+          background: #fff;
+        ">
+        <tr>
+          <td style="padding: 1rem 2rem">
+            <h3 style="color: #cfa96b">Order Information:</h3>
+            <p>
+              <strong>Order Number:</strong> {{ order_name }}<br>
+              {% if po_number %}
+                <strong>PO Number:</strong> #{{ po_number }}<br>
+              {% endif %}
+              <strong>Update Date:</strong> {{ 'now' | date: format: 'date_at_time' }}
+            </p>
+          </td>
+        </tr>
+      </table>
+
+      <!-- Tracking Information -->
+      {% if fulfillment.tracking_numbers.size > 0 %}
+      <table
+        style="
+          width: 90%;
+          max-width: 600px;
+          margin: 0 auto;
+          background: #cfa96b;
+          color: #fff;
+        ">
+        <tr>
+          <td style="padding: 2rem">
+            <h3>📦 Updated Tracking Information</h3>
+            {% if fulfillment.tracking_numbers.size == 1 and fulfillment.tracking_company and fulfillment.tracking_url %}
+              <p>
+                <strong>{{ fulfillment.tracking_company }} Tracking Number:</strong><br>
+                <a
+                  href="{{ fulfillment.tracking_url }}"
+                  style="
+                    color: white;
+                    text-decoration: underline;
+                    font-size: 1.2rem;
+                    font-weight: bold;
+                  "
+                  >{{ fulfillment.tracking_numbers.first }}</a>
+              </p>
+            {% elsif fulfillment.tracking_numbers.size == 1 %}
+              <p>
+                <strong>Tracking Number:</strong><br>
+                <span style="font-size: 1.2rem; font-weight: bold;">{{ fulfillment.tracking_numbers.first }}</span>
+              </p>
+            {% else %}
+              <p><strong>{{ fulfillment.tracking_company }} Tracking Numbers:</strong></p>
+              {% for tracking_number in fulfillment.tracking_numbers %}
+                <p>
+                  {% if fulfillment.tracking_urls[forloop.index0] %}
+                    <a
+                      href="{{ fulfillment.tracking_urls[forloop.index0] }}"
+                      style="
+                        color: white;
+                        text-decoration: underline;
+                        font-size: 1.1rem;
+                        font-weight: bold;
+                      "
+                      >{{ tracking_number }}</a>
+                  {% else %}
+                    <span style="font-size: 1.1rem; font-weight: bold;">{{ tracking_number }}</span>
+                  {% endif %}
+                </p>
+              {% endfor %}
+            {% endif %}
+          </td>
+        </tr>
+      </table>
+      {% endif %}
+
+      <!-- Action Button -->
+      <table
+        style="
+          width: 90%;
+          max-width: 600px;
+          margin: 0 auto;
+          background: #fff;
+        ">
+        <tr align="center">
+          <td style="padding: 2rem">
+            {% if order_status_url %}
+              <a
+                href="{{ order_status_url }}"
+                style="
+                  background: #cfa96b;
+                  color: #fff;
+                  padding: 1rem 3rem;
+                  border-radius: 5px;
+                  text-decoration: none;
+                  font-size: 1.25rem;
+                  font-weight: bold;
+                  display: inline-block;
+                  margin-bottom: 1rem;
+                "
+                >View Your Order</a>
+            {% else %}
+              <a
+                href="{{ shop.url }}"
+                style="
+                  background: #cfa96b;
+                  color: #fff;
+                  padding: 1rem 3rem;
+                  border-radius: 5px;
+                  text-decoration: none;
+                  font-size: 1.25rem;
+                  font-weight: bold;
+                  display: inline-block;
+                  margin-bottom: 1rem;
+                "
+                >Visit Our Store</a>
+            {% endif %}
+            <br>
+            <a
+              href="{{ shop.url }}"
+              style="color: #cfa96b; text-decoration: none; font-size: 1rem;"
+              >Continue Shopping</a>
+          </td>
+        </tr>
+      </table>
+
+      <!-- ITEMS IN THIS SHIPMENT -->
+      <table
+        style="
+          width: 90%;
+          max-width: 600px;
+          margin: 0 auto;
+          background: #fff;
+        ">
+        <tr>
+          <td colspan="2" style="padding: 1rem 2rem;">
+            <h2 style="color: #cfa96b; margin: 0">Items in This Shipment:</h2>
+          </td>
+        </tr>
+        {% for line in fulfillment.fulfillment_line_items %}
+        <tr>
+          <td style="padding: 1rem; text-align: center">
+            {% if line.line_item.image %}
+              <img src="{{ line.line_item.image | img_url: '300x' }}" style="border-radius: 8px; max-width: 100%; height: auto;" />
+            {% else %}
+              <div style="width: 300px; height: 300px; background: #f5f5f5; border-radius: 8px; display: flex; align-items: center; justify-content: center;">
+                <span style="color: #999;">No Image</span>
+              </div>
+            {% endif %}
+          </td>
+          <td style="padding: 1rem 2rem">
+            {% if line.line_item.presentment_title %}
+              {% assign line_title = line.line_item.presentment_title %}
+            {% elsif line.line_item.title %}
+              {% assign line_title = line.line_item.title %}
+            {% else %}
+              {% assign line_title = line.line_item.product.title %}
+            {% endif %}
+            
+            {% if line.quantity < line.line_item.quantity %}
+              {% capture line_display %}
+                {{ line.quantity }} of {{ line.line_item.quantity }}
+              {% endcapture %}
+            {% else %}
+              {% assign line_display = line.line_item.quantity %}
+            {% endif %}
+
+            <p><strong>Product:</strong> {{ line_title }}</p>
+            {% if line.line_item.variant.title != 'Default Title' %}
+              <p><strong>Variant:</strong> {{ line.line_item.variant.title }}</p>
+            {% endif %}
+            {% if line.line_item.sku %}
+              <p><strong>SKU:</strong> {{ line.line_item.sku }}</p>
+            {% endif %}
+            <p><strong>QTY in Shipment:</strong> {{ line_display }}</p>
+            
+            {% if line.line_item.selling_plan_allocation %}
+              <p><strong>Plan:</strong> {{ line.line_item.selling_plan_allocation.selling_plan.name }}</p>
+            {% endif %}
+            
+            {% if line.line_item.refunded_quantity > 0 %}
+              <p style="color: #dc3545;"><strong>Status:</strong> Refunded</p>
+            {% endif %}
+            
+            {% if line.line_item.discount_allocations %}
+              {% for discount_allocation in line.line_item.discount_allocations %}
+                {% if discount_allocation.discount_application.target_selection != 'all' %}
+                  <p style="color: #28a745;">
+                    <strong>Discount:</strong> {{ discount_allocation.discount_application.title }}
+                    (-{{ discount_allocation.amount | money }})
+                  </p>
+                {% endif %}
+              {% endfor %}
+            {% endif %}
+          </td>
+        </tr>
+        {% endfor %}
+      </table>
+
+      <!-- Status Update Info -->
+      <table
+        style="
+          width: 90%;
+          max-width: 600px;
+          margin: 0 auto;
+          background: #e8f4fd;
+          border-left: 5px solid #cfa96b;
+        ">
+        <tr>
+          <td style="padding: 1.5rem 2rem">
+            <h3 style="color: #cfa96b; margin: 0 0 1rem 0;">📋 What This Update Means</h3>
+            <p style="margin: 0.5rem 0; color: #666;">
+              This notification indicates that new information is available about your shipment. This could include:
+            </p>
+            <ul style="margin: 0.5rem 0; padding-left: 1.5rem; color: #666;">
+              <li>Updated tracking numbers</li>
+              <li>Changed delivery dates</li>
+              <li>New carrier information</li>
+              <li>Shipment status changes</li>
+            </ul>
+            <p style="margin: 1rem 0 0 0; font-weight: bold; color: #28a745;">
+              📱 We recommend checking your tracking link for the most current status.
+            </p>
+          </td>
+        </tr>
+      </table>
+
+      <!-- Help Section -->
+      <table
+        style="
+          width: 90%;
+          max-width: 600px;
+          margin: 0 auto;
+          background: #cfa96b;
+          color: #fff;
+        ">
+        <tr>
+          <td style="padding: 2rem">
+            <h3>Questions About Your Shipment?</h3>
+            <p>
+              Visit
+              <a
+                style="color: white; text-decoration: underline"
+                href="{{ shop.url }}/pages/shipping"
+                >Shipping & Handling</a
+              >
+            </p>
+            <p>
+              Call:
+              <a
+                style="color: white; text-decoration: underline"
+                href="tel:18880006666"
+                >+1 (888) 000-6666</a
+              >
+            </p>
+            <p>
+              Email:
+              <a
+                style="color: white; text-decoration: underline"
+                href="mailto:{{ shop.email }}"
+                >{{ shop.email }}</a
+              >
+            </p>
+          </td>
+        </tr>
+      </table>
+
+      <!-- More Items -->
+      <table
+        style="
+          width: 90%;
+          max-width: 600px;
+          margin: 0 auto;
+          background: #fff;
+          text-align: center;
+        ">
+        <tr>
+          <td colspan="3">
+            <h2 style="padding: 2rem 0">
+              While You Wait
+            </h2>
+          </td>
+        </tr>
+        <tr>
+          <td class="btn">
+            <a
+              href="{{ shop.url }}/collections/womens-new-arrivals"
+              style="
+                background: #cfa96b;
+                color: #fff;
+                padding: 1rem 2rem;
+                border-radius: 5px;
+                text-decoration: none;
+              "
+              >Women's New Arrivals</a
+            >
+          </td>
+          <td class="btn">
+            <a
+              href="{{ shop.url }}/collections/mens-new-arrivals"
+              style="
+                background: #cfa96b;
+                color: #fff;
+                padding: 1rem 2rem;
+                border-radius: 5px;
+                text-decoration: none;
+              "
+              >Men's New Arrivals</a
+            >
+          </td>
+          <td class="btn">
+            <a
+              href="{{ shop.url }}/collections/kids"
+              style="
+                background: #cfa96b;
+                color: #fff;
+                padding: 1rem 2rem;
+                border-radius: 5px;
+                text-decoration: none;
+              "
+              >Kids' Picks</a
+            >
+          </td>
+        </tr>
+        <tr>
+          <td colspan="3">
+            <h3 style="padding-top: 2rem">
+              Free Shipping on Orders $750+
+            </h3>
+          </td>
+        </tr>
+        <tr>
+          <td colspan="3">
+            <h3 style="padding-top: 2rem">
+              Buy Now, Pay Later with
+              <a
+                href="{{ shop.url }}/pages/affirm"
+                style="color: #cfa96b"
+                >Affirm</a
+              >
+            </h3>
+          </td>
+        </tr>
+      </table>
+    </section>
+  </body>
+</html>
