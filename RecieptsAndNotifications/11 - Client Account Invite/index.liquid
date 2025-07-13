@@ -1,0 +1,422 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>Activate Your Account</title>
+    <style>
+      @media only screen and (max-width: 600px) {
+        table {
+          width: 100% !important;
+        }
+        h1 {
+          font-size: 2rem !important;
+        }
+        h2,
+        h3,
+        p,
+        td {
+          font-size: 1rem !important;
+        }
+        img {
+          max-width: 100% !important;
+          height: auto !important;
+        }
+        .btn {
+          display: block !important;
+          margin: 1rem auto !important;
+          width: 90% !important;
+          text-align: center !important;
+        }
+      }
+    </style>
+  </head>
+  <body
+    style="
+      margin: 0;
+      padding: 0;
+      font-family: 'Abhaya Libre', serif;
+      background-color: #f5f5f5;
+      color: #333;
+    "
+  >
+    <section style="padding: 2rem 0">
+      <table
+        style="
+          width: 90%;
+          max-width: 600px;
+          margin: 0 auto;
+          background: #fff;
+          border-radius: 15px 15px 0 0;
+          box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+        "
+      >
+        <tr align="center">
+          <td style="padding: 2rem">
+            <img
+              src="https://cdn.shopify.com/s/files/1/0930/1200/1051/files/Logo_Email.svg?v=1750363896"
+              alt="{{ shop.name }} Logo"
+              style="width: 100%; max-width: 700px; height: auto"
+            >
+          </td>
+        </tr>
+        <tr align="center">
+          <td style="padding: 1rem 0">
+           
+          </td>
+        </tr>
+      </table>
+
+      <table
+        style="
+          width: 90%;
+          max-width: 600px;
+          margin: 0 auto;
+          background: #fff;
+        "
+      >
+        <tr align="center">
+          <td style="padding: 1rem">
+            <h1 style="color: #cfa96b; font-size: 2.5rem; margin: 0">Welcome to the Family! ✨</h1>
+            <p style="font-size: 1.25rem; margin: 0.5rem 0; color: #28a745; font-weight: bold;">
+              Your account is almost ready
+            </p>
+
+            {% if custom_message != blank %}
+              <p style="font-size: 1.1rem; margin: 1rem 2rem; color: #666;">{{ custom_message }}</p>
+            {% else %}
+              <p style="font-size: 1.1rem; margin: 1rem 2rem; color: #666;">
+                You've created a new customer account at
+                <a href="{{ shop.url }}" style="color: #cfa96b; text-decoration: none; font-weight: bold;">
+                  {{- shop.name -}}</a
+                >. Just one more step to unlock exclusive benefits and start your jewelry journey with us!
+              </p>
+            {% endif %}
+          </td>
+        </tr>
+      </table>
+
+      <!-- Welcome Benefits -->
+      <!-- VIP Benefits Banner with Gradient Background -->
+      <table
+        width="100%"
+        cellpadding="0"
+        cellspacing="0"
+        border="0"
+        style="background-color: #cfa96b; width: 90%; max-width: 600px; margin: 0 auto;"
+      >
+        <tr>
+          <td align="center">
+            <div
+              style="
+                background: linear-gradient(135deg, #cfa96b, #d4b876);
+                padding: 2rem;
+                color: #fff;
+                font-family: Arial, sans-serif;
+                border-radius: 8px;
+              "
+            >
+              <h2 style="margin: 0 0 1rem 0; font-size: 1.5rem;">🎉 Your VIP Benefits Await</h2>
+              <div style="text-align: left; max-width: 400px; margin: 0 auto;">
+                <p style="margin: 0.5rem 0; font-size: 1.1rem;">✨ <strong>Exclusive Member Pricing</strong></p>
+                <p style="margin: 0.5rem 0; font-size: 1.1rem;">🚚 <strong>Priority Shipping</strong></p>
+                <p style="margin: 0.5rem 0; font-size: 1.1rem;">💝 <strong>Birthday & Anniversary Surprises</strong></p>
+                <p style="margin: 0.5rem 0; font-size: 1.1rem;">🔔 <strong>First Access to New Collections</strong></p>
+                <p style="margin: 0.5rem 0; font-size: 1.1rem;">💎 <strong>Wishlist & Order History</strong></p>
+              </div>
+            </div>
+          </td>
+        </tr>
+      </table>
+
+      <!-- Activation Button -->
+      <table
+        style="
+          width: 90%;
+          max-width: 600px;
+          margin: 0 auto;
+          background: #fff;
+        "
+      >
+        <tr align="center">
+          <td style="padding: 2rem">
+            <h3 style="color: #cfa96b; margin-bottom: 1rem;">Ready to Activate?</h3>
+            <a
+              href="{{ customer.account_activation_url }}"
+              style="
+                background: linear-gradient(135deg, #cfa96b, #d4b876);
+                color: #fff;
+                padding: 1.2rem 4rem;
+                border-radius: 25px;
+                text-decoration: none;
+                font-size: 1.3rem;
+                font-weight: bold;
+                display: inline-block;
+                box-shadow: 0 6px 12px rgba(207, 169, 107, 0.4);
+                margin-bottom: 1rem;
+              "
+              >Activate My Account</a
+            >
+            <br>
+            <a
+              href="{{ shop.url }}"
+              style="color: #cfa96b; text-decoration: none; font-size: 1rem;"
+              >or Browse Our Collections</a
+            >
+          </td>
+        </tr>
+      </table>
+
+      <!-- About Malani Jewelers -->
+      <table
+        style="
+          width: 90%;
+          max-width: 600px;
+          margin: 0 auto;
+          background: #f8f9fa;
+          border-left: 5px solid #cfa96b;
+        "
+      >
+        <tr>
+          <td style="padding: 1.5rem 2rem">
+            <h3 style="color: #cfa96b; margin: 0 0 1rem 0;">💍 Welcome to Malani Jewelers</h3>
+            <p style="margin: 0.5rem 0; color: #666; line-height: 1.6;">
+              For over <strong>three decades</strong>, we've been crafting exquisite jewelry that tells your unique
+              story. From traditional Indian designs to contemporary pieces, each creation is made with uncompromising
+              quality and attention to detail.
+            </p>
+            <p style="margin: 1rem 0 0 0; color: #666; line-height: 1.6;">
+              <strong>Our Promise:</strong> Authentic craftsmanship, certified diamonds, and lifetime service that makes
+              every piece a treasured heirloom.
+            </p>
+          </td>
+        </tr>
+      </table>
+
+      <!-- Quick Start Guide -->
+      <table
+        style="
+          width: 90%;
+          max-width: 600px;
+          margin: 0 auto;
+          background: #e8f4fd;
+          border-left: 5px solid #cfa96b;
+        "
+      >
+        <tr>
+          <td style="padding: 1.5rem 2rem">
+            <h3 style="color: #cfa96b; margin: 0 0 1rem 0;">🚀 Quick Start Guide</h3>
+            <ol style="margin: 0; padding-left: 1.5rem; color: #666;">
+              <li style="margin-bottom: 0.5rem;"><strong>Activate your account</strong> using the button above</li>
+              <li style="margin-bottom: 0.5rem;"><strong>Create your wishlist</strong> and save favorite pieces</li>
+              <li style="margin-bottom: 0.5rem;">
+                <strong>Set your preferences</strong> for size, style, and metal type
+              </li>
+              <li style="margin-bottom: 0.5rem;"><strong>Subscribe to notifications</strong> for exclusive offers</li>
+              <li><strong>Start shopping</strong> with your member benefits!</li>
+            </ol>
+          </td>
+        </tr>
+      </table>
+
+      <!-- Help Section -->
+      <table
+        style="
+          width: 90%;
+          max-width: 600px;
+          margin: 0 auto;
+          background: #cfa96b;
+          color: #fff;
+        "
+      >
+        <tr>
+          <td style="padding: 2rem">
+            <h3>Need Help Getting Started?</h3>
+            <p>
+              Visit our
+              <a
+                style="color: white; text-decoration: underline"
+                href="{{ shop.url }}/pages/account-help"
+                >Account Help Center</a
+              >
+            </p>
+            <p>
+              Call our friendly team:
+              <a
+                style="color: white; text-decoration: underline"
+                href="tel:18880006666"
+                >+1 (888) 000-6666</a
+              >
+            </p>
+            <p>
+              Email us:
+              <a
+                style="color: white; text-decoration: underline"
+                href="mailto:{{ shop.email }}"
+              >
+                {{- shop.email -}}
+              </a>
+            </p>
+            <p style="margin-top: 1.5rem; font-size: 0.9rem;">
+              💬 <strong>Live Chat Available:</strong> Monday-Saturday, 10 AM - 8 PM EST
+            </p>
+          </td>
+        </tr>
+      </table>
+
+      <!-- Featured Collections -->
+      <table
+        style="
+          width: 90%;
+          max-width: 600px;
+          margin: 0 auto;
+          background: #fff;
+          text-align: center;
+        "
+      >
+        <tr>
+          <td style="padding: 2rem">
+            <h2 style="color: #cfa96b; margin-bottom: 1rem;">Start Your Journey With Our Bestsellers</h2>
+            <p style="font-size: 1.1rem; margin-bottom: 2rem; color: #666;">
+              Discover the pieces our customers love most
+            </p>
+          </td>
+        </tr>
+      </table>
+
+      <!-- Collection Links -->
+      <table
+        style="
+          width: 90%;
+          max-width: 600px;
+          margin: 0 auto;
+          background: #fff;
+          text-align: center;
+        "
+      >
+        <tr>
+          <td class="btn">
+            <a
+              href="{{ shop.url }}/collections/engagement-rings"
+              style="
+                background: #cfa96b;
+                color: #fff;
+                padding: 1rem 2rem;
+                border-radius: 5px;
+                text-decoration: none;
+              "
+              >Engagement Rings</a
+            >
+          </td>
+          <td class="btn">
+            <a
+              href="{{ shop.url }}/collections/wedding-bands"
+              style="
+                background: #cfa96b;
+                color: #fff;
+                padding: 1rem 2rem;
+                border-radius: 5px;
+                text-decoration: none;
+              "
+              >Wedding Bands</a
+            >
+          </td>
+          <td class="btn">
+            <a
+              href="{{ shop.url }}/collections/necklaces"
+              style="
+                background: #cfa96b;
+                color: #fff;
+                padding: 1rem 2rem;
+                border-radius: 5px;
+                text-decoration: none;
+              "
+              >Necklaces</a
+            >
+          </td>
+        </tr>
+        <tr>
+          <td class="btn">
+            <a
+              href="{{ shop.url }}/collections/earrings"
+              style="
+                background: #cfa96b;
+                color: #fff;
+                padding: 1rem 2rem;
+                border-radius: 5px;
+                text-decoration: none;
+              "
+              >Earrings</a
+            >
+          </td>
+          <td class="btn">
+            <a
+              href="{{ shop.url }}/collections/bracelets"
+              style="
+                background: #cfa96b;
+                color: #fff;
+                padding: 1rem 2rem;
+                border-radius: 5px;
+                text-decoration: none;
+              "
+              >Bracelets</a
+            >
+          </td>
+          <td class="btn">
+            <a
+              href="{{ shop.url }}/collections/mens-jewelry"
+              style="
+                background: #cfa96b;
+                color: #fff;
+                padding: 1rem 2rem;
+                border-radius: 5px;
+                text-decoration: none;
+              "
+              >Men's Jewelry</a
+            >
+          </td>
+        </tr>
+        <tr>
+          <td colspan="3">
+            <h3 style="padding-top: 2rem">💳 Flexible Payment Options Available</h3>
+            <p style="margin: 0.5rem 0; color: #666;">Pay with Affirm, Apple Pay, or traditional cards</p>
+          </td>
+        </tr>
+      </table>
+
+      <!-- Final Activation Reminder -->
+      <table
+        style="
+          width: 90%;
+          max-width: 600px;
+          margin: 0 auto;
+          background: #fff3cd;
+          border: 2px solid #cfa96b;
+          border-radius: 10px;
+        "
+      >
+        <tr align="center">
+          <td style="padding: 1.5rem">
+            <h3 style="color: #cfa96b; margin: 0 0 1rem 0;">⏰ Don't Forget to Activate!</h3>
+            <p style="margin: 0 0 1rem 0; color: #666;">
+              Your account activation link will expire in 7 days. Activate now to ensure you don't miss out on exclusive
+              member benefits!
+            </p>
+            <a
+              href="{{ customer.account_activation_url }}"
+              style="
+                background: #cfa96b;
+                color: #fff;
+                padding: 0.8rem 2rem;
+                border-radius: 5px;
+                text-decoration: none;
+                font-weight: bold;
+                display: inline-block;
+              "
+              >Activate Now</a
+            >
+          </td>
+        </tr>
+      </table>
+    </section>
+  </body>
+</html>
