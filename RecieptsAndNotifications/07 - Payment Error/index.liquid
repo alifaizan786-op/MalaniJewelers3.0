@@ -1,0 +1,423 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>Payment Couldn't Be Processed</title>
+    <style>
+      @media only screen and (max-width: 600px) {
+        table {
+          width: 100% !important;
+        }
+        h1 {
+          font-size: 2rem !important;
+        }
+        h2,
+        h3,
+        p,
+        td {
+          font-size: 1rem !important;
+        }
+        img {
+          max-width: 100% !important;
+          height: auto !important;
+        }
+        .btn {
+          display: block !important;
+          margin: 1rem auto !important;
+          width: 90% !important;
+          text-align: center !important;
+        }
+      }
+    </style>
+  </head>
+  <body
+    style="
+      margin: 0;
+      padding: 0;
+      font-family: 'Abhaya Libre', serif;
+      background-color: #f5f5f5;
+      color: #333;
+    "
+  >
+    <section style="padding: 2rem 0">
+      <table
+        style="
+          width: 90%;
+          max-width: 600px;
+          margin: 0 auto;
+          background: #fff;
+          border-radius: 15px 15px 0 0;
+          box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+        "
+      >
+        <tr align="center">
+          <td style="padding: 2rem">
+            <img
+              src="https://cdn.shopify.com/s/files/1/0930/1200/1051/files/Logo_Email.svg?v=1750363896"
+              alt="{{ shop.name }} Logo"
+              style="width: 100%; max-width: 700px; height: auto"
+            >
+          </td>
+        </tr>
+        <tr align="center">
+          <td style="padding: 1rem 0">
+            <!-- SVG ICON - Payment Error -->
+            <svg
+              width="150"
+              height="150"
+              viewBox="0 0 200 200"
+            >
+              <style>
+                .card {
+                  stroke: #212121;
+                  fill: #fff;
+                  stroke-width: 4;
+                }
+                .card-accent {
+                  stroke: #cfa96b;
+                  fill: #cfa96b;
+                  stroke-width: 2;
+                }
+                .error-x {
+                  stroke: #dc3545;
+                  stroke-width: 6;
+                  stroke-linecap: round;
+                }
+                .error-circle {
+                  stroke: #dc3545;
+                  fill: #fff;
+                  stroke-width: 4;
+                }
+              </style>
+              <!-- Credit card -->
+              <rect x="50" y="80" width="100" height="60" rx="8" class="card"/>
+              <!-- Card stripe -->
+              <rect x="50" y="95" width="100" height="12" class="card-accent"/>
+              <!-- Card chip -->
+              <rect x="65" y="110" width="15" height="12" rx="2" class="card-accent"/>
+              <!-- Error indicator -->
+              <circle cx="135" cy="65" r="20" class="error-circle"/>
+              <line x1="127" y1="57" x2="143" y2="73" class="error-x"/>
+              <line x1="143" y1="57" x2="127" y2="73" class="error-x"/>
+            </svg>
+          </td>
+        </tr>
+      </table>
+
+      <table
+        style="
+          width: 90%;
+          max-width: 600px;
+          margin: 0 auto;
+          background: #fff;
+        "
+      >
+        <tr align="center">
+          <td style="padding: 1rem">
+            <h1 style="color: #cfa96b; font-size: 2.5rem; margin: 0">Payment Couldn't Be Processed</h1>
+            <p style="font-size: 1.25rem; margin: 1rem 2rem; color: #666;">
+              Don't worry - you haven't been charged anything.
+            </p>
+            <p style="font-size: 1.1rem; margin: 0.5rem 2rem; color: #666;">
+              Your items are still waiting in your cart. Let's try completing your purchase again.
+            </p>
+          </td>
+        </tr>
+      </table>
+
+      <!-- Reassurance Banner -->
+      <table
+        style="
+          width: 90%;
+          max-width: 600px;
+          margin: 0 auto;
+          background: #e8f4fd;
+          border-left: 5px solid #cfa96b;
+        "
+      >
+        <tr>
+          <td style="padding: 1.5rem 2rem">
+            <h3 style="color: #cfa96b; margin: 0 0 1rem 0;">💳 What Happened?</h3>
+            <p style="margin: 0.5rem 0; color: #666;">Payment processing can sometimes fail due to:</p>
+            <ul style="margin: 0.5rem 0; padding-left: 1.5rem; color: #666;">
+              <li>Temporary bank or card issuer delays</li>
+              <li>Incorrect billing information</li>
+              <li>Insufficient funds or daily spending limits</li>
+              <li>Network connectivity issues</li>
+            </ul>
+            <p style="margin: 1rem 0 0 0; font-weight: bold; color: #28a745;">
+              ✅ The good news: Your items are still reserved and ready for purchase!
+            </p>
+          </td>
+        </tr>
+      </table>
+
+      <!-- Action Button -->
+      <table
+        style="
+          width: 90%;
+          max-width: 600px;
+          margin: 0 auto;
+          background: #fff;
+        "
+      >
+        <tr align="center">
+          <td style="padding: 2rem">
+            <a
+              href="{{ url }}"
+              style="
+                background: #cfa96b;
+                color: #fff;
+                padding: 1rem 3rem;
+                border-radius: 5px;
+                text-decoration: none;
+                font-size: 1.25rem;
+                font-weight: bold;
+                display: inline-block;
+                margin-bottom: 1rem;
+                box-shadow: 0 4px 8px rgba(207, 169, 107, 0.3);
+              "
+              >Return to Cart & Try Again</a
+            >
+            <br>
+            <a
+              href="{{ shop.url }}"
+              style="color: #cfa96b; text-decoration: none; font-size: 1rem;"
+              >or Continue Shopping</a
+            >
+          </td>
+        </tr>
+      </table>
+
+      <!-- Payment Options -->
+      <table
+        style="
+          width: 90%;
+          max-width: 600px;
+          margin: 0 auto;
+          background: #fff;
+        "
+      >
+        <tr>
+          <td style="padding: 2rem">
+            <h3 style="color: #cfa96b; margin: 0 0 1rem 0; text-align: center;">Multiple Payment Options Available</h3>
+            <div style="display: flex; justify-content: center; align-items: center; gap: 1rem; flex-wrap: wrap; text-align: center;">
+              <p style="margin: 0.5rem; color: #666;">💳 Credit & Debit Cards</p>
+              <p style="margin: 0.5rem; color: #666;">🏪 Affirm</p>
+              <p style="margin: 0.5rem; color: #666;">📱 Apple Pay</p>
+              <p style="margin: 0.5rem; color: #666;">🔒 Shop Pay</p>
+            </div>
+            <div style="text-align: center; margin-top: 1rem;">
+              <p style="margin: 0.5rem; color: #cfa96b; font-weight: bold;">💰 Buy Now, Pay Later with Affirm</p>
+            </div>
+          </td>
+        </tr>
+      </table>
+
+      <!-- Troubleshooting Tips -->
+      <table
+        style="
+          width: 90%;
+          max-width: 600px;
+          margin: 0 auto;
+          background: #f8f9fa;
+          border-left: 5px solid #cfa96b;
+        "
+      >
+        <tr>
+          <td style="padding: 1.5rem 2rem">
+            <h3 style="color: #cfa96b; margin: 0 0 1rem 0;">💡 Quick Troubleshooting Tips</h3>
+            <ul style="margin: 0; padding-left: 1.5rem; color: #666;">
+              <li style="margin-bottom: 0.5rem;">✓ Double-check your billing address matches your card</li>
+              <li style="margin-bottom: 0.5rem;">✓ Verify your card number, expiry date, and CVV</li>
+              <li style="margin-bottom: 0.5rem;">✓ Try a different payment method</li>
+              <li style="margin-bottom: 0.5rem;">✓ Contact your bank if the issue persists</li>
+              <li>✓ Consider using Affirm for flexible payment options</li>
+            </ul>
+          </td>
+        </tr>
+      </table>
+
+      <!-- Random Review Section -->
+      {% assign reviews = 'Swapna Bind|Thank you veeru understanding my concern and helped me out on online shopping. Its great conversation with you. You have lot patience to answers my question.^Rashmi Janakiraman|down the best designs when compared to other 22k gold and diamond jewelers in the US. This review is for a recent online purchase. I ordered a Turkish bracelet online that they were able to customize. Shiva was my point of contact.^Parise|Thanks to veeru and he explained me about the online shopping and benefits. Its good experience. I had lot of questions in my mind online. I have connected with veeru and i squeezed him with lot of questions. And he has answered all my questions.^shirisha chepyala|Shiva made the online purchase easy he answered all my queries patiently excellent customer service. I strongly recommend Shiva for online shopping.^sujani yaparla|I made an online purchase of baby bangles. They were perfect and arrived on time without any delays. The packaging was great and there was no problem at all. The store associates were very helpful and answered all my queries.^Vinaykumar Musku|I had a very good experience in online purchase on our first anniversary my wife liked the set very much. Thank you so much Mr. Veeru he is a very nice and kind person he helped me for complete online process very patience.^rupasri mudiraj|Thank you so much for your help veeru for my complete online purchase. You have helped me alot and I will definitely come back again. My rating 10/10.^Prashanth K|thank you so much veeru and shiva for online shopping help^Komal Dave|It was good online shopping experience. Santosh was prompt in his response and was extremely helpful. Looking forward to doing business again! I have wonderful experience every time I shop here. The team is wonderful.^Kalpana Patel|This is my first time purchasing jewelry online from Malani. I must say Veru made my online shopping experience very easy. He was extremely professional and helpful in answering questions, sending photos and videos.^Manju Das|Honestly, this place is great and as always been great place for online shopping. I had a great experience online shopping at Malani, helped by Nyra and Shiva. They are awesome, and helped me tremendously. I found exactly what I was looking for.^Aparna Patra|Always satisfied with my online purchases from Malani. Their designs are beautiful in quality reliable gold with reasonable pricing. Veeru from the Atlanta store always goes above and beyond to communicate on the phone.^Shruti Mehta|Great Designs and Excellent customer support provided by Viru. He made our online purchase really smooth.^K Shruthi|My online purchase was made easy and Hassel by veeru and Shiva .awesome service highly recommend^Mateti Sai krishna|Very good experience online shopping and veeru help me out how to sort out the by category. Thanks to veeru^Shaik|Malani Jewelers web site is updated daily with latest designs and deals. Online ordering was very easy and convenient. Any doubts I had, their rep Shiva handled it very promptly and understood my order requirements.^veena srinivas Kunigal|Santosh, thank you very much for making online shopping easier. YOU always contacted me and gave me updates about my customized orders.. I know, it was not easy during pandemic period and there was delay in delivery.^JGT|Two important positive things - I got a beautiful piece of jewelry, and their customer service was great… In particular, Shiva was very helpful with my online purchase and made it a very easy process^Ashwini Sonakul|by veeru. he had helped me for complete online process really very good experience in online. we will get the same item as shown in online. always ask for veeru for any online purchases . we strongly recommend malani jeweleres^karthik kantety|good experience with Malani jewelers customer support. I bought some items from online. I had a best experience with online purchasing because of Mr. Santhosh who was the one helping me to purchase the products. I strongly recommend'
+        | split: '^'
+      %}
+      {% assign random_index = 'now' | date: '%S' | modulo: reviews.size %}
+      {% assign selected_review = reviews[random_index] | split: '|' %}
+      {% assign review_name = selected_review[0] %}
+      {% assign review_text = selected_review[1] %}
+
+      <table
+        style="
+          width: 90%;
+          max-width: 600px;
+          margin: 0 auto;
+          background: #fff;
+          text-align: center;
+        "
+      >
+        <tr>
+          <td style="padding: 2rem">
+            <h2 style="color: #cfa96b; margin-bottom: 1rem;">Don't Let This Stop You!</h2>
+            <p style="font-size: 1.1rem; margin-bottom: 1rem; color: #666;">
+              ⭐⭐⭐⭐⭐ <br>
+              "{{ review_text }}"
+            </p>
+            <p style="font-style: italic; color: #999;">- {{ review_name }}, Verified Customer</p>
+          </td>
+        </tr>
+      </table>
+
+      <!-- Help Section -->
+      <table
+        style="
+          width: 90%;
+          max-width: 600px;
+          margin: 0 auto;
+          background: #cfa96b;
+          color: #fff;
+        "
+      >
+        <tr>
+          <td style="padding: 2rem">
+            <h3>Need Help with Your Payment?</h3>
+            <p>
+              Visit
+              <a
+                style="color: white; text-decoration: underline"
+                href="{{ shop.url }}/pages/payment-help"
+                >Payment Help Center</a
+              >
+            </p>
+            <p>
+              Call:
+              <a
+                style="color: white; text-decoration: underline"
+                href="tel:18880006666"
+                >+1 (888) 000-6666</a
+              >
+            </p>
+            <p>
+              Email:
+              <a
+                style="color: white; text-decoration: underline"
+                href="mailto:{{ shop.email }}"
+              >
+                {{- shop.email -}}
+              </a>
+            </p>
+            <p style="margin-top: 1.5rem; font-size: 0.9rem;">
+              💬 <strong>Live Chat Available:</strong> We're here to help resolve any payment issues quickly!
+            </p>
+          </td>
+        </tr>
+      </table>
+
+      <!-- Second CTA -->
+      <table
+        style="
+          width: 90%;
+          max-width: 600px;
+          margin: 0 auto;
+          background: #fff;
+        "
+      >
+        <tr align="center">
+          <td style="padding: 2rem">
+            <h3 style="color: #cfa96b; margin-bottom: 1rem;">Your Items Are Still Waiting</h3>
+            <a
+              href="{{ url }}"
+              style="
+                background: linear-gradient(135deg, #cfa96b, #d4b876);
+                color: #fff;
+                padding: 1.2rem 4rem;
+                border-radius: 25px;
+                text-decoration: none;
+                font-size: 1.3rem;
+                font-weight: bold;
+                display: inline-block;
+                box-shadow: 0 6px 12px rgba(207, 169, 107, 0.4);
+              "
+              >Try Payment Again</a
+            >
+          </td>
+        </tr>
+      </table>
+
+      <!-- More Items -->
+      <table
+        style="
+          width: 90%;
+          max-width: 600px;
+          margin: 0 auto;
+          background: #fff;
+          text-align: center;
+        "
+      >
+        <tr>
+          <td colspan="3">
+            <h2 style="padding: 2rem 0">While You're Here</h2>
+          </td>
+        </tr>
+        <tr>
+          <td class="btn">
+            <a
+              href="{{ shop.url }}/collections/womens-new-arrivals"
+              style="
+                background: #cfa96b;
+                color: #fff;
+                padding: 1rem 2rem;
+                border-radius: 5px;
+                text-decoration: none;
+              "
+              >Women's New Arrivals</a
+            >
+          </td>
+          <td class="btn">
+            <a
+              href="{{ shop.url }}/collections/mens-new-arrivals"
+              style="
+                background: #cfa96b;
+                color: #fff;
+                padding: 1rem 2rem;
+                border-radius: 5px;
+                text-decoration: none;
+              "
+              >Men's New Arrivals</a
+            >
+          </td>
+          <td class="btn">
+            <a
+              href="{{ shop.url }}/collections/kids"
+              style="
+                background: #cfa96b;
+                color: #fff;
+                padding: 1rem 2rem;
+                border-radius: 5px;
+                text-decoration: none;
+              "
+              >Kids' Picks</a
+            >
+          </td>
+        </tr>
+        <tr>
+          <td colspan="3">
+            <h3 style="padding-top: 2rem">Free Shipping on Orders $750+</h3>
+          </td>
+        </tr>
+        <tr>
+          <td colspan="3">
+            <h3 style="padding-top: 2rem">
+              Buy Now, Pay Later with
+              <a
+                href="{{ shop.url }}/pages/affirm"
+                style="color: #cfa96b"
+                >Affirm</a
+              >
+            </h3>
+          </td>
+        </tr>
+      </table>
+    </section>
+  </body>
+</html>
