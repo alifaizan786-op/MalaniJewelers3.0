@@ -1,0 +1,548 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>
+      {% if refund_line_items.size == item_count %}
+        Your Order Has Been Refunded
+      {% elsif refund_line_items.size == 0 %}
+        You Have Received a Refund
+      {% else %}
+        Partial Refund Processed
+      {% endif %}
+    </title>
+    <style>
+      @media only screen and (max-width: 600px) {
+        table {
+          width: 100% !important;
+        }
+        h1 {
+          font-size: 2rem !important;
+        }
+        h2,
+        h3,
+        p,
+        td {
+          font-size: 1rem !important;
+        }
+        img {
+          max-width: 100% !important;
+          height: auto !important;
+        }
+        .btn {
+          display: block !important;
+          margin: 1rem auto !important;
+          width: 90% !important;
+          text-align: center !important;
+        }
+      }
+    </style>
+  </head>
+  <body
+    style="
+      margin: 0;
+      padding: 0;
+      font-family: 'Abhaya Libre', serif;
+      background-color: #f5f5f5;
+      color: #333;
+    "
+  >
+    <section style="padding: 2rem 0">
+      <table
+        style="
+          width: 90%;
+          max-width: 600px;
+          margin: 0 auto;
+          background: #fff;
+          border-radius: 15px 15px 0 0;
+          box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+        "
+      >
+        <tr align="center">
+          <td style="padding: 2rem">
+            <img
+              src="https://cdn.shopify.com/s/files/1/0930/1200/1051/files/Logo_Email.svg?v=1750363896"
+              alt="{{ shop.name }} Logo"
+              style="width: 100%; max-width: 700px; height: auto"
+            >
+          </td>
+        </tr>
+        <tr align="center">
+          <td style="padding: 1rem 0"></td>
+        </tr>
+      </table>
+
+      <table
+        style="
+          width: 90%;
+          max-width: 600px;
+          margin: 0 auto;
+          background: #fff;
+        "
+      >
+        <tr align="center">
+          <td style="padding: 1rem">
+            {% if refund_line_items.size == item_count %}
+              <h1 style="color: #cfa96b; font-size: 2.5rem; margin: 0">Your Order Has Been Refunded</h1>
+            {% elsif refund_line_items.size == 0 %}
+              <h1 style="color: #cfa96b; font-size: 2.5rem; margin: 0">You Have Received a Refund</h1>
+            {% else %}
+              <h1 style="color: #cfa96b; font-size: 2.5rem; margin: 0">Partial Refund Processed</h1>
+            {% endif %}
+            <p style="font-size: 1.25rem; margin: 0.5rem 0">
+              Total amount refunded: <strong>{{ amount | money_with_currency }}</strong>
+            </p>
+            <p style="font-size: 1.1rem; margin: 0.5rem 2rem; color: #666;">
+              It may take up to 10 days for this refund to appear in your account.
+            </p>
+          </td>
+        </tr>
+      </table>
+
+      <!-- Refund Details -->
+      <table
+        style="
+          width: 90%;
+          max-width: 600px;
+          margin: 0 auto;
+          background: #fff;
+        "
+      >
+        <tr>
+          <td style="padding: 1rem 2rem">
+            <h3 style="color: #cfa96b">Refund Information:</h3>
+            <p>
+              <strong>Order Number:</strong> {{ order_name -}}
+              <br>
+              {% if po_number %}
+                <strong>PO Number:</strong> #{{ po_number -}}
+                <br>
+              {% endif %}
+              <strong>Refund Amount:</strong> {{ amount | money_with_currency -}}
+              <br>
+              <strong>Refund Date:</strong> {{ created_at | date: format: 'date_at_time' }}
+            </p>
+          </td>
+        </tr>
+      </table>
+
+      <!-- Action Button -->
+      <table
+        style="
+          width: 90%;
+          max-width: 600px;
+          margin: 0 auto;
+          background: #fff;
+        "
+      >
+        <tr align="center">
+          <td style="padding: 2rem">
+            <a
+              href="{{ shop.url }}"
+              style="
+                background: #cfa96b;
+                color: #fff;
+                padding: 1rem 3rem;
+                border-radius: 5px;
+                text-decoration: none;
+                font-size: 1.25rem;
+                font-weight: bold;
+                display: inline-block;
+                margin-bottom: 1rem;
+              "
+              >Continue Shopping</a
+            >
+          </td>
+        </tr>
+      </table>
+
+      <!-- ORDER SUMMARY -->
+      <table
+        style="
+          width: 90%;
+          max-width: 600px;
+          margin: 0 auto;
+          background: #fff;
+        "
+      >
+        <tr>
+          <td colspan="3" style="padding: 1rem 2rem;">
+            <h2 style="color: #cfa96b; margin: 0">Order Summary:</h2>
+          </td>
+        </tr>
+        {% if line_items_including_zero_quantity == empty %}
+          {% for line in subtotal_line_items %}
+            <tr>
+              <td style="padding: 1rem; text-align: center; width: 150px;">
+                {% if line.image %}
+                  <img
+                    src="{{ line.image | img_url: '150x' }}"
+                    style="border-radius: 8px; max-width: 100%; height: auto;"
+                  >
+                {% else %}
+                  <div style="width: 150px; height: 150px; background: #f5f5f5; border-radius: 8px; display: flex; align-items: center; justify-content: center;">
+                    <span style="color: #999;">No Image</span>
+                  </div>
+                {% endif %}
+              </td>
+              <td style="padding: 1rem 2rem">
+                {% if line.product.title %}
+                  {% assign line_title = line.product.title %}
+                {% else %}
+                  {% assign line_title = line.title %}
+                {% endif %}
+
+                <p><strong>Product:</strong> {{ line_title }}</p>
+                {% if line.variant.title != 'Default Title' %}
+                  <p><strong>Variant:</strong> {{ line.variant.title }}</p>
+                {% endif %}
+                {% if line.sku %}
+                  <p><strong>SKU:</strong> {{ line.sku }}</p>
+                {% endif %}
+                <p><strong>QTY:</strong> {{ line.quantity }}</p>
+
+                {% if line.selling_plan_allocation %}
+                  <p><strong>Plan:</strong> {{ line.selling_plan_allocation.selling_plan.name }}</p>
+                {% endif %}
+
+                {% if line.aggregated_update %}
+                  <p style="color: #dc3545; font-weight: bold;">Status: {{ line.aggregated_update }}</p>
+                {% elsif line.refunded_quantity > 0 %}
+                  <p style="color: #dc3545; font-weight: bold;">Status: Refunded</p>
+                {% endif %}
+              </td>
+              <td style="padding: 1rem 2rem; text-align: right; vertical-align: top;">
+                {% if line.original_line_price != line.final_line_price %}
+                  <del style="color: #999;">{{ line.original_line_price | money }}</del><br>
+                {% endif %}
+                <strong>{{ line.final_line_price | money }}</strong>
+              </td>
+            </tr>
+          {% endfor %}
+        {% else %}
+          {% for line in line_items_including_zero_quantity %}
+            <tr>
+              <td style="padding: 1rem; text-align: center; width: 150px;">
+                {% if line.image %}
+                  <img
+                    src="{{ line.image | img_url: '150x' }}"
+                    style="border-radius: 8px; max-width: 100%; height: auto;"
+                  >
+                {% else %}
+                  <div style="width: 150px; height: 150px; background: #f5f5f5; border-radius: 8px; display: flex; align-items: center; justify-content: center;">
+                    <span style="color: #999;">No Image</span>
+                  </div>
+                {% endif %}
+              </td>
+              <td style="padding: 1rem 2rem">
+                {% if line.product.title %}
+                  {% assign line_title = line.product.title %}
+                {% else %}
+                  {% assign line_title = line.title %}
+                {% endif %}
+
+                <p><strong>Product:</strong> {{ line_title }}</p>
+                {% if line.variant.title != 'Default Title' %}
+                  <p><strong>Variant:</strong> {{ line.variant.title }}</p>
+                {% endif %}
+                {% if line.sku %}
+                  <p><strong>SKU:</strong> {{ line.sku }}</p>
+                {% endif %}
+                <p><strong>QTY:</strong> {{ line.quantity }}</p>
+
+                {% if line.selling_plan_allocation %}
+                  <p><strong>Plan:</strong> {{ line.selling_plan_allocation.selling_plan.name }}</p>
+                {% endif %}
+
+                {% if line.aggregated_update %}
+                  <p style="color: #dc3545; font-weight: bold;">Status: {{ line.aggregated_update }}</p>
+                {% elsif line.refunded_quantity > 0 %}
+                  <p style="color: #dc3545; font-weight: bold;">Status: Refunded</p>
+                {% endif %}
+              </td>
+              <td style="padding: 1rem 2rem; text-align: right; vertical-align: top;">
+                {% if line.original_line_price != line.final_line_price %}
+                  <del style="color: #999;">{{ line.original_line_price | money }}</del><br>
+                {% endif %}
+                {% if line.final_line_price > 0 or line.quantity == 0 %}
+                  <strong>{{ line.final_line_price | money }}</strong>
+                {% else %}
+                  <strong>Free</strong>
+                {% endif %}
+              </td>
+            </tr>
+          {% endfor %}
+        {% endif %}
+      </table>
+
+      <!-- ORDER TOTALS -->
+      <table
+        style="
+          width: 90%;
+          max-width: 600px;
+          margin: 0 auto;
+          background: #fff;
+          font-size: 1.1rem;
+        "
+      >
+        <tr>
+          <td style="padding: 1rem 2rem">Subtotal:</td>
+          <td style="padding: 1rem 2rem; text-align: right">{{ subtotal_price | money }}</td>
+        </tr>
+        <tr>
+          <td style="padding: 1rem 2rem">Shipping:</td>
+          <td style="padding: 1rem 2rem; text-align: right">{{ shipping_price | money }}</td>
+        </tr>
+        <tr>
+          <td style="padding: 1rem 2rem">Tax:</td>
+          <td style="padding: 1rem 2rem; text-align: right">{{ tax_price | money }}</td>
+        </tr>
+        {% if total_duties %}
+          <tr>
+            <td style="padding: 1rem 2rem">Duties:</td>
+            <td style="padding: 1rem 2rem; text-align: right">{{ total_duties | money }}</td>
+          </tr>
+        {% endif %}
+        {% for fee in fees %}
+          <tr>
+            <td style="padding: 1rem 2rem">{{ fee.title }}:</td>
+            <td style="padding: 1rem 2rem; text-align: right">{{ fee.subtotal | money }}</td>
+          </tr>
+        {% endfor %}
+        <tr style="border-top: 2px solid #cfa96b;">
+          <td style="padding: 1rem 2rem"><strong>Total:</strong></td>
+          <td style="padding: 1rem 2rem; text-align: right">
+            <strong>{{ total_price | money_with_currency }}</strong>
+          </td>
+        </tr>
+      </table>
+
+      <!-- TRANSACTION DETAILS -->
+      {% assign transaction_size = 0 %}
+      {% assign transaction_amount = 0 %}
+      {% for transaction in transactions %}
+        {% if transaction.status == 'success' %}
+          {% if transaction.kind == 'sale' or transaction.kind == 'capture' %}
+            {% assign transaction_size = transaction_size | plus: 1 %}
+            {% assign transaction_amount = transaction_amount | plus: transaction.amount %}
+          {% elsif transaction.kind == 'refund' or transaction.kind == 'change' %}
+            {% assign transaction_size = transaction_size | plus: 1 %}
+            {% assign transaction_amount = transaction_amount | minus: transaction.amount %}
+          {% endif %}
+        {% endif %}
+      {% endfor %}
+
+      {% if transaction_size > 1 or transaction_amount < total_price %}
+        <table
+          style="
+            width: 90%;
+            max-width: 600px;
+            margin: 0 auto;
+            background: #fff;
+            font-size: 1.1rem;
+          "
+        >
+          <tr>
+            <td colspan="2" style="padding: 1rem 2rem;">
+              <h3 style="color: #cfa96b; margin: 0">Payment History:</h3>
+            </td>
+          </tr>
+          {% for transaction in transactions %}
+            {% if transaction.status == 'success' and transaction.kind == 'capture' or transaction.kind == 'sale' %}
+              {% if transaction.payment_details.credit_card_company %}
+                {% capture transaction_name %}{{ transaction.payment_details.credit_card_company }} (ending in {{ transaction.payment_details.credit_card_last_four_digits }}){% endcapture %}
+              {% else %}
+                {% capture transaction_name %}{{ transaction.gateway_display_name }}{% endcapture %}
+              {% endif %}
+              <tr>
+                <td style="padding: 0.5rem 2rem">{{ transaction_name }}</td>
+                <td style="padding: 0.5rem 2rem; text-align: right">{{ transaction.amount | money }}</td>
+              </tr>
+            {% endif %}
+            {% if transaction.kind == 'refund' and transaction.gateway != 'shop_offer' %}
+              {% if transaction.payment_details.credit_card_company %}
+                {% assign refund_method_title = transaction.payment_details.credit_card_company %}
+              {% else %}
+                {% assign refund_method_title = transaction.gateway_display_name %}
+              {% endif %}
+              <tr>
+                <td style="padding: 0.5rem 2rem">
+                  <strong style="color: #28a745;">Refund</strong><br>
+                  <small>{{ refund_method_title | replace: '_', ' ' | capitalize }}</small>
+                </td>
+                <td style="padding: 0.5rem 2rem; text-align: right">
+                  <strong style="color: #28a745;">{{ transaction.amount | times: -1 | money }}</strong>
+                </td>
+              </tr>
+            {% endif %}
+          {% endfor %}
+          <tr style="border-top: 1px solid #cfa96b;">
+            <td style="padding: 1rem 2rem"><strong>Total Paid:</strong></td>
+            <td style="padding: 1rem 2rem; text-align: right">
+              <strong>{{ transaction_amount | money_with_currency }}</strong>
+            </td>
+          </tr>
+        </table>
+      {% endif %}
+
+      <!-- Processing Time Info -->
+      <table
+        style="
+          width: 90%;
+          max-width: 600px;
+          margin: 0 auto;
+          background: #e8f4fd;
+          border-left: 5px solid #cfa96b;
+        "
+      >
+        <tr>
+          <td style="padding: 1.5rem 2rem">
+            <h3 style="color: #cfa96b; margin: 0 0 1rem 0">Processing Timeline</h3>
+            <p style="margin: 0.5rem 0;"><strong>Credit/Debit Cards:</strong> 5-7 business days<br></p>
+            <p style="margin: 1rem 0 0 0; font-style: italic; color: #666;">
+              Processing times may vary depending on your financial institution.
+            </p>
+          </td>
+        </tr>
+      </table>
+
+      <!-- Help Section -->
+      <table
+        style="
+          width: 90%;
+          max-width: 600px;
+          margin: 0 auto;
+          background: #cfa96b;
+          color: #fff;
+        "
+      >
+        <tr>
+          <td style="padding: 2rem">
+            <h3>Questions About Your Refund?</h3>
+            <p>
+              Visit
+              <a
+                style="color: white; text-decoration: underline"
+                href="{{ shop.url }}/pages/returns"
+                >Returns & Refunds</a
+              >
+            </p>
+            <p>
+              Call:
+              <a
+                style="color: white; text-decoration: underline"
+                href="tel:18880006666"
+                >+1 (888) 000-6666</a
+              >
+            </p>
+            <p>
+              Email:
+              <a
+                style="color: white; text-decoration: underline"
+                href="mailto:{{ shop.email }}"
+              >
+                {{- shop.email -}}
+              </a>
+            </p>
+          </td>
+        </tr>
+      </table>
+
+      <!-- We're Sorry Section -->
+      <table
+        style="
+          width: 90%;
+          max-width: 600px;
+          margin: 0 auto;
+          background: #fff;
+          text-align: center;
+        "
+      >
+        <tr>
+          <td style="padding: 2rem">
+            <h2 style="color: #cfa96b; margin-bottom: 1rem;">We're Sorry to See You Go</h2>
+            <p style="font-size: 1.1rem; margin-bottom: 2rem; color: #666;">
+              Your satisfaction is our priority. If there's anything we can do to improve your experience, please let us
+              know.
+            </p>
+          </td>
+        </tr>
+      </table>
+
+      <!-- More Items -->
+      <table
+        style="
+          width: 90%;
+          max-width: 600px;
+          margin: 0 auto;
+          background: #fff;
+          text-align: center;
+        "
+      >
+        <tr>
+          <td colspan="3">
+            <h2 style="padding: 2rem 0">Give Us Another Chance</h2>
+          </td>
+        </tr>
+        <tr>
+          <td class="btn">
+            <a
+              href="{{ shop.url }}/collections/womens-new-arrivals"
+              style="
+                background: #cfa96b;
+                color: #fff;
+                padding: 1rem 2rem;
+                border-radius: 5px;
+                text-decoration: none;
+              "
+              >Women's New Arrivals</a
+            >
+          </td>
+          <td class="btn">
+            <a
+              href="{{ shop.url }}/collections/mens-new-arrivals"
+              style="
+                background: #cfa96b;
+                color: #fff;
+                padding: 1rem 2rem;
+                border-radius: 5px;
+                text-decoration: none;
+              "
+              >Men's New Arrivals</a
+            >
+          </td>
+          <td class="btn">
+            <a
+              href="{{ shop.url }}/collections/kids"
+              style="
+                background: #cfa96b;
+                color: #fff;
+                padding: 1rem 2rem;
+                border-radius: 5px;
+                text-decoration: none;
+              "
+              >Kids' Picks</a
+            >
+          </td>
+        </tr>
+        <tr>
+          <td colspan="3">
+            <h3 style="padding-top: 2rem">Free Shipping on Orders $750+</h3>
+          </td>
+        </tr>
+        <tr>
+          <td colspan="3">
+            <h3 style="padding-top: 2rem">
+              Buy Now, Pay Later with
+              <a
+                href="{{ shop.url }}/pages/affirm"
+                style="color: #cfa96b"
+                >Affirm</a
+              >
+            </h3>
+          </td>
+        </tr>
+      </table>
+    </section>
+  </body>
+</html>
