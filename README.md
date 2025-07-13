@@ -83,8 +83,6 @@ Order Email Notifiction Integration
 Auto Update Price Bulk Front End
 
 
-L3 = =IF(MOD(ROW(L3)-ROW($L$2),30)=0, IF(WEEKDAY(L2+1)=2, L2+2, L2+1), L2)
-=TEXT(K2, "DD")&TEXT(K2, "MMM")&TEXT(K2, "YY")
 
 Done
 Privacy Policy
@@ -98,15 +96,16 @@ Bangle Size Converter
 Diamond Gallery
 Ring Size Converter
 TV Commercials
+
 Birth Stone Guide
 CertOfAuth
 Clean & Conflict Free
 Corporate Responsibility
 Shipping Policy
+Special Offers
 
 Pending
 Malani History
-Special Offers
 Client Testimonials
 Custom Jewelry Services
 Jewelry Repair Services
