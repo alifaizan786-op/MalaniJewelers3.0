@@ -1,0 +1,547 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>
+      {% if item_count == 1 %}
+        You Left an Item in Your Cart
+      {% else %}
+        You Left Items in Your Cart
+      {% endif %}
+    </title>
+    <style>
+      @media only screen and (max-width: 600px) {
+        table {
+          width: 100% !important;
+        }
+        h1 {
+          font-size: 2rem !important;
+        }
+        h2,
+        h3,
+        p,
+        td {
+          font-size: 1rem !important;
+        }
+        img {
+          max-width: 100% !important;
+          height: auto !important;
+        }
+        .btn {
+          display: block !important;
+          margin: 1rem auto !important;
+          width: 90% !important;
+          text-align: center !important;
+        }
+      }
+    </style>
+  </head>
+  <body
+    style="
+      margin: 0;
+      padding: 0;
+      font-family: 'Abhaya Libre', serif;
+      background-color: #f5f5f5;
+      color: #333;
+    "
+  >
+    <section style="padding: 2rem 0">
+      <table
+        style="
+          width: 90%;
+          max-width: 600px;
+          margin: 0 auto;
+          background: #fff;
+          border-radius: 15px 15px 0 0;
+          box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+        "
+      >
+        <tr align="center">
+          <td style="padding: 2rem">
+            <img
+              src="{{ 'logo_email.svg' | shopify_asset_url }}"
+              alt="{{ shop.name }} Logo"
+              style="width: 100%; max-width: 700px; height: auto"
+            >
+          </td>
+        </tr>
+        <tr align="center">
+          <td style="padding: 1rem 0">
+            <!-- SVG ICON - Shopping Cart -->
+            <svg
+              width="150"
+              height="150"
+              viewBox="0 0 200 200"
+            >
+              <style>
+                .cart-body {
+                  stroke: #212121;
+                  fill: none;
+                  stroke-width: 5;
+                }
+                .cart-accent {
+                  stroke: #cfa96b;
+                  fill: #cfa96b;
+                  stroke-width: 3;
+                }
+                .wheel {
+                  stroke: #212121;
+                  fill: #333;
+                  stroke-width: 3;
+                }
+                .heart {
+                  fill: #dc3545;
+                  stroke: #dc3545;
+                  stroke-width: 2;
+                }
+              </style>
+              <!-- Cart body -->
+              <path d="M40 60 L50 60 L60 120 L140 120 L150 80 L70 80" class="cart-body"/>
+              <!-- Cart handle -->
+              <path d="M40 60 L35 40 L25 40" class="cart-body"/>
+              <!-- Cart wheels -->
+              <circle cx="70" cy="135" r="8" class="wheel"/>
+              <circle cx="130" cy="135" r="8" class="wheel"/>
+              <!-- Items in cart (jewelry pieces) -->
+              <circle cx="90" cy="95" r="12" class="cart-accent"/>
+              <circle cx="110" cy="95" r="8" class="cart-accent"/>
+              <circle cx="120" cy="95" r="6" class="cart-accent"/>
+              <!-- Small heart to show items are loved -->
+              <path d="M155 50 C155 45, 162 45, 162 50 C162 45, 169 45, 169 50 C169 58, 162 65, 162 65 C162 65, 155 58, 155 50 Z" class="heart"/>
+            </svg>
+          </td>
+        </tr>
+      </table>
+
+      <table
+        style="
+          width: 90%;
+          max-width: 600px;
+          margin: 0 auto;
+          background: #fff;
+        "
+      >
+        <tr align="center">
+          <td style="padding: 1rem">
+            {% if item_count == 1 %}
+              <h1 style="color: #cfa96b; font-size: 2.5rem; margin: 0">Don't Forget This Beauty!</h1>
+            {% else %}
+              <h1 style="color: #cfa96b; font-size: 2.5rem; margin: 0">Your Treasures Are Waiting</h1>
+            {% endif %}
+
+            {% if custom_message != blank %}
+              <p style="font-size: 1.25rem; margin: 1rem 2rem; color: #666;">{{ custom_message }}</p>
+            {% else %}
+              {% if billing_address.first_name %}
+                {% if item_count == 1 %}
+                  <p style="font-size: 1.25rem; margin: 1rem 2rem; color: #666;">
+                    Hi {{ billing_address.first_name }}, you added a beautiful piece to your cart. Complete your
+                    purchase now while it's still available.
+                  </p>
+                {% else %}
+                  <p style="font-size: 1.25rem; margin: 1rem 2rem; color: #666;">
+                    Hi {{ billing_address.first_name }}, you have some gorgeous pieces waiting in your cart. Complete
+                    your purchase now while they're still available.
+                  </p>
+                {% endif %}
+              {% else %}
+                {% if item_count == 1 %}
+                  <p style="font-size: 1.25rem; margin: 1rem 2rem; color: #666;">
+                    You added a beautiful piece to your cart. Complete your purchase now while it's still available.
+                  </p>
+                {% else %}
+                  <p style="font-size: 1.25rem; margin: 1rem 2rem; color: #666;">
+                    You have some gorgeous pieces waiting in your cart. Complete your purchase now while they're still
+                    available.
+                  </p>
+                {% endif %}
+              {% endif %}
+            {% endif %}
+          </td>
+        </tr>
+      </table>
+
+      <!-- Urgency Banner -->
+      <table
+        style="
+          width: 90%;
+          max-width: 600px;
+          margin: 0 auto;
+          background: linear-gradient(135deg, #cfa96b, #d4b876);
+          color: #fff;
+        "
+      >
+        <tr align="center">
+          <td style="padding: 1rem">
+            <p style="margin: 0; font-size: 1.1rem; font-weight: bold;">
+              ⏰ Limited Availability - Complete Your Purchase Today!
+            </p>
+          </td>
+        </tr>
+      </table>
+
+      <!-- Action Button -->
+      <table
+        style="
+          width: 90%;
+          max-width: 600px;
+          margin: 0 auto;
+          background: #fff;
+        "
+      >
+        <tr align="center">
+          <td style="padding: 2rem">
+            <a
+              href="{{ url }}"
+              style="
+                background: #cfa96b;
+                color: #fff;
+                padding: 1rem 3rem;
+                border-radius: 5px;
+                text-decoration: none;
+                font-size: 1.25rem;
+                font-weight: bold;
+                display: inline-block;
+                margin-bottom: 1rem;
+                box-shadow: 0 4px 8px rgba(207, 169, 107, 0.3);
+              "
+              >Complete Your Purchase</a
+            >
+            <br>
+            <a
+              href="{{ shop.url }}"
+              style="color: #cfa96b; text-decoration: none; font-size: 1rem;"
+              >or Continue Shopping</a
+            >
+          </td>
+        </tr>
+      </table>
+
+      <!-- ITEMS IN CART -->
+      <table
+        style="
+          width: 90%;
+          max-width: 600px;
+          margin: 0 auto;
+          background: #fff;
+        "
+      >
+        <tr>
+          <td colspan="3" style="padding: 1rem 2rem;">
+            <h2 style="color: #cfa96b; margin: 0">
+              {% if item_count == 1 %}
+                Your Selected Piece:
+              {% else %}
+                Your Selected Pieces:
+              {% endif %}
+            </h2>
+          </td>
+        </tr>
+        {% for line in subtotal_line_items %}
+          <tr>
+            <td style="padding: 1rem; text-align: center; width: 150px;">
+              {% if line.image %}
+                <img
+                  src="{{ line.image | img_url: '300x' }}"
+                  style="border-radius: 8px; max-width: 100%; height: auto;"
+                >
+              {% else %}
+                <div style="width: 150px; height: 150px; background: #f5f5f5; border-radius: 8px; display: flex; align-items: center; justify-content: center;">
+                  <span style="color: #999;">No Image</span>
+                </div>
+              {% endif %}
+            </td>
+            <td style="padding: 1rem 2rem">
+              {% if line.presentment_title %}
+                {% assign line_title = line.presentment_title %}
+              {% elsif line.title %}
+                {% assign line_title = line.title %}
+              {% else %}
+                {% assign line_title = line.product.title %}
+              {% endif %}
+
+              <p>
+                <strong>{{ line_title }}</strong>
+              </p>
+              {% if line.variant.title != 'Default Title' %}
+                <p style="color: #666;">{{ line.variant.title }}</p>
+              {% endif %}
+              {% if line.sku %}
+                <p style="color: #666; font-size: 0.9rem;">SKU: {{ line.sku }}</p>
+              {% endif %}
+              <p>Quantity: {{ line.quantity }}</p>
+
+              {% if line.selling_plan_allocation %}
+                <p style="color: #cfa96b; font-weight: bold;">{{ line.selling_plan_allocation.selling_plan.name }}</p>
+              {% endif %}
+
+              {% if line.discount_allocations %}
+                {% for discount_allocation in line.discount_allocations %}
+                  {% if discount_allocation.discount_application.target_selection != 'all' %}
+                    <p style="color: #28a745; font-weight: bold;">
+                      💰 {{ discount_allocation.discount_application.title }} (-
+                      {{- discount_allocation.amount | money -}}
+                      )
+                    </p>
+                  {% endif %}
+                {% endfor %}
+              {% endif %}
+            </td>
+            <td style="padding: 1rem 2rem; text-align: right; vertical-align: top; width: 120px;">
+              {% if line.original_line_price != line.final_line_price %}
+                <del style="color: #999; font-size: 0.9rem;">{{ line.original_line_price | money }}</del><br>
+              {% endif %}
+              <strong style="font-size: 1.3rem; color: #cfa96b;">{{ line.final_line_price | money }}</strong>
+            </td>
+          </tr>
+        {% endfor %}
+      </table>
+
+      <!-- Cart Total -->
+      <table
+        style="
+          width: 90%;
+          max-width: 600px;
+          margin: 0 auto;
+          background: #fff;
+          border-top: 2px solid #cfa96b;
+        "
+      >
+        <tr>
+          <td style="padding: 1.5rem 2rem; text-align: right;">
+            <p style="margin: 0; font-size: 1.5rem;">
+              <strong>Cart Total: {{ subtotal_price | money }}</strong>
+            </p>
+            {% if total_discounts > 0 %}
+              <p style="margin: 0.5rem 0 0 0; color: #28a745; font-weight: bold;">
+                You're saving {{ total_discounts | money }}!
+              </p>
+            {% endif %}
+          </td>
+        </tr>
+      </table>
+
+      <!-- Second CTA -->
+      <table
+        style="
+          width: 90%;
+          max-width: 600px;
+          margin: 0 auto;
+          background: #fff;
+        "
+      >
+        <tr align="center">
+          <td style="padding: 2rem">
+            <a
+              href="{{ url }}"
+              style="
+                background: linear-gradient(135deg, #cfa96b, #d4b876);
+                color: #fff;
+                padding: 1.2rem 4rem;
+                border-radius: 25px;
+                text-decoration: none;
+                font-size: 1.3rem;
+                font-weight: bold;
+                display: inline-block;
+                box-shadow: 0 6px 12px rgba(207, 169, 107, 0.4);
+              "
+              >Secure My Items Now</a
+            >
+          </td>
+        </tr>
+      </table>
+
+      <!-- Why Choose Us -->
+      <table
+        style="
+          width: 90%;
+          max-width: 600px;
+          margin: 0 auto;
+          background: #f8f9fa;
+          border-left: 5px solid #cfa96b;
+        "
+      >
+        <tr>
+          <td style="padding: 2rem">
+            <h3 style="color: #cfa96b; margin: 0 0 1rem 0;">Why Choose Malani Jewelers?</h3>
+            <ul style="margin: 0; padding-left: 1.5rem; color: #666;">
+              <li style="margin-bottom: 0.5rem;">
+                ✨ <strong>Handcrafted Excellence</strong> - Each piece is carefully made with attention to detail
+              </li>
+              <li style="margin-bottom: 0.5rem;">🚚 <strong>Free Shipping</strong> on orders over $750</li>
+              <li style="margin-bottom: 0.5rem;">💎 <strong>Lifetime Warranty</strong> on all fine jewelry</li>
+              <li style="margin-bottom: 0.5rem;">🔒 <strong>Secure Checkout</strong> with SSL encryption</li>
+              <li>💳 <strong>Flexible Payments</strong> with Affirm - Buy now, pay later</li>
+            </ul>
+          </td>
+        </tr>
+      </table>
+
+      <!-- Help Section -->
+      <table
+        style="
+          width: 90%;
+          max-width: 600px;
+          margin: 0 auto;
+          background: #cfa96b;
+          color: #fff;
+        "
+      >
+        <tr>
+          <td style="padding: 2rem">
+            <h3>Need Help with Your Purchase?</h3>
+            <p>
+              Visit
+              <a
+                style="color: white; text-decoration: underline"
+                href="{{ shop.url }}/pages/shipping"
+                >Shipping & Handling</a
+              >
+            </p>
+            <p>
+              Call:
+              <a
+                style="color: white; text-decoration: underline"
+                href="tel:18880006666"
+                >+1 (888) 000-6666</a
+              >
+            </p>
+            <p>
+              Email:
+              <a
+                style="color: white; text-decoration: underline"
+                href="mailto:{{ shop.email }}"
+              >
+                {{- shop.email -}}
+              </a>
+            </p>
+          </td>
+        </tr>
+      </table>
+
+      <!-- Social Proof -->
+      {% assign reviews = 'Swapna Bind|Thank you veeru understanding my concern and helped me out on online shopping. Its great conversation with you. You have lot patience to answers my question.^Rashmi Janakiraman|down the best designs when compared to other 22k gold and diamond jewelers in the US. This review is for a recent online purchase. I ordered a Turkish bracelet online that they were able to customize. Shiva was my point of contact.^Parise|Thanks to veeru and he explained me about the online shopping and benefits. Its good experience. I had lot of questions in my mind online. I have connected with veeru and i squeezed him with lot of questions. And he has answered all my questions.^shirisha chepyala|Shiva made the online purchase easy he answered all my queries patiently excellent customer service. I strongly recommend Shiva for online shopping.^sujani yaparla|I made an online purchase of baby bangles. They were perfect and arrived on time without any delays. The packaging was great and there was no problem at all. The store associates were very helpful and answered all my queries.^Vinaykumar Musku|I had a very good experience in online purchase on our first anniversary my wife liked the set very much. Thank you so much Mr. Veeru he is a very nice and kind person he helped me for complete online process very patience.^rupasri mudiraj|Thank you so much for your help veeru for my complete online purchase. You have helped me alot and I will definitely come back again. My rating 10/10.^Prashanth K|thank you so much veeru and shiva for online shopping help^Komal Dave|It was good online shopping experience. Santosh was prompt in his response and was extremely helpful. Looking forward to doing business again! I have wonderful experience every time I shop here. The team is wonderful.^Kalpana Patel|This is my first time purchasing jewelry online from Malani. I must say Veru made my online shopping experience very easy. He was extremely professional and helpful in answering questions, sending photos and videos.^Manju Das|Honestly, this place is great and as always been great place for online shopping. I had a great experience online shopping at Malani, helped by Nyra and Shiva. They are awesome, and helped me tremendously. I found exactly what I was looking for.^Aparna Patra|Always satisfied with my online purchases from Malani. Their designs are beautiful in quality reliable gold with reasonable pricing. Veeru from the Atlanta store always goes above and beyond to communicate on the phone.^Shruti Mehta|Great Designs and Excellent customer support provided by Viru. He made our online purchase really smooth.^K Shruthi|My online purchase was made easy and Hassel by veeru and Shiva .awesome service highly recommend^Mateti Sai krishna|Very good experience online shopping and veeru help me out how to sort out the by category. Thanks to veeru^Shaik|Malani Jewelers web site is updated daily with latest designs and deals. Online ordering was very easy and convenient. Any doubts I had, their rep Shiva handled it very promptly and understood my order requirements.^veena srinivas Kunigal|Santosh, thank you very much for making online shopping easier. YOU always contacted me and gave me updates about my customized orders.. I know, it was not easy during pandemic period and there was delay in delivery.^JGT|Two important positive things - I got a beautiful piece of jewelry, and their customer service was great… In particular, Shiva was very helpful with my online purchase and made it a very easy process^Ashwini Sonakul|by veeru. he had helped me for complete online process really very good experience in online. we will get the same item as shown in online. always ask for veeru for any online purchases . we strongly recommend malani jeweleres^karthik kantety|good experience with Malani jewelers customer support. I bought some items from online. I had a best experience with online purchasing because of Mr. Santhosh who was the one helping me to purchase the products. I strongly recommend'
+        | split: '^'
+      %}
+      {% assign random_index = 'now' | date: '%S' | modulo: reviews.size %}
+      {% assign selected_review = reviews[random_index] | split: '|' %}
+      {% assign review_name = selected_review[0] %}
+      {% assign review_text = selected_review[1] %}
+
+      <table
+        style="
+          width: 90%;
+          max-width: 600px;
+          margin: 0 auto;
+          background: #fff;
+          text-align: center;
+        "
+      >
+        <tr>
+          <td style="padding: 2rem">
+            <h2 style="color: #cfa96b; margin-bottom: 1rem;">Join 50,000+ Happy Customers</h2>
+            <p style="font-size: 1.1rem; margin-bottom: 1rem; color: #666;">
+              ⭐⭐⭐⭐⭐ <br>
+              "{{ review_text }}"
+            </p>
+            <p style="font-style: italic; color: #999;">- {{ review_name }}, Verified Customer</p>
+          </td>
+        </tr>
+      </table>
+
+      <!-- More Items -->
+      <table
+        style="
+          width: 90%;
+          max-width: 600px;
+          margin: 0 auto;
+          background: #fff;
+          text-align: center;
+        "
+      >
+        <tr>
+          <td colspan="3">
+            <h2 style="padding: 2rem 0">While You're Here</h2>
+          </td>
+        </tr>
+        <tr>
+          <td class="btn">
+            <a
+              href="{{ shop.url }}/collections/womens-new-arrivals"
+              style="
+                background: #cfa96b;
+                color: #fff;
+                padding: 1rem 2rem;
+                border-radius: 5px;
+                text-decoration: none;
+              "
+              >Women's New Arrivals</a
+            >
+          </td>
+          <td class="btn">
+            <a
+              href="{{ shop.url }}/collections/mens-new-arrivals"
+              style="
+                background: #cfa96b;
+                color: #fff;
+                padding: 1rem 2rem;
+                border-radius: 5px;
+                text-decoration: none;
+              "
+              >Men's New Arrivals</a
+            >
+          </td>
+          <td class="btn">
+            <a
+              href="{{ shop.url }}/collections/kids"
+              style="
+                background: #cfa96b;
+                color: #fff;
+                padding: 1rem 2rem;
+                border-radius: 5px;
+                text-decoration: none;
+              "
+              >Kids' Picks</a
+            >
+          </td>
+        </tr>
+        <tr>
+          <td colspan="3">
+            <h3 style="padding-top: 2rem">Free Shipping on Orders $750+</h3>
+          </td>
+        </tr>
+        <tr>
+          <td colspan="3">
+            <h3 style="padding-top: 2rem">
+              Buy Now, Pay Later with
+              <a
+                href="{{ shop.url }}/pages/affirm"
+                style="color: #cfa96b"
+                >Affirm</a
+              >
+            </h3>
+          </td>
+        </tr>
+      </table>
+
+      <!-- Unsubscribe Footer -->
+      <table
+        style="
+          width: 90%;
+          max-width: 600px;
+          margin: 0 auto;
+          background: #f8f9fa;
+        "
+      >
+        <tr align="center">
+          <td style="padding: 1rem">
+            <p style="margin: 0; font-size: 0.9rem; color: #666;">
+              Don't want to receive cart reminders from us?
+              <a href="{{ unsubscribe_url }}" style="color: #cfa96b;">Unsubscribe</a>
+            </p>
+          </td>
+        </tr>
+      </table>
+    </section>
+  </body>
+</html>
