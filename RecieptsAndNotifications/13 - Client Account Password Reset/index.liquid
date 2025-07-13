@@ -1,0 +1,340 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>Reset Your Password</title>
+    <style>
+      @media only screen and (max-width: 600px) {
+        table {
+          width: 100% !important;
+        }
+        h1 {
+          font-size: 2rem !important;
+        }
+        h2,
+        h3,
+        p,
+        td {
+          font-size: 1rem !important;
+        }
+        img {
+          max-width: 100% !important;
+          height: auto !important;
+        }
+        .btn {
+          display: block !important;
+          margin: 1rem auto !important;
+          width: 90% !important;
+          text-align: center !important;
+        }
+      }
+    </style>
+  </head>
+  <body
+    style="
+      margin: 0;
+      padding: 0;
+      font-family: 'Abhaya Libre', serif;
+      background-color: #f5f5f5;
+      color: #333;
+    "
+  >
+    <section style="padding: 2rem 0">
+      <table
+        style="
+          width: 90%;
+          max-width: 600px;
+          margin: 0 auto;
+          background: #fff;
+          border-radius: 15px 15px 0 0;
+          box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+        "
+      >
+        <tr align="center">
+          <td style="padding: 2rem">
+            <img
+              src="https://cdn.shopify.com/s/files/1/0930/1200/1051/files/Logo_Email.svg?v=1750363896"
+              alt="{{ shop.name }} Logo"
+              style="width: 100%; max-width: 700px; height: auto"
+            >
+          </td>
+        </tr>
+        <tr align="center">
+          <td style="padding: 1rem 0"></td>
+        </tr>
+      </table>
+
+      <table
+        style="
+          width: 90%;
+          max-width: 600px;
+          margin: 0 auto;
+          background: #fff;
+        "
+      >
+        <tr align="center">
+          <td style="padding: 1rem">
+            <h1 style="color: #cfa96b; font-size: 2.5rem; margin: 0">Reset Your Password 🔐</h1>
+            <p style="font-size: 1.25rem; margin: 0.5rem 0; color: #666;">
+              We received a request to reset your password
+            </p>
+            <p style="font-size: 1.1rem; margin: 1rem 2rem; color: #666;">
+              Follow the link below to reset your customer account password at
+              <a href="{{ shop.url }}" style="color: #cfa96b; text-decoration: none; font-weight: bold;">
+                {{- shop.name -}}</a
+              >. If you didn't request this, you can safely ignore this email.
+            </p>
+          </td>
+        </tr>
+      </table>
+
+      <!-- Security Notice -->
+      <table
+        style="
+          width: 90%;
+          max-width: 600px;
+          margin: 0 auto;
+          background: #fff3cd;
+          border-left: 5px solid #ff6b6b;
+        "
+      >
+        <tr>
+          <td style="padding: 1.5rem 2rem">
+            <h3 style="color: #dc3545; margin: 0 0 1rem 0;">🛡️ Security Notice</h3>
+            <p style="margin: 0.5rem 0; color: #666;">
+              <strong>Did you request this?</strong> If you didn't ask to reset your password, someone else may be
+              trying to access your account.
+            </p>
+            <p style="margin: 0.5rem 0; color: #666;">
+              <strong>What to do:</strong> If this wasn't you, please contact us immediately and consider changing your
+              password from a secure device.
+            </p>
+            <p style="margin: 1rem 0 0 0; color: #dc3545; font-weight: bold;">
+              📞 Security Concerns? Call us: <a href="tel:18880006666" style="color: #dc3545;">+1 (888) 000-6666</a>
+            </p>
+          </td>
+        </tr>
+      </table>
+
+      <!-- Reset Button -->
+      <table
+        style="
+          width: 90%;
+          max-width: 600px;
+          margin: 0 auto;
+          background: #fff;
+        "
+      >
+        <tr align="center">
+          <td style="padding: 2rem">
+            <h3 style="color: #cfa96b; margin-bottom: 1rem;">Ready to Reset Your Password?</h3>
+            <a
+              href="{{ customer.reset_password_url }}"
+              style="
+                background: linear-gradient(135deg, #cfa96b, #d4b876);
+                color: #fff;
+                padding: 1.2rem 4rem;
+                border-radius: 25px;
+                text-decoration: none;
+                font-size: 1.3rem;
+                font-weight: bold;
+                display: inline-block;
+                box-shadow: 0 6px 12px rgba(207, 169, 107, 0.4);
+                margin-bottom: 1rem;
+              "
+              >Reset My Password</a
+            >
+            <br>
+            <a
+              href="{{ shop.url }}"
+              style="color: #cfa96b; text-decoration: none; font-size: 1rem;"
+              >or Continue Shopping</a
+            >
+          </td>
+        </tr>
+      </table>
+
+      <!-- Link Details -->
+      <table
+        style="
+          width: 90%;
+          max-width: 600px;
+          margin: 0 auto;
+          background: #e8f4fd;
+          border-left: 5px solid #cfa96b;
+        "
+      >
+        <tr>
+          <td style="padding: 1.5rem 2rem">
+            <h3 style="color: #cfa96b; margin: 0 0 1rem 0;">⏰ Important Link Information</h3>
+            <ul style="margin: 0; padding-left: 1.5rem; color: #666;">
+              <li style="margin-bottom: 0.5rem;"><strong>This link expires in 24 hours</strong> for your security</li>
+              <li style="margin-bottom: 0.5rem;">
+                <strong>One-time use only</strong> - the link becomes invalid after use
+              </li>
+              <li style="margin-bottom: 0.5rem;">
+                <strong>Use a secure device</strong> - avoid public computers or networks
+              </li>
+              <li style="margin-bottom: 0.5rem;">
+                <strong>Choose a strong password</strong> - use a mix of letters, numbers, and symbols
+              </li>
+              <li><strong>Keep it private</strong> - never share your password with others</li>
+            </ul>
+          </td>
+        </tr>
+      </table>
+
+      <!-- Password Tips -->
+      <table
+        style="
+          width: 90%;
+          max-width: 600px;
+          margin: 0 auto;
+          background: #f8f9fa;
+          border-left: 5px solid #cfa96b;
+        "
+      >
+        <tr>
+          <td style="padding: 1.5rem 2rem">
+            <h3 style="color: #cfa96b; margin: 0 0 1rem 0;">💡 Password Best Practices</h3>
+            <div style="margin: 1rem 0;">
+              <p style="margin: 0.5rem 0; color: #666;">
+                <strong>✅ Do:</strong> Use at least 8 characters with uppercase, lowercase, numbers, and symbols
+              </p>
+              <p style="margin: 0.5rem 0; color: #666;">
+                <strong>✅ Do:</strong> Use a unique password that you don't use elsewhere
+              </p>
+              <p style="margin: 0.5rem 0; color: #666;"><strong>✅ Do:</strong> Consider using a password manager</p>
+              <p style="margin: 0.5rem 0; color: #666;">
+                <strong>❌ Don't:</strong> Use personal information like birthdays or names
+              </p>
+              <p style="margin: 0.5rem 0; color: #666;">
+                <strong>❌ Don't:</strong> Share your password via email or text
+              </p>
+            </div>
+          </td>
+        </tr>
+      </table>
+
+      <!-- Account Security -->
+      <table
+        style="
+          width: 90%;
+          max-width: 600px;
+          margin: 0 auto;
+          background: #fff;
+          text-align: center;
+        "
+      >
+        <tr>
+          <td style="padding: 2rem">
+            <h2 style="color: #cfa96b; margin-bottom: 1rem;">Your Account Security Matters</h2>
+            <p style="font-size: 1.1rem; margin-bottom: 1rem; color: #666;">
+              At Malani Jewelers, we take your privacy and security seriously. Your personal information and purchase
+              history are protected with industry-standard encryption.
+            </p>
+            <div style="background: #e8f5e8; padding: 1rem; border-radius: 8px; margin: 1rem 0;">
+              <p style="margin: 0; color: #28a745; font-weight: bold;">
+                🔒 Bank-Level Security • 🛡️ SSL Encryption • 👤 Privacy Protected
+              </p>
+            </div>
+          </td>
+        </tr>
+      </table>
+
+      <!-- Help Section -->
+      <table
+        style="
+          width: 90%;
+          max-width: 600px;
+          margin: 0 auto;
+          background: #cfa96b;
+          color: #fff;
+        "
+      >
+        <tr>
+          <td style="padding: 2rem">
+            <h3>Need Help with Your Account?</h3>
+            <p>
+              Visit our
+              <a
+                style="color: white; text-decoration: underline"
+                href="{{ shop.url }}/pages/account-help"
+                >Account Help Center</a
+              >
+            </p>
+            <p>
+              Call our security team:
+              <a
+                style="color: white; text-decoration: underline"
+                href="tel:18880006666"
+                >+1 (888) 000-6666</a
+              >
+            </p>
+            <p>
+              Email us securely:
+              <a
+                style="color: white; text-decoration: underline"
+                href="mailto:{{ shop.email }}"
+              >
+                {{- shop.email -}}
+              </a>
+            </p>
+          </td>
+        </tr>
+      </table>
+
+      <!-- Alternative Access -->
+      <table
+        style="
+          width: 90%;
+          max-width: 600px;
+          margin: 0 auto;
+          background: #fff;
+          text-align: center;
+        "
+      >
+        <tr>
+          <td style="padding: 2rem">
+            <h3 style="color: #cfa96b; margin-bottom: 1rem;">Can't Access This Email?</h3>
+            <p style="font-size: 1rem; margin-bottom: 1rem; color: #666;">
+              If you're having trouble with this reset link or need additional help:
+            </p>
+            <div style="margin: 1rem 0;">
+              <p style="margin: 0.5rem 0; color: #666;">
+                📞 <strong>Call us directly:</strong>
+                <a href="tel:18880006666" style="color: #cfa96b;">+1 (888) 000-6666</a>
+              </p>
+              <p style="margin: 0.5rem 0; color: #666;">
+                💬 <strong>Live chat support:</strong> Available on our website
+              </p>
+              <p style="margin: 0.5rem 0; color: #666;">
+                🏪 <strong>Visit in-store:</strong> Our team can help reset your password
+              </p>
+            </div>
+          </td>
+        </tr>
+      </table>
+
+      <!-- Final Security Reminder -->
+      <table
+        style="
+          width: 90%;
+          max-width: 600px;
+          margin: 0 auto;
+          background: #fff3cd;
+          border: 2px solid #ff6b6b;
+          border-radius: 10px;
+        "
+      >
+        <tr align="center">
+          <td style="padding: 1rem">
+            <p style="margin: 0; color: #dc3545; font-weight: bold;">
+              ⚠️ Remember: Malani Jewelers will never ask for your password via email or phone
+            </p>
+          </td>
+        </tr>
+      </table>
+    </section>
+  </body>
+</html>
