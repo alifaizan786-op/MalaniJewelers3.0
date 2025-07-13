@@ -1,0 +1,532 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>Complete Your Purchase</title>
+    <style>
+      @media only screen and (max-width: 600px) {
+        table {
+          width: 100% !important;
+        }
+        h1 {
+          font-size: 2rem !important;
+        }
+        h2,
+        h3,
+        p,
+        td {
+          font-size: 1rem !important;
+        }
+        img {
+          max-width: 100% !important;
+          height: auto !important;
+        }
+        .btn {
+          display: block !important;
+          margin: 1rem auto !important;
+          width: 90% !important;
+          text-align: center !important;
+        }
+      }
+    </style>
+  </head>
+  <body
+    style="
+      margin: 0;
+      padding: 0;
+      font-family: 'Abhaya Libre', serif;
+      background-color: #f5f5f5;
+      color: #333;
+    "
+  >
+    <section style="padding: 2rem 0">
+      <table
+        style="
+          width: 90%;
+          max-width: 600px;
+          margin: 0 auto;
+          background: #fff;
+          border-radius: 15px 15px 0 0;
+          box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+        "
+      >
+        <tr align="center">
+          <td style="padding: 2rem">
+            <img
+              src="{{ 'logo_email.svg' | shopify_asset_url }}"
+              alt="{{ shop.name }} Logo"
+              style="width: 100%; max-width: 700px; height: auto"
+            >
+          </td>
+        </tr>
+        <tr align="center">
+          <td style="padding: 1rem 0">
+            <!-- SVG ICON - Document/Invoice Icon -->
+            <svg
+              width="150"
+              height="150"
+              viewBox="0 0 200 200"
+            >
+              <style>
+                .document {
+                  stroke: #212121;
+                  fill: #fff;
+                  stroke-width: 4;
+                }
+                .accent-line {
+                  stroke: #cfa96b;
+                  stroke-width: 6;
+                  stroke-linecap: round;
+                }
+                .text-line {
+                  stroke: #212121;
+                  stroke-width: 3;
+                  stroke-linecap: round;
+                }
+              </style>
+              <!-- Document outline -->
+              <path d="M60 40 L60 160 L140 160 L140 70 L110 40 Z" class="document"/>
+              <!-- Folded corner -->
+              <path d="M110 40 L110 70 L140 70" fill="none" stroke="#212121" stroke-width="4"/>
+              <!-- Accent lines -->
+              <line x1="75" y1="90" x2="125" y2="90" class="accent-line"/>
+              <!-- Text lines -->
+              <line x1="75" y1="105" x2="115" y2="105" class="text-line"/>
+              <line x1="75" y1="120" x2="125" y2="120" class="text-line"/>
+              <line x1="75" y1="135" x2="105" y2="135" class="text-line"/>
+            </svg>
+          </td>
+        </tr>
+      </table>
+
+      <table
+        style="
+          width: 90%;
+          max-width: 600px;
+          margin: 0 auto;
+          background: #fff;
+        "
+      >
+        <tr align="center">
+          <td style="padding: 1rem">
+            <h1 style="color: #cfa96b; font-size: 2.5rem; margin: 0">Complete Your Purchase</h1>
+            <p style="font-size: 1.25rem; margin: 0.5rem 0">Your items are waiting for you!</p>
+            {% if custom_message != blank %}
+              <p style="font-size: 1.1rem; margin: 0.5rem 2rem; color: #666;">{{ custom_message }}</p>
+            {% elsif reserve_inventory_until %}
+              <p style="font-size: 1.1rem; margin: 0.5rem 2rem; color: #666;">
+                {% if item_count > 1 %}
+                  These items will be reserved for you until
+                  {{ reserve_inventory_until | date: format: 'date_at_time' }}.
+                {% else %}
+                  This item will be reserved for you until {{ reserve_inventory_until | date: format: 'date_at_time' }}.
+                {% endif %}
+              </p>
+            {% endif %}
+          </td>
+        </tr>
+      </table>
+
+      <!-- Action Button -->
+      <table
+        style="
+          width: 90%;
+          max-width: 600px;
+          margin: 0 auto;
+          background: #fff;
+        "
+      >
+        <tr align="center">
+          <td style="padding: 2rem">
+            {% if payment_terms %}
+              <a
+                href="{{ invoice_url }}"
+                style="
+                  background: #cfa96b;
+                  color: #fff;
+                  padding: 1rem 3rem;
+                  border-radius: 5px;
+                  text-decoration: none;
+                  font-size: 1.25rem;
+                  font-weight: bold;
+                  display: inline-block;
+                  margin-bottom: 1rem;
+                "
+                >Confirm Order</a
+              >
+            {% else %}
+              <a
+                href="{{ invoice_url }}"
+                style="
+                  background: #cfa96b;
+                  color: #fff;
+                  padding: 1rem 3rem;
+                  border-radius: 5px;
+                  text-decoration: none;
+                  font-size: 1.25rem;
+                  font-weight: bold;
+                  display: inline-block;
+                  margin-bottom: 1rem;
+                "
+                >Complete Your Purchase</a
+              >
+            {% endif %}
+            <br>
+            <a
+              href="{{ shop.url }}"
+              style="color: #cfa96b; text-decoration: none; font-size: 1rem;"
+              >or Continue Shopping</a
+            >
+          </td>
+        </tr>
+      </table>
+
+      <!-- Invoice Info -->
+      <table
+        style="
+          width: 90%;
+          max-width: 600px;
+          margin: 0 auto;
+          background: #fff;
+        "
+      >
+        <tr>
+          <td style="padding: 1rem 2rem">
+            <h3 style="color: #cfa96b">Invoice Details:</h3>
+            <p>
+              <strong>Invoice Number:</strong> {{ name -}}
+              <br>
+              {% if po_number %}
+                <strong>PO Number:</strong> #{{ po_number -}}
+                <br>
+              {% endif %}
+              <strong>Created:</strong> {{ created_at | date: format: 'date_at_time' }}
+            </p>
+          </td>
+        </tr>
+      </table>
+
+      <!-- Customer Information -->
+      {% if shipping_address or billing_address %}
+        <table
+          style="
+            width: 90%;
+            max-width: 600px;
+            margin: 0 auto;
+            background: #fff;
+          "
+        >
+          <tr>
+            <td colspan="2" style="padding: 1rem 2rem;">
+              <h2 style="color: #cfa96b; margin: 0">Client Information</h2>
+            </td>
+          </tr>
+          <tr>
+            {% if shipping_address %}
+              <td style="padding: 1rem 2rem;">
+                <h3 style="color: #cfa96b;">Ship To:</h3>
+                <p>
+                  {{ shipping_address.name -}}
+                  <br>
+                  {{ shipping_address.address1 -}}
+                  <br>
+                  {% if shipping_address.address2 != blank -%}
+                    {{- shipping_address.address2 -}}
+                    <br>
+                  {% endif %}
+                  {{ shipping_address.city }}, {{ shipping_address.province_code }}
+                  {{ shipping_address.zip }}
+                </p>
+              </td>
+            {% endif %}
+            {% if billing_address %}
+              <td style="padding: 1rem 2rem;">
+                <h3 style="color: #cfa96b;">Bill To:</h3>
+                <p>
+                  {{ billing_address.name -}}
+                  <br>
+                  {{ billing_address.address1 -}}
+                  <br>
+                  {% if billing_address.address2 != blank -%}
+                    {{- billing_address.address2 -}}
+                    <br>
+                  {% endif %}
+                  {{ billing_address.city }}, {{ billing_address.province_code }}
+                  {{ billing_address.zip }}
+                </p>
+              </td>
+            {% endif %}
+          </tr>
+          {% if shipping_method %}
+            <tr>
+              <td style="padding: 1rem 2rem;">
+                <h3 style="color: #cfa96b;">Shipping Method:</h3>
+                <p>{{ shipping_method.title }}</p>
+              </td>
+              {% if payment_terms %}
+                <td style="padding: 1rem 2rem;">
+                  <h3 style="color: #cfa96b;">Payment Terms:</h3>
+                  {% assign due_date = payment_terms.next_payment.due_at | default: null %}
+                  {% if payment_terms.type == 'receipt' or payment_terms.type == 'fulfillment' %}
+                    <p>{{ payment_terms.translated_name }}</p>
+                  {% else %}
+                    <p>{{ payment_terms.translated_name }}: Due {{ due_date | date: format: 'date' }}</p>
+                  {% endif %}
+                </td>
+              {% endif %}
+            </tr>
+          {% endif %}
+        </table>
+      {% endif %}
+
+      <!-- ITEMS -->
+      <table
+        style="
+          width: 90%;
+          max-width: 600px;
+          margin: 0 auto;
+          background: #fff;
+        "
+      >
+        <tr>
+          <td colspan="2" style="padding: 1rem 2rem;">
+            <h2 style="color: #cfa96b; margin: 0">Your Order Includes:</h2>
+          </td>
+        </tr>
+        {% for line in subtotal_line_items %}
+          <tr>
+            <td style="padding: 1rem; text-align: center">
+              {% if line.image %}
+                <img
+                  src="{{ line.image | img_url: '300x' }}"
+                  style="border-radius: 8px; max-width: 100%; height: auto;"
+                >
+              {% else %}
+                <div style="width: 300px; height: 300px; background: #f5f5f5; border-radius: 8px; display: flex; align-items: center; justify-content: center;">
+                  <span style="color: #999;">No Image</span>
+                </div>
+              {% endif %}
+            </td>
+            <td style="padding: 1rem 2rem">
+              {% if line.presentment_title %}
+                {% assign line_title = line.presentment_title %}
+              {% elsif line.title %}
+                {% assign line_title = line.title %}
+              {% else %}
+                {% assign line_title = line.product.title %}
+              {% endif %}
+              <p><strong>Product:</strong> {{ line_title }}</p>
+              {% if line.variant.title != 'Default Title' %}
+                <p><strong>Variant:</strong> {{ line.variant.title }}</p>
+              {% endif %}
+              {% if line.sku %}
+                <p><strong>SKU:</strong> {{ line.sku }}</p>
+              {% endif %}
+              <p><strong>QTY:</strong> {{ line.quantity }}</p>
+              <p><strong>Price:</strong> {{ line.final_line_price | money }}</p>
+              {% if line.selling_plan_allocation %}
+                <p><strong>Plan:</strong> {{ line.selling_plan_allocation.selling_plan.name }}</p>
+              {% endif %}
+            </td>
+          </tr>
+        {% endfor %}
+      </table>
+
+      <!-- TOTALS -->
+      <table
+        style="
+          width: 90%;
+          max-width: 600px;
+          margin: 0 auto;
+          background: #fff;
+          font-size: 1.25rem;
+        "
+      >
+        <tr>
+          <td style="padding: 1rem 2rem">Subtotal:</td>
+          <td style="padding: 1rem 2rem; text-align: right">{{ subtotal_price | money }}</td>
+        </tr>
+        <tr>
+          <td style="padding: 1rem 2rem">Shipping:</td>
+          <td style="padding: 1rem 2rem; text-align: right">{{ shipping_price | money }}</td>
+        </tr>
+        <tr>
+          <td style="padding: 1rem 2rem">Estimated Tax:</td>
+          <td style="padding: 1rem 2rem; text-align: right">{{ tax_price | money }}</td>
+        </tr>
+        {% if total_duties %}
+          <tr>
+            <td style="padding: 1rem 2rem">Duties:</td>
+            <td style="padding: 1rem 2rem; text-align: right">{{ total_duties | money }}</td>
+          </tr>
+        {% endif %}
+        <tr style="border-top: 2px solid #cfa96b;">
+          {% if payment_terms %}
+            <td style="padding: 1rem 2rem"><strong>Total Due Today:</strong></td>
+            <td style="padding: 1rem 2rem; text-align: right">
+              <strong>{{ amount_due_now | money_with_currency }}</strong>
+            </td>
+          {% else %}
+            <td style="padding: 1rem 2rem"><strong>Total:</strong></td>
+            <td style="padding: 1rem 2rem; text-align: right">
+              <strong>{{ total_price | money_with_currency }}</strong>
+            </td>
+          {% endif %}
+        </tr>
+        {% if payment_terms %}
+          {% assign next_payment = payment_terms.next_payment %}
+          {% assign due_at_date = next_payment.due_at | date: format: 'date' %}
+          {% assign next_amount_due = total_price | minus: amount_due_now %}
+          <tr>
+            {% if payment_terms.type == 'receipt' %}
+              <td style="padding: 1rem 2rem">Due on Receipt:</td>
+            {% elsif payment_terms.type == 'fulfillment' %}
+              <td style="padding: 1rem 2rem">Due on Fulfillment:</td>
+            {% else %}
+              <td style="padding: 1rem 2rem">Due {{ due_at_date }}:</td>
+            {% endif %}
+            <td style="padding: 1rem 2rem; text-align: right">
+              <strong>{{ next_amount_due | money_with_currency }}</strong>
+            </td>
+          </tr>
+        {% endif %}
+      </table>
+
+      {% if total_discounts > 0 %}
+        <table
+          style="
+            width: 90%;
+            max-width: 600px;
+            margin: 0 auto;
+            background: #fff;
+          "
+        >
+          <tr align="center">
+            <td style="padding: 1rem">
+              <p style="color: #28a745; font-weight: bold; font-size: 1.1rem;">
+                You saved {{ total_discounts | money }}!
+              </p>
+            </td>
+          </tr>
+        </table>
+      {% endif %}
+
+      <!-- Help Section -->
+      <table
+        style="
+          width: 90%;
+          max-width: 600px;
+          margin: 0 auto;
+          background: #cfa96b;
+          color: #fff;
+        "
+      >
+        <tr>
+          <td style="padding: 2rem">
+            <h3>Need Help?</h3>
+            <p>
+              Visit
+              <a
+                style="color: white; text-decoration: underline"
+                href="{{ shop.url }}/pages/shipping"
+                >Shipping & Handling</a
+              >
+            </p>
+            <p>
+              Call:
+              <a
+                style="color: white; text-decoration: underline"
+                href="tel:18880006666"
+                >+1 (888) 000-6666</a
+              >
+            </p>
+            <p>
+              Email:
+              <a
+                style="color: white; text-decoration: underline"
+                href="mailto:{{ shop.email }}"
+              >
+                {{- shop.email -}}
+              </a>
+            </p>
+          </td>
+        </tr>
+      </table>
+
+      <!-- More Items -->
+      <table
+        style="
+          width: 90%;
+          max-width: 600px;
+          margin: 0 auto;
+          background: #fff;
+          text-align: center;
+        "
+      >
+        <tr>
+          <td colspan="3">
+            <h2 style="padding: 2rem 0">While You're Here</h2>
+          </td>
+        </tr>
+        <tr>
+          <td class="btn">
+            <a
+              href="{{ shop.url }}/collections/womens-new-arrivals"
+              style="
+                background: #cfa96b;
+                color: #fff;
+                padding: 1rem 2rem;
+                border-radius: 5px;
+                text-decoration: none;
+              "
+              >Women's New Arrivals</a
+            >
+          </td>
+          <td class="btn">
+            <a
+              href="{{ shop.url }}/collections/mens-new-arrivals"
+              style="
+                background: #cfa96b;
+                color: #fff;
+                padding: 1rem 2rem;
+                border-radius: 5px;
+                text-decoration: none;
+              "
+              >Men's New Arrivals</a
+            >
+          </td>
+          <td class="btn">
+            <a
+              href="{{ shop.url }}/collections/kids"
+              style="
+                background: #cfa96b;
+                color: #fff;
+                padding: 1rem 2rem;
+                border-radius: 5px;
+                text-decoration: none;
+              "
+              >Kids' Picks</a
+            >
+          </td>
+        </tr>
+        <tr>
+          <td colspan="3">
+            <h3 style="padding-top: 2rem">Free Shipping on Orders $750+</h3>
+          </td>
+        </tr>
+        <tr>
+          <td colspan="3">
+            <h3 style="padding-top: 2rem">
+              Buy Now, Pay Later with
+              <a
+                href="{{ shop.url }}/pages/affirm"
+                style="color: #cfa96b"
+                >Affirm</a
+              >
+            </h3>
+          </td>
+        </tr>
+      </table>
+    </section>
+  </body>
+</html>
