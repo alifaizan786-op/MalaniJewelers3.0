@@ -1,0 +1,780 @@
+<style>
+  .privacy-policy-page {
+    font-family: 'Abhaya Libre', sans-serif;
+    line-height: 1.7;
+    margin: 0;
+    padding: 0;
+    background-color: #fff;
+    color: #333;
+  }
+
+  .privacy-policy-page a {
+    color: #b68c46;
+  }
+
+  .privacy-policy-page a:hover {
+    color: #886935;
+    font-weight: bold;
+  }
+
+  .privacy-policy-page .parallax-header {
+    position: relative;
+    overflow: hidden;
+    height: 350px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    text-align: center;
+    background-color: black;
+  }
+
+  .privacy-policy-page .parallax-header::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-image: url('./assets/Privacy_Policy_Banner_1.webp');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center bottom;
+    transform: scale(1);
+    animation: ambientZoomDrift 90s ease-in-out infinite;
+    z-index: 0;
+  }
+
+  @keyframes ambientZoomDrift {
+    0% {
+      background-position: center 55%;
+      transform: scale(1.5);
+    }
+    50% {
+      background-position: center 40%;
+      transform: scale(1);
+    }
+    100% {
+      background-position: center 55%;
+      transform: scale(1.5);
+    }
+  }
+
+  .privacy-policy-page .parallax-header .overlay {
+    position: relative;
+    z-index: 1;
+  }
+
+  .privacy-policy-page .parallax-header .overlay {
+    background-color: rgba(
+      0,
+      0,
+      0,
+      0.5
+    ); /* dark overlay for contrast */
+    height: 100%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+  }
+
+  .privacy-policy-page .parallax-header h1 {
+    font-size: 2.5rem;
+    margin: 0;
+    margin: 0;
+    font-size: 2.5rem;
+    letter-spacing: 1px;
+  }
+
+  .privacy-policy-page .parallax-header .last-updated {
+    margin-top: 10px;
+    font-size: 1rem;
+    color: #eee;
+  }
+
+  .privacy-policy-page .privacy-container {
+    max-width: 900px;
+    margin: 40px auto;
+    padding: 0 20px;
+  }
+
+  .privacy-policy-page .privacy-container h2 {
+    color: #b68c46;
+    border-bottom: 2px solid #eee;
+    padding-bottom: 6px;
+    margin-top: 40px;
+    font-size: 1.6rem;
+  }
+
+  .privacy-policy-page .privacy-container p {
+    margin: 15px 0;
+    font-size: 1.125rem;
+  }
+
+  .privacy-policy-page .privacy-container ul li {
+    font-size: 1.125rem;
+  }
+
+  .privacy-policy-page .faq-section {
+    margin-top: 60px;
+  }
+
+  .privacy-policy-page .faq-section h2 {
+    font-size: 1.6rem;
+    color: #b68c46;
+    margin-bottom: 30px;
+    border-bottom: 2px solid #eee;
+    padding-bottom: 6px;
+  }
+
+  .privacy-policy-page .faq-section .faq-item {
+    margin-bottom: 20px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    overflow: hidden;
+  }
+
+  .privacy-policy-page .faq-section .faq-item .faq-question {
+    background-color: #fdf9f3;
+    color: #333;
+    font-size: 1rem;
+    font-weight: bold;
+    width: 100%;
+    padding: 15px 20px;
+    text-align: left;
+    border: none;
+    cursor: pointer;
+    transition: background 0.3s;
+  }
+
+  .privacy-policy-page .faq-section .faq-item .faq-question:hover {
+    background-color: #f4e7cf;
+  }
+
+  .privacy-policy-page .faq-section .faq-item .faq-answer {
+    background-color: #fff;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease;
+    padding: 0 20px;
+  }
+
+  .privacy-policy-page .faq-section .faq-item .faq-answer p {
+    margin: 15px 0;
+    color: #555;
+  }
+
+  @media (max-width: 600px) {
+    .privacy-policy-page .parallax-header .overlay h1 {
+      font-size: 2rem;
+    }
+
+    .privacy-container {
+      padding: 0 15px;
+    }
+  }
+
+  @media (max-width: 1000px) {
+    .privacy-policy-page .faq-section h2 {
+      font-size: 1.3rem;
+    }
+
+    .privacy-policy-page .faq-section .faq-item .faq-question {
+      font-size: 2rem;
+      padding: 15px 20px;
+    }
+
+    .privacy-policy-page .faq-section .faq-item .faq-answer {
+      font-size: 2rem;
+      padding: 0 16px;
+    }
+
+    .privacy-policy-page .faq-section .faq-item .faq-answer p {
+      font-size: 2rem;
+    }
+  }
+</style>
+
+<section class="privacy-policy-page">
+  <header class="parallax-header">
+    <div class="overlay">
+      <h1>Privacy Policy – How Malani Jewelers Protects Your Data</h1>
+      <p class="last-updated">Last Updated: May 3, 2025</p>
+    </div>
+  </header>
+  <div class="privacy-container">
+    <h2>1. Website Privacy Policy</h2>
+    <p>
+      Malani Jewelers Inc. (the “<strong>Company</strong>” or “us”)
+      takes your privacy very seriously and is committed to
+      safeguarding your personal information. This Privacy Policy sets
+      forth how we obtain, use, share, and protect personal
+      information, including through your use of
+      www.malanijewelers.com (the “<strong>Website</strong>”) and any
+      services we may provide (collectively,
+      “<strong>Services</strong>”).
+    </p>
+    <p>This Privacy Policy also describes:</p>
+    <ul>
+      <li>
+        how and the purposes for which we may use your information;
+      </li>
+      <li>
+        the legal basis upon which we rely (to the extent required by
+        applicable law);
+      </li>
+      <li>
+        the third parties with whom we may share your information;
+      </li>
+      <li>the measures we take to safeguard your information;</li>
+      <li>
+        your rights and the choices available to you regarding your
+        information; and
+      </li>
+      <li>how to contact us about our privacy practices.</li>
+    </ul>
+    <p>
+      By using our Services, including by visiting or submitting
+      information to this Website, registering an account with this
+      Website, and/or consummating a transaction through the Website,
+      you are accepting and consenting to the provisions set forth in
+      this Privacy Policy. If you do not agree to this Privacy Policy,
+      please do not use our Services.
+    </p>
+    <p>
+      We will only process your information in accordance with
+      applicable data protection and privacy laws. For the purposes of
+      U.S. state privacy laws, as applicable, the data controller is
+      Malani Jewelers Inc. 739 Dekalb Ind Way, Ste 2100, Decatur, GA
+      30033,
+      <a href="mailto:info@malanijewelers.com"
+        >info@malanijewelers.com</a
+      >, <a href="tel:+14042986950">(404) 298-6950</a>
+    </p>
+
+    <h2>2. Information We Obtain</h2>
+    <p>
+      The Company may obtain and collect personal information through
+      this Website, including:
+    </p>
+    <ul>
+      <li>
+        <strong>Contact information</strong>, such as your name,
+        postal address, e-mail address, and telephone number;
+      </li>
+      <li>
+        <strong>Payment-related information</strong>, including
+        billing details, transaction amounts, shipping addresses, and
+        your history of purchases, which may be collected through
+        integrated third-party payment processors;
+      </li>
+      <li>
+        <strong>Marketing and communication preferences</strong>
+        including responses to forms or surveys, or data that you
+        voluntarily submit regarding your interests and contact
+        preferences; and
+      </li>
+      <li>
+        <strong
+          >Other personal information you voluntarily provide to
+          us</strong
+        >such as information contained in correspondence or as
+        provided through user-submitted online forms.
+      </li>
+    </ul>
+    <p>
+      We may also automatically collect, store, and use information
+      about your visits to the Website, such as:
+    </p>
+    <ul>
+      <li>
+        <strong
+          >Technical information, identifiers, and device data</strong
+        >, including the internet protocol (IP) address, browser type,
+        internet service provider, device identifier and
+        characteristics, login information, time zone setting, browser
+        plug-in types and versions, operating system and platform, and
+        geographical location;
+      </li>
+      <li>
+        <strong
+          >Information about your visits and use of the
+          Website</strong
+        >, including the number and frequency of your visits to the
+        Website, full Uniform Resource Locations (URL), clickstream
+        to, through, and from our websites, information regarding
+        websites accessed immediately before and after your visit to
+        this Website, pages you viewed and searched for, page response
+        times, length of visits to certain pages, referral source/exit
+        pages, page interaction information (such as scrolling,
+        clicks, and mouse-overs), website navigation, and search terms
+        used;
+      </li>
+      <li>
+        <strong
+          >Information collected by cookies on our Website</strong
+        >
+        or by similar tracking technologies (see more on cookies in
+        Section 3 below).
+      </li>
+    </ul>
+    <p>
+      Certain personal information may be collected and processed by
+      third-party service providers acting on our behalf, such as
+      payment processors and email management and marketing systems.
+      These third parties may have their own privacy policies that
+      govern their handling of your information, which you are
+      encouraged to review. Their privacy practices are not controlled
+      by us and may be different than ours. If you have questions
+      about specific third-party providers that may handle your
+      personal information, please contact us using the information
+      provided in Section 13 below.
+    </p>
+
+    <h2>3. Cookie Usage Information; Do Not Track</h2>
+    <ul>
+      <li>
+        <strong>Analytics and Performance Cookies:</strong>These
+        cookies are used to collect information about traffic to our
+        Website and how users use our Website. This information is
+        aggregated and does not identify any individual users. We use
+        this information to help us improve our Website and to gather
+        demographic information and usage trends.
+      </li>
+      <li>
+        <strong>Essential Cookies:</strong>These cookies are essential
+        to provide you with services available through our Website and
+        to enable you to use some of its features, such as allowing
+        you to log into secure areas of our Website. Without these
+        cookies, the functionality that you have requested may not
+        perform as expected, and we only use these cookies to provide
+        you with this functionality.
+      </li>
+
+      <li>
+        <strong>Functionality Cookies:</strong> These cookies allow
+        our Website to remember the choices you make when using our
+        Website to enhance your user experience, such as remembering
+        your login details and preferences.
+      </li>
+      <li>
+        <strong>Social Media Cookies:</strong>These cookies are used
+        when you share information using a social media sharing button
+        or plugin on our Website, and when you engage with our content
+        through a social media networking website. These cookies may
+        track your browser across other sites and build a profile of
+        your interests.
+      </li>
+    </ul>
+
+    <p>
+      We may also permit third-party providers (e.g., email systems,
+      analytics platforms, and payment processors) to use cookies or
+      similar technologies on our Website in connection with their
+      services. These third parties may collect information directly
+      from your browser or device and are subject to such third
+      party’s own separate privacy policies.
+    </p>
+
+    <p>
+      In addition, we may use a variety of other technologies that
+      collect similar information for security and fraud detection and
+      prevention purposes.
+    </p>
+    <p><i> Do Not Track (“DNT”) Signals.</i></p>
+    <p>
+      Most web browsers and some mobile operating systems and apps
+      include a Do-Not-Track (“DNT”) setting that you can activate to
+      signal your privacy preference not to have data about your
+      online browsing activities monitored and collected. No uniform
+      technology standard for recognizing and implementing DNT signals
+      has been finalized. We do not currently respond to DNT browser
+      signals or any other mechanism that automatically communicates
+      your preference not to be tracked online.
+    </p>
+    <!-- 04 -->
+    <h2>4. How We Use the Information We Obtain</h2>
+    <p>We may use the personal information we obtain about you to:</p>
+    <ul>
+      <li>
+        Provide, operate, maintain, and improve our Website and
+        Services;
+      </li>
+      <li>
+        Communicate with you, including sending marketing
+        communications (however, we will first obtain your explicit
+        consent to do so and/or provide you with an opportunity to opt
+        out, to the extent required by law);
+      </li>
+      <li>
+        Send you administrative information, such as changes to our
+        policies or terms of use;
+      </li>
+      <li>
+        Remember your preferences and login information, and
+        personalize your experience on the Website;
+      </li>
+      <li>Track and understand how you use the Website;</li>
+      <li>Perform research and analytics;</li>
+      <li>
+        Operate, improve, and develop our Website, Services, and
+        products;
+      </li>
+      <li>
+        Process transactions and other user-initiated activity,
+        including processing payments through third-party providers
+        and maintain accurate records thereof;
+      </li>
+      <li>Maintain and enhance the security of our Website;</li>
+      <li>
+        Detect, prevent, and respond to fraud, misuse, and other
+        criminal activity, as well as other claims and liabilities;
+        and
+      </li>
+      <li>
+        Comply with and enforce applicable legal requirements,
+        relevant industry standards, and policies.
+      </li>
+    </ul>
+    <p>
+      In compliance with relevant law, we may retain your information
+      as needed or appropriate to fulfill the above purposes and/or to
+      otherwise serve our legitimate business purposes, or as
+      permitted or required by law. When and to the extent required by
+      law, we process your personal information only when we have a
+      valid legal basis to do so. This may include (i) with your
+      consent, (ii) in the performance of a contract with you, (iii)
+      in compliance with legal obligations, or (iv) in connection with
+      our legitimate business purposes and interests (including
+      without limitation the business interests delineated above), so
+      long as those interests are not overridden by your rights and
+      interests.
+    </p>
+    <!-- 05 -->
+    <h2>5. Disclosure of Information We Obtain</h2>
+    <p>
+      The Company will not share your personal data with third parties
+      except as provided in this Privacy Policy. We will not sell,
+      rent, or disclose your personal information to anyone except as
+      follows: We may share your personal information with our
+      affiliates for the purposes identified in this Privacy Policy.
+      We also may share your personal information service providers
+      (such as IT providers, email management and marketing systems,
+      and payment processors) that provide services to us or on our
+      behalf. We do not authorize these service providers to use or
+      disclose personal information except as necessary to perform
+      services on our behalf or comply with legal requirements.
+    </p>
+    <p>
+      We also may disclose personal information about you (1) if we
+      are required to do so by law, court order, subpoena, or other
+      valid legal process; (2) in response to requests by government
+      agencies or law enforcement authorities; (3) to establish,
+      exercise, or defend our legal rights; (4) when we believe
+      disclosure is necessary or appropriate to prevent harm or
+      financial loss; (5) in connection with an investigation or
+      reporting of suspected or actual illegal activity; or (6)
+      otherwise with your consent.
+    </p>
+    <p>
+      We reserve the right to disclose any information to any third
+      party to prevent, investigate, detect, or prosecute fraud,
+      theft, other criminal offenses against us or others, or attacks
+      on the technical integrity of our Website, and to protect our
+      rights, property, and safety, as well as that of other users of
+      the Website or the general public.
+    </p>
+    <p>
+      We also reserve the right to share or transfer any personal
+      information we have about you in connection with a prospective
+      or actual sale, merger, transfer, or other reorganization of all
+      or parts of our business. We may disclose personal information
+      to enforce or apply our Terms of Use or to establish, exercise,
+      or defend our rights.
+    </p>
+    <!-- 06 -->
+    <h2>6. Your Rights with Respect to Your Personal Information</h2>
+    <p>
+      You will receive notice when your personal information might be
+      provided to a third party for any reason other than as set forth
+      in this Privacy Policy, and you will have an opportunity to
+      request that we not share such information.
+    </p>
+    <p>
+      Depending on your place of residence and the applicable data
+      protection laws, you may have the right to:
+    </p>
+    <ul>
+      <li>
+        Access and request a copy of the personal information we hold
+        about you;
+      </li>
+      <li>Correct or update inaccurate or incomplete information;</li>
+      <li>
+        Request deletion of your personal information, subject to
+        legal and operational exceptions;
+      </li>
+      <li>
+        Object to or restrict the collection, processing, and/or use
+        of your information in certain circumstances;
+      </li>
+      <li>
+        Request data portability, allowing you to obtain and reuse
+        your personal information for your own purposes;
+      </li>
+      <li>
+        Withdraw your consent, to the extent that processing is based
+        on such consent;
+      </li>
+      <li>
+        Lodge a complaint with a supervisory authority (if applicable
+        under your local law); and
+      </li>
+      <li>
+        Raise concerns about automated decision-making processes or
+        profiling that have legal implications or similarly
+        significant effects.
+      </li>
+    </ul>
+    <p>
+      We reserve the right to verify your identity or take other
+      actions that we believe are appropriate. We may refuse to comply
+      with a request if the request is manifestly unreasonably or
+      meritless, or it is excessive or repetitive in nature. We also
+      may be entitled to refuse requests, wholly or partly, where
+      exceptions under the applicable law apply. If you are a resident
+      of a jurisdiction that grants you additional rights, we will
+      respond to your request in accordance with applicable laws.
+      Please contact us using the information provided in Section 13.
+    </p>
+    <p>
+      To opt out of receiving direct marketing communications or to
+      unsubscribe from text messages, please contact us, use the
+      “unsubscribe” link in the emails, or reply “STOP” to texts (as
+      applicable).
+    </p>
+    <!-- 07 -->
+    <h2>7. Security and Protection of Personal Information</h2>
+    <p>
+      The Company makes reasonable efforts to maintain the security,
+      integrity, and privacy of any personal information you give us.
+      We implement administrative, technical, and physical safeguards
+      designed to protect personal information from unauthorized
+      access, use, alteration, or disclosure.
+    </p>
+    <p>
+      Despite these efforts, no method of transmission via the
+      internet or method of electronic storage can be guaranteed to be
+      completely secure. As such, we cannot guarantee that personally
+      identifiable information that we collect will be secure or will
+      never be disclosed in a manner inconsistent with this Privacy
+      Policy. By utilizing this Website, you indicate that you
+      understand and accept that there are inherent risks associated
+      with data transmission and storage over the internet, and that
+      you knowingly and voluntarily assume these risks.
+    </p>
+    <p>
+      Unless you instruct us otherwise, we will retain your personal
+      information for as long as is reasonably necessary to fulfill
+      the purposes outlined in this Privacy Policy, including for
+      lawful business purposes, to comply with legal, accounting, or
+      reporting obligations, or as otherwise permitted or required
+      pursuant to applicable law or regulation.
+    </p>
+    <!-- 08 -->
+    <h2>
+      8. Security of Personal Information on Third-Party Websites
+    </h2>
+    <p>
+      Linked third-party websites may have their own privacy policies
+      or notices, or no privacy policies at all. We encourage you to
+      read the privacy policies of any linked third-party sites before
+      providing them with your personal information. We are not
+      responsible for the privacy practices, content, or use of any
+      third-party websites.
+    </p>
+    <!-- 09 -->
+    <h2>9. Application of this Privacy Policy to Children</h2>
+    <p>
+      Our Website is not directed to children under the age of 18, and
+      we do not intend to collect (and will not knowingly collect)
+      personal information from or about children under the age of 18.
+      If we become aware that a child under the age of 18 has
+      submitted personal information to us, we will use all reasonable
+      efforts to delete such information from our records. If you are
+      a child under the age of 18, you are not authorized to submit
+      any information to us without the explicit consent of your
+      parent or legal guardian.
+    </p>
+    <!-- 10 -->
+    <h2>10. Modifications of and Updates to This Privacy Policy</h2>
+    <p>
+      We may modify or update this Privacy Policy at any time and at
+      our sole discretion, by posting the modifications on our
+      Website. The modifications will be effective upon posting. You
+      should review this Privacy Policy periodically so that you are
+      aware of any modifications. Your use of our Website constitutes
+      your full acceptance of this Privacy Policy in its then-current
+      form each time you use our Website.
+    </p>
+    <!-- 11 -->
+    <h2>11. How To Contact Us</h2>
+    <p>
+      If you have any questions, comments, or concerns about this
+      Privacy Policy, please contact us at
+      <a href="mailto:info@malanijewelers.com"
+        >info@malanijewelers.com</a
+      >. If you require this Privacy Policy in an alternative format
+      in connection with a disability accommodation, please contact us
+      at this address and we will endeavor to provide you with a
+      suitable version.
+    </p>
+  </div>
+  <div class="faq-section privacy-container">
+    <h2>Privacy Policy FAQ</h2>
+
+    <div class="faq-item">
+      <button class="faq-question">
+        Will my information be shared with anyone?
+      </button>
+      <div class="faq-answer">
+        <p>
+          No. Your information is never shared with third parties
+          unless you explicitly authorize it and it’s necessary to
+          fulfill your purchase or service request.
+        </p>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-question">
+        Can I opt out of promotional messages?
+      </button>
+      <div class="faq-answer">
+        <p>
+          Yes, you may opt out of emails, texts, or promotional
+          messages at any time by contacting us or using the
+          unsubscribe option in our communications.
+        </p>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-question">
+        How is my payment information protected?
+      </button>
+      <div class="faq-answer">
+        <p>
+          All payment information is encrypted using industry-standard
+          protocols. We use secure servers and restrict access to
+          authorized staff only.
+        </p>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-question">
+        How can I request my data be deleted?
+      </button>
+      <div class="faq-answer">
+        <p>
+          You can email us or use the contact form on our website to
+          request that your personal data be removed from our systems.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  const faqButtons = document.querySelectorAll('.faq-question');
+  faqButtons.forEach((button) => {
+    button.addEventListener('click', () => {
+      const answer = button.nextElementSibling;
+      button.classList.toggle('active');
+      answer.style.maxHeight = answer.style.maxHeight
+        ? null
+        : answer.scrollHeight + 'px';
+    });
+  });
+</script>
+
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "WebPage",
+        "name": "Privacy Policy",
+        "url": "https://malanijewelers.com/pages/privacypolicy",
+        "mainEntityOfPage": "https://malanijewelers.com/pages/privacypolicy",
+        "description": "Read the privacy policy of Malani Jewelers to understand how we collect, use, and protect your personal information.",
+        "publisher": {
+          "@type": "Organization",
+          "name": "Malani Jewelers",
+          "url": "https://malanijewelers.com",
+          "logo": {
+            "@type": "ImageObject",
+            "url": "https://malanijewelers.myshopify.com/cdn/shop/files/Malani_Jewelers_Logo_Flat.webp"
+          }
+        },
+        "breadcrumb": {
+          "@type": "BreadcrumbList",
+          "itemListElement": [
+            {
+              "@type": "ListItem",
+              "position": 1,
+              "name": "Home",
+              "item": "https://malanijewelers.com"
+            },
+            {
+              "@type": "ListItem",
+              "position": 2,
+              "name": "Privacy Policy",
+              "item": "https://malanijewelers.com/pages/privacypolicy"
+            }
+          ]
+        }
+      },
+      {
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "Will Malani Jewelers share my personal information with others?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "No. Your information is never shared with third parties unless you explicitly authorize it and it’s necessary to fulfill your purchase or service request."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Can I opt out of promotional messages from Malani Jewelers?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes, you may opt out of emails, texts, or promotional messages at any time by contacting us or using the unsubscribe option in our communications."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "How does Malani Jewelers protect my payment information?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "All payment information is encrypted using industry-standard protocols. We use secure servers and restrict access to authorized staff only."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "How can I request Malani Jewelers to delete my personal data?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "You can email us or use the contact form on our website to request that your personal data be removed from our systems."
+            }
+          }
+        ]
+      }
+    ]
+  }
+</script>
