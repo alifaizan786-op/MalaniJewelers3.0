@@ -1,0 +1,583 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>Your Order Has Been Delivered</title>
+    <style>
+      @media only screen and (max-width: 600px) {
+        table {
+          width: 100% !important;
+        }
+        h1 {
+          font-size: 2rem !important;
+        }
+        h2,
+        h3,
+        p,
+        td {
+          font-size: 1rem !important;
+        }
+        img {
+          max-width: 100% !important;
+          height: auto !important;
+        }
+        .btn {
+          display: block !important;
+          margin: 1rem auto !important;
+          width: 90% !important;
+          text-align: center !important;
+        }
+      }
+    </style>
+  </head>
+  <body
+    style="
+      margin: 0;
+      padding: 0;
+      font-family: 'Abhaya Libre', serif;
+      background-color: #f5f5f5;
+      color: #333;
+    "
+  >
+    <section style="padding: 2rem 0">
+      <table
+        style="
+          width: 90%;
+          max-width: 600px;
+          margin: 0 auto;
+          background: #fff;
+          border-radius: 15px 15px 0 0;
+          box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+        "
+      >
+        <tr align="center">
+          <td style="padding: 2rem">
+            <img
+              src="https://cdn.shopify.com/s/files/1/0930/1200/1051/files/Logo_Email.svg?v=1750363896"
+              alt="{{ shop.name }} Logo"
+              style="width: 100%; max-width: 700px; height: auto"
+            >
+          </td>
+        </tr>
+        <tr align="center">
+          <td style="padding: 1rem 0">
+            <!-- SVG ICON - Delivered Package with Celebration -->
+            <svg
+              width="150"
+              height="150"
+              viewBox="0 0 200 200"
+            >
+              <style>
+                .package {
+                  stroke: #212121;
+                  fill: #fff;
+                  stroke-width: 4;
+                }
+                .package-accent {
+                  stroke: #cfa96b;
+                  fill: #cfa96b;
+                  stroke-width: 3;
+                }
+                .check-circle {
+                  stroke: #28a745;
+                  fill: #28a745;
+                  stroke-width: 4;
+                }
+                .check {
+                  stroke: #fff;
+                  stroke-width: 6;
+                  stroke-linecap: round;
+                  fill: none;
+                }
+                .sparkle {
+                  fill: #cfa96b;
+                }
+                .confetti {
+                  fill: #ff6b6b;
+                }
+              </style>
+              <!-- Package -->
+              <rect x="80" y="90" width="60" height="50" class="package"/>
+              <!-- Package ribbon -->
+              <rect x="80" y="105" width="60" height="8" class="package-accent"/>
+              <rect x="105" y="90" width="10" height="50" class="package-accent"/>
+              <!-- Bow -->
+              <ellipse cx="110" cy="95" rx="8" ry="4" class="package-accent"/>
+              <!-- Delivered checkmark -->
+              <circle cx="150" cy="60" r="20" class="check-circle"/>
+              <polyline points="140,60 148,68 160,56" class="check"/>
+              <!-- Celebration sparkles -->
+              <polygon points="50,40 52,45 57,45 53,48 55,53 50,50 45,53 47,48 43,45 48,45" class="sparkle"/>
+              <polygon points="170,35 172,40 177,40 173,43 175,48 170,45 165,48 167,43 163,40 168,40" class="sparkle"/>
+              <polygon points="40,70 42,75 47,75 43,78 45,83 40,80 35,83 37,78 33,75 38,75" class="sparkle"/>
+              <!-- Confetti -->
+              <circle cx="60" cy="50" r="3" class="confetti"/>
+              <circle cx="180" cy="55" r="3" class="confetti"/>
+              <circle cx="30" cy="90" r="3" class="confetti"/>
+            </svg>
+          </td>
+        </tr>
+      </table>
+
+      <table
+        style="
+          width: 90%;
+          max-width: 600px;
+          margin: 0 auto;
+          background: #fff;
+        "
+      >
+        <tr align="center">
+          <td style="padding: 1rem">
+            {% if fulfillment.item_count == item_count %}
+              <h1 style="color: #cfa96b; font-size: 2.5rem; margin: 0">Delivered! 🎉</h1>
+              <p style="font-size: 1.25rem; margin: 0.5rem 0; color: #28a745; font-weight: bold;">
+                Your order has been successfully delivered!
+              </p>
+            {% elsif fulfillment.item_count > 1 %}
+              {% if fulfillment_status == 'fulfilled' %}
+                <h1 style="color: #cfa96b; font-size: 2.5rem; margin: 0">Final Items Delivered! 🎉</h1>
+                <p style="font-size: 1.25rem; margin: 0.5rem 0; color: #28a745; font-weight: bold;">
+                  The last items in your order have been delivered!
+                </p>
+              {% else %}
+                <h1 style="color: #cfa96b; font-size: 2.5rem; margin: 0">Partial Delivery Complete! 📦</h1>
+                <p style="font-size: 1.25rem; margin: 0.5rem 0; color: #28a745; font-weight: bold;">
+                  Some items in your order have been delivered!
+                </p>
+              {% endif %}
+            {% else %}
+              {% if fulfillment_status == 'fulfilled' %}
+                <h1 style="color: #cfa96b; font-size: 2.5rem; margin: 0">Final Item Delivered! 🎉</h1>
+                <p style="font-size: 1.25rem; margin: 0.5rem 0; color: #28a745; font-weight: bold;">
+                  The last item in your order has been delivered!
+                </p>
+              {% else %}
+                <h1 style="color: #cfa96b; font-size: 2.5rem; margin: 0">Package Delivered! 📦</h1>
+                <p style="font-size: 1.25rem; margin: 0.5rem 0; color: #28a745; font-weight: bold;">
+                  One item in your order has been delivered!
+                </p>
+              {% endif %}
+            {% endif %}
+            <p style="font-size: 1.1rem; margin: 0.5rem 2rem; color: #666;">
+              We hope you love your beautiful jewelry from Malani Jewelers!
+            </p>
+          </td>
+        </tr>
+      </table>
+
+      <!-- Order Details -->
+      <table
+        style="
+          width: 90%;
+          max-width: 600px;
+          margin: 0 auto;
+          background: #fff;
+        "
+      >
+        <tr>
+          <td style="padding: 1rem 2rem">
+            <h3 style="color: #cfa96b">Delivery Confirmation:</h3>
+            <p>
+              <strong>Order Number:</strong> {{ order_name -}}
+              <br>
+              {% if po_number %}
+                <strong>PO Number:</strong> #{{ po_number -}}
+                <br>
+              {% endif %}
+              <strong>Status:</strong> <span style="color: #28a745; font-weight: bold;">✅ Delivered</span><br>
+              <strong>Delivery Date:</strong> {{ 'now' | date: format: 'date_at_time' }}
+            </p>
+          </td>
+        </tr>
+      </table>
+
+      <!-- Google Review Request -->
+      <table
+        width="100%"
+        cellspacing="0"
+        cellpadding="0"
+        border="0"
+        style="margin: 0 auto; max-width: 600px;"
+      >
+        <tr>
+          <td align="center">
+            <div
+              style="
+                background: linear-gradient(135deg, #4285f4, #34a853);
+                color: #ffffff;
+                font-family: Arial, sans-serif;
+                padding: 2rem 1.5rem;
+                text-align: center;
+                box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+                max-width: 600px;
+                margin: 0 auto;
+              "
+            >
+              <h2 style="margin: 0 0 1rem; font-size: 1.6rem; font-weight: 700;">
+                ⭐ Love Your Jewelry? Tell the World!
+              </h2>
+              <p style="margin: 0 0 1.5rem; font-size: 1.05rem; line-height: 1.5;">
+                Your feedback helps other customers discover the beauty of Malani Jewelers.
+              </p>
+              <a
+                href="https://search.google.com/local/writereview?placeid=ChIJAeMgoYIH9YgRJdw0aqZ12_I"
+                style="
+                  background-color: #ffffff;
+                  color: #4285f4;
+                  padding: 0.9rem 2rem;
+                  border-radius: 30px;
+                  text-decoration: none;
+                  font-size: 1.1rem;
+                  font-weight: bold;
+                  display: inline-block;
+                "
+                >⭐ Leave a Google Review</a
+              >
+              <p style="margin-top: 1.5rem; font-size: 0.9rem; opacity: 0.85;">
+                It only takes 2 minutes and means the world to us! 🙏
+              </p>
+            </div>
+          </td>
+        </tr>
+      </table>
+
+      <!-- CRITICAL: Package Protection Instructions -->
+      <table
+        style="
+          width: 100%;
+          max-width: 600px;
+          margin: 0 auto;
+          background: #fff3cd;
+        "
+      >
+        <tr>
+          <td style="padding: 1.5rem 2rem; text-align: center;">
+            <h2 style="color: #dc3545; margin: 0 0 1rem 0; font-size: 1.3rem;">
+              🚨 IMPORTANT: Package Protection Protocol
+            </h2>
+            <div style="background: #fff; padding: 1rem; border-radius: 8px; margin-bottom: 1rem;">
+              <p style="margin: 0; color: #dc3545; font-weight: bold; font-size: 1.1rem;">
+                📱 BEFORE opening your package:
+              </p>
+              <p style="margin: 0.5rem 0; color: #333;">
+                If you notice ANY damage to the package or if the seal appears broken:
+              </p>
+              <ul style="text-align: left; margin: 0.5rem 0; padding-left: 2rem; color: #333;">
+                <li>
+                  <strong>IMMEDIATELY call us:</strong>
+                  <a href="tel:18880006666" style="color: #dc3545; font-weight: bold;">+1 (888) 000-6666</a>
+                </li>
+                <li><strong>START VIDEO RECORDING</strong> before opening the package</li>
+                <li><strong>DO NOT open</strong> the package until you're recording</li>
+              </ul>
+            </div>
+            <p style="margin: 0; color: #666; font-size: 0.9rem; font-style: italic;">
+              This protects both you and us from any shipping damage or tampering issues.
+            </p>
+          </td>
+        </tr>
+      </table>
+        <!-- Tracking Information -->
+        {% if fulfillment.tracking_numbers.size > 0 %}
+          <table
+            style="
+              width: 90%;
+              max-width: 600px;
+              margin: 0 auto;
+              background: #cfa96b;
+              color: #fff;
+            "
+          >
+            <tr>
+              <td style="padding: 2rem">
+                <h3>📦 Final Tracking Information</h3>
+                {% if fulfillment.tracking_numbers.size == 1
+                  and fulfillment.tracking_company
+                  and fulfillment.tracking_url
+                %}
+                  <p>
+                    <strong>{{ fulfillment.tracking_company }} Tracking Number:</strong><br>
+                    <a
+                      href="{{ fulfillment.tracking_url }}"
+                      style="
+                        color: white;
+                        text-decoration: underline;
+                        font-size: 1.2rem;
+                        font-weight: bold;
+                      "
+                    >
+                      {{- fulfillment.tracking_numbers.first -}}
+                    </a>
+                  </p>
+                {% elsif fulfillment.tracking_numbers.size == 1 %}
+                  <p>
+                    <strong>Tracking Number:</strong><br>
+                    <span style="font-size: 1.2rem; font-weight: bold;">{{ fulfillment.tracking_numbers.first }}</span>
+                  </p>
+                {% else %}
+                  <p>
+                    <strong>{{ fulfillment.tracking_company }} Tracking Numbers:</strong>
+                  </p>
+                  {% for tracking_number in fulfillment.tracking_numbers %}
+                    <p>
+                      {% if fulfillment.tracking_urls[forloop.index0] %}
+                        <a
+                          href="{{ fulfillment.tracking_urls[forloop.index0] }}"
+                          style="
+                            color: white;
+                            text-decoration: underline;
+                            font-size: 1.1rem;
+                            font-weight: bold;
+                          "
+                        >
+                          {{- tracking_number -}}
+                        </a>
+                      {% else %}
+                        <span style="font-size: 1.1rem; font-weight: bold;">{{ tracking_number }}</span>
+                      {% endif %}
+                    </p>
+                  {% endfor %}
+                {% endif %}
+              </td>
+            </tr>
+          </table>
+        {% endif %}
+      <!-- Package Not Received Section -->
+      <table
+        style="
+          width: 100%;
+          max-width: 600px;
+          margin: 0 auto;
+          background: #e8f4fd;
+        "
+      >
+        <tr>
+          <td style="padding: 1.5rem 2rem">
+            <h3 style="color: #cfa96b; margin: 0 0 1rem 0;">📦 Haven't Received Your Package Yet?</h3>
+            <p style="margin: 0.5rem 0; color: #666;">Sometimes packages are marked as "delivered" but may be:</p>
+            <ul style="margin: 0.5rem 0; padding-left: 1.5rem; color: #666;">
+              <li>Left with a neighbor or building concierge</li>
+              <li>Placed in a secure location (behind plants, side door)</li>
+              <li>Delivered to a different unit in your building</li>
+              <li>Being held at a local pickup location</li>
+            </ul>
+            <p style="margin: 1rem 0 0 0; font-weight: bold; color: #dc3545;">
+              If you can't locate your package within 24 hours, please contact us immediately:
+            </p>
+            <p style="margin: 0.5rem 0;">
+              📞 <a href="tel:18880006666" style="color: #cfa96b; font-weight: bold;">+1 (888) 000-6666</a> | 📧
+              <a href="mailto:{{ shop.email }}" style="color: #cfa96b; font-weight: bold;">{{ shop.email }}</a>
+            </p>
+          </td>
+        </tr>
+      </table>
+
+      <!-- Action Button -->
+      <table
+        style="
+          width: 90%;
+          max-width: 600px;
+          margin: 0 auto;
+          background: #fff;
+        "
+      >
+        <tr align="center">
+          <td style="padding: 2rem">
+            {% if order_status_url %}
+              <a
+                href="{{ order_status_url }}"
+                style="
+                  background: #cfa96b;
+                  color: #fff;
+                  padding: 1rem 3rem;
+                  border-radius: 5px;
+                  text-decoration: none;
+                  font-size: 1.25rem;
+                  font-weight: bold;
+                  display: inline-block;
+                  margin-bottom: 1rem;
+                "
+                >View Your Order</a
+              >
+            {% else %}
+              <a
+                href="{{ shop.url }}"
+                style="
+                  background: #cfa96b;
+                  color: #fff;
+                  padding: 1rem 3rem;
+                  border-radius: 5px;
+                  text-decoration: none;
+                  font-size: 1.25rem;
+                  font-weight: bold;
+                  display: inline-block;
+                  margin-bottom: 1rem;
+                "
+                >Continue Shopping</a
+              >
+            {% endif %}
+            <br>
+            <a
+              href="{{ shop.url }}"
+              style="color: #cfa96b; text-decoration: none; font-size: 1rem;"
+              >Shop More Beautiful Jewelry</a
+            >
+          </td>
+        </tr>
+      </table>
+
+      <!-- Care Instructions -->
+      <table
+        style="
+          width: 90%;
+          max-width: 600px;
+          margin: 0 auto;
+          background: #f8f9fa;
+        "
+      >
+        <tr>
+          <td style="padding: 1.5rem 2rem">
+            <h3 style="color: #cfa96b; margin: 0 0 1rem 0;">💎 Caring for Your Jewelry</h3>
+            <ul style="margin: 0; padding-left: 1.5rem; color: #666;">
+              <li style="margin-bottom: 0.5rem;">Store in the provided jewelry box or soft pouch</li>
+              <li style="margin-bottom: 0.5rem;">Clean gently with a soft, lint-free cloth</li>
+              <li style="margin-bottom: 0.5rem;">Avoid exposure to perfumes, lotions, and chemicals</li>
+              <li style="margin-bottom: 0.5rem;">Remove before swimming, exercising, or sleeping</li>
+              <li>Visit us for professional cleaning and maintenance</li>
+            </ul>
+            <p style="margin: 1rem 0 0 0; font-style: italic; color: #666;">
+              📞 Questions about care? Call us at
+              <a href="tel:18880006666" style="color: #cfa96b;">+1 (888) 000-6666</a>
+            </p>
+          </td>
+        </tr>
+      </table>
+
+      <!-- Help Section -->
+      <table
+        style="
+          width: 90%;
+          max-width: 600px;
+          margin: 0 auto;
+          background: #cfa96b;
+          color: #fff;
+        "
+      >
+        <tr>
+          <td style="padding: 2rem">
+            <h3>Questions About Your Delivery?</h3>
+            <p>
+              Visit
+              <a
+                style="color: white; text-decoration: underline"
+                href="{{ shop.url }}/pages/delivery-help"
+                >Delivery Support</a
+              >
+            </p>
+            <p>
+              Call:
+              <a
+                style="color: white; text-decoration: underline"
+                href="tel:18880006666"
+                >+1 (888) 000-6666</a
+              >
+            </p>
+            <p>
+              Email:
+              <a
+                style="color: white; text-decoration: underline"
+                href="mailto:{{ shop.email }}"
+              >
+                {{- shop.email -}}
+              </a>
+            </p>
+          </td>
+        </tr>
+      </table>
+
+      <!-- Thank You & Cross-sell -->
+      <table
+        style="
+          width: 90%;
+          max-width: 600px;
+          margin: 0 auto;
+          background: #fff;
+          text-align: center;
+        "
+      >
+        <tr>
+          <td style="padding: 2rem">
+            <h2 style="color: #cfa96b; margin-bottom: 1rem;">Thank You for Choosing Malani Jewelers! ✨</h2>
+            <p style="font-size: 1.1rem; margin-bottom: 2rem; color: #666;">
+              Your trust in us means everything. We hope your new jewelry brings you joy for years to come!
+            </p>
+          </td>
+        </tr>
+      </table>
+
+      <!-- More Items -->
+      <table
+        style="
+          width: 90%;
+          max-width: 600px;
+          margin: 0 auto;
+          background: #fff;
+          text-align: center;
+        "
+      >
+        <tr>
+          <td colspan="3">
+            <h2 style="padding: 2rem 0">Complete Your Collection</h2>
+          </td>
+        </tr>
+        <tr>
+          <td class="btn">
+            <a
+              href="{{ shop.url }}/collections/matching-sets"
+              style="
+                background: #cfa96b;
+                color: #fff;
+                padding: 1rem 2rem;
+                border-radius: 5px;
+                text-decoration: none;
+              "
+              >Matching Sets</a
+            >
+          </td>
+          <td class="btn">
+            <a
+              href="{{ shop.url }}/collections/jewelry-care"
+              style="
+                background: #cfa96b;
+                color: #fff;
+                padding: 1rem 2rem;
+                border-radius: 5px;
+                text-decoration: none;
+              "
+              >Care Products</a
+            >
+          </td>
+          <td class="btn">
+            <a
+              href="{{ shop.url }}/collections/gift-cards"
+              style="
+                background: #cfa96b;
+                color: #fff;
+                padding: 1rem 2rem;
+                border-radius: 5px;
+                text-decoration: none;
+              "
+              >Gift Cards</a
+            >
+          </td>
+        </tr>
+        <tr>
+          <td colspan="3">
+            <h3 style="padding-top: 2rem">🎁 Share the Love - Gift Cards Available!</h3>
+          </td>
+        </tr>
+      </table>
+    </section>
+  </body>
+</html>
