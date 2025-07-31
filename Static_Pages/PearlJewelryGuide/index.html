@@ -1,0 +1,764 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0" />
+    <title>Pearl Jewelry Guide | Malani Jewelers</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Abhaya+Libre&display=swap"
+      rel="stylesheet" />
+    <style>
+      .pearl-guide-page {
+        font-family: 'Abhaya Libre', serif;
+        line-height: 1.7;
+        margin: 0;
+        padding: 0;
+        background-color: #fff;
+        color: #333;
+      }
+
+      .pearl-guide-page .content-container {
+        max-width: 900px;
+        margin: 40px auto;
+        padding: 0 20px;
+      }
+
+      .pearl-guide-page .content-container h2 {
+        color: #b68c46;
+        border-bottom: 2px solid #eee;
+        padding-bottom: 6px;
+        margin-top: 40px;
+        font-size: 1.6rem;
+      }
+
+      .pearl-guide-page .content-container h3 {
+        color: #b68c46;
+        margin-top: 30px;
+        font-size: 1.3rem;
+      }
+
+      .pearl-guide-page .content-container h4 {
+        color: #b68c46;
+        margin-top: 25px;
+        font-size: 1.2rem;
+      }
+
+      .pearl-guide-page .content-container p {
+        margin: 15px 0;
+        font-size: 1.125rem;
+      }
+
+      .pearl-guide-page .content-container ul li {
+        font-size: 1.125rem;
+        margin-bottom: 10px;
+      }
+
+      .pearl-guide-page .content-container a {
+        color: #b68c46;
+        text-decoration: none;
+        font-weight: bold;
+      }
+
+      .pearl-guide-page .content-container a:hover {
+        color: #8b6635;
+        text-decoration: underline;
+      }
+
+      .mission-statement {
+        background: linear-gradient(135deg, #fdf9f3 0%, #f8f0e5 100%);
+        border: 2px solid #cfa96b;
+        border-radius: 10px;
+        padding: 30px;
+        margin: 30px 0;
+        text-align: center;
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+      }
+
+      .mission-statement .mission-icon {
+        font-size: 3rem;
+        color: #cfa96b;
+        margin-bottom: 15px;
+        display: block;
+      }
+
+      .mission-statement h3 {
+        color: #b68c46;
+        font-size: 1.8rem;
+        margin-bottom: 15px;
+        margin-top: 0;
+      }
+
+      .pearl-types-section {
+        margin: 40px 0;
+      }
+
+      .pearl-types-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 25px;
+        margin: 30px 0;
+      }
+
+      .pearl-type-card {
+        background-color: #fff;
+        padding: 30px;
+        border-radius: 8px;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        border-top: 4px solid #b68c46;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        text-align: center;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .pearl-type-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+      }
+
+      .pearl-type-card::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(
+          90deg,
+          transparent,
+          rgba(207, 169, 107, 0.1),
+          transparent
+        );
+        transition: left 0.5s;
+      }
+
+      .pearl-type-card:hover::before {
+        left: 100%;
+      }
+
+      .pearl-type-card .pearl-icon {
+        font-size: 3rem;
+        color: #cfa96b;
+        margin-bottom: 20px;
+        display: block;
+      }
+
+      .pearl-type-card h4 {
+        color: #b68c46;
+        margin-top: 0;
+        margin-bottom: 20px;
+        font-size: 1.4rem;
+        letter-spacing: 0.5px;
+      }
+
+      .pearl-type-card p {
+        font-size: 1rem;
+        line-height: 1.6;
+        color: #555;
+        text-align: left;
+      }
+
+      .quality-factors {
+        background-color: #fdf6ed;
+        padding: 30px;
+        margin: 30px 0;
+        border-radius: 8px;
+        border: 1px solid #e8d5b7;
+      }
+
+      .factors-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 20px;
+        margin-top: 20px;
+      }
+
+      .factor-item {
+        background-color: #fff;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        text-align: center;
+      }
+
+      .factor-icon {
+        font-size: 2rem;
+        color: #cfa96b;
+        margin-bottom: 10px;
+        display: block;
+      }
+
+      .factor-item h4 {
+        color: #b68c46;
+        margin-top: 0;
+        margin-bottom: 10px;
+        font-size: 1.1rem;
+      }
+
+      .factor-item p {
+        font-size: 0.95rem;
+        color: #555;
+        margin: 0;
+      }
+
+      .identification-section {
+        background: linear-gradient(135deg, #f8f0e5 0%, #fdf9f3 100%);
+        border: 2px solid #b68c46;
+        border-radius: 10px;
+        padding: 25px;
+        margin: 25px 0;
+      }
+
+      .identification-tips {
+        margin-top: 20px;
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+      }
+
+      .tip-item {
+        background-color: #fff;
+        padding: 15px;
+        border-radius: 5px;
+        border-left: 3px solid #cfa96b;
+        display: flex;
+        align-items: center;
+        gap: 15px;
+      }
+
+      .tip-icon {
+        font-size: 1.5rem;
+        color: #cfa96b;
+        min-width: 30px;
+      }
+
+      .strand-quality {
+        background-color: #fdf9f3;
+        padding: 25px;
+        margin: 25px 0;
+        border-radius: 8px;
+        border-left: 4px solid #b68c46;
+      }
+
+      .strand-features {
+        margin-top: 15px;
+      }
+
+      .strand-features ul {
+        list-style: none;
+        padding-left: 0;
+      }
+
+      .strand-features li {
+        padding: 8px 0;
+        border-bottom: 1px solid #eee;
+        position: relative;
+        padding-left: 25px;
+      }
+
+      .strand-features li:before {
+        content: '✓';
+        color: #cfa96b;
+        font-weight: bold;
+        position: absolute;
+        left: 0;
+      }
+
+      .care-instructions {
+        background-color: #fdf6ed;
+        padding: 30px;
+        margin: 30px 0;
+        border-radius: 8px;
+        border: 1px solid #e8d5b7;
+      }
+
+      .care-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 20px;
+        margin-top: 20px;
+      }
+
+      .care-category {
+        background-color: #fff;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+      }
+
+      .care-category h4 {
+        color: #b68c46;
+        margin-top: 0;
+        margin-bottom: 15px;
+        font-size: 1.2rem;
+      }
+
+      .care-category ul {
+        list-style: none;
+        padding-left: 0;
+        margin: 0;
+      }
+
+      .care-category li {
+        padding: 5px 0;
+        font-size: 0.95rem;
+        color: #555;
+        position: relative;
+        padding-left: 20px;
+      }
+
+      .care-category li:before {
+        content: '•';
+        color: #cfa96b;
+        font-weight: bold;
+        position: absolute;
+        left: 0;
+      }
+
+      @media (max-width: 768px) {
+        .content-container {
+          padding: 0 15px;
+        }
+
+        .pearl-types-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .factors-grid {
+          grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+        }
+
+        .care-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .identification-tips {
+          gap: 10px;
+        }
+      }
+
+      @media (max-width: 480px) {
+        .mission-statement,
+        .quality-factors,
+        .identification-section {
+          padding: 20px;
+        }
+
+        .pearl-type-card {
+          padding: 20px;
+        }
+
+        .care-category {
+          padding: 15px;
+        }
+      }
+
+      .visually-hidden {
+        position: absolute !important;
+        height: 1px;
+        width: 1px;
+        overflow: hidden;
+        clip: rect(1px, 1px, 1px, 1px);
+        white-space: nowrap;
+      }
+    </style>
+  </head>
+  <body>
+    <section class="pearl-guide-page">
+      <div class="visually-hidden">
+        <h1>Pearl Jewelry Guide - Complete Buying Guide</h1>
+        <h2>Real vs Fake Pearls and Quality Factors</h2>
+        <h3>Natural, Cultured, and Imitation Pearls</h3>
+        <h4>Pearl Care and Maintenance</h4>
+        <h5>How to Identify Quality Pearls</h5>
+        <h6>Expert Pearl Buying Tips</h6>
+      </div>
+
+      <div class="content-container">
+        <p>
+          <strong
+            >Every woman should have pearl jewelry among her jewelry
+            collection.</strong
+          >
+          Pearl quality is dependent on its source, how it was formed
+          and other quality factors. When shopping for pearl jewelry,
+          your search should lead you to a professional jeweler who
+          has the expertise to make sure you get the best quality
+          pearl jewelry for your budget.
+        </p>
+
+        <div class="mission-statement">
+          <div class="mission-icon">🦪</div>
+          <h3>Nature's Beautiful Magic</h3>
+          <p>
+            Real pearls are examples of nature's beautiful magic. They
+            are formed when a mollusk (oyster, clam, mussel) has an
+            irritant enter its shell; in defense, the mollusk produces
+            layers of fluid (known as nacre, pronounced NAY-kur)
+            around the irritant. The process takes between 5-10 years,
+            and the result is the beautiful luminous gems we cherish
+            as pearls.
+          </p>
+        </div>
+
+        <div class="pearl-types-section">
+          <h2>Types of Pearls</h2>
+          <p>
+            Let's review the three types of pearls you may consider
+            when shopping for pearl jewelry:
+          </p>
+
+          <div class="pearl-types-grid">
+            <div class="pearl-type-card">
+              <span class="pearl-icon">🌊</span>
+              <h4>Natural Pearls</h4>
+              <p>
+                Natural pearls, those that form organically in nature,
+                are extremely rare - very few are in the market today.
+                The best source for natural pearls was the Persian
+                Gulf, but when oil was discovered around the 1930s the
+                Gulf waters could no longer produce pearls. Today,
+                traditional fishing for natural pearls is still
+                practiced in India - but the pearls harvested are
+                often small and expensive.
+              </p>
+            </div>
+
+            <div class="pearl-type-card">
+              <span class="pearl-icon">🏭</span>
+              <h4>Cultured Pearls</h4>
+              <p>
+                Cultured pearls make up the majority of pearls on the
+                market today. The "culturing" process dates back to
+                the late 19th century. Cultured pearls are formed in
+                the same way as natural pearls, and are considered
+                real pearls. In cultured pearls, an irritant is
+                surgically placed into the mollusk and protected in
+                "pearl farms" while the pearl develops. Of the pearls
+                created after a five-to-ten year farming cycle, only
+                5% are of the high quality required for fine jewelry.
+              </p>
+            </div>
+
+            <div class="pearl-type-card">
+              <span class="pearl-icon">🔬</span>
+              <h4>Imitation Pearls</h4>
+              <p>
+                Imitation pearls are the third type and have no
+                connection to the natural pearl making process. They
+                are made from glass beads that are dipped into a
+                solution made from fish scales. While most have a high
+                luster, it may eventually fade. Professional jewelers
+                can easily spot imitation pearls and will not sell you
+                imitation marked as real.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="identification-section">
+          <h2>How to Tell Real Pearls from Imitation</h2>
+          <p>
+            Professional jewelers can spot an imitation pearl from
+            cultured pearls, and will not sell you imitation marked as
+            real. Trust your pearl jewelry purchase with a jewelry
+            store known for its educated staff and ethical standards,
+            like Malani Jewelers.
+          </p>
+
+          <div class="identification-tips">
+            <div class="tip-item">
+              <span class="tip-icon">👂</span>
+              <div>
+                <strong>The Tooth Test:</strong> Gently rub the pearl
+                against your teeth. Real pearls feel gritty due to
+                layers of nacre, while imitation pearls feel smooth.
+              </div>
+            </div>
+            <div class="tip-item">
+              <span class="tip-icon">✨</span>
+              <div>
+                <strong>Luster Quality:</strong> Real pearls have
+                deep, lustrous shine with subtle variations. Fake
+                pearls often have uniform, overly bright surfaces.
+              </div>
+            </div>
+            <div class="tip-item">
+              <span class="tip-icon">🔍</span>
+              <div>
+                <strong>Surface Inspection:</strong> Real pearls may
+                have minor imperfections and natural variations, while
+                fake pearls appear perfectly uniform.
+              </div>
+            </div>
+            <div class="tip-item">
+              <span class="tip-icon">🌡️</span>
+              <div>
+                <strong>Temperature Test:</strong> Real pearls feel
+                cool to the touch initially, then warm to your body
+                temperature.
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="quality-factors">
+          <h2>Pearl Quality Factors</h2>
+          <p>
+            Pearls are classified by origin, then graded by size,
+            shape, nacre thickness, color, luster, surface clarity and
+            how they match. Here are the key quality factors to
+            consider:
+          </p>
+
+          <div class="factors-grid">
+            <div class="factor-item">
+              <span class="factor-icon">✨</span>
+              <h4>Luster</h4>
+              <p>
+                The combination of surface brilliance and deep-seated
+                glow. Good-quality cultured pearls should be bright,
+                not dull. Your reflection should be clearly visible on
+                the surface.
+              </p>
+            </div>
+
+            <div class="factor-item">
+              <span class="factor-icon">🔵</span>
+              <h4>Shape</h4>
+              <p>
+                Perfectly round pearls are most valuable, but baroque
+                (irregular) shapes can be equally beautiful and more
+                affordable while still maintaining excellent quality.
+              </p>
+            </div>
+
+            <div class="factor-item">
+              <span class="factor-icon">📏</span>
+              <h4>Size</h4>
+              <p>
+                Measured by diameter in millimeters. Average cultured
+                pearls are 7-7.5mm. Generally, larger pearls are more
+                valuable, but quality factors matter more than size
+                alone.
+              </p>
+            </div>
+
+            <div class="factor-item">
+              <span class="factor-icon">🔍</span>
+              <h4>Surface</h4>
+              <p>
+                Refers to the absence of disfiguring spots, bumps or
+                cracks. Clean surfaces have higher value, though minor
+                imperfections are natural and acceptable.
+              </p>
+            </div>
+
+            <div class="factor-item">
+              <span class="factor-icon">🌈</span>
+              <h4>Color</h4>
+              <p>
+                Ranges from rosé to black. Rosé or silver/white pearls
+                suit fair skin tones, while cream and gold-tone pearls
+                flatter darker complexions.
+              </p>
+            </div>
+
+            <div class="factor-item">
+              <span class="factor-icon">🔗</span>
+              <h4>Matching</h4>
+              <p>
+                In pearl strands, how well pearls complement each
+                other in size, shape, color, and luster. Well-matched
+                strands are more valuable and visually appealing.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="strand-quality">
+          <h2>Quality Pearl Strands</h2>
+          <p>
+            When evaluating pearl strands, look for these quality
+            indicators:
+          </p>
+
+          <div class="strand-features">
+            <ul>
+              <li>Pearls should not bunch or twist when laid flat</li>
+              <li>
+                Knots should be shaped uniformly and pushed snugly
+                against both sides of every pearl
+              </li>
+              <li>
+                Silk cord should match the pearl color as closely as
+                possible
+              </li>
+              <li>
+                Each pearl should be individually knotted to prevent
+                loss if the string breaks
+              </li>
+              <li>
+                The clasp should be secure and complement the pearl
+                quality
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="care-instructions">
+          <h2>How to Clean & Store Pearls</h2>
+          <p>
+            Proper care ensures your pearls maintain their beauty and
+            luster for generations:
+          </p>
+
+          <div class="care-grid">
+            <div class="care-category">
+              <h4>Daily Care</h4>
+              <ul>
+                <li>
+                  Apply cosmetics, hair sprays and perfume before
+                  putting on pearl jewelry
+                </li>
+                <li>
+                  Wipe pearls with a soft cloth after wearing to
+                  remove traces of cosmetics
+                </li>
+                <li>Put pearls on last, take them off first</li>
+                <li>Avoid contact with chemicals and abrasives</li>
+              </ul>
+            </div>
+
+            <div class="care-category">
+              <h4>Cleaning</h4>
+              <ul>
+                <li>Wash with mild soap and water when needed</li>
+                <li>Never use chemicals, abrasives or solvents</li>
+                <li>Use only soft, damp cloth for cleaning</li>
+                <li>Allow to air dry completely before storing</li>
+              </ul>
+            </div>
+
+            <div class="care-category">
+              <h4>Storage</h4>
+              <ul>
+                <li>
+                  Always lay pearl strands flat to dry - never hang
+                  them
+                </li>
+                <li>Store in chamois bag or wrap in tissue</li>
+                <li>
+                  Keep separate from other jewelry to prevent
+                  scratching
+                </li>
+                <li>
+                  Avoid tossing carelessly into purses or jewelry
+                  boxes
+                </li>
+              </ul>
+            </div>
+
+            <div class="care-category">
+              <h4>Maintenance</h4>
+              <ul>
+                <li>
+                  Restring pearls annually to prevent thread weakening
+                </li>
+                <li>Ensure pearls are knotted between each pearl</li>
+                <li>Have clasps checked regularly for security</li>
+                <li>Consult professional jewelers for repairs</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <script>
+      // Intersection Observer for animated elements
+      const observerOptions = {
+        threshold: 0.1,
+        rootMargin: '0px 0px -50px 0px',
+      };
+
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.style.opacity = '1';
+            entry.target.style.transform = 'translateY(0)';
+          }
+        });
+      }, observerOptions);
+
+      // Observe pearl type cards for animation
+      document
+        .querySelectorAll('.pearl-type-card')
+        .forEach((card, index) => {
+          card.style.opacity = '0';
+          card.style.transform = 'translateY(30px)';
+          card.style.transition = `opacity 0.6s ease ${
+            index * 0.1
+          }s, transform 0.6s ease ${index * 0.1}s`;
+          observer.observe(card);
+        });
+
+      // Observe factor items for animation
+      document
+        .querySelectorAll('.factor-item')
+        .forEach((item, index) => {
+          item.style.opacity = '0';
+          item.style.transform = 'translateY(20px)';
+          item.style.transition = `opacity 0.5s ease ${
+            index * 0.1
+          }s, transform 0.5s ease ${index * 0.1}s`;
+          observer.observe(item);
+        });
+
+      // Observe care categories for animation
+      document
+        .querySelectorAll('.care-category')
+        .forEach((item, index) => {
+          item.style.opacity = '0';
+          item.style.transform = 'translateY(20px)';
+          item.style.transition = `opacity 0.5s ease ${
+            index * 0.1
+          }s, transform 0.5s ease ${index * 0.1}s`;
+          observer.observe(item);
+        });
+
+      // Add hover effects for tip items
+      document.querySelectorAll('.tip-item').forEach((item) => {
+        item.addEventListener('mouseenter', () => {
+          item.style.transform = 'translateX(5px)';
+          item.style.transition = 'transform 0.3s ease';
+        });
+
+        item.addEventListener('mouseleave', () => {
+          item.style.transform = 'translateX(0)';
+        });
+      });
+
+      // Add loading animation
+      document.addEventListener('DOMContentLoaded', () => {
+        const elements = document.querySelectorAll(
+          '.mission-statement, .quality-factors, .identification-section'
+        );
+        elements.forEach((element, index) => {
+          element.style.opacity = '0';
+          element.style.transform = 'translateY(20px)';
+          element.style.transition = `opacity 0.6s ease ${
+            index * 0.2
+          }s, transform 0.6s ease ${index * 0.2}s`;
+
+          setTimeout(() => {
+            element.style.opacity = '1';
+            element.style.transform = 'translateY(0)';
+          }, 100);
+        });
+      });
+    </script>
+  </body>
+</html>
