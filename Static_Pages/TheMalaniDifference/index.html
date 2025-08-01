@@ -1,0 +1,721 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0" />
+    <title>The Malani Difference | Malani Jewelers</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Abhaya+Libre&display=swap"
+      rel="stylesheet" />
+  
+  </head>
+  <body>
+      <style>
+      .malani-difference-page {
+        font-family: 'Abhaya Libre', serif;
+        line-height: 1.7;
+        margin: 0;
+        padding: 0;
+        background-color: #fff;
+        color: #333;
+      }
+
+      .malani-difference-page .parallax-header {
+        position: relative;
+        overflow: hidden;
+        height: 350px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        text-align: center;
+        background-color: black;
+      }
+
+      .malani-difference-page .parallax-header::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        background-image: url('https://cdn.shopify.com/s/files/1/0930/1200/1051/files/malani_difference_banner.webp');
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center center;
+        transform: scale(1);
+        animation: ambientZoomDrift 90s ease-in-out infinite;
+        z-index: 0;
+      }
+
+      @keyframes ambientZoomDrift {
+        0% {
+          background-position: center 65%;
+          transform: scale(1.5);
+        }
+        50% {
+          background-position: center 45%;
+          transform: scale(1);
+        }
+        100% {
+          background-position: center 65%;
+          transform: scale(1.5);
+        }
+      }
+
+      .malani-difference-page .parallax-header .overlay {
+        position: relative;
+        z-index: 1;
+        background-color: rgba(0, 0, 0, 0.5);
+        height: 100%;
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+      }
+
+      .malani-difference-page .parallax-header h1 {
+        font-size: 2.5rem;
+        margin: 0;
+        letter-spacing: 1px;
+      }
+
+      .malani-difference-page .parallax-header .subtitle {
+        margin-top: 10px;
+        font-size: 1.1rem;
+        color: #eee;
+        font-weight: 300;
+      }
+
+      .malani-difference-page .content-container {
+        max-width: 900px;
+        margin: 40px auto;
+        padding: 0 20px;
+      }
+
+      .malani-difference-page .content-container h2 {
+        color: #b68c46;
+        border-bottom: 2px solid #eee;
+        padding-bottom: 6px;
+        margin-top: 40px;
+        font-size: 1.6rem;
+      }
+
+      .malani-difference-page .content-container h3 {
+        color: #b68c46;
+        margin-top: 30px;
+        font-size: 1.3rem;
+      }
+
+      .malani-difference-page .content-container h4 {
+        color: #b68c46;
+        margin-top: 25px;
+        font-size: 1.2rem;
+      }
+
+      .malani-difference-page .content-container p {
+        margin: 15px 0;
+        font-size: 1.125rem;
+      }
+
+      .malani-difference-page .content-container ul li {
+        font-size: 1.125rem;
+        margin-bottom: 10px;
+      }
+
+      .malani-difference-page .content-container a {
+        color: #b68c46;
+        text-decoration: none;
+        font-weight: bold;
+      }
+
+      .malani-difference-page .content-container a:hover {
+        color: #8b6635;
+        text-decoration: underline;
+      }
+
+      .mission-statement {
+        background: linear-gradient(135deg, #fdf9f3 0%, #f8f0e5 100%);
+        border: 2px solid #cfa96b;
+        border-radius: 10px;
+        padding: 30px;
+        margin: 30px 0;
+        text-align: center;
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+      }
+
+      .mission-statement .mission-icon {
+        font-size: 3rem;
+        color: #cfa96b;
+        margin-bottom: 15px;
+        display: block;
+      }
+
+      .mission-statement h3 {
+        color: #b68c46;
+        font-size: 1.8rem;
+        margin-bottom: 15px;
+        margin-top: 0;
+      }
+
+      .pillars-section {
+        margin: 40px 0;
+      }
+
+      .pillars-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 25px;
+        margin: 30px 0;
+      }
+
+      .pillar-card {
+        background-color: #fff;
+        padding: 30px;
+        border-radius: 8px;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        border-top: 4px solid #b68c46;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        text-align: center;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .pillar-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+      }
+
+      .pillar-card::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(
+          90deg,
+          transparent,
+          rgba(207, 169, 107, 0.1),
+          transparent
+        );
+        transition: left 0.5s;
+      }
+
+      .pillar-card:hover::before {
+        left: 100%;
+      }
+
+      .pillar-card .pillar-icon {
+        font-size: 3rem;
+        color: #cfa96b;
+        margin-bottom: 20px;
+        display: block;
+      }
+
+      .pillar-card h4 {
+        color: #b68c46;
+        margin-top: 0;
+        margin-bottom: 20px;
+        font-size: 1.4rem;
+        letter-spacing: 0.5px;
+      }
+
+      .pillar-card p {
+        font-size: 1rem;
+        line-height: 1.6;
+        color: #555;
+      }
+
+      .highlight-stats {
+        background-color: #fdf6ed;
+        padding: 30px;
+        margin: 30px 0;
+        border-radius: 8px;
+        border: 1px solid #e8d5b7;
+      }
+
+      .stats-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 25px;
+        margin-top: 20px;
+      }
+
+      .stat-item {
+        text-align: center;
+        padding: 20px;
+        background-color: #fff;
+        border-radius: 8px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+      }
+
+      .stat-number {
+        font-size: 2.5rem;
+        font-weight: bold;
+        color: #b68c46;
+        display: block;
+        margin-bottom: 10px;
+      }
+
+      .stat-label {
+        font-size: 1rem;
+        color: #666;
+        font-weight: 600;
+      }
+
+      .experience-highlight {
+        background: linear-gradient(135deg, #f8f0e5 0%, #fdf9f3 100%);
+        border: 2px solid #b68c46;
+        border-radius: 10px;
+        padding: 25px;
+        margin: 25px 0;
+      }
+
+      .experience-benefits {
+        margin-top: 20px;
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+      }
+
+      .benefit-item {
+        background-color: #fff;
+        padding: 15px;
+        border-radius: 5px;
+        border-left: 3px solid #cfa96b;
+        display: flex;
+        align-items: center;
+        gap: 15px;
+      }
+
+      .benefit-icon {
+        font-size: 1.5rem;
+        color: #cfa96b;
+        min-width: 30px;
+      }
+
+      .procurement-section {
+        background-color: #fdf9f3;
+        padding: 25px;
+        margin: 25px 0;
+        border-radius: 8px;
+        border-left: 4px solid #b68c46;
+      }
+
+      .trust-commitment {
+        margin: 40px 0;
+      }
+
+      .trust-grid {
+        display: grid;
+       grid-template-columns: repeat(auto-fit, minmax(275px, 1fr));
+        gap: 20px;
+        margin-top: 20px;
+      }
+
+      .trust-item {
+        background-color: #fdf6ed;
+        padding: 20px;
+        border-radius: 8px;
+        text-align: center;
+        border: 1px solid #e8d5b7;
+      }
+
+      .trust-item h4 {
+        color: #b68c46;
+        margin-top: 0;
+        margin-bottom: 10px;
+        font-size: 1.1rem;
+      }
+
+      @media (max-width: 768px) {
+        .malani-difference-page .parallax-header h1 {
+          font-size: 2rem;
+        }
+
+        .content-container {
+          padding: 0 15px;
+        }
+
+        .pillars-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .stats-grid {
+          grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+        }
+
+        .trust-grid {
+          grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+        }
+
+        .experience-benefits {
+          gap: 10px;
+        }
+      }
+
+      @media (max-width: 480px) {
+        .mission-statement,
+        .highlight-stats,
+        .experience-highlight {
+          padding: 20px;
+        }
+
+        .pillar-card {
+          padding: 20px;
+        }
+
+        .stat-number {
+          font-size: 2rem;
+        }
+      }
+
+      .visually-hidden {
+        position: absolute !important;
+        height: 1px;
+        width: 1px;
+        overflow: hidden;
+        clip: rect(1px, 1px, 1px, 1px);
+        white-space: nowrap;
+      }
+    </style>
+    <section class="malani-difference-page">
+      <div class="content-container">
+        <p>
+          At Malani Jewelers,
+          <strong
+            >excellence is not just our standard—it's our
+            promise</strong
+          >. For decades, we have built our reputation on four
+          foundational pillars that set us apart in the world of fine
+          jewelry. Each piece we create and every customer we serve
+          reflects our unwavering commitment to these core values.
+        </p>
+
+        <div class="mission-statement">
+          <div class="mission-icon">✨</div>
+          <h3>What Makes Us Different</h3>
+          <p>
+            We don't just sell jewelry—we craft experiences, build
+            relationships, and create heirloom pieces that tell your
+            story. Every aspect of our business is designed around
+            delivering an unparalleled level of excellence.
+          </p>
+        </div>
+
+        <div class="highlight-stats">
+          <h2>Our Track Record Speaks</h2>
+          <div class="stats-grid">
+            <div class="stat-item">
+              <span class="stat-number">500K+</span>
+              <span class="stat-label">Satisfied Customers</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-number">10K+</span>
+              <span class="stat-label">Products</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-number">20K+</span>
+              <span class="stat-label">Google Reviews</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-number">4th Gen</span>
+              <span class="stat-label">Entrepreneur</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-number">40+</span>
+              <span class="stat-label">Years of Excellence</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-number">7</span>
+              <span class="stat-label">Continents Sourced</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="pillars-section">
+          <h2>Our Four Foundational Pillars</h2>
+          <div class="pillars-grid">
+            <div class="pillar-card">
+              <span class="pillar-icon">💎</span>
+              <h4>Quality</h4>
+              <p>
+                Quality is the central pillar of the Malani
+                foundation. From the birth of each design to the
+                execution of crafting each piece, the highest level of
+                quality checks ensure an unmatched perfection. We
+                never waver from our promise of superior creations and
+                treat each jewelry piece like it is the first and last
+                we will ever create.
+              </p>
+            </div>
+
+            <div class="pillar-card">
+              <span class="pillar-icon">🤝</span>
+              <h4>Customer Service</h4>
+              <p>
+                Customer Service serves as the backbone of the Malani
+                name. We take pride in offering an unparalleled retail
+                experience for each customer that accounts for his or
+                her unique needs and preferences. In fact, Malani has
+                the highest number of satisfied customers and 5-Star
+                Google Reviews in the United States of America.
+              </p>
+            </div>
+
+            <div class="pillar-card">
+              <span class="pillar-icon">🌍</span>
+              <h4>Variety</h4>
+              <p>
+                Variety is inarguably synonymous with Malani, as we
+                strive to create a showroom that offers diverse
+                jewelry from trusted and certified suppliers from
+                every corner of the World. Our product procurement
+                team spends the entire year traveling to each
+                continent to research and establish partnerships with
+                the most elite craftsmen.
+              </p>
+            </div>
+
+            <div class="pillar-card">
+              <span class="pillar-icon">🛡️</span>
+              <h4>Trust</h4>
+              <p>
+                Trust has been a core value for the Malani brand ever
+                since the inception of our company. Our decades of
+                experience serving over half a million satisfied
+                customers has taught us that there is no substitution
+                for ethical business practices. We believe that we are
+                serving you with each Malani masterpiece - from our
+                hands to yours.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="experience-highlight">
+          <h2>The Malani Experience</h2>
+          <p>
+            When you visit Malani Jewelers, you're not just
+            shopping—you're embarking on a journey of discovery. Our
+            trained associates have extensive knowledge about each
+            product they showcase and deliver a shopping experience
+            that you will never forget.
+          </p>
+
+          <div class="experience-benefits">
+            <div class="benefit-item">
+              <span class="benefit-icon">🎓</span>
+              <div>
+                <strong>Expert Associates:</strong> Our team undergoes
+                extensive training to provide you with unmatched
+                product knowledge and personalized service
+              </div>
+            </div>
+            <div class="benefit-item">
+              <span class="benefit-icon">👤</span>
+              <div>
+                <strong>Personalized Attention:</strong> Every
+                customer receives individualized care that accounts
+                for their unique needs and preferences
+              </div>
+            </div>
+            <div class="benefit-item">
+              <span class="benefit-icon">🏆</span>
+              <div>
+                <strong>Award-Winning Service:</strong> Recognized as
+                having the highest customer satisfaction in the United
+                States
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="procurement-section">
+          <h2>Global Sourcing Excellence</h2>
+          <p>
+            Our commitment to variety goes beyond simply offering
+            different styles. Our dedicated procurement team travels
+            the globe throughout the year, visiting every continent to
+            research trends, discover new techniques, and establish
+            partnerships with the most elite craftsmen in the
+            industry.
+          </p>
+
+          <p>
+            This worldwide network ensures that our showrooms feature
+            diverse jewelry from trusted and certified suppliers,
+            bringing you the finest pieces from every corner of the
+            world.
+          </p>
+        </div>
+
+        <div class="trust-commitment">
+          <h2>Our Commitment to Trust</h2>
+          <p>
+            With decades of experience and over half a million
+            satisfied customers, we understand that trust is earned
+            through consistent ethical practices and unwavering
+            integrity.
+          </p>
+
+          <div class="trust-grid">
+            <div class="trust-item">
+              <h4>Conflict-Free Products</h4>
+              <p>
+                Every piece is carefully crafted using ethically
+                sourced materials
+              </p>
+            </div>
+            <div class="trust-item">
+              <h4>Honest Practices</h4>
+              <p>
+                Transparency and honesty remain at the forefront of
+                all our business dealings
+              </p>
+            </div>
+            <div class="trust-item">
+              <h4>Handcrafted Excellence</h4>
+              <p>
+                Each piece is meticulously crafted by hand with
+                attention to every detail
+              </p>
+            </div>
+            <div class="trust-item">
+              <h4>Customer First</h4>
+              <p>
+                Our commitment to serving you guides every decision we
+                make
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <script>
+      // Intersection Observer for animated elements
+      const observerOptions = {
+        threshold: 0.1,
+        rootMargin: '0px 0px -50px 0px',
+      };
+
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.style.opacity = '1';
+            entry.target.style.transform = 'translateY(0)';
+          }
+        });
+      }, observerOptions);
+
+      // Observe pillar cards for animation
+      document
+        .querySelectorAll('.pillar-card')
+        .forEach((card, index) => {
+          card.style.opacity = '0';
+          card.style.transform = 'translateY(30px)';
+          card.style.transition = `opacity 0.6s ease ${
+            index * 0.1
+          }s, transform 0.6s ease ${index * 0.1}s`;
+          observer.observe(card);
+        });
+
+      // Observe stats for animation
+      document
+        .querySelectorAll('.stat-item')
+        .forEach((item, index) => {
+          item.style.opacity = '0';
+          item.style.transform = 'translateY(20px)';
+          item.style.transition = `opacity 0.5s ease ${
+            index * 0.1
+          }s, transform 0.5s ease ${index * 0.1}s`;
+          observer.observe(item);
+        });
+
+      // Observe trust items for animation
+      document
+        .querySelectorAll('.trust-item')
+        .forEach((item, index) => {
+          item.style.opacity = '0';
+          item.style.transform = 'translateY(20px)';
+          item.style.transition = `opacity 0.5s ease ${
+            index * 0.1
+          }s, transform 0.5s ease ${index * 0.1}s`;
+          observer.observe(item);
+        });
+
+      // Add hover effects for better interactivity
+      document.querySelectorAll('.benefit-item').forEach((item) => {
+        item.addEventListener('mouseenter', () => {
+          item.style.transform = 'translateX(5px)';
+          item.style.transition = 'transform 0.3s ease';
+        });
+
+        item.addEventListener('mouseleave', () => {
+          item.style.transform = 'translateX(0)';
+        });
+      });
+
+      // Animate stats numbers on scroll
+      const statsObserver = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              const statNumber =
+                entry.target.querySelector('.stat-number');
+              const finalValue = statNumber.textContent;
+
+              // Simple animation for the stat numbers
+              statNumber.style.opacity = '0';
+              setTimeout(() => {
+                statNumber.style.opacity = '1';
+                statNumber.style.transform = 'scale(1.1)';
+                setTimeout(() => {
+                  statNumber.style.transform = 'scale(1)';
+                }, 200);
+              }, 100);
+            }
+          });
+        },
+        { threshold: 0.5 }
+      );
+
+      document.querySelectorAll('.stat-item').forEach((item) => {
+        statsObserver.observe(item);
+      });
+
+      // Add CSS for stat animation
+      const style = document.createElement('style');
+      style.textContent = `
+        .stat-number {
+          transition: all 0.3s ease;
+        }
+        `;
+      document.head.appendChild(style);
+
+      // Add loading animation
+      document.addEventListener('DOMContentLoaded', () => {
+        const elements = document.querySelectorAll(
+          '.mission-statement, .highlight-stats, .experience-highlight'
+        );
+        elements.forEach((element, index) => {
+          element.style.opacity = '0';
+          element.style.transform = 'translateY(20px)';
+          element.style.transition = `opacity 0.6s ease ${
+            index * 0.2
+          }s, transform 0.6s ease ${index * 0.2}s`;
+
+          setTimeout(() => {
+            element.style.opacity = '1';
+            element.style.transform = 'translateY(0)';
+          }, 100);
+        });
+      });
+    </script>
+  </body>
+</html>
