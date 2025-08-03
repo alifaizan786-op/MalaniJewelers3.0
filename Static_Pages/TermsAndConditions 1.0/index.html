@@ -7,82 +7,12 @@
       content="width=device-width, initial-scale=1.0" />
     <title>Terms & Conditions | Malani Jewelers</title>
     <style>
-      .terms-and-conditions .parallax-header {
-        position: relative;
-        overflow: hidden;
-        height: 350px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        color: white;
-        text-align: center;
-        background-color: black;
-      }
-
-      .terms-and-conditions .parallax-header::before {
-        content: '';
-        position: absolute;
-        top: 0;
-        right: 0;
-        bottom: 0;
-        left: 0;
-        background-image: url('./assets/Return_And_Exchnage_Banner.webp');
-        background-size: cover;
-        background-repeat: no-repeat;
-        background-position: center bottom;
-        transform: scale(1);
-        animation: ambientZoomDrift 90s ease-in-out infinite;
-        z-index: 0;
-      }
-
-      @keyframes ambientZoomDrift {
-        0% {
-          background-position: center 82.5%;
-          transform: scale(1.5);
-        }
-        50% {
-          background-position: center 40%;
-          transform: scale(1);
-        }
-        100% {
-          background-position: center 82.5%;
-          transform: scale(1.5);
-        }
-      }
-
-      .terms-and-conditions .parallax-header .overlay {
-        position: relative;
-        z-index: 1;
-        background-color: rgba(0, 0, 0, 0.5);
-        height: 100%;
-        width: 100%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        flex-direction: column;
-      }
-
-      .terms-and-conditions .parallax-header h1 {
-        font-size: 2.5rem;
-        margin: 0;
-        letter-spacing: 1px;
-      }
-
-      .terms-and-conditions .last-updated {
-        margin-top: 10px;
-        font-size: 1rem;
-        color: #eee;
-      }
-
       .terms-and-conditions {
         font-family: 'Abhaya Libre', serif;
         line-height: 1.7;
         color: #333;
         background-color: #fff;
-      }
-
-      .terms-and-conditions .terms-container {
-        max-width: 1000px;
+        max-width: 1400px;
         margin: 40px auto;
         padding: 0 20px;
       }
@@ -110,51 +40,9 @@
       .terms-and-conditions ul {
         padding-left: 20px;
       }
-
-      .terms-and-conditions .faq-section {
-        margin-top: 60px;
-      }
-
-      .terms-and-conditions .faq-question {
-        background-color: #fdf9f3;
-        color: #333;
-        font-size: 1rem;
-        font-weight: bold;
-        padding: 15px 20px;
-        border: none;
-        width: 100%;
-        text-align: left;
-        cursor: pointer;
-        border-radius: 5px;
-        margin-bottom: 5px;
-        transition: background 0.3s;
-      }
-
-      .terms-and-conditions .faq-question:hover {
-        background-color: #f4e7cf;
-      }
-
-      .terms-and-conditions .faq-answer {
-        max-height: 0;
-        overflow: hidden;
-        transition: max-height 0.3s ease;
-        background-color: #fff;
-        padding: 0 20px;
-      }
-
-      .terms-and-conditions .faq-answer p {
-        margin: 15px 0;
-        color: #555;
-      }
     </style>
   </head>
   <section class="terms-and-conditions">
-    <div class="parallax-header">
-      <div class="overlay">
-        <h1>Terms & Conditions</h1>
-        <div class="last-updated">Last Updated: May 2025</div>
-      </div>
-    </div>
     <h2>MalaniJewelers.com Website Terms & Conditions of Service</h2>
 
     <p>Effective August 1, 2025</p>
@@ -821,21 +709,7 @@
       </div>
     </div>
   </section>
-  <script>
-    const questions = document.querySelectorAll('.faq-question');
-    questions.forEach((btn) => {
-      btn.addEventListener('click', () => {
-        const answer = btn.nextElementSibling;
-        const isExpanded = answer.style.maxHeight;
-        document.querySelectorAll('.faq-answer').forEach((el) => {
-          el.style.maxHeight = null;
-        });
-        answer.style.maxHeight = isExpanded
-          ? null
-          : answer.scrollHeight + 'px';
-      });
-    });
-  </script>
+
   <script type="application/ld+json">
     {
       "@context": "https://schema.org",
