@@ -1,8 +1,8 @@
+// src/main/main.js
 const { app, BrowserWindow, ipcMain } = require('electron');
 const {
-  getInventoryItemIdsBySKUs,
-  updateInventoryLevel,
-  evaluateProductForDrafting,
+  batchUpdateInventory,
+  getRateLimiterStatus,
 } = require('../shared/shopify');
 
 process.on('uncaughtException', (err) => {
@@ -18,29 +18,116 @@ const { loadStoreCodes, saveStoreCode } = require('../shared/config');
 const { writeLog } = require('../shared/logger');
 const { readSARECORD } = require('../shared/DBFReader');
 
-// Enable electron-reload
-require('electron-reload')(path.join(__dirname, '..', '..'), {
-  // Only watch the src folder
-  // Don't watch logs or generated files
-  hardResetMethod: 'exit',
-  ignored: [/logs\//, /store-config\.json$/],
-});
+// Enable electron-reload only in development
+const isDev = !app.isPackaged;
+if (isDev) {
+  try {
+    require('electron-reload')(path.join(__dirname, '..', '..'), {
+      hardResetMethod: 'exit',
+      ignored: [/logs\//, /store-config\.json$/],
+    });
+  } catch (err) {
+    console.log(
+      'electron-reload not available (this is normal in production)'
+    );
+  }
+}
 
 function createWindow() {
   const mainWindow = new BrowserWindow({
-    width: 1000,
-    height: 700,
+    width: 1200,
+    height: 800,
+    show: false, // Don't show until ready
     webPreferences: {
       nodeIntegration: true,
       contextIsolation: false,
     },
+    // Force window to be visible and on screen
+    x: 100,
+    y: 100,
+    minWidth: 800,
+    minHeight: 600,
+    // Ensure window appears on top
+    alwaysOnTop: false,
+    skipTaskbar: false,
+    titleBarStyle: 'default',
   });
 
-  mainWindow.webContents.openDevTools(); // optional: helpful for debugging
+  // Handle window ready
+  mainWindow.once('ready-to-show', () => {
+    mainWindow.show();
+    mainWindow.focus();
+    console.log('Window is now visible and focused');
+  });
+
+  // Add error handling for window loading
+  mainWindow.webContents.on(
+    'did-fail-load',
+    (event, errorCode, errorDescription) => {
+      console.error(
+        'Failed to load window:',
+        errorCode,
+        errorDescription
+      );
+    }
+  );
+
+  // Show dev tools for debugging
+
+  // Force focus after a short delay
+  setTimeout(() => {
+    if (mainWindow && !mainWindow.isDestroyed()) {
+      mainWindow.show();
+      mainWindow.focus();
+      mainWindow.setAlwaysOnTop(true);
+      setTimeout(() => {
+        mainWindow.setAlwaysOnTop(false);
+      }, 1000);
+    }
+  }, 2000);
 
   mainWindow.loadFile(
     path.join(__dirname, '..', 'renderer', 'index.html')
   );
+
+  return mainWindow;
+}
+
+// Store active sync operations and sync coordinator
+const activeSyncs = new Map();
+const syncQueue = [];
+let processingQueue = false;
+
+// Sync coordinator to stagger store syncs
+async function addToSyncQueue(syncOperation) {
+  return new Promise((resolve, reject) => {
+    syncQueue.push({ operation: syncOperation, resolve, reject });
+    processSyncQueue();
+  });
+}
+
+async function processSyncQueue() {
+  if (processingQueue || syncQueue.length === 0) return;
+
+  processingQueue = true;
+
+  while (syncQueue.length > 0) {
+    const { operation, resolve, reject } = syncQueue.shift();
+
+    try {
+      const result = await operation();
+      resolve(result);
+    } catch (error) {
+      reject(error);
+    }
+
+    // Small delay between store syncs to prevent overwhelming the API
+    if (syncQueue.length > 0) {
+      await new Promise((resolve) => setTimeout(resolve, 5000)); // Increased to 5 seconds
+    }
+  }
+
+  processingQueue = false;
 }
 
 ipcMain.handle('get-current-time', async () => {
@@ -59,7 +146,7 @@ ipcMain.handle(
 );
 
 ipcMain.handle('write-log', (event, storeCode, message) => {
-  writeLog(storeCode, message); // ← comment this out temporarily
+  writeLog(storeCode, message);
 });
 
 ipcMain.handle(
@@ -69,75 +156,205 @@ ipcMain.handle(
   }
 );
 
+// Get rate limiter status for monitoring
+ipcMain.handle('get-rate-limiter-status', () => {
+  return getRateLimiterStatus();
+});
+
+// Cancel active sync
+ipcMain.handle('cancel-sync', (event, storeCode) => {
+  if (activeSyncs.has(storeCode)) {
+    activeSyncs.get(storeCode).cancelled = true;
+    writeLog(storeCode, '🛑 Sync cancellation requested');
+    return true;
+  }
+  return false;
+});
+
+// Enhanced sync with progress tracking and rate limiting
 ipcMain.handle(
   'sync-shopify-batch',
   async (event, storeCode, locationId, records) => {
-    try {
-      const skuList = records
-        .map((r) => r.SKU_NO?.trim())
-        .filter((sku) => sku);
+    // Check if sync is already running for this store
+    if (activeSyncs.has(storeCode)) {
+      writeLog(
+        storeCode,
+        '⚠️ Sync already in progress for this store'
+      );
+      return { success: false, error: 'Sync already in progress' };
+    }
 
-      const skuMap = await getInventoryItemIdsBySKUs(skuList);
+    // Use sync coordinator to stagger store syncs
+    return await addToSyncQueue(async () => {
+      // Initialize sync tracking
+      const syncState = {
+        cancelled: false,
+        startTime: Date.now(),
+        totalRecords: records.length,
+      };
+      activeSyncs.set(storeCode, syncState);
 
-      // ✅ Log into file instead of console
-      skuList.forEach((sku) => {
-        if (skuMap[sku]) {
+      try {
+        writeLog(
+          storeCode,
+          `🚀 Starting enhanced batch sync for ${records.length} records`
+        );
+        writeLog(
+          storeCode,
+          `📊 Store-specific rate limiting enabled - processing will be throttled`
+        );
+
+        // Progress callback to send updates to renderer
+        const progressCallback = (progress) => {
+          // Check for cancellation
+          if (activeSyncs.get(storeCode)?.cancelled) {
+            throw new Error('Sync cancelled by user');
+          }
+
+          // Send progress update to renderer
+          event.sender.send('sync-progress', {
+            storeCode,
+            progress: {
+              current: progress.current,
+              total: progress.total,
+              percentage: Math.round(
+                (progress.current / progress.total) * 100
+              ),
+              currentSku: progress.sku,
+              phase: progress.phase,
+              eta: calculateETA(
+                syncState.startTime,
+                progress.current,
+                progress.total
+              ),
+            },
+          });
+
           writeLog(
             storeCode,
-            `Found SKU ${sku} with inventoryItemId: ${skuMap[sku]}`
+            `📈 Progress: ${progress.current}/${
+              progress.total
+            } (${Math.round(
+              (progress.current / progress.total) * 100
+            )}%) - ${progress.sku}`
           );
-        } else {
-          writeLog(storeCode, `SKU ${sku} not found in Shopify`);
-        }
-      });
+        };
 
-      let successCount = 0;
+        // Enhanced logger that also sends updates to renderer
+        const enhancedLogger = (storeCode, message) => {
+          writeLog(storeCode, message);
 
-      for (const rec of records) {
-        const sku = rec.SKU_NO?.trim();
-        const qty = parseInt(rec.QTYONHAND || 0);
-        const inventoryItemId = skuMap[sku];
+          // Send log update to renderer
+          event.sender.send('sync-log-update', {
+            storeCode,
+            message,
+            timestamp: new Date().toLocaleString(),
+          });
+        };
 
-        if (!inventoryItemId) {
-          continue; // Already logged above
-        }
+        // Use the new batch processing function
+        const successCount = await batchUpdateInventory(
+          records,
+          locationId,
+          storeCode,
+          enhancedLogger,
+          progressCallback
+        );
+
+        const duration = (Date.now() - syncState.startTime) / 1000;
+        const rate = successCount / duration;
+
+        enhancedLogger(storeCode, `🎉 Sync completed successfully!`);
+        enhancedLogger(
+          storeCode,
+          `📊 Final stats: ${successCount}/${
+            records.length
+          } records processed in ${duration.toFixed(
+            1
+          )}s (${rate.toFixed(2)} records/sec)`
+        );
+
+        // Send completion notification
+        event.sender.send('sync-complete', {
+          storeCode,
+          success: true,
+          successCount,
+          totalRecords: records.length,
+          duration: duration.toFixed(1),
+          rate: rate.toFixed(2),
+        });
+
+        return {
+          success: true,
+          successCount,
+          totalRecords: records.length,
+          duration: duration.toFixed(1),
+          rate: rate.toFixed(2),
+        };
+      } catch (err) {
+        const duration = (Date.now() - syncState.startTime) / 1000;
+        const errorMessage = err.message || 'Unknown error';
 
         writeLog(
           storeCode,
-          `Attempting to hide SKU ${sku} with inventoryItemId: ${skuMap[sku]}`
+          `❌ Batch sync failed after ${duration.toFixed(
+            1
+          )}s: ${errorMessage}`
         );
 
-        const updated = await updateInventoryLevel(
-          inventoryItemId,
-          qty,
-          locationId
-        );
-
-        if (updated) {
-          successCount++;
-          writeLog(
-            storeCode,
-            `Successfully hide SKU ${sku} with inventoryItemId: ${skuMap[sku]}`
-          );
-        }
-
-        // ✅ NEW STEP: Evaluate product status after inventory update
-        await evaluateProductForDrafting(
-          inventoryItemId,
-          locationId,
+        // Send error notification
+        event.sender.send('sync-complete', {
           storeCode,
-          writeLog
-        );
-      }
+          success: false,
+          error: errorMessage,
+          duration: duration.toFixed(1),
+        });
 
-      return successCount;
-    } catch (err) {
-      console.error('Batch sync failed:', err);
-      writeLog(storeCode, `❌ Batch sync failed: ${err}`);
-      return 0;
-    }
+        return {
+          success: false,
+          error: errorMessage,
+          duration: duration.toFixed(1),
+        };
+      } finally {
+        // Clean up sync tracking
+        activeSyncs.delete(storeCode);
+      }
+    });
   }
 );
+
+// Utility function to calculate ETA
+function calculateETA(startTime, current, total) {
+  if (current === 0) return 'Calculating...';
+
+  const elapsed = (Date.now() - startTime) / 1000;
+  const rate = current / elapsed;
+  const remaining = total - current;
+  const eta = remaining / rate;
+
+  if (eta < 60) {
+    return `${Math.round(eta)}s`;
+  } else if (eta < 3600) {
+    return `${Math.round(eta / 60)}m ${Math.round(eta % 60)}s`;
+  } else {
+    const hours = Math.floor(eta / 3600);
+    const minutes = Math.round((eta % 3600) / 60);
+    return `${hours}h ${minutes}m`;
+  }
+}
+
+// Periodic rate limiter status updates
+setInterval(() => {
+  const status = getRateLimiterStatus();
+
+  // Only send status if there are active syncs
+  if (activeSyncs.size > 0) {
+    // Broadcast to all windows (if multiple)
+    BrowserWindow.getAllWindows().forEach((window) => {
+      window.webContents.send('rate-limiter-status', status);
+    });
+  }
+}, 5000); // Update every 5 seconds
 
 app.whenReady().then(createWindow);
 

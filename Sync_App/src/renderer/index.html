@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <title>POS Sync App</title>
+    <title>POS Sync App - Rate Limited</title>
     <style>
       body {
         font-family: sans-serif;
@@ -13,7 +13,6 @@
         gap: 1.5rem;
         justify-content: center;
       }
-
       .store-panel {
         background-color: #fff;
         border: 1px solid #ccc;
@@ -25,222 +24,246 @@
         gap: 0.5rem;
         box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
       }
-
       .store-panel h2 {
         margin: 0 0 0.5rem 0;
       }
-
       .log-box {
         border: 1px solid #ddd;
-        height: 200px;
+        height: 250px;
         overflow-y: auto;
         background-color: #111;
         color: #0f0;
         font-family: monospace;
         padding: 0.5rem;
         font-size: 0.9rem;
+        line-height: 1.2;
       }
-
       .status {
         font-weight: bold;
         color: #007bff;
+        min-height: 20px;
       }
-
       label,
       select,
       input {
         width: 100%;
         margin-bottom: 0.5rem;
       }
-
       .timestamp {
         font-size: 0.85rem;
         color: #666;
+        min-height: 20px;
+      }
+      
+      /* Progress Bar Styles */
+      .progress-container {
+        margin: 1rem 0;
+        padding: 0.5rem;
+        background-color: #f8f9fa;
+        border-radius: 4px;
+        border: 1px solid #dee2e6;
+      }
+      
+      .progress-bar {
+        position: relative;
+        width: 100%;
+        height: 25px;
+        background-color: #e9ecef;
+        border-radius: 4px;
+        overflow: hidden;
+        margin-bottom: 0.5rem;
+      }
+      
+      .progress-fill {
+        height: 100%;
+        background: linear-gradient(90deg, #28a745, #20c997);
+        transition: width 0.3s ease;
+        border-radius: 4px;
+      }
+      
+      .progress-text {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        font-weight: bold;
+        color: #333;
+        font-size: 12px;
+      }
+      
+      .progress-details {
+        font-size: 0.8rem;
+        color: #666;
+        margin-bottom: 0.5rem;
+        min-height: 16px;
+      }
+      
+      .cancel-btn {
+        background-color: #dc3545;
+        color: white;
+        border: none;
+        padding: 0.25rem 0.5rem;
+        border-radius: 4px;
+        cursor: pointer;
+        font-size: 0.8rem;
+      }
+      
+      .cancel-btn:hover {
+        background-color: #c82333;
+      }
+      
+      /* Button States */
+      button:disabled {
+        background-color: #6c757d;
+        cursor: not-allowed;
+        opacity: 0.6;
+      }
+      
+      button {
+        background-color: #007bff;
+        color: white;
+        border: none;
+        padding: 0.5rem 1rem;
+        border-radius: 4px;
+        cursor: pointer;
+        margin-bottom: 0.5rem;
+      }
+      
+      button:hover:not(:disabled) {
+        background-color: #0056b3;
+      }
+      
+      /* Enhanced Status Colors */
+      .status.running {
+        color: #ffc107;
+      }
+      
+      .status.complete {
+        color: #28a745;
+      }
+      
+      .status.error {
+        color: #dc3545;
+      }
+      
+      /* Rate Limiter Status */
+      #rate-limiter-status {
+        z-index: 1000;
+        min-width: 200px;
+        line-height: 1.4;
+      }
+      
+      /* Responsive Design */
+      @media (max-width: 1200px) {
+        body {
+          flex-direction: column;
+          align-items: center;
+        }
+        
+        .store-panel {
+          width: 90%;
+          max-width: 500px;
+        }
+      }
+      
+      /* Animation for active sync */
+      @keyframes pulse {
+        0% { opacity: 1; }
+        50% { opacity: 0.7; }
+        100% { opacity: 1; }
+      }
+      
+      .syncing {
+        animation: pulse 2s infinite;
+      }
+      
+      /* Log box improvements */
+      .log-box::-webkit-scrollbar {
+        width: 8px;
+      }
+      
+      .log-box::-webkit-scrollbar-track {
+        background: #222;
+      }
+      
+      .log-box::-webkit-scrollbar-thumb {
+        background: #0f0;
+        border-radius: 4px;
+      }
+      
+      .log-box::-webkit-scrollbar-thumb:hover {
+        background: #0a0;
       }
     </style>
   </head>
   <body>
     <!-- Store Panel Template (Repeat for 3 stores) -->
     <!-- Store 1 -->
-    <div
-      class="store-panel"
-      id="store-1">
+    <div class="store-panel" id="store-1">
       <h3>Store 1</h3>
       <!-- Store Code Input -->
-      <label
-        id="label-storeCode-1"
-        for="storeCode-1"
-        >Store Code</label
-      >
-      <input
-        type="text"
-        id="storeCode-1"
-        placeholder="e.g. ATL" />
+      <label id="label-storeCode-1" for="storeCode-1">Store Code</label>
+      <input type="text" id="storeCode-1" placeholder="e.g. ATL" />
       <!-- Shopify Location Id Input -->
-      <label
-        id="label-shopifyLocationId-1"
-        for="shopifyLocationId-1"
-        >Shopify Location ID:</label
-      >
-      <input
-        type="text"
-        id="shopifyLocationId-1"
-        placeholder="e.g. 123456789" />
+      <label id="label-shopifyLocationId-1" for="shopifyLocationId-1">Shopify Location ID:</label>
+      <input type="text" id="shopifyLocationId-1" placeholder="e.g. 123456789" />
       <!-- Back Date Input -->
       <label for="backDate-1">Back Date (days):</label>
-      <input
-        type="number"
-        id="backDate-1"
-        placeholder="e.g. 3" />
+      <input type="number" id="backDate-1" placeholder="e.g. 30" />
       <!-- Interval Input -->
       <label for="interval-1">Interval (seconds):</label>
-      <input
-        type="number"
-        id="interval-1"
-        placeholder="e.g. 900" />
+      <input type="number" id="interval-1" placeholder="e.g. 900" />
       <!-- Run Button -->
-      <button
-        id="run-1"
-        type="button">
-        Run Sync
-      </button>
-
-      <div
-        class="timestamp"
-        id="timestamp-1">
-        Last Sync: --
-      </div>
-      <div
-        class="status"
-        id="status-1">
-        Status: Idle
-      </div>
-
-      <div
-        class="log-box"
-        id="logBox-1"></div>
+      <button id="run-1" type="button">Run Enhanced Sync</button>
+      <div class="timestamp" id="timestamp-1">Last Sync: --</div>
+      <div class="status" id="status-1">Status: Idle</div>
+      <div class="log-box" id="logBox-1"></div>
     </div>
-
+    
     <!-- Store 2 -->
-    <div
-      class="store-panel"
-      id="store-2">
+    <div class="store-panel" id="store-2">
       <h3>Store 2</h3>
       <!-- Store Code Input -->
-      <label
-        id="label-storeCode-2"
-        for="storeCode-2"
-        >Store Code</label
-      >
-      <input
-        type="text"
-        id="storeCode-2"
-        placeholder="e.g. ATL" />
+      <label id="label-storeCode-2" for="storeCode-2">Store Code</label>
+      <input type="text" id="storeCode-2" placeholder="e.g. NYC" />
       <!-- Shopify Location Id Input -->
-      <label
-        id="label-shopifyLocationId-2"
-        for="shopifyLocationId-2"
-        >Shopify Location ID:</label
-      >
-      <input
-        type="text"
-        id="shopifyLocationId-2"
-        placeholder="e.g. 223456789" />
+      <label id="label-shopifyLocationId-2" for="shopifyLocationId-2">Shopify Location ID:</label>
+      <input type="text" id="shopifyLocationId-2" placeholder="e.g. 223456789" />
       <!-- Back Date Input -->
       <label for="backDate-2">Back Date (days):</label>
-      <input
-        type="number"
-        id="backDate-2"
-        placeholder="e.g. 3" />
+      <input type="number" id="backDate-2" placeholder="e.g. 30" />
       <!-- Interval Input -->
       <label for="interval-2">Interval (seconds):</label>
-      <input
-        type="number"
-        id="interval-2"
-        placeholder="e.g. 900" />
+      <input type="number" id="interval-2" placeholder="e.g. 900" />
       <!-- Run Button -->
-      <button
-        id="run-2"
-        type="button">
-        Run Sync
-      </button>
-
-      <div
-        class="timestamp"
-        id="timestamp-2">
-        Last Sync: --
-      </div>
-      <div
-        class="status"
-        id="status-2">
-        Status: Idle
-      </div>
-
-      <div
-        class="log-box"
-        id="logBox-2"></div>
+      <button id="run-2" type="button">Run Enhanced Sync</button>
+      <div class="timestamp" id="timestamp-2">Last Sync: --</div>
+      <div class="status" id="status-2">Status: Idle</div>
+      <div class="log-box" id="logBox-2"></div>
     </div>
-
+    
     <!-- Store 3 -->
-    <div
-      class="store-panel"
-      id="store-3">
+    <div class="store-panel" id="store-3">
       <h3>Store 3</h3>
       <!-- Store Code Input -->
-      <label
-        id="label-storeCode-3"
-        for="storeCode-3"
-        >Store Code</label
-      >
-      <input
-        type="text"
-        id="storeCode-3"
-        placeholder="e.g. ATL" />
+      <label id="label-storeCode-3" for="storeCode-3">Store Code</label>
+      <input type="text" id="storeCode-3" placeholder="e.g. LA" />
       <!-- Shopify Location Id Input -->
-      <label
-        id="label-shopifyLocationId-3"
-        for="shopifyLocationId-3"
-        >Shopify Location ID:</label
-      >
-      <input
-        type="text"
-        id="shopifyLocationId-3"
-        placeholder="e.g. 323456789" />
+      <label id="label-shopifyLocationId-3" for="shopifyLocationId-3">Shopify Location ID:</label>
+      <input type="text" id="shopifyLocationId-3" placeholder="e.g. 323456789" />
       <!-- Back Date Input -->
       <label for="backDate-3">Back Date (days):</label>
-      <input
-        type="number"
-        id="backDate-3"
-        placeholder="e.g. 3" />
+      <input type="number" id="backDate-3" placeholder="e.g. 30" />
       <!-- Interval Input -->
       <label for="interval-3">Interval (seconds):</label>
-      <input
-        type="number"
-        id="interval-3"
-        placeholder="e.g. 900" />
+      <input type="number" id="interval-3" placeholder="e.g. 900" />
       <!-- Run Button -->
-      <button
-        id="run-3"
-        type="button">
-        Run Sync
-      </button>
-
-      <div
-        class="timestamp"
-        id="timestamp-3">
-        Last Sync: --
-      </div>
-      <div
-        class="status"
-        id="status-3">
-        Status: Idle
-      </div>
-
-      <div
-        class="log-box"
-        id="logBox-3"></div>
+      <button id="run-3" type="button">Run Enhanced Sync</button>
+      <div class="timestamp" id="timestamp-3">Last Sync: --</div>
+      <div class="status" id="status-3">Status: Idle</div>
+      <div class="log-box" id="logBox-3"></div>
     </div>
-
+    
     <script src="./renderer.js"></script>
   </body>
 </html>
