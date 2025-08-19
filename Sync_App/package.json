@@ -2,24 +2,62 @@
   "name": "sync_app",
   "version": "1.0.0",
   "main": "src/main/main.js",
-  "scripts": {
-    "start": "electron .",
-    "dev": "electron ."
-  },
-  "keywords": [],
+  "description": "A desktop sync application for Malani Jewelers",
   "author": "",
   "license": "ISC",
-  "description": "",
+  "scripts": {
+    "start": "electron .",
+    "dev": "electron .",
+    "build": "electron-builder",
+    "build:win": "set CSC_IDENTITY_AUTO_DISCOVERY=false && electron-builder --win",
+    "build:mac": "electron-builder --mac",
+    "build:linux": "electron-builder --linux"
+  },
   "dependencies": {
     "axios": "^1.9.0",
     "dotenv": "^16.5.0",
-    "electron": "^35.1.5",
     "parsedbf": "^1.1.1"
   },
   "devDependencies": {
     "@electron/remote": "^2.1.2",
     "concurrently": "^9.1.2",
+    "cross-env": "^10.0.0",
+    "electron": "^35.1.5",
+    "electron-builder": "^24.13.3",
     "electron-reload": "^2.0.0-alpha.1",
     "nodemon": "^3.1.9"
+  },
+  "build": {
+    "appId": "com.iruna.syncapp",
+    "productName": "Sync App",
+    "files": [
+      "package.json",
+      "src/**/*",
+      "!**/*.map"
+    ],
+    "directories": {
+      "buildResources": "build"
+    },
+    "asar": true,
+    "extraResources": [
+      ".env"
+    ],
+    "win": {
+      "target": "nsis",
+      "icon": "build/icon.ico"
+    },
+    "nsis": {
+      "oneClick": false,
+      "perMachine": false,
+      "allowToChangeInstallationDirectory": true
+    },
+    "mac": {
+      "category": "public.app-category.utilities",
+      "icon": "build/icon.icns"
+    },
+    "linux": {
+      "target": "AppImage",
+      "icon": "build"
+    }
   }
 }
