@@ -242,107 +242,71 @@
         </tr>
       </table>
 
-      <!-- CRITICAL: Package Protection Instructions -->
-      <table
-        style="
-          width: 100%;
-          max-width: 600px;
-          margin: 0 auto;
-          background: #fff3cd;
-        "
-      >
-        <tr>
-          <td style="padding: 1.5rem 2rem; text-align: center;">
-            <h2 style="color: #dc3545; margin: 0 0 1rem 0; font-size: 1.3rem;">
-              🚨 IMPORTANT: Package Protection Protocol
-            </h2>
-            <div style="background: #fff; padding: 1rem; border-radius: 8px; margin-bottom: 1rem;">
-              <p style="margin: 0; color: #dc3545; font-weight: bold; font-size: 1.1rem;">
-                📱 BEFORE opening your package:
-              </p>
-              <p style="margin: 0.5rem 0; color: #333;">
-                If you notice ANY damage to the package or if the seal appears broken:
-              </p>
-              <ul style="text-align: left; margin: 0.5rem 0; padding-left: 2rem; color: #333;">
-                <li>
-                  <strong>IMMEDIATELY call us:</strong>
-                  <a href="tel:18880006666" style="color: #dc3545; font-weight: bold;">+1 (888) 000-6666</a>
-                </li>
-                <li><strong>START VIDEO RECORDING</strong> before opening the package</li>
-                <li><strong>DO NOT open</strong> the package until you're recording</li>
-              </ul>
-            </div>
-            <p style="margin: 0; color: #666; font-size: 0.9rem; font-style: italic;">
-              This protects both you and us from any shipping damage or tampering issues.
-            </p>
-          </td>
-        </tr>
-      </table>
-        <!-- Tracking Information -->
-        {% if fulfillment.tracking_numbers.size > 0 %}
-          <table
-            style="
-              width: 90%;
-              max-width: 600px;
-              margin: 0 auto;
-              background: #cfa96b;
-              color: #fff;
-            "
-          >
-            <tr>
-              <td style="padding: 2rem">
-                <h3>📦 Final Tracking Information</h3>
-                {% if fulfillment.tracking_numbers.size == 1
-                  and fulfillment.tracking_company
-                  and fulfillment.tracking_url
-                %}
+      <!-- Tracking Information -->
+      {% if fulfillment.tracking_numbers.size > 0 %}
+        <table
+          style="
+            width: 90%;
+            max-width: 600px;
+            margin: 0 auto;
+            background: #cfa96b;
+            color: #fff;
+          "
+        >
+          <tr>
+            <td style="padding: 2rem">
+              <h3>📦 Final Tracking Information</h3>
+              {% if fulfillment.tracking_numbers.size == 1
+                and fulfillment.tracking_company
+                and fulfillment.tracking_url
+              %}
+                <p>
+                  <strong>{{ fulfillment.tracking_company }} Tracking Number:</strong><br>
+                  <a
+                    href="{{ fulfillment.tracking_url }}"
+                    style="
+                      color: white;
+                      text-decoration: underline;
+                      font-size: 1.2rem;
+                      font-weight: bold;
+                    "
+                  >
+                    {{- fulfillment.tracking_numbers.first -}}
+                  </a>
+                </p>
+              {% elsif fulfillment.tracking_numbers.size == 1 %}
+                <p>
+                  <strong>Tracking Number:</strong><br>
+                  <span style="font-size: 1.2rem; font-weight: bold;">{{ fulfillment.tracking_numbers.first }}</span>
+                </p>
+              {% else %}
+                <p>
+                  <strong>{{ fulfillment.tracking_company }} Tracking Numbers:</strong>
+                </p>
+                {% for tracking_number in fulfillment.tracking_numbers %}
                   <p>
-                    <strong>{{ fulfillment.tracking_company }} Tracking Number:</strong><br>
-                    <a
-                      href="{{ fulfillment.tracking_url }}"
-                      style="
-                        color: white;
-                        text-decoration: underline;
-                        font-size: 1.2rem;
-                        font-weight: bold;
-                      "
-                    >
-                      {{- fulfillment.tracking_numbers.first -}}
-                    </a>
+                    {% if fulfillment.tracking_urls[forloop.index0] %}
+                      <a
+                        href="{{ fulfillment.tracking_urls[forloop.index0] }}"
+                        style="
+                          color: white;
+                          text-decoration: underline;
+                          font-size: 1.1rem;
+                          font-weight: bold;
+                        "
+                      >
+                        {{- tracking_number -}}
+                      </a>
+                    {% else %}
+                      <span style="font-size: 1.1rem; font-weight: bold;">{{ tracking_number }}</span>
+                    {% endif %}
                   </p>
-                {% elsif fulfillment.tracking_numbers.size == 1 %}
-                  <p>
-                    <strong>Tracking Number:</strong><br>
-                    <span style="font-size: 1.2rem; font-weight: bold;">{{ fulfillment.tracking_numbers.first }}</span>
-                  </p>
-                {% else %}
-                  <p>
-                    <strong>{{ fulfillment.tracking_company }} Tracking Numbers:</strong>
-                  </p>
-                  {% for tracking_number in fulfillment.tracking_numbers %}
-                    <p>
-                      {% if fulfillment.tracking_urls[forloop.index0] %}
-                        <a
-                          href="{{ fulfillment.tracking_urls[forloop.index0] }}"
-                          style="
-                            color: white;
-                            text-decoration: underline;
-                            font-size: 1.1rem;
-                            font-weight: bold;
-                          "
-                        >
-                          {{- tracking_number -}}
-                        </a>
-                      {% else %}
-                        <span style="font-size: 1.1rem; font-weight: bold;">{{ tracking_number }}</span>
-                      {% endif %}
-                    </p>
-                  {% endfor %}
-                {% endif %}
-              </td>
-            </tr>
-          </table>
-        {% endif %}
+                {% endfor %}
+              {% endif %}
+            </td>
+          </tr>
+        </table>
+      {% endif %}
       <!-- Package Not Received Section -->
       <table
         style="
@@ -363,11 +327,7 @@
               <li>Being held at a local pickup location</li>
             </ul>
             <p style="margin: 1rem 0 0 0; font-weight: bold; color: #dc3545;">
-              If you can't locate your package within 24 hours, please contact us immediately:
-            </p>
-            <p style="margin: 0.5rem 0;">
-              📞 <a href="tel:18880006666" style="color: #cfa96b; font-weight: bold;">+1 (888) 000-6666</a> | 📧
-              <a href="mailto:{{ shop.email }}" style="color: #cfa96b; font-weight: bold;">{{ shop.email }}</a>
+              If you can't locate your package within 24 hours, please contact FedEx immediately.
             </p>
           </td>
         </tr>
@@ -448,7 +408,7 @@
             </ul>
             <p style="margin: 1rem 0 0 0; font-style: italic; color: #666;">
               📞 Questions about care? Call us at
-              <a href="tel:18880006666" style="color: #cfa96b;">+1 (888) 000-6666</a>
+              <a href="tel:14042986950" style="color: #cfa96b;">+1 (404) 298-6950</a>
             </p>
           </td>
         </tr>
@@ -512,69 +472,6 @@
             <p style="font-size: 1.1rem; margin-bottom: 2rem; color: #666;">
               Your trust in us means everything. We hope your new jewelry brings you joy for years to come!
             </p>
-          </td>
-        </tr>
-      </table>
-
-      <!-- More Items -->
-      <table
-        style="
-          width: 90%;
-          max-width: 600px;
-          margin: 0 auto;
-          background: #fff;
-          text-align: center;
-        "
-      >
-        <tr>
-          <td colspan="3">
-            <h2 style="padding: 2rem 0">Complete Your Collection</h2>
-          </td>
-        </tr>
-        <tr>
-          <td class="btn">
-            <a
-              href="{{ shop.url }}/collections/matching-sets"
-              style="
-                background: #cfa96b;
-                color: #fff;
-                padding: 1rem 2rem;
-                border-radius: 5px;
-                text-decoration: none;
-              "
-              >Matching Sets</a
-            >
-          </td>
-          <td class="btn">
-            <a
-              href="{{ shop.url }}/collections/jewelry-care"
-              style="
-                background: #cfa96b;
-                color: #fff;
-                padding: 1rem 2rem;
-                border-radius: 5px;
-                text-decoration: none;
-              "
-              >Care Products</a
-            >
-          </td>
-          <td class="btn">
-            <a
-              href="{{ shop.url }}/collections/gift-cards"
-              style="
-                background: #cfa96b;
-                color: #fff;
-                padding: 1rem 2rem;
-                border-radius: 5px;
-                text-decoration: none;
-              "
-              >Gift Cards</a
-            >
-          </td>
-        </tr>
-        <tr>
-          <td colspan="3">
-            <h3 style="padding-top: 2rem">🎁 Share the Love - Gift Cards Available!</h3>
           </td>
         </tr>
       </table>

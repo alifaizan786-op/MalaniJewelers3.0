@@ -161,6 +161,12 @@
             </td>
             <td style="padding: 1rem 2rem">
               <p><strong>SKU:</strong> {{ line.sku }}</p>
+              <p><strong>Vendor:</strong> {{ line.variant.metafields.variant.vendor }}</p>
+              <p><strong>Upload Date:</strong> {{ line.variant.metafields.variant.upload_date }}</p>
+              <p><strong>Entry Date:</strong> {{ line.variant.metafields.variant.entry_date }}</p>
+              <p><strong>Per Gram or Discount:</strong> {{ line.variant.metafields.variant.per_gram_or_disc }}</p>
+              <p><strong>Gross Weight:</strong> {{ line.variant.metafields.variant.gross_weight }} Gram TW</p>
+
               <p><strong>Product:</strong> {{ line.title }}</p>
               <p><strong>QTY:</strong> {{ line.quantity }}</p>
               <p><strong>Price:</strong> {{ line.line_price | money }}</p>

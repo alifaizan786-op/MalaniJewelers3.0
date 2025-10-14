@@ -1,7 +1,7 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
-    <meta charset="UTF-8" />
+    <meta charset="UTF-8">
     <title>Your Order is On The Way</title>
     <style>
       @media only screen and (max-width: 600px) {
@@ -37,7 +37,8 @@
       font-family: 'Abhaya Libre', serif;
       background-color: #f5f5f5;
       color: #333;
-    ">
+    "
+  >
     <section style="padding: 2rem 0">
       <table
         style="
@@ -47,13 +48,15 @@
           background: #fff;
           border-radius: 15px 15px 0 0;
           box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
-        ">
+        "
+      >
         <tr align="center">
           <td style="padding: 2rem">
             <img
               src="{{ 'logo_email.svg' | shopify_asset_url }}"
               alt="{{ shop.name }} Logo"
-              style="width: 100%; max-width: 700px; height: auto" />
+              style="width: 100%; max-width: 700px; height: auto"
+            >
           </td>
         </tr>
         <tr align="center">
@@ -62,7 +65,8 @@
             <svg
               width="150"
               height="150"
-              viewBox="0 0 200 200">
+              viewBox="0 0 200 200"
+            >
               <style>
                 .truck-body {
                   stroke: #212121;
@@ -110,44 +114,35 @@
           max-width: 600px;
           margin: 0 auto;
           background: #fff;
-        ">
+        "
+      >
         <tr align="center">
           <td style="padding: 1rem">
             {% if fulfillment.item_count == item_count %}
-              <h1 style="color: #cfa96b; font-size: 2.5rem; margin: 0">
-                Your Order is On The Way!
-              </h1>
+              <h1 style="color: #cfa96b; font-size: 2.5rem; margin: 0">Your Order is On The Way!</h1>
               <p style="font-size: 1.25rem; margin: 0.5rem 0">
                 Your order is on the way. Track your shipment to see the delivery status.
               </p>
             {% elsif fulfillment.item_count > 1 %}
               {% if fulfillment_status == 'fulfilled' %}
-                <h1 style="color: #cfa96b; font-size: 2.5rem; margin: 0">
-                  Final Items Shipped!
-                </h1>
+                <h1 style="color: #cfa96b; font-size: 2.5rem; margin: 0">Final Items Shipped!</h1>
                 <p style="font-size: 1.25rem; margin: 0.5rem 0">
                   The last items in your order are on the way. Track your shipment to see the delivery status.
                 </p>
               {% else %}
-                <h1 style="color: #cfa96b; font-size: 2.5rem; margin: 0">
-                  Partial Shipment Sent!
-                </h1>
+                <h1 style="color: #cfa96b; font-size: 2.5rem; margin: 0">Partial Shipment Sent!</h1>
                 <p style="font-size: 1.25rem; margin: 0.5rem 0">
                   Some items in your order are on the way. Track your shipment to see the delivery status.
                 </p>
               {% endif %}
             {% else %}
               {% if fulfillment_status == 'fulfilled' %}
-                <h1 style="color: #cfa96b; font-size: 2.5rem; margin: 0">
-                  Final Item Shipped!
-                </h1>
+                <h1 style="color: #cfa96b; font-size: 2.5rem; margin: 0">Final Item Shipped!</h1>
                 <p style="font-size: 1.25rem; margin: 0.5rem 0">
                   The last item in your order is on the way. Track your shipment to see the delivery status.
                 </p>
               {% else %}
-                <h1 style="color: #cfa96b; font-size: 2.5rem; margin: 0">
-                  Item Shipped!
-                </h1>
+                <h1 style="color: #cfa96b; font-size: 2.5rem; margin: 0">Item Shipped!</h1>
                 <p style="font-size: 1.25rem; margin: 0.5rem 0">
                   One item in your order is on the way. Track your shipment to see the delivery status.
                 </p>
@@ -157,85 +152,167 @@
         </tr>
       </table>
 
-      <!-- Delivery Date and Order Number -->
-      <table
-        style="
-          width: 90%;
-          max-width: 600px;
-          margin: 0 auto;
-          background: #fff;
-        ">
+      <!-- Tracking Information -->
+      {% if fulfillment.tracking_numbers.size > 0 %}
+        <table
+          style="
+            width: 90%;
+            max-width: 600px;
+            margin: 0 auto;
+            background: #cfa96b;
+            color: #fff;
+          "
+        >
+          <tr>
+            <td style="padding: 2rem">
+              <h3>Track Your Package</h3>
+              {% if fulfillment.tracking_numbers.size == 1
+                and fulfillment.tracking_company
+                and fulfillment.tracking_url
+              %}
+                <p>
+                  <strong>{{ fulfillment.tracking_company }} Tracking Number:</strong><br>
+                  <a
+                    href="{{ fulfillment.tracking_url }}"
+                    style="
+                      color: white;
+                      text-decoration: underline;
+                      font-size: 1.2rem;
+                      font-weight: bold;
+                    "
+                  >
+                    {{- fulfillment.tracking_numbers.first -}}
+                  </a>
+                </p>
+              {% elsif fulfillment.tracking_numbers.size == 1 %}
+                <p>
+                  <strong>Tracking Number:</strong><br>
+                  <span style="font-size: 1.2rem; font-weight: bold;">{{ fulfillment.tracking_numbers.first }}</span>
+                </p>
+              {% else %}
+                <p>
+                  <strong>{{ fulfillment.tracking_company }} Tracking Numbers:</strong>
+                </p>
+                {% for tracking_number in fulfillment.tracking_numbers %}
+                  <p>
+                    {% if fulfillment.tracking_urls[forloop.index0] %}
+                      <a
+                        href="{{ fulfillment.tracking_urls[forloop.index0] }}"
+                        style="
+                          color: white;
+                          text-decoration: underline;
+                          font-size: 1.1rem;
+                          font-weight: bold;
+                        "
+                      >
+                        {{- tracking_number -}}
+                      </a>
+                    {% else %}
+                      <span style="font-size: 1.1rem; font-weight: bold;">{{ tracking_number }}</span>
+                    {% endif %}
+                  </p>
+                {% endfor %}
+              {% endif %}
+            </td>
+          </tr>
+        </table>
+      {% endif %}
+
+      <!-- Order Info / Client Info -->
+      <table style="width: 90%; max-width: 600px; margin: 0 auto; background: #fff;">
         <tr>
-          <td style="padding: 1rem 2rem">
-            <h3 style="color: #cfa96b">Order Details:</h3>
+          <td
+            style="
+              padding: 1rem 2rem;
+              width: 50%;
+              vertical-align: text-top;
+            "
+          >
+            <h3 style="color: #cfa96b;">Order Information:</h3>
             <p>
-              <strong>Order Number:</strong> {{ order_name }}<br>
-              {% if po_number %}
-                <strong>PO Number:</strong> #{{ po_number }}<br>
-              {% endif %}
-              {% if fulfillment.estimated_delivery_at %}
-                <strong>Estimated Delivery:</strong> {{ fulfillment.estimated_delivery_at | date: format: 'date' }}
-              {% endif %}
+              <strong>Order Number:</strong> {{ name -}}
+              <br>
+              <strong>Date:</strong> {{ created_at | date: %D %T -}}
+              <br>
+              <strong>Status:</strong> {{ financial_status -}}
+              <br>
+              <strong>Shipping Method:</strong> {{ shipping_method.title -}}
+              <br>
+            </p>
+          </td>
+          <td
+            style="
+              padding: 1rem 2rem;
+              width: 50%;
+              vertical-align: text-top;
+            "
+          >
+            <h3 style="color: #cfa96b;">Client Information:</h3>
+            <p>
+              <strong>Name:</strong> {{ customer.name -}}
+              <br>
+              <strong>Email:</strong> {{ customer.email -}}
+              <br>
+              <strong>Contact:</strong>
+              {{ customer.phone | default: billing_address.phone | default: shipping_address.phone }}
+
+              <br>
             </p>
           </td>
         </tr>
       </table>
 
-      <!-- Tracking Information -->
-      {% if fulfillment.tracking_numbers.size > 0 %}
-      <table
-        style="
-          width: 90%;
-          max-width: 600px;
-          margin: 0 auto;
-          background: #cfa96b;
-          color: #fff;
-        ">
+      <!-- BILL TO / SHIP TO -->
+      <table style="width: 90%; max-width: 600px; margin: 0 auto; background: #fff;">
         <tr>
-          <td style="padding: 2rem">
-            <h3>Track Your Package</h3>
-            {% if fulfillment.tracking_numbers.size == 1 and fulfillment.tracking_company and fulfillment.tracking_url %}
-              <p>
-                <strong>{{ fulfillment.tracking_company }} Tracking Number:</strong><br>
-                <a
-                  href="{{ fulfillment.tracking_url }}"
-                  style="
-                    color: white;
-                    text-decoration: underline;
-                    font-size: 1.2rem;
-                    font-weight: bold;
-                  "
-                  >{{ fulfillment.tracking_numbers.first }}</a>
-              </p>
-            {% elsif fulfillment.tracking_numbers.size == 1 %}
-              <p>
-                <strong>Tracking Number:</strong><br>
-                <span style="font-size: 1.2rem; font-weight: bold;">{{ fulfillment.tracking_numbers.first }}</span>
-              </p>
-            {% else %}
-              <p><strong>{{ fulfillment.tracking_company }} Tracking Numbers:</strong></p>
-              {% for tracking_number in fulfillment.tracking_numbers %}
-                <p>
-                  {% if fulfillment.tracking_urls[forloop.index0] %}
-                    <a
-                      href="{{ fulfillment.tracking_urls[forloop.index0] }}"
-                      style="
-                        color: white;
-                        text-decoration: underline;
-                        font-size: 1.1rem;
-                        font-weight: bold;
-                      "
-                      >{{ tracking_number }}</a>
-                  {% else %}
-                    <span style="font-size: 1.1rem; font-weight: bold;">{{ tracking_number }}</span>
-                  {% endif %}
-                </p>
-              {% endfor %}
-            {% endif %}
+          <td
+            style="
+              padding: 1rem 2rem;
+              width: 50%;
+              vertical-align: text-top;
+            "
+          >
+            <h3 style="color: #cfa96b;">Bill To:</h3>
+            <p>
+              {{ billing_address.name -}}
+              <br>
+              {{ billing_address.address1 -}}
+              <br>
+              {% if billing_address.address2 != blank -%}
+                {{- billing_address.address2 -}}
+                <br>
+              {% endif %}
+              {{ billing_address.city }}, {{ billing_address.province_code }}
+              {{ billing_address.zip }}
+              <br>
+              {{ billing_address.phone }}
+            </p>
+          </td>
+          <td
+            style="
+              padding: 1rem 2rem;
+              width: 50%;
+              vertical-align: text-top;
+            "
+          >
+            <h3 style="color: #cfa96b;">Ship To:</h3>
+            <p>
+              {{ shipping_address.name -}}
+              <br>
+              {{ shipping_address.address1 -}}
+              <br>
+              {% if shipping_address.address2 != blank -%}
+                {{- shipping_address.address2 -}}
+                <br>
+              {% endif %}
+              {{ shipping_address.city }}, {{ shipping_address.province_code }}
+              {{ shipping_address.zip }}
+              <br>
+              {{ shipping_address.phone }}
+            </p>
           </td>
         </tr>
       </table>
-      {% endif %}
 
       <!-- Action Button -->
       <table
@@ -244,7 +321,8 @@
           max-width: 600px;
           margin: 0 auto;
           background: #fff;
-        ">
+        "
+      >
         <tr align="center">
           <td style="padding: 2rem">
             {% if order_status_url %}
@@ -261,7 +339,8 @@
                   display: inline-block;
                   margin-bottom: 1rem;
                 "
-                >View Your Order</a>
+                >View Your Order</a
+              >
             {% else %}
               <a
                 href="{{ shop.url }}"
@@ -276,13 +355,15 @@
                   display: inline-block;
                   margin-bottom: 1rem;
                 "
-                >Visit Our Store</a>
+                >Visit Our Store</a
+              >
             {% endif %}
             <br>
             <a
               href="{{ shop.url }}"
               style="color: #cfa96b; text-decoration: none; font-size: 1rem;"
-              >Continue Shopping</a>
+              >Continue Shopping</a
+            >
           </td>
         </tr>
       </table>
@@ -294,65 +375,70 @@
           max-width: 600px;
           margin: 0 auto;
           background: #fff;
-        ">
+        "
+      >
         <tr>
           <td colspan="2" style="padding: 1rem 2rem;">
             <h2 style="color: #cfa96b; margin: 0">Items in This Shipment:</h2>
           </td>
         </tr>
         {% for line in fulfillment.fulfillment_line_items %}
-        <tr>
-          <td style="padding: 1rem; text-align: center">
-            {% if line.line_item.image %}
-              <img src="{{ line.line_item.image | img_url: '300x' }}" style="border-radius: 8px; max-width: 100%; height: auto;" />
-            {% else %}
-              <div style="width: 300px; height: 300px; background: #f5f5f5; border-radius: 8px; display: flex; align-items: center; justify-content: center;">
-                <span style="color: #999;">No Image</span>
-              </div>
-            {% endif %}
-          </td>
-          <td style="padding: 1rem 2rem">
-            {% if line.line_item.presentment_title %}
-              {% assign line_title = line.line_item.presentment_title %}
-            {% elsif line.line_item.title %}
-              {% assign line_title = line.line_item.title %}
-            {% else %}
-              {% assign line_title = line.line_item.product.title %}
-            {% endif %}
-            
-            {% if line.quantity < line.line_item.quantity %}
-              {% capture line_display %}
+          <tr>
+            <td style="padding: 1rem; text-align: center">
+              {% if line.line_item.image %}
+                <img
+                  src="{{ line.line_item.image | img_url: '300x' }}"
+                  style="border-radius: 8px; max-width: 100%; height: auto;"
+                >
+              {% else %}
+                <div style="width: 300px; height: 300px; background: #f5f5f5; border-radius: 8px; display: flex; align-items: center; justify-content: center;">
+                  <span style="color: #999;">No Image</span>
+                </div>
+              {% endif %}
+            </td>
+            <td style="padding: 1rem 2rem">
+              {% if line.line_item.presentment_title %}
+                {% assign line_title = line.line_item.presentment_title %}
+              {% elsif line.line_item.title %}
+                {% assign line_title = line.line_item.title %}
+              {% else %}
+                {% assign line_title = line.line_item.product.title %}
+              {% endif %}
+
+              {% if line.quantity < line.line_item.quantity %}
+                {% capture line_display %}
                 {{ line.quantity }} of {{ line.line_item.quantity }}
               {% endcapture %}
-            {% else %}
-              {% assign line_display = line.line_item.quantity %}
-            {% endif %}
+              {% else %}
+                {% assign line_display = line.line_item.quantity %}
+              {% endif %}
 
-            <p><strong>Product:</strong> {{ line_title }}</p>
-            {% if line.line_item.variant.title != 'Default Title' %}
-              <p><strong>Variant:</strong> {{ line.line_item.variant.title }}</p>
-            {% endif %}
-            {% if line.line_item.sku %}
-              <p><strong>SKU:</strong> {{ line.line_item.sku }}</p>
-            {% endif %}
-            <p><strong>QTY Shipped:</strong> {{ line_display }}</p>
-            
-            {% if line.line_item.selling_plan_allocation %}
-              <p><strong>Plan:</strong> {{ line.line_item.selling_plan_allocation.selling_plan.name }}</p>
-            {% endif %}
-            
-            {% if line.line_item.discount_allocations %}
-              {% for discount_allocation in line.line_item.discount_allocations %}
-                {% if discount_allocation.discount_application.target_selection != 'all' %}
-                  <p style="color: #28a745;">
-                    <strong>Discount:</strong> {{ discount_allocation.discount_application.title }}
-                    (-{{ discount_allocation.amount | money }})
-                  </p>
-                {% endif %}
-              {% endfor %}
-            {% endif %}
-          </td>
-        </tr>
+              <p><strong>Product:</strong> {{ line_title }}</p>
+              {% if line.line_item.variant.title != 'Default Title' %}
+                <p><strong>Variant:</strong> {{ line.line_item.variant.title }}</p>
+              {% endif %}
+              {% if line.line_item.sku %}
+                <p><strong>SKU:</strong> {{ line.line_item.sku }}</p>
+              {% endif %}
+              <p><strong>QTY Shipped:</strong> {{ line_display }}</p>
+
+              {% if line.line_item.selling_plan_allocation %}
+                <p><strong>Plan:</strong> {{ line.line_item.selling_plan_allocation.selling_plan.name }}</p>
+              {% endif %}
+
+              {% if line.line_item.discount_allocations %}
+                {% for discount_allocation in line.line_item.discount_allocations %}
+                  {% if discount_allocation.discount_application.target_selection != 'all' %}
+                    <p style="color: #28a745;">
+                      <strong>Discount:</strong> {{ discount_allocation.discount_application.title }} (-
+                      {{- discount_allocation.amount | money -}}
+                      )
+                    </p>
+                  {% endif %}
+                {% endfor %}
+              {% endif %}
+            </td>
+          </tr>
         {% endfor %}
       </table>
 
@@ -364,7 +450,8 @@
           margin: 0 auto;
           background: #cfa96b;
           color: #fff;
-        ">
+        "
+      >
         <tr>
           <td style="padding: 2rem">
             <h3>Questions About Your Shipment?</h3>
@@ -389,8 +476,9 @@
               <a
                 style="color: white; text-decoration: underline"
                 href="mailto:{{ shop.email }}"
-                >{{ shop.email }}</a
               >
+                {{- shop.email -}}
+              </a>
             </p>
           </td>
         </tr>
@@ -404,12 +492,11 @@
           margin: 0 auto;
           background: #fff;
           text-align: center;
-        ">
+        "
+      >
         <tr>
           <td colspan="3">
-            <h2 style="padding: 2rem 0">
-              While You Wait
-            </h2>
+            <h2 style="padding: 2rem 0">While You Wait</h2>
           </td>
         </tr>
         <tr>
@@ -455,9 +542,7 @@
         </tr>
         <tr>
           <td colspan="3">
-            <h3 style="padding-top: 2rem">
-              Free Shipping on Orders $750+
-            </h3>
+            <h3 style="padding-top: 2rem">Free Shipping on Orders $750+</h3>
           </td>
         </tr>
         <tr>

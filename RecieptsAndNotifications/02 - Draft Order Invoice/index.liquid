@@ -53,7 +53,7 @@
         <tr align="center">
           <td style="padding: 2rem">
             <img
-              src="{{ 'logo_email.svg' | shopify_asset_url }}"
+                              src="https://cdn.shopify.com/s/files/1/0930/1200/1051/files/Logo_Email.svg?v=1754605212"
               alt="{{ shop.name }} Logo"
               style="width: 100%; max-width: 700px; height: auto"
             >
@@ -236,6 +236,8 @@
                   {% endif %}
                   {{ shipping_address.city }}, {{ shipping_address.province_code }}
                   {{ shipping_address.zip }}
+                     <br>
+                  {{ shipping_address.phone -}}
                 </p>
               </td>
             {% endif %}
@@ -253,6 +255,8 @@
                   {% endif %}
                   {{ billing_address.city }}, {{ billing_address.province_code }}
                   {{ billing_address.zip }}
+                     <br>
+                  {{ billing_address.phone -}}
                 </p>
               </td>
             {% endif %}
@@ -432,22 +436,12 @@
                 >Shipping & Handling</a
               >
             </p>
-            <p>
-              Call:
-              <a
-                style="color: white; text-decoration: underline"
-                href="tel:18880006666"
-                >+1 (888) 000-6666</a
-              >
-            </p>
+    <p>Call: <a style="color: white; text-decoration: underline;" href="tel:+14042986950">(404) 298-6950</a></p>
             <p>
               Email:
-              <a
-                style="color: white; text-decoration: underline"
-                href="mailto:{{ shop.email }}"
+              <a style="color: white; text-decoration: underline;" href="mailto:info@malanijewelers.com"
+                >Info@MalaniJewelers.com</a
               >
-                {{- shop.email -}}
-              </a>
             </p>
           </td>
         </tr>
@@ -519,7 +513,7 @@
             <h3 style="padding-top: 2rem">
               Buy Now, Pay Later with
               <a
-                href="{{ shop.url }}/pages/affirm"
+                href="{{ shop.url }}/pages/the-malani-promise?promise=Flexible-Financing"
                 style="color: #cfa96b"
                 >Affirm</a
               >

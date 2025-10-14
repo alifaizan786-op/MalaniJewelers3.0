@@ -51,7 +51,7 @@
         <tr align="center">
           <td style="padding: 2rem">
             <img
-              src="https://cdn.shopify.com/s/files/1/0930/1200/1051/files/Logo_Email.svg?v=1750363896"
+              src="https://cdn.shopify.com/s/files/1/0930/1200/1051/files/Logo_Email.svg"
               alt="{{ shop.name }} Logo"
               style="width: 100%; max-width: 700px; height: auto" />
           </td>
@@ -142,27 +142,7 @@
         </tr>
       </table>
 
-      <!-- Order Details -->
-      <table
-        style="
-          width: 90%;
-          max-width: 600px;
-          margin: 0 auto;
-          background: #fff;
-        ">
-        <tr>
-          <td style="padding: 1rem 2rem">
-            <h3 style="color: #cfa96b">Order Information:</h3>
-            <p>
-              <strong>Order Number:</strong> {{ order_name }}<br>
-              {% if po_number %}
-                <strong>PO Number:</strong> #{{ po_number }}<br>
-              {% endif %}
-              <strong>Update Date:</strong> {{ 'now' | date: format: 'date_at_time' }}
-            </p>
-          </td>
-        </tr>
-      </table>
+      
 
       <!-- Tracking Information -->
       {% if fulfillment.tracking_numbers.size > 0 %}
@@ -219,6 +199,102 @@
         </tr>
       </table>
       {% endif %}
+
+                      <!-- Order Info / Client Info -->
+      <table style="width: 90%; max-width: 600px; margin: 0 auto; background: #fff;">
+        <tr>
+          <td
+            style="
+              padding: 1rem 2rem;
+              width: 50%;
+              vertical-align: text-top;
+            "
+          >
+            <h3 style="color: #cfa96b;">Order Information:</h3>
+            <p>
+              <strong>Order Number:</strong> {{ name -}}
+              <br>
+              <strong>Date:</strong> {{ created_at | date: %D %T -}}
+              <br>
+              <strong>Status:</strong> {{ financial_status -}}
+              <br>
+              <strong>Shipping Method:</strong> {{ shipping_method.title -}}
+              <br>
+            </p>
+          </td>
+          <td
+            style="
+              padding: 1rem 2rem;
+              width: 50%;
+              vertical-align: text-top;
+            "
+          >
+            <h3 style="color: #cfa96b;">Client Information:</h3>
+            <p>
+              <strong>Name:</strong> {{ customer.name -}}
+              <br>
+              <strong>Email:</strong> {{ customer.email -}}
+              <br>
+              <strong>Contact:</strong>
+              {{ customer.phone | default: billing_address.phone | default: shipping_address.phone }}
+
+              <br>
+            </p>
+          </td>
+        </tr>
+      </table>
+
+      <!-- BILL TO / SHIP TO -->
+      <table style="width: 90%; max-width: 600px; margin: 0 auto; background: #fff;">
+        <tr>
+          <td
+            style="
+              padding: 1rem 2rem;
+              width: 50%;
+              vertical-align: text-top;
+            "
+          >
+            <h3 style="color: #cfa96b;">Bill To:</h3>
+            <p>
+              {{ billing_address.name -}}
+              <br>
+              {{ billing_address.address1 -}}
+              <br>
+              {% if billing_address.address2 != blank -%}
+                {{- billing_address.address2 -}}
+                <br>
+              {% endif %}
+              {{ billing_address.city }}, {{ billing_address.province_code }}
+              {{ billing_address.zip }}
+              <br>
+              {{ billing_address.phone }}
+            </p>
+          </td>
+          <td
+            style="
+              padding: 1rem 2rem;
+              width: 50%;
+              vertical-align: text-top;
+            "
+          >
+            <h3 style="color: #cfa96b;">Ship To:</h3>
+            <p>
+              {{ shipping_address.name -}}
+              <br>
+              {{ shipping_address.address1 -}}
+              <br>
+              {% if shipping_address.address2 != blank -%}
+                {{- shipping_address.address2 -}}
+                <br>
+              {% endif %}
+              {{ shipping_address.city }}, {{ shipping_address.province_code }}
+              {{ shipping_address.zip }}
+              <br>
+              {{ shipping_address.phone }}
+            </p>
+          </td>
+        </tr>
+      </table>
 
       <!-- Action Button -->
       <table
@@ -371,117 +447,68 @@
         </tr>
       </table>
 
-      <!-- Help Section -->
-      <table
-        style="
-          width: 90%;
-          max-width: 600px;
-          margin: 0 auto;
-          background: #cfa96b;
-          color: #fff;
-        ">
+        <!-- SUPPORT -->
+      <table style="width: 90%; max-width: 600px; margin: 0 auto; background: #cfa96b; color: #fff;">
         <tr>
           <td style="padding: 2rem">
-            <h3>Questions About Your Shipment?</h3>
+            <h3>Questions?</h3>
             <p>
               Visit
-              <a
-                style="color: white; text-decoration: underline"
-                href="{{ shop.url }}/pages/shipping"
+              <a style="color: white; text-decoration: underline;" href="{{ shop.url }}/pages/shipping-policy"
                 >Shipping & Handling</a
               >
             </p>
-            <p>
-              Call:
-              <a
-                style="color: white; text-decoration: underline"
-                href="tel:18880006666"
-                >+1 (888) 000-6666</a
-              >
-            </p>
+            <p>Call: <a style="color: white; text-decoration: underline;" href="tel:+14042986950">(404) 298-6950</a></p>
             <p>
               Email:
-              <a
-                style="color: white; text-decoration: underline"
-                href="mailto:{{ shop.email }}"
-                >{{ shop.email }}</a
+              <a style="color: white; text-decoration: underline;" href="mailto:info@malanijewelers.com"
+                >Info@MalaniJewelers.com</a
               >
             </p>
           </td>
         </tr>
       </table>
 
-      <!-- More Items -->
-      <table
-        style="
-          width: 90%;
-          max-width: 600px;
-          margin: 0 auto;
-          background: #fff;
-          text-align: center;
-        ">
+      <!-- MORE FROM -->
+      <table style="width: 90%; max-width: 600px; margin: 0 auto; background: #fff; text-align: center;">
         <tr>
           <td colspan="3">
-            <h2 style="padding: 2rem 0">
-              While You Wait
-            </h2>
+            <h2 style="padding: 2rem 0">More From Your Forever Jeweler</h2>
           </td>
         </tr>
         <tr>
-          <td class="btn">
+          <td style="padding: 1rem;">
             <a
-              href="{{ shop.url }}/collections/womens-new-arrivals"
-              style="
-                background: #cfa96b;
-                color: #fff;
-                padding: 1rem 2rem;
-                border-radius: 5px;
-                text-decoration: none;
-              "
+              href="{{ shop.url }}/collections/womens-18k-22k-gold-diamond-jewelry"
+              style="background: #cfa96b; color: #fff; padding: 1rem 2rem; border-radius: 5px; text-decoration: none; display: inline-block;"
               >Women's New Arrivals</a
             >
           </td>
-          <td class="btn">
+          <td style="padding: 1rem;">
             <a
-              href="{{ shop.url }}/collections/mens-new-arrivals"
-              style="
-                background: #cfa96b;
-                color: #fff;
-                padding: 1rem 2rem;
-                border-radius: 5px;
-                text-decoration: none;
-              "
+              href="{{ shop.url }}https://malanijeweler.com/collections/men"
+              style="background: #cfa96b; color: #fff; padding: 1rem 2rem; border-radius: 5px; text-decoration: none; display: inline-block;"
               >Men's New Arrivals</a
             >
           </td>
-          <td class="btn">
+          <td style="padding: 1rem;">
             <a
-              href="{{ shop.url }}/collections/kids"
-              style="
-                background: #cfa96b;
-                color: #fff;
-                padding: 1rem 2rem;
-                border-radius: 5px;
-                text-decoration: none;
-              "
+              href="{{ shop.url }}https://malanijeweler.com/collections/kids"
+              style="background: #cfa96b; color: #fff; padding: 1rem 2rem; border-radius: 5px; text-decoration: none; display: inline-block;"
               >Kids' Picks</a
             >
           </td>
         </tr>
         <tr>
           <td colspan="3">
-            <h3 style="padding-top: 2rem">
-              Free Shipping on Orders $750+
-            </h3>
+            <h3 style="padding-top: 2rem">Free Shipping on Orders $750+</h3>
           </td>
         </tr>
         <tr>
           <td colspan="3">
             <h3 style="padding-top: 2rem">
               Buy Now, Pay Later with
-              <a
-                href="{{ shop.url }}/pages/affirm"
-                style="color: #cfa96b"
+              <a href="{{ shop.url }}/pages/the-malani-promise?promise=Flexible-Financing" style="color: #cfa96b;"
                 >Affirm</a
               >
             </h3>

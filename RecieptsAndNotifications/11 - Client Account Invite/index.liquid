@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8">
-    <title>Activate Your Account</title>
+    <title>Activate Your Account - New Website Launch</title>
     <style>
       @media only screen and (max-width: 600px) {
         table {
@@ -52,15 +52,45 @@
       >
         <tr align="center">
           <td style="padding: 2rem">
-            <img
-              src="https://cdn.shopify.com/s/files/1/0930/1200/1051/files/Logo_Email.svg?v=1750363896"
-              alt="{{ shop.name }} Logo"
-              style="width: 100%; max-width: 700px; height: auto"
-            >
+            {%- if shop.email_logo_url %}
+              <img src="{{shop.email_logo_url}}" alt="{{ shop.name }}" width="{{ shop.email_logo_width }}" style="max-width: 700px; height: auto;">
+            {%- else %}
+              <img
+                src="https://cdn.shopify.com/s/files/1/0930/1200/1051/files/Logo_Email.svg"
+                alt="{{ shop.name }} Logo"
+                style="width: 100%; max-width: 700px; height: auto"
+              >
+            {%- endif %}
           </td>
         </tr>
         <tr align="center">
-          <td style="padding: 1rem 0"></td>
+          <td style="padding: 1rem 0">
+            <!-- Launch Celebration SVG -->
+            <svg width="150" height="150" viewBox="0 0 200 200">
+              <style>
+                .celebration {
+                  fill: #cfa96b;
+                  animation: pulse 2s infinite;
+                }
+                .sparkle {
+                  fill: #d4b876;
+                }
+                .star {
+                  fill: #28a745;
+                }
+              </style>
+              <!-- Main celebration icon -->
+              <circle cx="100" cy="100" r="80" stroke="#cfa96b" stroke-width="6" fill="none" class="celebration"/>
+              <circle cx="100" cy="100" r="50" fill="#cfa96b" opacity="0.3"/>
+              <!-- Sparkles around -->
+              <polygon points="50,40 52,50 62,50 54,56 57,66 50,60 43,66 46,56 38,50 48,50" class="sparkle"/>
+              <polygon points="150,45 152,55 162,55 154,61 157,71 150,65 143,71 146,61 138,55 148,55" class="sparkle"/>
+              <polygon points="40,120 42,130 52,130 44,136 47,146 40,140 33,146 36,136 28,130 38,130" class="sparkle"/>
+              <polygon points="160,125 162,135 172,135 164,141 167,151 160,145 153,151 156,141 148,135 158,135" class="sparkle"/>
+              <!-- Central star -->
+              <polygon points="100,70 105,85 120,85 108,95 113,110 100,100 87,110 92,95 80,85 95,85" class="star"/>
+            </svg>
+          </td>
         </tr>
       </table>
 
@@ -74,27 +104,26 @@
       >
         <tr align="center">
           <td style="padding: 1rem">
-            <h1 style="color: #cfa96b; font-size: 2.5rem; margin: 0">Welcome to the Family! ✨</h1>
+            <h1 style="color: #cfa96b; font-size: 2.5rem; margin: 0">Our New Website is Here! 🎉</h1>
             <p style="font-size: 1.25rem; margin: 0.5rem 0; color: #28a745; font-weight: bold;">
-              Your account is almost ready
+              Your account is ready to activate
             </p>
 
             {% if custom_message != blank %}
               <p style="font-size: 1.1rem; margin: 1rem 2rem; color: #666;">{{ custom_message }}</p>
             {% else %}
               <p style="font-size: 1.1rem; margin: 1rem 2rem; color: #666;">
-                You've created a new customer account at
-                <a href="{{ shop.url }}" style="color: #cfa96b; text-decoration: none; font-weight: bold;">
-                  {{- shop.name -}}</a
-                >. Just one more step to unlock exclusive benefits and start your jewelry journey with us!
+                Dear Valued Customer,<br><br>
+                We've created your account on our brand new website! 
+                Simply activate your account to start enjoying our enhanced shopping experience with all your 
+                information ready and waiting for you.
               </p>
             {% endif %}
           </td>
         </tr>
       </table>
 
-      <!-- Welcome Benefits -->
-      <!-- VIP Benefits Banner with Gradient Background -->
+      <!-- New Website Features -->
       <table
         width="100%"
         cellpadding="0"
@@ -113,20 +142,21 @@
                 border-radius: 8px;
               "
             >
-              <h2 style="margin: 0 0 1rem 0; font-size: 1.5rem;">🎉 Your VIP Benefits Await</h2>
-              <div style="text-align: left; max-width: 400px; margin: 0 auto;">
-                <p style="margin: 0.5rem 0; font-size: 1.1rem;">✨ <strong>Exclusive Member Pricing</strong></p>
-                <p style="margin: 0.5rem 0; font-size: 1.1rem;">🚚 <strong>Priority Shipping</strong></p>
-                <p style="margin: 0.5rem 0; font-size: 1.1rem;">💝 <strong>Birthday & Anniversary Surprises</strong></p>
-                <p style="margin: 0.5rem 0; font-size: 1.1rem;">🔔 <strong>First Access to New Collections</strong></p>
-                <p style="margin: 0.5rem 0; font-size: 1.1rem;">💎 <strong>Wishlist & Order History</strong></p>
+              <h2 style="margin: 0 0 1rem 0; font-size: 1.5rem;">✨ What's New & Exciting</h2>
+              <div style="text-align: left; max-width: 450px; margin: 0 auto;">
+                <p style="margin: 0.5rem 0; font-size: 1.1rem;">🖥️ <strong>Beautiful New Design</strong> - Stunning visuals that showcase our jewelry</p>
+                <p style="margin: 0.5rem 0; font-size: 1.1rem;">📱 <strong>Mobile Optimized</strong> - Perfect shopping experience on any device</p>
+                <p style="margin: 0.5rem 0; font-size: 1.1rem;">🔍 <strong>Advanced Search</strong> - Find exactly what you're looking for instantly</p>
+                <p style="margin: 0.5rem 0; font-size: 1.1rem;">💳 <strong>Secure Checkout</strong> - Multiple payment options including Affirm</p>
+                <p style="margin: 0.5rem 0; font-size: 1.1rem;">👤 <strong>Personal Accounts</strong> - Track orders, save favorites, and more</p>
+                <p style="margin: 0.5rem 0; font-size: 1.1rem;">🚚 <strong>Real-time Tracking</strong> - Follow your order from our store to your door</p>
               </div>
             </div>
           </td>
         </tr>
       </table>
 
-      <!-- Activation Button -->
+      <!-- Create Account Button -->
       <table
         style="
           width: 90%;
@@ -137,7 +167,11 @@
       >
         <tr align="center">
           <td style="padding: 2rem">
-            <h3 style="color: #cfa96b; margin-bottom: 1rem;">Ready to Activate?</h3>
+            <h3 style="color: #cfa96b; margin-bottom: 1rem;">Activate Your Account</h3>
+            <p style="margin-bottom: 1.5rem; color: #666;">
+              We've created your account and migrated your information to our new website. 
+              Just activate your account to unlock all the new features.
+            </p>
             <a
               href="{{ customer.account_activation_url }}"
               style="
@@ -152,19 +186,21 @@
                 box-shadow: 0 6px 12px rgba(207, 169, 107, 0.4);
                 margin-bottom: 1rem;
               "
-              >Activate My Account</a
+              >Activate Your Account</a
             >
             <br>
+            {% if shop.url %}
             <a
               href="{{ shop.url }}"
               style="color: #cfa96b; text-decoration: none; font-size: 1rem;"
-              >or Browse Our Collections</a
+              >or Visit Our Store</a
             >
+            {% endif %}
           </td>
         </tr>
       </table>
 
-      <!-- About Malani Jewelers -->
+      <!-- Member Benefits -->
       <table
         style="
           width: 90%;
@@ -176,21 +212,25 @@
       >
         <tr>
           <td style="padding: 1.5rem 2rem">
-            <h3 style="color: #cfa96b; margin: 0 0 1rem 0;">💍 Welcome to Malani Jewelers</h3>
-            <p style="margin: 0.5rem 0; color: #666; line-height: 1.6;">
-              For over <strong>three decades</strong>, we've been crafting exquisite jewelry that tells your unique
-              story. From traditional Indian designs to contemporary pieces, each creation is made with uncompromising
-              quality and attention to detail.
+            <h3 style="color: #cfa96b; margin: 0 0 1rem 0;">🏆 Your Account is Ready</h3>
+            <p style="margin: 0 0 1rem 0; color: #666; font-size: 0.95rem;">
+              <strong>We've created your account and migrated your data.</strong> Activate now to access:
             </p>
-            <p style="margin: 1rem 0 0 0; color: #666; line-height: 1.6;">
-              <strong>Our Promise:</strong> Authentic craftsmanship, certified diamonds, and lifetime service that makes
-              every piece a treasured heirloom.
-            </p>
+            <ul style="margin: 0; padding-left: 1.5rem; color: #666; line-height: 1.6;">
+              
+           
+              <li style="margin-bottom: 0.5rem;"><strong>Early Access</strong> to new collections and limited pieces</li>
+              <li style="margin-bottom: 0.5rem;"><strong>Member-Only Pricing</strong> and exclusive discounts</li>
+          
+              <li style="margin-bottom: 0.5rem;"><strong>Wishlist & Favorites</strong> - save items and get notified of sales</li>
+              <li style="margin-bottom: 0.5rem;"><strong>Priority Customer Service</strong> - faster response times</li>
+              <li><strong>Enhanced Free Shipping</strong></li>
+            </ul>
           </td>
         </tr>
       </table>
 
-      <!-- Quick Start Guide -->
+      <!-- Why We Built This -->
       <table
         style="
           width: 90%;
@@ -202,64 +242,20 @@
       >
         <tr>
           <td style="padding: 1.5rem 2rem">
-            <h3 style="color: #cfa96b; margin: 0 0 1rem 0;">🚀 Quick Start Guide</h3>
-            <ol style="margin: 0; padding-left: 1.5rem; color: #666;">
-              <li style="margin-bottom: 0.5rem;"><strong>Activate your account</strong> using the button above</li>
-              <li style="margin-bottom: 0.5rem;"><strong>Create your wishlist</strong> and save favorite pieces</li>
-              <li style="margin-bottom: 0.5rem;">
-                <strong>Set your preferences</strong> for size, style, and metal type
-              </li>
-              <li style="margin-bottom: 0.5rem;"><strong>Subscribe to notifications</strong> for exclusive offers</li>
-              <li><strong>Start shopping</strong> with your member benefits!</li>
-            </ol>
+            <h3 style="color: #cfa96b; margin: 0 0 1rem 0;">💎 Our Commitment to You</h3>
+            <p style="margin: 0.5rem 0; color: #666; line-height: 1.6;">
+              For over <strong>three decades</strong>, you've trusted us with your most precious moments. 
+              This new website represents our commitment to serving you better than ever before.
+            </p>
+            <p style="margin: 1rem 0 0 0; color: #666; line-height: 1.6;">
+              <strong>Same Quality, Better Experience:</strong> Every feature was designed with you in mind - 
+              from easier browsing to secure checkout to comprehensive order tracking.
+            </p>
           </td>
         </tr>
       </table>
 
-      <!-- Help Section -->
-      <table
-        style="
-          width: 90%;
-          max-width: 600px;
-          margin: 0 auto;
-          background: #cfa96b;
-          color: #fff;
-        "
-      >
-        <tr>
-          <td style="padding: 2rem">
-            <h3>Need Help Getting Started?</h3>
-            <p>
-              Visit our
-              <a
-                style="color: white; text-decoration: underline"
-                href="{{ shop.url }}/pages/account-help"
-                >Account Help Center</a
-              >
-            </p>
-            <p>
-              Call our friendly team:
-              <a
-                style="color: white; text-decoration: underline"
-                href="tel:18880006666"
-                >+1 (888) 000-6666</a
-              >
-            </p>
-            <p>
-              Email us:
-              <a
-                style="color: white; text-decoration: underline"
-                href="mailto:{{ shop.email }}"
-              >
-                {{- shop.email -}}
-              </a>
-            </p>
-            <p style="margin-top: 1.5rem; font-size: 0.9rem;">
-              💬 <strong>Live Chat Available:</strong> Monday-Saturday, 10 AM - 8 PM EST
-            </p>
-          </td>
-        </tr>
-      </table>
+   
 
       <!-- Featured Collections -->
       <table
@@ -273,9 +269,9 @@
       >
         <tr>
           <td style="padding: 2rem">
-            <h2 style="color: #cfa96b; margin-bottom: 1rem;">Start Your Journey With Our Bestsellers</h2>
+            <h2 style="color: #cfa96b; margin-bottom: 1rem;">Explore Our Most Popular Collections</h2>
             <p style="font-size: 1.1rem; margin-bottom: 2rem; color: #666;">
-              Discover the pieces our customers love most
+              Now easier to browse and shop than ever before
             </p>
           </td>
         </tr>
@@ -292,129 +288,158 @@
         "
       >
         <tr>
-          <td class="btn">
+          <td class="btn" style="padding: 0.5rem;">
             <a
-              href="{{ shop.url }}/collections/engagement-rings"
+              href="{{ shop.url }}/collections/womens-18k-22k-gold-diamond-jewelry"
               style="
                 background: #cfa96b;
                 color: #fff;
-                padding: 1rem 2rem;
+                padding: 1rem 1.5rem;
                 border-radius: 5px;
                 text-decoration: none;
+                font-size: 0.9rem;
+                display: inline-block;
               "
-              >Engagement Rings</a
+              >Women's Jewelry</a
             >
           </td>
-          <td class="btn">
+          <td class="btn" style="padding: 0.5rem;">
             <a
-              href="{{ shop.url }}/collections/wedding-bands"
+              href="{{ shop.url }}/collections/men"
               style="
                 background: #cfa96b;
                 color: #fff;
-                padding: 1rem 2rem;
+                padding: 1rem 1.5rem;
                 border-radius: 5px;
                 text-decoration: none;
-              "
-              >Wedding Bands</a
-            >
-          </td>
-          <td class="btn">
-            <a
-              href="{{ shop.url }}/collections/necklaces"
-              style="
-                background: #cfa96b;
-                color: #fff;
-                padding: 1rem 2rem;
-                border-radius: 5px;
-                text-decoration: none;
-              "
-              >Necklaces</a
-            >
-          </td>
-        </tr>
-        <tr>
-          <td class="btn">
-            <a
-              href="{{ shop.url }}/collections/earrings"
-              style="
-                background: #cfa96b;
-                color: #fff;
-                padding: 1rem 2rem;
-                border-radius: 5px;
-                text-decoration: none;
-              "
-              >Earrings</a
-            >
-          </td>
-          <td class="btn">
-            <a
-              href="{{ shop.url }}/collections/bracelets"
-              style="
-                background: #cfa96b;
-                color: #fff;
-                padding: 1rem 2rem;
-                border-radius: 5px;
-                text-decoration: none;
-              "
-              >Bracelets</a
-            >
-          </td>
-          <td class="btn">
-            <a
-              href="{{ shop.url }}/collections/mens-jewelry"
-              style="
-                background: #cfa96b;
-                color: #fff;
-                padding: 1rem 2rem;
-                border-radius: 5px;
-                text-decoration: none;
+                font-size: 0.9rem;
+                display: inline-block;
               "
               >Men's Jewelry</a
             >
           </td>
+          <td class="btn" style="padding: 0.5rem;">
+            <a
+              href="{{ shop.url }}/collections/kids"
+              style="
+                background: #cfa96b;
+                color: #fff;
+                padding: 1rem 1.5rem;
+                border-radius: 5px;
+                text-decoration: none;
+                font-size: 0.9rem;
+                display: inline-block;
+              "
+              >Kids' Jewelry</a
+            >
+          </td>
         </tr>
         <tr>
-          <td colspan="3">
-            <h3 style="padding-top: 2rem">💳 Flexible Payment Options Available</h3>
-            <p style="margin: 0.5rem 0; color: #666;">Pay with Affirm, Apple Pay, or traditional cards</p>
+          <td class="btn" style="padding: 0.5rem;">
+            <a
+              href="{{ shop.url }}/collections/18k-gold-solitaire-diamond-rings"
+              style="
+                background: #cfa96b;
+                color: #fff;
+                padding: 1rem 1.5rem;
+                border-radius: 5px;
+                text-decoration: none;
+                font-size: 0.9rem;
+                display: inline-block;
+              "
+              >Engagement Rings</a
+            >
+          </td>
+          <td class="btn" style="padding: 0.5rem;">
+            <a
+              href="{{ shop.url }}/collections/bridal-jewelry"
+              style="
+                background: #cfa96b;
+                color: #fff;
+                padding: 1rem 1.5rem;
+                border-radius: 5px;
+                text-decoration: none;
+                font-size: 0.9rem;
+                display: inline-block;
+              "
+              >Bridal Jewelry</a
+            >
+          </td>
+   
+        </tr>
+        <tr>
+          <td colspan="3" style="padding-top: 2rem;">
+            <h3 style="color: #cfa96b;">💳 New Payment Options Available</h3>
+            <p style="margin: 0.5rem 0; color: #666;">Affirm, Apple Pay, Google Pay, and more secure options</p>
           </td>
         </tr>
       </table>
 
-      <!-- Final Activation Reminder -->
+      <!-- Help Section -->
       <table
         style="
           width: 90%;
           max-width: 600px;
           margin: 0 auto;
-          background: #fff3cd;
-          border: 2px solid #cfa96b;
-          border-radius: 10px;
+          background: #cfa96b;
+          color: #fff;
         "
       >
-        <tr align="center">
-          <td style="padding: 1.5rem">
-            <h3 style="color: #cfa96b; margin: 0 0 1rem 0;">⏰ Don't Forget to Activate!</h3>
-            <p style="margin: 0 0 1rem 0; color: #666;">
-              Your account activation link will expire in 7 days. Activate now to ensure you don't miss out on exclusive
-              member benefits!
+        <tr>
+          <td style="padding: 2rem">
+      
+            <p>
+              Call our friendly team:
+              <a
+                style="color: white; text-decoration: underline"
+                href="tel:+14042986950"
+                >(404) 298-6950</a
+              >
             </p>
-            <a
-              href="{{ customer.account_activation_url }}"
-              style="
-                background: #cfa96b;
-                color: #fff;
-                padding: 0.8rem 2rem;
-                border-radius: 5px;
-                text-decoration: none;
-                font-weight: bold;
-                display: inline-block;
-              "
-              >Activate Now</a
-            >
+            <p>
+              Email us:
+              <a
+                style="color: white; text-decoration: underline"
+                href="mailto:info@malanijewelers.com"
+              >
+              info@malanijewelers.com
+              </a>
+            </p>
+            <p style="margin-top: 1.5rem; font-size: 0.9rem;">
+              💬 <strong>Live Chat Available:</strong> Monday-Saturday, 10 AM - 8 PM EST
+            </p>
+          </td>
+        </tr>
+      </table>
+
+      <!-- Thank You Footer -->
+      <table
+        style="
+          width: 90%;
+          max-width: 600px;
+          margin: 0 auto;
+          background: #f8f9fa;
+          text-align: center;
+        "
+      >
+        <tr>
+          <td style="padding: 1.5rem;">
+            <p style="margin: 0; color: #666; font-style: italic;">
+              Thank you for over 30 years of trust and loyalty. We're excited to serve you better than ever!
+            </p>
+            <p style="margin: 0.5rem 0 0 0; color: #cfa96b; font-weight: bold;">
+              With love and gratitude,<br>
+              The Malani Jewelers Family
+            </p>
+            <p style="margin-top: 1rem; font-size: 0.9rem; color: #999;">
+              If you have any questions, reply to this email or contact us at 
+              <a href="mailto:info@malanijewelers.com" style="color: #cfa96b;">info@malanijewelers.com</a>
+            </p>
           </td>
         </tr>
       </table>
     </section>
+    
+
   </body>
 </html>

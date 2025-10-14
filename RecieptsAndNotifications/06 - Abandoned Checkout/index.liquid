@@ -59,57 +59,14 @@
         <tr align="center">
           <td style="padding: 2rem">
             <img
-              src="{{ 'logo_email.svg' | shopify_asset_url }}"
+              src="https://cdn.shopify.com/s/files/1/0930/1200/1051/files/Logo_Email.svg?v=1750363896"
               alt="{{ shop.name }} Logo"
               style="width: 100%; max-width: 700px; height: auto"
             >
           </td>
         </tr>
         <tr align="center">
-          <td style="padding: 1rem 0">
-            <!-- SVG ICON - Shopping Cart -->
-            <svg
-              width="150"
-              height="150"
-              viewBox="0 0 200 200"
-            >
-              <style>
-                .cart-body {
-                  stroke: #212121;
-                  fill: none;
-                  stroke-width: 5;
-                }
-                .cart-accent {
-                  stroke: #cfa96b;
-                  fill: #cfa96b;
-                  stroke-width: 3;
-                }
-                .wheel {
-                  stroke: #212121;
-                  fill: #333;
-                  stroke-width: 3;
-                }
-                .heart {
-                  fill: #dc3545;
-                  stroke: #dc3545;
-                  stroke-width: 2;
-                }
-              </style>
-              <!-- Cart body -->
-              <path d="M40 60 L50 60 L60 120 L140 120 L150 80 L70 80" class="cart-body"/>
-              <!-- Cart handle -->
-              <path d="M40 60 L35 40 L25 40" class="cart-body"/>
-              <!-- Cart wheels -->
-              <circle cx="70" cy="135" r="8" class="wheel"/>
-              <circle cx="130" cy="135" r="8" class="wheel"/>
-              <!-- Items in cart (jewelry pieces) -->
-              <circle cx="90" cy="95" r="12" class="cart-accent"/>
-              <circle cx="110" cy="95" r="8" class="cart-accent"/>
-              <circle cx="120" cy="95" r="6" class="cart-accent"/>
-              <!-- Small heart to show items are loved -->
-              <path d="M155 50 C155 45, 162 45, 162 50 C162 45, 169 45, 169 50 C169 58, 162 65, 162 65 C162 65, 155 58, 155 50 Z" class="heart"/>
-            </svg>
-          </td>
+          <td style="padding: 1rem 0"></td>
         </tr>
       </table>
 
@@ -163,19 +120,25 @@
 
       <!-- Urgency Banner -->
       <table
-        style="
-          width: 90%;
-          max-width: 600px;
-          margin: 0 auto;
-          background: linear-gradient(135deg, #cfa96b, #d4b876);
-          color: #fff;
-        "
+        width="100%"
+        cellpadding="0"
+        cellspacing="0"
+        role="presentation"
+        style="max-width: 600px; margin: 0 auto; background: #d4b876;"
       >
-        <tr align="center">
-          <td style="padding: 1rem">
-            <p style="margin: 0; font-size: 1.1rem; font-weight: bold;">
-              ⏰ Limited Availability - Complete Your Purchase Today!
-            </p>
+        <tr>
+          <td
+            align="center"
+            style="
+              padding: 16px;
+              background: linear-gradient(135deg, #cfa96b, #d4b876);
+              color: #ffffff;
+              font-family: Arial, sans-serif;
+              font-size: 16px;
+              font-weight: bold;
+            "
+          >
+            ⏰ Limited Availability
           </td>
         </tr>
       </table>
@@ -394,7 +357,7 @@
               Visit
               <a
                 style="color: white; text-decoration: underline"
-                href="{{ shop.url }}/pages/shipping"
+                href="{{ shop.url }}/pages/shipping-policy"
                 >Shipping & Handling</a
               >
             </p>
@@ -402,17 +365,17 @@
               Call:
               <a
                 style="color: white; text-decoration: underline"
-                href="tel:18880006666"
-                >+1 (888) 000-6666</a
+                href="tel:14042986950"
+                >+1 (404) 298-6950</a
               >
             </p>
             <p>
               Email:
               <a
                 style="color: white; text-decoration: underline"
-                href="mailto:{{ shop.email }}"
+                href="mailto:info@malanijewelers.com"
               >
-                {{- shop.email -}}
+            Info@MalaniJewelers.com
               </a>
             </p>
           </td>
@@ -467,7 +430,7 @@
         <tr>
           <td class="btn">
             <a
-              href="{{ shop.url }}/collections/womens-new-arrivals"
+              href="{{ shop.url }}/collections/womens"
               style="
                 background: #cfa96b;
                 color: #fff;
@@ -480,7 +443,7 @@
           </td>
           <td class="btn">
             <a
-              href="{{ shop.url }}/collections/mens-new-arrivals"
+              href="{{ shop.url }}/collections/mens"
               style="
                 background: #cfa96b;
                 color: #fff;
@@ -515,7 +478,7 @@
             <h3 style="padding-top: 2rem">
               Buy Now, Pay Later with
               <a
-                href="{{ shop.url }}/pages/affirm"
+                href="{{ shop.url }}/pages/the-malani-promise?promise=Flexible-Financing"
                 style="color: #cfa96b"
                 >Affirm</a
               >

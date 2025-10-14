@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>Order Confirmation</title>
+  </head>
+  <body style="margin: 0; padding: 0; font-family: 'Abhaya Libre', serif; background-color: #f5f5f5; color: #333;">
+    <!-- HEADER -->
+    <table style="width: 90%; max-width: 600px; margin: 0 auto; background: #fff; border-radius: 15px 15px 0 0; box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);">
+      <tr align="center">
+        <td style="padding: 2rem">
+          <a target="_blank" href="malanijewelers.com">
+            <img
+              src="https://cdn.shopify.com/s/files/1/0930/1200/1051/files/Logo_Email.svg?v=1750363896"
+              alt="{{ shop.name }} Logo"
+              style="width: 100%; max-width: 700px; height: auto"
+            >
+          </a>
+        </td>
+      </tr>
+    </table>
+
+    <!-- Order Info / Client Info -->
+    <table style="width: 90%; max-width: 600px; margin: 0 auto; background: #fff;">
+      <tr>
+        <td
+          style="
+            padding: 1rem 2rem;
+            width: 50%;
+            vertical-align: text-top;
+          "
+        >
+          <h3 style="color: #cfa96b;">Order Information:</h3>
+          <p>
+            <strong>Order Number:</strong> W-{{ order.order_number -}}
+            <br>
+            <strong>Date:</strong> {{ order.created_at | date: %D %T -}}
+            <br>
+            <strong>Status:</strong> {{ financial_status -}}
+            <br>
+            <strong>Shipping Method:</strong> {{ shipping_method.title -}}
+            <br>
+          </p>
+        </td>
+        <td
+          style="
+            padding: 1rem 2rem;
+            width: 50%;
+            vertical-align: text-top;
+          "
+        >
+          <h3 style="color: #cfa96b;">Client Information:</h3>
+          <p>
+            <strong>Name:</strong> {{ customer.name -}}
+            <br>
+            <strong>Email:</strong> {{ customer.email -}}
+            <br>
+            <strong>Contact:</strong> {{ customer.phone -}}
+            <br>
+          </p>
+        </td>
+      </tr>
+    </table>
+
+    <!-- BILL TO / SHIP TO -->
+    <table style="width: 90%; max-width: 600px; margin: 0 auto; background: #fff;">
+      <tr>
+        <td
+          style="
+            padding: 1rem 2rem;
+            width: 50%;
+            vertical-align: text-top;
+          "
+        >
+          <h3 style="color: #cfa96b;">Bill To:</h3>
+          <p>
+            {{ billing_address.name -}}
+            <br>
+            {{ billing_address.address1 -}}
+            <br>
+            {% if billing_address.address2 != blank -%}
+              {{- billing_address.address2 -}}
+              <br>
+            {% endif %}
+            {{ billing_address.city }}, {{ billing_address.province_code }}
+            {{ billing_address.zip }}
+          </p>
+        </td>
+        <td
+          style="
+            padding: 1rem 2rem;
+            width: 50%;
+            vertical-align: text-top;
+          "
+        >
+          <h3 style="color: #cfa96b;">Ship To:</h3>
+          <p>
+            {{ shipping_address.name -}}
+            <br>
+            {{ shipping_address.address1 -}}
+            <br>
+            {% if shipping_address.address2 != blank -%}
+              {{- shipping_address.address2 -}}
+              <br>
+            {% endif %}
+            {{ shipping_address.city }}, {{ shipping_address.province_code }}
+            {{ shipping_address.zip }}
+          </p>
+        </td>
+      </tr>
+    </table>
+  </body>
+</html>
