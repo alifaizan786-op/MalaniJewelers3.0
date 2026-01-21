@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Share Your Malani Experience</title>
+    <style>
+        /* Reset styles */
+        body, table, td, a {
+            -webkit-text-size-adjust: 100%;
+            -ms-text-size-adjust: 100%;
+        }
+        table, td {
+            mso-table-lspace: 0pt;
+            mso-table-rspace: 0pt;
+        }
+        img {
+            -ms-interpolation-mode: bicubic;
+            border: 0;
+            height: auto;
+            line-height: 100%;
+            outline: none;
+            text-decoration: none;
+        }
+        body {
+            height: 100% !important;
+            margin: 0 !important;
+            padding: 0 !important;
+            width: 100% !important;
+            font-family: 'Georgia', 'Times New Roman', serif;
+            background-color: #f9f9f9;
+        }
+
+        /* Main container */
+        .email-container {
+            max-width: 600px;
+            margin: 0 auto;
+            background-color: #ffffff;
+        }
+
+        /* Header */
+        .header {
+            background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+            padding: 40px 30px;
+            text-align: center;
+        }
+        .logo {
+            font-size: 32px;
+            font-weight: bold;
+            color: #ffffff;
+            letter-spacing: 3px;
+            margin-bottom: 10px;
+        }
+        .tagline {
+            color: #d4af37;
+            font-size: 12px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        /* Content */
+        .content {
+            padding: 40px 30px;
+        }
+        .greeting {
+            font-size: 18px;
+            color: #333333;
+            margin-bottom: 20px;
+            line-height: 1.6;
+        }
+        .intro-text {
+            font-size: 16px;
+            color: #555555;
+            line-height: 1.7;
+            margin-bottom: 30px;
+        }
+
+        /* Section headers */
+        .section-header {
+            background: linear-gradient(135deg, #d4af37 0%, #f4d35e 100%);
+            color: #1a1a1a;
+            padding: 15px 20px;
+            font-size: 18px;
+            font-weight: bold;
+            text-align: center;
+            margin: 30px 0 25px 0;
+            letter-spacing: 1px;
+            border-radius: 5px;
+        }
+
+        /* Reward cards */
+        .reward-card {
+            border: 2px solid #e8e8e8;
+            border-radius: 8px;
+            padding: 25px;
+            margin-bottom: 20px;
+            background-color: #fafafa;
+            transition: all 0.3s ease;
+        }
+        .reward-title {
+            font-size: 20px;
+            color: #1a1a1a;
+            font-weight: bold;
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+        }
+        .reward-icon {
+            font-size: 24px;
+            margin-right: 10px;
+        }
+        .reward-description {
+            font-size: 14px;
+            color: #666666;
+            margin-bottom: 15px;
+            line-height: 1.6;
+        }
+        .reward-amount {
+            background: linear-gradient(135deg, #d4af37 0%, #f4d35e 100%);
+            color: #1a1a1a;
+            padding: 12px 20px;
+            border-radius: 5px;
+            font-size: 16px;
+            font-weight: bold;
+            display: inline-block;
+            margin-bottom: 15px;
+        }
+        .reward-steps {
+            background-color: #ffffff;
+            border-left: 3px solid #d4af37;
+            padding: 15px;
+            margin: 15px 0;
+        }
+        .reward-steps ol {
+            margin: 0;
+            padding-left: 20px;
+        }
+        .reward-steps li {
+            font-size: 14px;
+            color: #555555;
+            margin-bottom: 8px;
+            line-height: 1.5;
+        }
+
+        /* CTA Button */
+        .cta-button {
+            display: inline-block;
+            background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+            color: #ffffff !important;
+            padding: 14px 30px;
+            text-decoration: none;
+            border-radius: 5px;
+            font-size: 15px;
+            font-weight: bold;
+            letter-spacing: 1px;
+            margin-top: 10px;
+            transition: all 0.3s ease;
+        }
+        .cta-button:hover {
+            background: linear-gradient(135deg, #2d2d2d 0%, #1a1a1a 100%);
+        }
+
+        /* WhatsApp section */
+        .whatsapp-section {
+            background: linear-gradient(135deg, #f0f0f0 0%, #fafafa 100%);
+            border-radius: 8px;
+            padding: 30px;
+            margin: 30px 0;
+            border: 2px solid #d4af37;
+        }
+        .whatsapp-title {
+            font-size: 22px;
+            color: #1a1a1a;
+            font-weight: bold;
+            margin-bottom: 15px;
+            text-align: center;
+        }
+        .whatsapp-text {
+            font-size: 15px;
+            color: #555555;
+            line-height: 1.6;
+            margin-bottom: 10px;
+        }
+
+        /* Footer */
+        .footer {
+            background-color: #1a1a1a;
+            color: #ffffff;
+            padding: 30px;
+            text-align: center;
+        }
+        .closing {
+            font-size: 16px;
+            line-height: 1.7;
+            margin-bottom: 20px;
+            color: #f4d35e;
+        }
+        .signature {
+            font-size: 15px;
+            color: #d4af37;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        .team-name {
+            font-size: 14px;
+            color: #999999;
+        }
+        .disclaimer {
+            font-size: 11px;
+            color: #888888;
+            margin-top: 20px;
+            padding-top: 20px;
+            border-top: 1px solid #333333;
+            line-height: 1.5;
+        }
+
+        /* Divider */
+        .divider {
+            height: 2px;
+            background: linear-gradient(90deg, transparent, #d4af37, transparent);
+            margin: 30px 0;
+        }
+
+        /* Mobile responsive */
+        @media only screen and (max-width: 600px) {
+            .email-container {
+                width: 100% !important;
+            }
+            .content, .header, .footer, .whatsapp-section {
+                padding: 20px !important;
+            }
+            .reward-card {
+                padding: 20px !important;
+            }
+            .logo {
+                font-size: 24px !important;
+            }
+            .reward-title {
+                font-size: 18px !important;
+            }
+            .section-header {
+                font-size: 16px !important;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="email-container">
+        <!-- Header -->
+        <div class="header">
+            <div class="logo">MALANI JEWELERS</div>
+            <div class="tagline">Since 1897</div>
+        </div>
+
+        <!-- Main Content -->
+        <div class="content">
+            <div class="greeting">
+                Hi {{First Name}},
+            </div>
+
+            <div class="intro-text">
+                We hope you're loving your new piece from Malani Jewelers ✨ If your experience brought a smile, we'd love for you to share it—and as a thank you, enjoy exclusive rewards on your next purchase.
+            </div>
+
+            <div class="divider"></div>
+
+            <!-- Section Header -->
+            <div class="section-header">
+                ⭐ SHARE YOUR EXPERIENCE & GET REWARDED
+            </div>
+
+            <!-- Google Review Card -->
+            <div class="reward-card">
+                <div class="reward-title">
+                    <span class="reward-icon">🌟</span>
+                    Google Review
+                </div>
+                <div class="reward-description">
+                    Share your experience shopping with us on Google, including your website experience and/or sales associate.
+                </div>
+                <div class="reward-amount">
+                    Reward: Get $50 OFF your next order of $1,000 or more
+                </div>
+                <div class="reward-steps">
+                    <strong>How to redeem:</strong>
+                    <ol>
+                        <li>Leave a Google review</li>
+                        <li>Take a screenshot</li>
+                        <li>Email it to info@malanijewelers.com</li>
+                    </ol>
+                </div>
+                <center>
+                    <a href="#" class="cta-button">LEAVE A GOOGLE REVIEW</a>
+                </center>
+            </div>
+
+            <!-- Trustpilot Review Card -->
+            <div class="reward-card">
+                <div class="reward-title">
+                    <span class="reward-icon">⭐</span>
+                    Trustpilot Review
+                </div>
+                <div class="reward-description">
+                    Tell others about your experience with Malani Jewelers on Trustpilot.
+                </div>
+                <div class="reward-amount">
+                    Reward: Get $50 OFF your next order of $500 or more
+                </div>
+                <div class="reward-steps">
+                    <strong>How to redeem:</strong>
+                    <ol>
+                        <li>Leave a Trustpilot review</li>
+                        <li>Take a screenshot</li>
+                        <li>Email it to info@malanijewelers.com</li>
+                    </ol>
+                </div>
+                <center>
+                    <a href="#" class="cta-button">LEAVE A TRUSTPILOT REVIEW</a>
+                </center>
+            </div>
+
+            <!-- Instagram Card -->
+            <div class="reward-card">
+                <div class="reward-title">
+                    <span class="reward-icon">📸</span>
+                    Instagram
+                </div>
+                <div class="reward-description">
+                    Follow us on Instagram and share your Malani moment.
+                </div>
+                <div class="reward-amount">
+                    Reward: Get $25 OFF your next order of $750 or more
+                </div>
+                <div class="reward-steps">
+                    <strong>How to redeem:</strong>
+                    <ol>
+                        <li>Follow @Malanijewelers</li>
+                        <li>Post a story or feed post and tag us</li>
+                        <li>Send a screenshot to info@malanijewelers.com</li>
+                    </ol>
+                </div>
+                <center>
+                    <a href="https://www.instagram.com/malani_jewelers/" class="cta-button">VISIT OUR INSTAGRAM</a>
+                </center>
+            </div>
+
+            <!-- Facebook Card -->
+            <div class="reward-card">
+                <div class="reward-title">
+                    <span class="reward-icon">👍</span>
+                    Facebook
+                </div>
+                <div class="reward-description">
+                    Show some love on Facebook and share your experience.
+                </div>
+                <div class="reward-amount">
+                    Reward: Get $25 OFF your next order of $750 or more
+                </div>
+                <div class="reward-steps">
+                    <strong>How to redeem:</strong>
+                    <ol>
+                        <li>Like our Facebook page</li>
+                        <li>Create a post and tag Malani Jewelers</li>
+                        <li>Send a screenshot to info@malanijewelers.com</li>
+                    </ol>
+                </div>
+                <center>
+                    <a href="http://www.facebook.com/Malanijewelers" class="cta-button">VISIT OUR FACEBOOK PAGE</a>
+                </center>
+            </div>
+
+            <div class="divider"></div>
+
+            <!-- WhatsApp Section -->
+            <div class="whatsapp-section">
+                <div class="whatsapp-title">💬 Want More Exclusive Offers?</div>
+                <div class="whatsapp-text">
+                    Be the first to know about special deals, launches, and rewards.
+                </div>
+                <div class="whatsapp-text" style="font-weight: bold; margin-top: 20px;">
+                    Join Our WhatsApp Community
+                </div>
+                <div class="reward-steps" style="margin: 20px 0;">
+                    <strong>How it works:</strong>
+                    <ol>
+                        <li>Join our exclusive WhatsApp community</li>
+                        <li>Send "WHATSAPP50"</li>
+                        <li>Get $50 OFF your next order of $500 or more</li>
+                        <li>Stay up to date on our latest offers and events</li>
+                    </ol>
+                </div>
+                <center>
+                    <a href="#" class="cta-button">JOIN WHATSAPP COMMUNITY</a>
+                </center>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <div class="footer">
+            <div class="closing">
+                Thank you for being part of the Malani family.<br>
+                Your voice means everything to us 💛
+            </div>
+            <div class="signature">Warm regards,</div>
+            <div class="team-name">Malani Jewelers Team</div>
+            <div class="disclaimer">
+                Rewards valid on future purchases only. Offers cannot be combined. Terms & conditions apply.
+            </div>
+        </div>
+    </div>
+</body>
+</html>
